@@ -3,7 +3,7 @@
 @import "fumadocs-ui/css/neutral.css";
 @import "fumadocs-ui/css/preset.css";
 
-@theme {
+@theme static {
   --color-fd-background: var(--background-default);
   --color-fd-foreground: var(--text-primary);
   --color-fd-muted: var(--layer-accent-01);

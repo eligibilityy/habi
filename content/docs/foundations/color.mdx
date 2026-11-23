@@ -1,0 +1,79 @@
+---
+title: Color
+description: Habi's palette, and the tokens that say what each color is for.
+---
+
+Habi has two layers of color tokens:
+
+- **Semantic tokens** say what a color is for, like `link/primary` or `button/danger`. Use these in designs and code.
+- **Primitives** are the raw palette, like `blue/70`. Semantic tokens point at them. Don't use primitives directly.
+
+In code, every token is a CSS variable (`--link-primary`) and a Tailwind color you can use with any color utility: `text-link-primary`, `bg-button-primary`, `border-border-subtle-01`.
+
+Every text and background pair below passes WCAG 2.2 AA. If you combine tokens in a new way, check the contrast first.
+
+## Semantic tokens
+
+### Background
+
+<SemanticColors group="background" />
+
+### Layer
+
+Surfaces that sit on the background, like cards and panels.
+
+<SemanticColors group="layer" />
+
+### Field
+
+<SemanticColors group="field" />
+
+### Border
+
+<SemanticColors group="border" />
+
+### Text
+
+<SemanticColors group="text" />
+
+### Link
+
+<SemanticColors group="link" />
+
+### Icon
+
+<SemanticColors group="icon" />
+
+### Interactive and focus
+
+<SemanticColors group="interactive" />
+
+<SemanticColors group="focus" />
+
+### Button
+
+<SemanticColors group="button" />
+
+### Support
+
+Status colors for notifications and validation.
+
+<SemanticColors group="support" />
+
+### Badge
+
+<SemanticColors group="badge" />
+
+### Accent, highlight and skeleton
+
+<SemanticColors group="accent" />
+
+<SemanticColors group="highlight" />
+
+<SemanticColors group="skeleton" />
+
+## Primitives
+
+Blue, red and gold echo the Philippine flag: `red/60` is the flag's red and `gold/30` its sun.
+
+<PrimitiveColors />
