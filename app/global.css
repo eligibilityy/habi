@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "../registry/habi/styles/habi.css";
 @import "fumadocs-ui/css/neutral.css";
 @import "fumadocs-ui/css/preset.css";
 

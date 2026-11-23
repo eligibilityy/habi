@@ -141,6 +141,7 @@
 }
 
 @theme inline {
+  --color-*: initial;
   --color-blue-10: var(--blue-10);
   --color-blue-20: var(--blue-20);
   --color-blue-30: var(--blue-30);
