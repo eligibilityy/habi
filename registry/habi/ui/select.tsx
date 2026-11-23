@@ -26,7 +26,7 @@ function SelectTrigger({
     <SelectPrimitive.Trigger
       data-slot="select-trigger"
       className={cn(
-        "flex h-12 w-full min-w-0 items-center gap-2 rounded-sm border border-border-strong-01 bg-field-01 px-4 text-left text-body-md text-text-primary select-none",
+        "flex h-12 w-full min-w-0 items-center gap-2 rounded-control border border-border-strong-01 bg-field-01 px-4 text-left text-body-md text-text-primary select-none",
         "hover:not-data-invalid:not-data-disabled:border-border-hover",
         "focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-focus-default data-popup-open:outline-2 data-popup-open:-outline-offset-2 data-popup-open:outline-focus-default",
         "data-invalid:border-support-error data-invalid:ring-1 data-invalid:ring-support-error data-invalid:ring-inset",
@@ -36,7 +36,7 @@ function SelectTrigger({
       {...props}
     >
       {children}
-      <SelectPrimitive.Icon className="ms-auto shrink-0 text-icon-primary transition-transform in-data-disabled:text-text-disabled in-data-popup-open:rotate-180 motion-reduce:transition-none">
+      <SelectPrimitive.Icon className="ms-auto shrink-0 text-icon-primary in-data-disabled:text-text-disabled in-data-popup-open:rotate-180 motion-safe:transition-transform motion-safe:duration-(--duration-fast) motion-safe:ease-out">
         <ChevronDownIcon className="size-5" />
       </SelectPrimitive.Icon>
     </SelectPrimitive.Trigger>
@@ -74,8 +74,8 @@ function SelectContent({
         <SelectPrimitive.Popup
           data-slot="select-content"
           className={cn(
-            "w-(--anchor-width) rounded-sm border border-border-subtle-01 bg-layer-01 p-1 shadow-overlay outline-none",
-            "transition-opacity duration-100 data-ending-style:opacity-0 data-starting-style:opacity-0 motion-reduce:transition-none",
+            "w-(--anchor-width) rounded-overlay border border-border-subtle-01 bg-layer-01 p-1 shadow-overlay outline-none",
+            "data-ending-style:opacity-0 data-starting-style:opacity-0 motion-safe:transition-opacity motion-safe:duration-(--duration-fast) motion-safe:ease-out",
             className,
           )}
           {...props}

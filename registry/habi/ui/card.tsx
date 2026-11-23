@@ -4,7 +4,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/registry/habi/lib/utils";
 
 const cardVariants = cva(
-  "group/card flex flex-col overflow-hidden rounded-sm border border-border-subtle-01 bg-layer-01 text-text-primary",
+  "group/card flex flex-col overflow-hidden rounded-card border border-border-subtle-01 bg-layer-01 text-text-primary shadow-card",
   {
     variants: {
       layout: {
