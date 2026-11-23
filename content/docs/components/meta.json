@@ -7,6 +7,7 @@
     "checkbox",
     "link",
     "notification",
+    "radio-group",
     "select",
     "tag",
     "text-input"

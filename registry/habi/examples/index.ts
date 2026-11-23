@@ -26,6 +26,10 @@ import LinkExternal from "./link-external";
 import NotificationDemo from "./notification-demo";
 import NotificationDismissible from "./notification-dismissible";
 import NotificationKinds from "./notification-kinds";
+import RadioGroupDemo from "./radio-group-demo";
+import RadioGroupDisabled from "./radio-group-disabled";
+import RadioGroupHints from "./radio-group-hints";
+import RadioGroupValidation from "./radio-group-validation";
 import SelectDemo from "./select-demo";
 import SelectValidation from "./select-validation";
 import SelectGrouped from "./select-grouped";
@@ -65,6 +69,10 @@ export const examples: Record<string, ComponentType> = {
   "notification-demo": NotificationDemo,
   "notification-dismissible": NotificationDismissible,
   "notification-kinds": NotificationKinds,
+  "radio-group-demo": RadioGroupDemo,
+  "radio-group-disabled": RadioGroupDisabled,
+  "radio-group-hints": RadioGroupHints,
+  "radio-group-validation": RadioGroupValidation,
   "select-demo": SelectDemo,
   "select-validation": SelectValidation,
   "select-grouped": SelectGrouped,
