@@ -3,7 +3,7 @@ import { createGetUrl } from "fumadocs-core/source";
 export const appName = "Habi";
 export const docsRoute = "/docs";
 export const docsImageRoute = "/og/docs";
-export const siteUrl = "https://habi-mu.vercel.app";
+export const siteUrl = "https://habi.yiliya.studio";
 
 export const gitConfig = {
   user: "eligibilityy",
