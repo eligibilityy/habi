@@ -315,7 +315,7 @@
   --text-button--font-weight: 600;
 }
 
-@theme {
+@theme static {
   --font-sans: "Allo", system-ui, sans-serif;
   --font-mono: ui-monospace, "JetBrains Mono", monospace;
   --font-weight-regular: 400;
@@ -328,7 +328,19 @@
   --radius-lg: 16px;
   --radius-xl: 24px;
   --radius-full: 9999px;
+  --radius-control: var(--radius-md);
+  --radius-card: var(--radius-lg);
+  --radius-overlay: var(--radius-md);
+  --shadow-button: 0 1px 3px 0 rgb(33 33 33 / 0.08);
+  --shadow-card:
+    0 2px 6px 0 rgb(33 33 33 / 0.06), 0 6px 24px 0 rgb(33 33 33 / 0.06);
   --shadow-overlay:
     0 1px 3px 0 rgb(33 33 33 / 0.08), 0 4px 16px 0 rgb(33 33 33 / 0.12);
   --shadow-modal: 0 8px 32px 0 rgb(33 33 33 / 0.18);
+  --duration-fast: 100ms;
+  --duration-short: 200ms;
+  --duration-medium: 400ms;
+  --duration-long: 600ms;
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
 }
