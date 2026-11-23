@@ -1,0 +1,191 @@
+---
+title: Select
+description: Lets people choose one option from a list, like their region or ID type.
+---
+
+<ComponentPreview name="select-demo" />
+
+## When to use
+
+- **6 or more options:** use a Select.
+- **5 or fewer:** use a radio group instead, so people can see every choice without opening anything.
+- **A very long list**, like every city and municipality: use Search, so people can type to filter.
+
+## Installation
+
+```npm
+npm install @base-ui/react @heroicons/react clsx tailwind-merge
+```
+
+Add the `cn` helper if you haven't already:
+
+<ComponentSource src="registry/habi/lib/utils.ts" title="lib/utils.ts" />
+
+Add the status icon and field parts if you haven't already:
+
+<ComponentSource
+  src="registry/habi/ui/status-icon.tsx"
+  title="components/ui/status-icon.tsx"
+/>
+
+<ComponentSource
+  src="registry/habi/ui/field.tsx"
+  title="components/ui/field.tsx"
+/>
+
+Add the component:
+
+<ComponentSource
+  src="registry/habi/ui/select.tsx"
+  title="components/ui/select.tsx"
+/>
+
+## Usage
+
+```tsx
+import { Field } from "@/components/ui/field";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+
+const regions = [
+  { value: "ncr", label: "National Capital Region (NCR)" },
+  { value: "r7", label: "Central Visayas (Region VII)" },
+];
+
+<Field>
+  <SelectLabel>Region</SelectLabel>
+  <Select items={regions}>
+    <SelectTrigger>
+      <SelectValue placeholder="Select a region" />
+    </SelectTrigger>
+    <SelectContent>
+      {regions.map((region) => (
+        <SelectItem key={region.value} value={region.value}>
+          {region.label}
+        </SelectItem>
+      ))}
+    </SelectContent>
+  </Select>
+</Field>;
+```
+
+Pass the same list to `items`, so the field shows the chosen label instead of its value.
+
+## Examples
+
+### Validation
+
+Set `required` on `Select` and add a `FieldError` with `match="valueMissing"`. Base UI's `Form` checks it when people submit.
+
+<ComponentPreview name="select-validation" />
+
+### Grouped
+
+Group long lists under headings. Screen readers announce the group with each option.
+
+<ComponentPreview name="select-grouped" />
+
+### Disabled
+
+<ComponentPreview name="select-disabled" />
+
+## Props
+
+### Select
+
+<PropsTable
+  rows={[
+    {
+      name: "items",
+      type: "{ value, label }[]",
+      description:
+        "Every option's value and label, so the field can show the chosen label.",
+    },
+    {
+      name: "defaultValue",
+      type: "Value",
+      description:
+        "The option selected at first, when you don't control the state.",
+    },
+    {
+      name: "value",
+      type: "Value",
+      description: "The selected option, when you control the state.",
+    },
+    {
+      name: "onValueChange",
+      type: "(value: Value) => void",
+      description: "Called when people choose an option.",
+    },
+    {
+      name: "required",
+      type: "boolean",
+      default: "false",
+      description: "People must choose an option before submitting.",
+    },
+    {
+      name: "disabled",
+      type: "boolean",
+      default: "false",
+      description: "Stops people opening the list.",
+    },
+  ]}
+/>
+
+### SelectLabel
+
+<PropsTable
+  rows={[
+    {
+      name: "required",
+      type: "boolean",
+      default: "false",
+      description: "Shows a red asterisk. Also set required on Select.",
+    },
+  ]}
+/>
+
+### SelectValue
+
+<PropsTable
+  rows={[
+    {
+      name: "placeholder",
+      type: "ReactNode",
+      description: 'Shown before people choose, like "Select a region".',
+    },
+  ]}
+/>
+
+### SelectItem
+
+<PropsTable
+  rows={[
+    {
+      name: "value",
+      type: "Value",
+      description:
+        "The value submitted with the form when this option is chosen.",
+    },
+    {
+      name: "disabled",
+      type: "boolean",
+      default: "false",
+      description: "Shows the option but stops people choosing it.",
+    },
+  ]}
+/>
+
+## Accessibility
+
+- **Keyboard:** <kbd>Enter</kbd>, <kbd>Space</kbd> or <kbd>↓</kbd> opens the list. Arrow keys move, typing a letter jumps to matching options, <kbd>Enter</kbd> chooses, and <kbd>Esc</kbd> closes it. Focus returns to the field.
+- **Label:** `SelectLabel` names the field for screen readers. Clicking it moves focus to the field without opening the list.
+- **Selected option:** shown with a check and a blue background, not just color.
+- **Small screens:** the list never runs past the edge of the screen. It flips above the field and scrolls when space is short.
+- **Motion:** the open and close fade is turned off for people who prefer reduced motion.

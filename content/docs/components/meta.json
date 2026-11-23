@@ -6,6 +6,7 @@
     "card",
     "link",
     "notification",
+    "select",
     "tag",
     "text-input"
   ]
