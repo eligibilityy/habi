@@ -24,6 +24,10 @@ import NotificationKinds from "./notification-kinds";
 import TagControlled from "./tag-controlled";
 import TagDemo from "./tag-demo";
 import TagDisabled from "./tag-disabled";
+import TextInputDemo from "./text-input-demo";
+import TextInputDisabled from "./text-input-disabled";
+import TextInputServerError from "./text-input-server-error";
+import TextInputValidation from "./text-input-validation";
 
 export const examples: Record<string, ComponentType> = {
   "badge-demo": BadgeDemo,
@@ -50,4 +54,8 @@ export const examples: Record<string, ComponentType> = {
   "tag-controlled": TagControlled,
   "tag-demo": TagDemo,
   "tag-disabled": TagDisabled,
+  "text-input-demo": TextInputDemo,
+  "text-input-disabled": TextInputDisabled,
+  "text-input-server-error": TextInputServerError,
+  "text-input-validation": TextInputValidation,
 };
