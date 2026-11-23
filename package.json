@@ -12,7 +12,7 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "tokens": "node scripts/build-tokens.mjs",
-    "precommit": "prettier --write . && eslint && next typegen && tsc --noEmit"
+    "precommit": "prettier --write . && eslint && echo LINT_OK && next typegen && tsc --noEmit"
   },
   "dependencies": {
     "@base-ui/react": "^1.9.0",
