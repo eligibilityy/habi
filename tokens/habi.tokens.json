@@ -170,7 +170,10 @@
     "md": 8,
     "lg": 16,
     "xl": 24,
-    "full": 9999
+    "full": 9999,
+    "control": "md",
+    "card": "lg",
+    "overlay": "md"
   },
   "font": {
     "sans": "Allo",
@@ -198,7 +201,21 @@
     "button": { "size": 16, "lineHeight": 24, "weight": "semibold" }
   },
   "shadow": {
+    "button": "0 1px 3px 0 rgb(33 33 33 / 0.08)",
+    "card": "0 2px 6px 0 rgb(33 33 33 / 0.06), 0 6px 24px 0 rgb(33 33 33 / 0.06)",
     "overlay": "0 1px 3px 0 rgb(33 33 33 / 0.08), 0 4px 16px 0 rgb(33 33 33 / 0.12)",
     "modal": "0 8px 32px 0 rgb(33 33 33 / 0.18)"
+  },
+  "motion": {
+    "duration": {
+      "fast": 100,
+      "short": 200,
+      "medium": 400,
+      "long": 600
+    },
+    "easing": {
+      "out": "cubic-bezier(0, 0, 0.2, 1)",
+      "out-back": "cubic-bezier(0.34, 1.56, 0.64, 1)"
+    }
   }
 }

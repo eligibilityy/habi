@@ -19,6 +19,8 @@ const twMerge = extendTailwindMerge({
         "button",
       ],
       "font-weight": ["regular"],
+      radius: ["control", "card", "overlay"],
+      ease: ["out-back"],
     },
   },
 });
