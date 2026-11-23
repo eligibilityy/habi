@@ -3,7 +3,7 @@
   "version": "0.0.69",
   "private": true,
   "scripts": {
-    "build": "next build && node --env-file-if-exists=.env.local scripts/sync-content.ts",
+    "build": "next build",
     "dev": "next dev",
     "start": "next start",
     "types:check": "next typegen && tsc --noEmit",
@@ -17,8 +17,7 @@
     "lucide-react": "^1.71.0",
     "next": "16.4.6",
     "react": "^19.3.1",
-    "react-dom": "^19.3.1",
-    "@orama/core": "^1.2.19"
+    "react-dom": "^19.3.1"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.3.5",
@@ -26,11 +25,11 @@
     "@types/node": "^26.6.6",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
-    "postcss": "^8.5.32",
-    "tailwindcss": "^4.3.5",
-    "typescript": "npm:@typescript/typescript6@^6.0.2",
     "@typescript/native": "npm:typescript@^7.0.2",
     "eslint": "^9.39.4",
-    "eslint-config-next": "16.4.6"
+    "eslint-config-next": "16.4.6",
+    "postcss": "^8.5.32",
+    "tailwindcss": "^4.3.5",
+    "typescript": "npm:@typescript/typescript6@^6.0.2"
   }
 }

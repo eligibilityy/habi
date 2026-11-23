@@ -8,9 +8,6 @@ importers:
 
   .:
     dependencies:
-      '@orama/core':
-        specifier: ^1.2.19
-        version: 1.2.19
       cn:
         specifier: ^0.5.2
         version: 0.5.2
@@ -3712,7 +3709,8 @@ snapshots:
   '@next/swc-win32-x64-msvc@16.4.6':
     optional: true
 
-  '@noble/hashes@1.8.0': {}
+  '@noble/hashes@1.8.0':
+    optional: true
 
   '@nodelib/fs.scandir@2.1.5':
     dependencies:
@@ -3732,12 +3730,15 @@ snapshots:
     dependencies:
       '@orama/cuid2': 2.2.3
       '@orama/oramacore-events-parser': 0.0.5
+    optional: true
 
   '@orama/cuid2@2.2.3':
     dependencies:
       '@noble/hashes': 1.8.0
+    optional: true
 
-  '@orama/oramacore-events-parser@0.0.5': {}
+  '@orama/oramacore-events-parser@0.0.5':
+    optional: true
 
   '@rtsao/scc@1.1.0': {}
 
