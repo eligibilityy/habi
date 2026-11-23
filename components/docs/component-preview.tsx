@@ -2,12 +2,28 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { Tabs } from "@base-ui/react/tabs";
 import { highlight } from "fumadocs-core/highlight";
-import { CodeBlock, Pre } from "fumadocs-ui/components/codeblock";
+import { Pre } from "fumadocs-ui/components/codeblock";
 
+import { CodeBlock } from "@/components/docs/code-block";
 import { examples } from "@/registry/habi/examples";
 
 const tabClass =
   "text-label text-text-secondary hover:text-text-primary data-active:text-text-primary data-active:border-interactive-default focus-visible:outline-focus-default -mb-px flex h-12 items-center border-b-2 border-transparent px-3 focus-visible:outline-2 focus-visible:-outline-offset-2";
+
+async function readSource(file: string) {
+  const source = await fs.readFile(path.join(process.cwd(), file), "utf8");
+  return source
+    .replaceAll("@/registry/habi/ui/", "@/components/ui/")
+    .replaceAll("@/registry/habi/lib/", "@/lib/")
+    .trim();
+}
+
+function highlightTsx(source: string) {
+  return highlight(source, {
+    lang: "tsx",
+    components: { pre: (props) => <Pre {...props} /> },
+  });
+}
 
 export async function ComponentPreview({ name }: { name: string }) {
   const Example = examples[name];
@@ -17,20 +33,9 @@ export async function ComponentPreview({ name }: { name: string }) {
     );
   }
 
-  const file = path.join(
-    process.cwd(),
-    "registry/habi/examples",
-    `${name}.tsx`,
+  const code = await highlightTsx(
+    await readSource(`registry/habi/examples/${name}.tsx`),
   );
-  const source = (await fs.readFile(file, "utf8"))
-    .replaceAll("@/registry/habi/ui/", "@/components/ui/")
-    .replaceAll("@/registry/habi/lib/", "@/lib/")
-    .trim();
-
-  const code = await highlight(source, {
-    lang: "tsx",
-    components: { pre: (props) => <Pre {...props} /> },
-  });
 
   return (
     <Tabs.Root
@@ -56,4 +61,15 @@ export async function ComponentPreview({ name }: { name: string }) {
       </Tabs.Panel>
     </Tabs.Root>
   );
+}
+
+export async function ComponentSource({
+  src,
+  title,
+}: {
+  src: string;
+  title?: string;
+}) {
+  const code = await highlightTsx(await readSource(src));
+  return <CodeBlock title={title}>{code}</CodeBlock>;
 }

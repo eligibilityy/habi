@@ -4,3 +4,116 @@ description: Lets people take an action, like submitting a form or starting a ta
 ---
 
 <ComponentPreview name="button-demo" />
+
+## Installation
+
+Install the dependencies:
+
+```npm
+npm install @base-ui/react class-variance-authority clsx tailwind-merge
+```
+
+Add the `cn` helper:
+
+<ComponentSource src="registry/habi/lib/utils.ts" title="lib/utils.ts" />
+
+Add the component:
+
+<ComponentSource
+  src="registry/habi/ui/button.tsx"
+  title="components/ui/button.tsx"
+/>
+
+<Callout>
+  A one-line install with the shadcn CLI is coming with the Habi registry.
+</Callout>
+
+## Usage
+
+```tsx
+import { Button } from "@/components/ui/button";
+
+<Button>Book an appointment</Button>;
+```
+
+## Examples
+
+### Kinds
+
+Use **one primary button** per screen, for the main action. Use secondary and tertiary for other actions, subtle for low-emphasis ones, and danger only for actions that delete something or can't be undone.
+
+<ComponentPreview name="button-kinds" />
+
+### With an icon
+
+Put the icon **before** the label for actions, like Download or Add. Put it **after** the label for moving forward, like Continue.
+
+<ComponentPreview name="button-with-icon" />
+
+### Icon only
+
+Use these only where the icon is widely understood, like search or delete. Every icon-only button needs an `aria-label` that says what it does.
+
+<ComponentPreview name="button-icon-only" />
+
+### Disabled
+
+Avoid disabled buttons where you can. People can't tell why a button doesn't work. It's usually better to let them press it and explain what's missing.
+
+<ComponentPreview name="button-disabled" />
+
+### As a link
+
+If the button takes people to another page, use a link that looks like a button. Pass `buttonVariants` to your link's `className`. This works with `next/link`, your router's link component, or a plain `<a>` for external sites.
+
+<ComponentPreview name="button-link" />
+
+## Props
+
+<PropsTable
+  rows={[
+    {
+      name: "kind",
+      type: '"primary" | "secondary" | "tertiary" | "subtle" | "danger"',
+      default: '"primary"',
+      description: "How much emphasis the button has.",
+    },
+    {
+      name: "iconOnly",
+      type: "boolean",
+      default: "false",
+      description:
+        "Makes a 48 × 48px square button for a single icon. Needs an aria-label.",
+    },
+    {
+      name: "disabled",
+      type: "boolean",
+      default: "false",
+      description: "Stops people using the button.",
+    },
+    {
+      name: "focusableWhenDisabled",
+      type: "boolean",
+      default: "false",
+      description:
+        "Keeps a disabled button focusable, for example while it shows a loading state.",
+    },
+    {
+      name: "type",
+      type: '"button" | "submit" | "reset"',
+      default: '"button"',
+      description: 'Use "submit" for the button that sends a form.',
+    },
+  ]}
+/>
+
+Button also accepts the other props of Base UI's [Button](https://base-ui.com/react/components/button) and of the HTML `<button>` element, like `onClick`.
+
+## Accessibility
+
+- **Keyboard:** <kbd>Tab</kbd> moves focus to the button, and <kbd>Enter</kbd> or <kbd>Space</kbd> presses it. A 2px focus ring shows which button has focus.
+- **Size:** buttons are 48px tall, well above the 24 × 24px minimum target size in WCAG 2.2.
+- **Labels:** start with a verb and say what will happen: "Pay ₱145.00", not "Submit".
+- **Forms:** buttons default to `type="button"`, so set `type="submit"` on the button that sends a form.
+- **Icons** are hidden from screen readers, because the label already says what the button does. Icon-only buttons need an `aria-label`.
+- **Links:** if it goes to another page, use a link styled with `buttonVariants`, not a Button. Screen readers then announce it as a link.

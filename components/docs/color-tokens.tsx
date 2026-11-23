@@ -1,10 +1,14 @@
 import { getPrimitiveRamps, getSemanticColors } from "@/lib/tokens";
+import { cn } from "@/registry/habi/lib/utils";
 
 function Swatch({ cssVar, className }: { cssVar: string; className: string }) {
   return (
     <span
       aria-hidden
-      className={`block rounded-sm border border-border-subtle-01 ${className}`}
+      className={cn(
+        "block rounded-sm border border-border-subtle-01",
+        className,
+      )}
       style={{ backgroundColor: `var(${cssVar})` }}
     />
   );
