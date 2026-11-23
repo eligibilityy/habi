@@ -10,8 +10,16 @@ import LinkDemo from "./link-demo";
 import LinkStandalone from "./link-standalone";
 import LinkNext from "./link-next";
 import LinkExternal from "./link-external";
+import BadgeDemo from "./badge-demo";
+import BadgeInContext from "./badge-in-context";
+import BadgeKinds from "./badge-kinds";
+import BadgeWithIcon from "./badge-with-icon";
 
 export const examples: Record<string, ComponentType> = {
+  "badge-demo": BadgeDemo,
+  "badge-in-context": BadgeInContext,
+  "badge-kinds": BadgeKinds,
+  "badge-with-icon": BadgeWithIcon,
   "button-demo": ButtonDemo,
   "button-disabled": ButtonDisabled,
   "button-icon-only": ButtonIconOnly,

@@ -1,0 +1,74 @@
+---
+title: Badge
+description: A short status label, like New, Open or Closing soon.
+---
+
+<ComponentPreview name="badge-demo" />
+
+## Installation
+
+```npm
+npm install class-variance-authority clsx tailwind-merge
+```
+
+Add the `cn` helper if you haven't already:
+
+<ComponentSource src="registry/habi/lib/utils.ts" title="lib/utils.ts" />
+
+Add the component:
+
+<ComponentSource
+  src="registry/habi/ui/badge.tsx"
+  title="components/ui/badge.tsx"
+/>
+
+## Usage
+
+```tsx
+import { Badge } from "@/components/ui/badge";
+
+<Badge kind="success">Open</Badge>;
+```
+
+## Examples
+
+### Kinds
+
+Pick the kind that matches the meaning: neutral for general labels, info for news, success for something ready or open, warning for something that needs attention soon, and error for something closed or failed.
+
+<ComponentPreview name="badge-kinds" />
+
+### With an icon
+
+An icon can reinforce the meaning. Use the 16px icons from `@heroicons/react/16/solid`.
+
+<ComponentPreview name="badge-with-icon" />
+
+### In context
+
+If the badge describes something nearby, add hidden text so screen reader users get the same context.
+
+<ComponentPreview name="badge-in-context" />
+
+## Props
+
+<PropsTable
+  rows={[
+    {
+      name: "kind",
+      type: '"neutral" | "info" | "success" | "warning" | "error"',
+      default: '"neutral"',
+      description: "The meaning of the badge, which sets its color.",
+    },
+  ]}
+/>
+
+Badge also accepts every prop of the HTML `<span>` element.
+
+## Accessibility
+
+- **Words, not color:** the label carries the meaning. Color only reinforces it, so a badge still makes sense in grayscale or to people who can't tell colors apart (WCAG 1.4.1).
+- **Short labels:** one or two words. Badges don't wrap.
+- **Not interactive:** badges can't be clicked or focused. If people need to pick an option, use a Tag. If it goes somewhere, use a Link.
+- **Context:** add visually hidden text (`sr-only`) when the badge only makes sense next to something else, like "Status: Open".
+- **Contrast:** every kind's text and background pass WCAG AA (5.3–6.8:1).
