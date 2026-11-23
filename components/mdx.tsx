@@ -1,5 +1,14 @@
+import type { HTMLAttributes } from "react";
 import defaultMdxComponents from "fumadocs-ui/mdx";
+import { Pre } from "fumadocs-ui/components/codeblock";
 import type { MDXComponents } from "mdx/types";
+import { Callout } from "@/components/docs/callout";
+import {
+  CodeBlock,
+  CodeBlockTabs,
+  CodeBlockTabsList,
+  CodeBlockTabsTrigger,
+} from "@/components/docs/code-block";
 import {
   PrimitiveColors,
   SemanticColors,
@@ -11,11 +20,24 @@ import {
   SpacingScale,
   TypeScale,
 } from "@/components/docs/foundation-tokens";
-import { ComponentPreview } from "@/components/docs/component-preview";
+import {
+  ComponentPreview,
+  ComponentSource,
+} from "@/components/docs/component-preview";
+import { PropsTable } from "@/components/docs/props-table";
 
 export function getMDXComponents(components?: MDXComponents) {
   return {
     ...defaultMdxComponents,
+    pre: (props: HTMLAttributes<HTMLPreElement>) => (
+      <CodeBlock {...props}>
+        <Pre>{props.children}</Pre>
+      </CodeBlock>
+    ),
+    CodeBlockTabs,
+    CodeBlockTabsList,
+    CodeBlockTabsTrigger,
+    Callout,
     PrimitiveColors,
     SemanticColors,
     FocusRingDemo,
@@ -24,6 +46,8 @@ export function getMDXComponents(components?: MDXComponents) {
     SpacingScale,
     TypeScale,
     ComponentPreview,
+    ComponentSource,
+    PropsTable,
     ...components,
   } satisfies MDXComponents;
 }

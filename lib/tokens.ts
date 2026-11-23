@@ -1,16 +1,14 @@
 import tokens from "@/tokens/habi.tokens.json";
 
-export { tokens };
-
-export type ColorToken = {
+type ColorToken = {
   name: string;
   cssVar: string;
   hex: string;
   ref?: string;
 };
 
-/** "neutral/5" → "neutral-05" (same rule as scripts/build-tokens.mjs) */
-export function toCssName(path: string) {
+// Same naming rule as scripts/build-tokens.mjs: "neutral/5" → "neutral-05"
+function toCssName(path: string) {
   return path
     .split("/")
     .map((part) => (/^\d$/.test(part) ? `0${part}` : part))
