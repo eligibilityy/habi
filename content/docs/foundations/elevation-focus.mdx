@@ -1,15 +1,17 @@
 ---
 title: Elevation & focus
-description: Shadows for things that float, and a visible focus ring for keyboard users.
+description: Soft shadows that show what you can press and what floats, and a visible focus ring for keyboard users.
 ---
 
 ## Elevation
 
-Most surfaces are flat, with a 1px `border/subtle-01` border. Only things that float above the page get a shadow.
+Shadows are soft and used with a purpose: to lift buttons and cards slightly off the page, and to show what floats above it.
 
 <ShadowScale />
 
-- **`shadow-overlay`:** menus, suggestion lists and popovers.
+- **`shadow-button`:** primary, secondary, tertiary and danger buttons. Subtle and disabled buttons stay flat.
+- **`shadow-card`:** cards. Cards keep their 1px `border/subtle-01` border too, so they stay visible on any background.
+- **`shadow-overlay`:** menus, select lists, suggestion lists and popovers.
 - **`shadow-modal`:** modals and dialogs.
 
 ## Focus

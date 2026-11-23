@@ -1,16 +1,22 @@
 ---
 title: Radius
-description: Small, consistent corner radii.
+description: Soft, consistent corners, set by role.
 ---
 
-Habi keeps corners small, so interfaces feel calm and orderly.
+Habi's corners are soft and friendly. Components use **role tokens**: `control`, `card` and `overlay`. Each one points at a step on the scale, so changing a role updates every component that uses it.
 
 <RadiusScale />
 
-## When to use each
+## Role tokens
 
-- **`sm` (4px):** buttons, fields, cards and menus. The default.
-- **`md` (8px):** tags, payment options and icon tiles.
-- **`lg` (16px):** large panels and the Digital ID card.
-- **`xl` (24px):** hero images.
-- **`full`:** badges, radio buttons and date cells.
+- **`rounded-control` (8px):** buttons, text inputs, selects, search, OTP boxes, time slots, close buttons and icon buttons in the header.
+- **`rounded-card` (16px):** cards, notifications, modals, the requirements checklist, fee summary, appointment picker, confirmation panel, status tracker, file upload drop zone and file rows, and payment options.
+- **`rounded-overlay` (8px):** menus, select lists and tooltips.
+
+## Fixed radii
+
+Some parts keep a fixed step:
+
+- **`rounded-md` (8px):** tags.
+- **`rounded-sm` (4px):** menu items and checkbox boxes.
+- **`rounded-full`:** badges, radio buttons and date cells.
