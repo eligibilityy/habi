@@ -56,3 +56,33 @@ export function getSemanticColors(group: string): ColorToken[] {
   if (colors.length === 0) throw new Error(`No color tokens in "${group}"`);
   return colors;
 }
+
+type Weight = keyof typeof tokens.font.weight;
+
+export function getTextStyles() {
+  return Object.entries(tokens.textStyle).map(([name, style]) => ({
+    name,
+    size: style.size,
+    lineHeight: style.lineHeight,
+    weight: tokens.font.weight[style.weight as Weight],
+  }));
+}
+
+export function getSpacing() {
+  return Object.entries(tokens.spacing).map(([step, px]) => ({
+    token: `spacing/${step}`,
+    px,
+    tailwind: String(px / 4),
+  }));
+}
+
+export function getRadii() {
+  return Object.entries(tokens.radius).map(([name, px]) => ({ name, px }));
+}
+
+export function getShadows() {
+  return Object.entries(tokens.shadow).map(([name, value]) => ({
+    name,
+    value,
+  }));
+}

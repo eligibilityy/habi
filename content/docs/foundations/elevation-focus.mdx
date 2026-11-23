@@ -1,0 +1,21 @@
+---
+title: Elevation & focus
+description: Shadows for things that float, and a visible focus ring for keyboard users.
+---
+
+## Elevation
+
+Most surfaces are flat, with a 1px `border/subtle-01` border. Only things that float above the page get a shadow.
+
+<ShadowScale />
+
+- **`shadow-overlay`:** menus, suggestion lists and popovers.
+- **`shadow-modal`:** modals and dialogs.
+
+## Focus
+
+Everything interactive shows a 2px `focus/default` ring when it receives keyboard focus. Never remove it.
+
+<FocusRingDemo />
+
+In code, use `focus-visible:focus-ring`. The ring then appears for keyboard users, but not when someone clicks with a mouse.
