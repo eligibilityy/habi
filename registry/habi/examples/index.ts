@@ -1,5 +1,9 @@
 import type { ComponentType } from "react";
 
+import BadgeDemo from "./badge-demo";
+import BadgeInContext from "./badge-in-context";
+import BadgeKinds from "./badge-kinds";
+import BadgeWithIcon from "./badge-with-icon";
 import ButtonDemo from "./button-demo";
 import ButtonDisabled from "./button-disabled";
 import ButtonIconOnly from "./button-icon-only";
@@ -10,10 +14,9 @@ import LinkDemo from "./link-demo";
 import LinkStandalone from "./link-standalone";
 import LinkNext from "./link-next";
 import LinkExternal from "./link-external";
-import BadgeDemo from "./badge-demo";
-import BadgeInContext from "./badge-in-context";
-import BadgeKinds from "./badge-kinds";
-import BadgeWithIcon from "./badge-with-icon";
+import TagControlled from "./tag-controlled";
+import TagDemo from "./tag-demo";
+import TagDisabled from "./tag-disabled";
 
 export const examples: Record<string, ComponentType> = {
   "badge-demo": BadgeDemo,
@@ -30,4 +33,7 @@ export const examples: Record<string, ComponentType> = {
   "link-standalone": LinkStandalone,
   "link-next": LinkNext,
   "link-external": LinkExternal,
+  "tag-controlled": TagControlled,
+  "tag-demo": TagDemo,
+  "tag-disabled": TagDisabled,
 };
