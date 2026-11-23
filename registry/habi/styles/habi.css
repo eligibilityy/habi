@@ -1,0 +1,14 @@
+@import "./habi-tokens.css";
+
+@utility focus-ring {
+  outline: 2px solid var(--focus-default);
+  outline-offset: 0;
+}
+
+@layer base {
+  body {
+    font-variation-settings: "ROND" var(--font-roundness);
+    color: var(--text-primary);
+    background-color: var(--background-default);
+  }
+}

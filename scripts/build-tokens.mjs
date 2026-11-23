@@ -53,6 +53,7 @@ const css = [
   "}",
   "",
   "@theme inline {",
+  "  --color-*: initial;",
   ...colorNames.map((name) => `  --color-${name}: var(--${name});`),
   "",
   ...Object.entries(tokens.textStyle).flatMap(([name, style]) => [
