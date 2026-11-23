@@ -2,6 +2,7 @@
   "name": "habi",
   "version": "0.0.69",
   "private": true,
+  "packageManager": "pnpm@10.18.0",
   "scripts": {
     "build": "next build",
     "dev": "next dev",
