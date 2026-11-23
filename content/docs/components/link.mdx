@@ -1,0 +1,97 @@
+---
+title: Link
+description: Takes people to another page, or to another part of the same page.
+---
+
+<ComponentPreview name="link-demo" />
+
+## Installation
+
+```npm
+npm install @base-ui/react class-variance-authority clsx tailwind-merge
+```
+
+Add the `cn` helper if you haven't already:
+
+<ComponentSource src="registry/habi/lib/utils.ts" title="lib/utils.ts" />
+
+Add the component:
+
+<ComponentSource
+  src="registry/habi/ui/link.tsx"
+  title="components/ui/link.tsx"
+/>
+
+## Usage
+
+```tsx
+import { Link } from "@/components/ui/link";
+
+<Link href="/requirements">Check what to bring</Link>;
+```
+
+## Examples
+
+### Standalone
+
+Use a standalone link with a chevron for a "go to" link on its own line, one that takes people to the next step. Standalone links are underlined on hover only, because their position already shows they're links. Never put a chevron link inside a sentence.
+
+<ComponentPreview name="link-standalone" />
+
+### With `next/link`
+
+Pass your framework's link component to `render`. Habi's styles and props are merged onto it, and you keep client-side navigation and prefetching.
+
+<ComponentPreview name="link-next" />
+
+### External links
+
+Open external links in the same tab. Only open a new tab when people would lose their place otherwise, like in the middle of a form, and say so in the link text: "Read the guidance (opens in new tab)".
+
+<ComponentPreview name="link-external" />
+
+## Props
+
+<PropsTable
+  rows={[
+    {
+      name: "standalone",
+      type: "boolean",
+      default: "false",
+      description:
+        "For a link on its own line. Underlined on hover only, and lines up an icon after the text.",
+    },
+    {
+      name: "size",
+      type: '"medium" | "small"',
+      description:
+        "Sets the text size. Leave it out for links inside text, so they match the text around them.",
+    },
+    {
+      name: "render",
+      type: "ReactElement | function",
+      description:
+        "Renders a different element, like next/link, with Habi's styles merged on.",
+    },
+  ]}
+/>
+
+Link also accepts every prop of the HTML `<a>` element, like `href`, `target` and `rel`.
+
+## Accessibility
+
+- **Underlines:** links in text are always underlined, so people who can't see the color difference can still find them (WCAG 1.4.1).
+- **Link text:** say where the link goes: "Check what to bring", not "Click here". Screen reader users often move from link to link, so the text has to make sense on its own.
+- **Keyboard:** <kbd>Tab</kbd> moves to the link and <kbd>Enter</kbd> follows it. The focus ring shows where you are.
+- **Visited links** turn purple, so people can see which pages they've already read.
+- **Links or buttons:** use a link to go somewhere and a button to do something. If a link must look like a button, use [`buttonVariants`](/docs/components/button#as-a-link).
+- **Icons** are hidden from screen readers. The link text already says where it goes.
+
+## Figma
+
+- **Underlines:** links in text are always underlined, so people who can't see the color difference can still find them (WCAG 1.4.1).
+- **Link text:** say where the link goes: "Check what to bring", not "Click here". Screen reader users often move from link to link, so the text has to make sense on its own.
+- **Keyboard:** <kbd>Tab</kbd> moves to the link and <kbd>Enter</kbd> follows it. The focus ring shows where you are.
+- **Visited links** turn purple, so people can see which pages they've already read.
+- **Links or buttons:** use a link to go somewhere and a button to do something. If a link must look like a button, use [`buttonVariants`](/docs/components/button#as-a-link).
+- **Icons** are hidden from screen readers. The link text already says where it goes.
