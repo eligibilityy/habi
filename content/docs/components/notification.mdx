@@ -1,0 +1,103 @@
+---
+title: Notification
+description: Tells people what happened after an action, or about something in their records.
+---
+
+<ComponentPreview name="notification-demo" />
+
+## Installation
+
+```npm
+npm install @heroicons/react class-variance-authority clsx tailwind-merge
+```
+
+Add the `cn` helper if you haven't already:
+
+<ComponentSource src="registry/habi/lib/utils.ts" title="lib/utils.ts" />
+
+Add the status icon, which Notification uses:
+
+<ComponentSource
+  src="registry/habi/ui/status-icon.tsx"
+  title="components/ui/status-icon.tsx"
+/>
+
+Add the component:
+
+<ComponentSource
+  src="registry/habi/ui/notification.tsx"
+  title="components/ui/notification.tsx"
+/>
+
+## Usage
+
+```tsx
+import { Notification } from "@/components/ui/notification";
+
+<Notification kind="success" title="Appointment booked">
+  See you on 15 March 2026 at 9:00 AM.
+</Notification>;
+```
+
+## Examples
+
+### Kinds
+
+Use info for news, success when something worked, warning for something people should act on soon, and error when something went wrong. Say what happened and what to do next.
+
+<ComponentPreview name="notification-kinds" />
+
+### Dismissible
+
+Pass `onDismiss` to show a close button. Only make notifications dismissible when people no longer need them, and never for errors they still have to fix.
+
+<ComponentPreview name="notification-dismissible" />
+
+## Props
+
+<PropsTable
+  rows={[
+    {
+      name: "kind",
+      type: '"info" | "success" | "warning" | "error"',
+      default: '"info"',
+      description: "The type of message, which sets the color, icon and role.",
+    },
+    {
+      name: "title",
+      type: "ReactNode",
+      description:
+        "A short summary. Together with the icon, it carries the meaning.",
+    },
+    {
+      name: "children",
+      type: "ReactNode",
+      description: "The details: what happened and what to do next.",
+    },
+    {
+      name: "onDismiss",
+      type: "() => void",
+      description: "Shows a close button and is called when people press it.",
+    },
+    {
+      name: "dismissLabel",
+      type: "string",
+      default: '"Dismiss"',
+      description:
+        'The close button\'s accessible name. Translate it, like "Isara".',
+    },
+  ]}
+/>
+
+## Accessibility
+
+- **Roles:** errors use `role="alert"`, which screen readers announce straight away. Other kinds use `role="status"`, announced when the screen reader is idle.
+- **Announcements:** screen readers only announce a live region when it's added or changed after the page loads. Show
+
+## Accessibility
+
+- **Roles:** errors use `role="alert"`, which screen readers announce straight away. Other kinds use `role="status"`, announced when the screen reader is idle.
+- **Announcements:** screen readers only announce a live region when it's added or changed after the page loads. Show the notification when the event happens, like after a payment, not as part of the initial page.
+- **Not just color:** the icon and title carry the meaning, so the message is clear without color.
+- **Focus stays put:** notifications don't move focus, so people aren't pulled away from what they were doing.
+- **Dismiss button:** has an accessible name ("Dismiss" by default) and a 24 x 24px target.
