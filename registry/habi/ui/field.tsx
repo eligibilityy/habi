@@ -1,5 +1,6 @@
 import type { ComponentProps, ReactNode } from "react";
 import { Field as BaseField } from "@base-ui/react/field";
+import { Fieldset as BaseFieldset } from "@base-ui/react/fieldset";
 
 import { cn } from "@/registry/habi/lib/utils";
 import { StatusIcon } from "@/registry/habi/ui/status-icon";
@@ -87,11 +88,91 @@ function FieldError({ className, children, ...props }: FieldErrorProps) {
   );
 }
 
+function FieldItem({
+  className,
+  ...props
+}: WithStringClassName<ComponentProps<typeof BaseField.Item>>) {
+  return (
+    <BaseField.Item
+      data-slot="field-item"
+      className={cn("flex flex-col", className)}
+      {...props}
+    />
+  );
+}
+
+function ChoiceLabel({
+  className,
+  ...props
+}: WithStringClassName<ComponentProps<typeof BaseField.Label>>) {
+  return (
+    <BaseField.Label
+      data-slot="choice-label"
+      className={cn(
+        "flex w-fit cursor-pointer items-start gap-3 py-3 text-body-md text-text-primary",
+        "has-data-disabled:cursor-not-allowed has-data-disabled:text-text-disabled data-disabled:cursor-not-allowed data-disabled:text-text-disabled",
+        className,
+      )}
+      {...props}
+    />
+  );
+}
+
+function Fieldset({
+  className,
+  ...props
+}: WithStringClassName<ComponentProps<typeof BaseFieldset.Root>>) {
+  return (
+    <BaseFieldset.Root
+      data-slot="fieldset"
+      className={cn("flex flex-col", className)}
+      {...props}
+    />
+  );
+}
+
+type FieldsetLegendProps = WithStringClassName<
+  ComponentProps<typeof BaseFieldset.Legend>
+> & { required?: boolean };
+
+function FieldsetLegend({
+  className,
+  required,
+  children,
+  ...props
+}: FieldsetLegendProps) {
+  return (
+    <BaseFieldset.Legend
+      data-slot="fieldset-legend"
+      className={cn(
+        "text-label text-text-primary data-disabled:text-text-disabled",
+        className,
+      )}
+      {...props}
+    >
+      {children}
+      {required && (
+        <span
+          aria-hidden
+          className="ms-1 text-text-error in-data-disabled:text-text-disabled"
+        >
+          *
+        </span>
+      )}
+    </BaseFieldset.Legend>
+  );
+}
+
 export {
+  ChoiceLabel,
   Field,
   FieldDescription,
   FieldError,
+  FieldItem,
   FieldLabel,
+  Fieldset,
+  FieldsetLegend,
   type FieldErrorProps,
   type FieldLabelProps,
+  type FieldsetLegendProps,
 };
