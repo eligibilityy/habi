@@ -1,0 +1,143 @@
+---
+title: Radio group
+description: Lets people choose exactly one option from a short list.
+---
+
+<ComponentPreview name="radio-group-demo" />
+
+## When to use
+
+- **5 or fewer options** that people should compare, like how to get a document or how to pay.
+- **6 or more options:** use a Select.
+- **Several answers allowed:** use checkboxes.
+
+## Installation
+
+```npm
+npm install @base-ui/react @heroicons/react clsx tailwind-merge
+```
+
+Add the `cn` helper if you haven't already:
+
+<ComponentSource src="registry/habi/lib/utils.ts" title="lib/utils.ts" />
+
+Add the status icon and field parts if you haven't already:
+
+<ComponentSource
+  src="registry/habi/ui/status-icon.tsx"
+  title="components/ui/status-icon.tsx"
+/>
+
+<ComponentSource
+  src="registry/habi/ui/field.tsx"
+  title="components/ui/field.tsx"
+/>
+
+Add the component:
+
+<ComponentSource
+  src="registry/habi/ui/radio.tsx"
+  title="components/ui/radio.tsx"
+/>
+
+## Usage
+
+```tsx
+import {
+  ChoiceLabel,
+  Field,
+  FieldItem,
+  Fieldset,
+  FieldsetLegend,
+} from "@/components/ui/field";
+import { Radio, RadioGroup } from "@/components/ui/radio";
+
+<Field name="collection">
+  <Fieldset render={<RadioGroup />}>
+    <FieldsetLegend>How do you want to get your clearance?</FieldsetLegend>
+    <FieldItem>
+      <ChoiceLabel>
+        <Radio value="pickup" />
+        Pick up in person
+      </ChoiceLabel>
+    </FieldItem>
+  </Fieldset>
+</Field>;
+```
+
+## Examples
+
+### With hints
+
+Put extra detail, like timing and fees, under each option. People can compare choices before they pick.
+
+<ComponentPreview name="radio-group-hints" />
+
+### Validation
+
+Set `required` on the `RadioGroup` and add a `FieldError` with `match="valueMissing"`.
+
+<ComponentPreview name="radio-group-validation" />
+
+### Disabled
+
+<ComponentPreview name="radio-group-disabled" />
+
+## Props
+
+### RadioGroup
+
+<PropsTable
+  rows={[
+    {
+      name: "defaultValue",
+      type: "Value",
+      description:
+        "The option selected at first, when you don't control the state.",
+    },
+    {
+      name: "value",
+      type: "Value",
+      description: "The selected option, when you control the state.",
+    },
+    {
+      name: "onValueChange",
+      type: "(value: Value) => void",
+      description: "Called when people pick an option.",
+    },
+    {
+      name: "required",
+      type: "boolean",
+      default: "false",
+      description: "People must pick an option before submitting.",
+    },
+    {
+      name: "disabled",
+      type: "boolean",
+      default: "false",
+      description: "Disables every option.",
+    },
+  ]}
+/>
+
+### Radio
+
+<PropsTable
+  rows={[
+    {
+      name: "value",
+      type: "Value",
+      description: "The value the group takes when this option is picked.",
+    },
+  ]}
+/>
+
+To disable one option, set `disabled` on its `FieldItem`.
+
+## Accessibility
+
+- **Whole row:** the label wraps the radio and its text, so the full 48px row can be pressed.
+- **Group question:** the legend names the group, so screen readers read the question with the options.
+- **Keyboard:** <kbd>Tab</kbd> moves into the group, landing on the selected option. The arrow keys move between options and select them. <kbd>Tab</kbd> again leaves the group.
+- **State:** the selected option has a filled dot, not just a color change.
+- **Order:** stack options vertically, so they're easy to scan and compare.
