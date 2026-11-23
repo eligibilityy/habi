@@ -14,6 +14,9 @@ import LinkDemo from "./link-demo";
 import LinkStandalone from "./link-standalone";
 import LinkNext from "./link-next";
 import LinkExternal from "./link-external";
+import NotificationDemo from "./notification-demo";
+import NotificationDismissible from "./notification-dismissible";
+import NotificationKinds from "./notification-kinds";
 import TagControlled from "./tag-controlled";
 import TagDemo from "./tag-demo";
 import TagDisabled from "./tag-disabled";
@@ -33,6 +36,9 @@ export const examples: Record<string, ComponentType> = {
   "link-standalone": LinkStandalone,
   "link-next": LinkNext,
   "link-external": LinkExternal,
+  "notification-demo": NotificationDemo,
+  "notification-dismissible": NotificationDismissible,
+  "notification-kinds": NotificationKinds,
   "tag-controlled": TagControlled,
   "tag-demo": TagDemo,
   "tag-disabled": TagDisabled,
