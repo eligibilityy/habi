@@ -1,0 +1,129 @@
+---
+title: Card
+description: Presents one service, office or update, with a way to start or find out more.
+---
+
+<ComponentPreview name="card-demo" />
+
+## Installation
+
+```npm
+npm install class-variance-authority clsx tailwind-merge
+```
+
+Add the `cn` helper if you haven't already:
+
+<ComponentSource src="registry/habi/lib/utils.ts" title="lib/utils.ts" />
+
+Add the component:
+
+<ComponentSource
+  src="registry/habi/ui/card.tsx"
+  title="components/ui/card.tsx"
+/>
+
+Cards usually contain a [Badge](/docs/components/badge), [Button](/docs/components/button) or [Link](/docs/components/link), so install those too.
+
+## Usage
+
+Use only the parts you need, in this order:
+
+```tsx
+import {
+  Card,
+  CardActions,
+  CardBadges,
+  CardBody,
+  CardDescription,
+  CardEyebrow,
+  CardHeader,
+  CardIcon,
+  CardImage,
+  CardMeta,
+  CardMetaItem,
+  CardTitle,
+} from "@/components/ui/card";
+
+<Card>
+  <CardImage /> {/* or <CardIcon /> */}
+  <CardBody>
+    <CardHeader>
+      <CardBadges />
+      <CardEyebrow />
+      <CardTitle />
+      <CardDescription />
+    </CardHeader>
+    <CardMeta>
+      <CardMetaItem />
+    </CardMeta>
+    <CardActions />
+  </CardBody>
+</Card>;
+```
+
+## Examples
+
+### With an icon
+
+Use an icon for services. Pick an outline icon from `@heroicons/react/24/outline`.
+
+<ComponentPreview name="card-icon" />
+
+### With an image
+
+Use an image for news and places. If the image only decorates the card, give it an empty `alt=""`.
+
+<ComponentPreview name="card-image" />
+
+### Horizontal
+
+Use the horizontal layout for lists. On screens narrower than 640px it stacks like a vertical card.
+
+<ComponentPreview name="card-horizontal" />
+
+## Writing for cards
+
+- **One card, one task:** each card is one thing people can start or read.
+- **Title as a verb** for services: "Renew your passport", not "Passport renewal".
+- **Meta says time, channel and cost:** "About 15 minutes", "Online", "₱950.00".
+- **Unique link text:** if several cards say "Learn more", add hidden text so each link makes sense on its own.
+
+## Props
+
+### Card
+
+<PropsTable
+  rows={[
+    {
+      name: "layout",
+      type: '"vertical" | "horizontal"',
+      default: '"vertical"',
+      description:
+        "Vertical for grids, horizontal for lists. Horizontal cards stack on small screens.",
+    },
+  ]}
+/>
+
+### CardTitle
+
+<PropsTable
+  rows={[
+    {
+      name: "level",
+      type: "2 | 3 | 4 | 5 | 6",
+      default: "3",
+      description:
+        "The heading level. Pick the one that fits the page's heading structure.",
+    },
+  ]}
+/>
+
+Every part also accepts the props of the HTML element it renders: `div`, `p`, a heading, `ul` or `li`.
+
+## Accessibility
+
+- **Headings:** each card title is a heading, so screen reader users can jump from card to card. Set `level` so it follows the page's headings: under an `h2` section, use the default `h3`.
+- **Link text:** say where each link goes. When cards repeat the same words, like "Learn more", add `sr-only` text after the visible words: "Learn more about renewing your passport".
+- **Meta** is a list, so screen readers say how many facts there are. Its icons are decorative: the text carries the meaning.
+- **Images:** use `alt=""` when the image is decorative, and describe it when it shows something the text doesn't.
+- **Focus order** follows reading order: title, then actions. Don't make the whole card one big link around other links.

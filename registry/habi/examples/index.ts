@@ -10,6 +10,10 @@ import ButtonIconOnly from "./button-icon-only";
 import ButtonKinds from "./button-kinds";
 import ButtonLink from "./button-link";
 import ButtonWithIcon from "./button-with-icon";
+import CardDemo from "./card-demo";
+import CardHorizontal from "./card-horizontal";
+import CardWithIcon from "./card-icon";
+import CardWithImage from "./card-image";
 import LinkDemo from "./link-demo";
 import LinkStandalone from "./link-standalone";
 import LinkNext from "./link-next";
@@ -32,6 +36,10 @@ export const examples: Record<string, ComponentType> = {
   "button-kinds": ButtonKinds,
   "button-link": ButtonLink,
   "button-with-icon": ButtonWithIcon,
+  "card-demo": CardDemo,
+  "card-horizontal": CardHorizontal,
+  "card-icon": CardWithIcon,
+  "card-image": CardWithImage,
   "link-demo": LinkDemo,
   "link-standalone": LinkStandalone,
   "link-next": LinkNext,
