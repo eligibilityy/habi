@@ -21,6 +21,10 @@ import LinkExternal from "./link-external";
 import NotificationDemo from "./notification-demo";
 import NotificationDismissible from "./notification-dismissible";
 import NotificationKinds from "./notification-kinds";
+import SelectDemo from "./select-demo";
+import SelectValidation from "./select-validation";
+import SelectGrouped from "./select-grouped";
+import SelectDisabled from "./select-disabled";
 import TagControlled from "./tag-controlled";
 import TagDemo from "./tag-demo";
 import TagDisabled from "./tag-disabled";
@@ -51,6 +55,10 @@ export const examples: Record<string, ComponentType> = {
   "notification-demo": NotificationDemo,
   "notification-dismissible": NotificationDismissible,
   "notification-kinds": NotificationKinds,
+  "select-demo": SelectDemo,
+  "select-validation": SelectValidation,
+  "select-grouped": SelectGrouped,
+  "select-disabled": SelectDisabled,
   "tag-controlled": TagControlled,
   "tag-demo": TagDemo,
   "tag-disabled": TagDisabled,
