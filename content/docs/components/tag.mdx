@@ -1,0 +1,123 @@
+---
+title: Tag
+description: A filter people can turn on and off, like a service category.
+---
+
+<ComponentPreview name="tag-demo" />
+
+## Installation
+
+```npm
+npm install @base-ui/react @heroicons/react class-variance-authority clsx tailwind-merge
+```
+
+Add the `cn` helper if you haven't already:
+
+<ComponentSource src="registry/habi/lib/utils.ts" title="lib/utils.ts" />
+
+Add the component:
+
+<ComponentSource src="registry/habi/ui/tag.tsx" title="components/ui/tag.tsx" />
+
+## Usage
+
+```tsx
+import { Tag, TagGroup } from "@/components/ui/tag";
+
+<TagGroup multiple aria-label="Filter services">
+  <Tag value="passport">Passport</Tag>
+  <Tag value="ids">IDs</Tag>
+</TagGroup>;
+```
+
+## Examples
+
+### Responding to changes
+
+Use `value` and `onValueChange` when other parts of the page depend on the selection, like a results count. Announce the change with `aria-live` so screen reader users hear it.
+
+<ComponentPreview name="tag-controlled" />
+
+### Disabled
+
+<ComponentPreview name="tag-disabled" />
+
+## Props
+
+### TagGroup
+
+<PropsTable
+  rows={[
+    {
+      name: "multiple",
+      type: "boolean",
+      default: "false",
+      description: "Lets people select more than one tag. Use it for filters.",
+    },
+    {
+      name: "defaultValue",
+      type: "string[]",
+      description:
+        "The tags selected at first, when you don't control the state.",
+    },
+    {
+      name: "value",
+      type: "string[]",
+      description: "The selected tags, when you control the state.",
+    },
+    {
+      name: "onValueChange",
+      type: "(value: string[]) => void",
+      description: "Called when the selection changes.",
+    },
+    {
+      name: "disabled",
+      type: "boolean",
+      default: "false",
+      description: "Disables every tag in the group.",
+    },
+  ]}
+/>
+
+### Tag
+
+<PropsTable
+  rows={[
+    {
+      name: "value",
+      type: "string",
+      description: "Identifies the tag inside a TagGroup.",
+    },
+    {
+      name: "defaultPressed",
+      type: "boolean",
+      default: "false",
+      description: "Whether a standalone tag starts selected.",
+    },
+    {
+      name: "pressed",
+      type: "boolean",
+      description:
+        "Whether a standalone tag is selected, when you control the state.",
+    },
+    {
+      name: "onPressedChange",
+      type: "(pressed: boolean) => void",
+      description: "Called when a standalone tag is turned on or off.",
+    },
+    {
+      name: "disabled",
+      type: "boolean",
+      default: "false",
+      description: "Stops people changing the tag.",
+    },
+  ]}
+/>
+
+## Accessibility
+
+- **Name the group:** give `TagGroup` an `aria-label`, like "Filter services", so screen reader users know what the tags do.
+- **State:** each tag is a toggle button. Screen readers announce whether it's pressed, and a check shows the selected state without relying on color.
+- **Keyboard:** <kbd>Tab</kbd> moves into the group, the arrow keys move between tags, and <kbd>Space</kbd> or <kbd>Enter</kbd> turns a tag on or off.
+- **Size:** tags are 32px tall with 8px gaps, above the 24 × 24px minimum target size in WCAG 2.2.
+- **Tag or Badge:** use a Tag when people can select it. For a status label they can't change, use a [Badge](/docs/components/badge).
