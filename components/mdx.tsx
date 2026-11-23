@@ -11,6 +11,7 @@ import {
   SpacingScale,
   TypeScale,
 } from "@/components/docs/foundation-tokens";
+import { ComponentPreview } from "@/components/docs/component-preview";
 
 export function getMDXComponents(components?: MDXComponents) {
   return {
@@ -22,6 +23,7 @@ export function getMDXComponents(components?: MDXComponents) {
     ShadowScale,
     SpacingScale,
     TypeScale,
+    ComponentPreview,
     ...components,
   } satisfies MDXComponents;
 }
