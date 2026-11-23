@@ -6,7 +6,7 @@ import { cn } from "@/registry/habi/lib/utils";
 import { StatusIcon } from "@/registry/habi/ui/status-icon";
 
 const notificationVariants = cva(
-  "flex w-full items-start gap-3 rounded-sm border p-4 text-text-primary",
+  "flex w-full items-start gap-3 rounded-card border p-4 text-text-primary",
   {
     variants: {
       kind: {
@@ -57,7 +57,7 @@ function Notification({
           type="button"
           aria-label={dismissLabel}
           onClick={onDismiss}
-          className="-m-0.5 inline-flex size-6 shrink-0 items-center justify-center rounded-sm text-icon-primary focus-visible:focus-ring"
+          className="-m-0.5 inline-flex size-6 shrink-0 items-center justify-center rounded-control text-icon-primary focus-visible:focus-ring"
         >
           <XMarkIcon className="size-5" />
         </button>
