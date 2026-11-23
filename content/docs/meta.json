@@ -1,3 +1,10 @@
 {
-  "pages": ["---Get started---", "index", "---Foundations---", "...foundations"]
+  "pages": [
+    "---Get started---",
+    "index",
+    "---Foundations---",
+    "...foundations",
+    "---Components---",
+    "...components"
+  ]
 }
