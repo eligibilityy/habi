@@ -14,6 +14,11 @@ import CardDemo from "./card-demo";
 import CardHorizontal from "./card-horizontal";
 import CardWithIcon from "./card-icon";
 import CardWithImage from "./card-image";
+import CheckboxDemo from "./checkbox-demo";
+import CheckboxDisabled from "./checkbox-disabled";
+import CheckboxGroupDemo from "./checkbox-group";
+import CheckboxParent from "./checkbox-parent";
+import CheckboxValidation from "./checkbox-validation";
 import LinkDemo from "./link-demo";
 import LinkStandalone from "./link-standalone";
 import LinkNext from "./link-next";
@@ -48,6 +53,11 @@ export const examples: Record<string, ComponentType> = {
   "card-horizontal": CardHorizontal,
   "card-icon": CardWithIcon,
   "card-image": CardWithImage,
+  "checkbox-demo": CheckboxDemo,
+  "checkbox-disabled": CheckboxDisabled,
+  "checkbox-group": CheckboxGroupDemo,
+  "checkbox-parent": CheckboxParent,
+  "checkbox-validation": CheckboxValidation,
   "link-demo": LinkDemo,
   "link-standalone": LinkStandalone,
   "link-next": LinkNext,
