@@ -9,7 +9,8 @@
     "types:check": "next typegen && tsc --noEmit",
     "lint": "eslint",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "tokens": "node scripts/build-tokens.mjs"
   },
   "dependencies": {
     "cn": "^0.5.2",
