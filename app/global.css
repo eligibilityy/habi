@@ -3,6 +3,30 @@
 @import "fumadocs-ui/css/neutral.css";
 @import "fumadocs-ui/css/preset.css";
 
+@theme {
+  --color-fd-background: var(--background-default);
+  --color-fd-foreground: var(--text-primary);
+  --color-fd-muted: var(--layer-accent-01);
+  --color-fd-muted-foreground: var(--text-secondary);
+  --color-fd-popover: var(--layer-01);
+  --color-fd-popover-foreground: var(--text-primary);
+  --color-fd-card: var(--layer-01);
+  --color-fd-card-foreground: var(--text-primary);
+  --color-fd-border: var(--border-subtle-01);
+  --color-fd-primary: var(--interactive-default);
+  --color-fd-primary-foreground: var(--text-on-color);
+  --color-fd-secondary: var(--layer-accent-01);
+  --color-fd-secondary-foreground: var(--text-primary);
+  --color-fd-accent: var(--background-hover);
+  --color-fd-accent-foreground: var(--text-primary);
+  --color-fd-ring: var(--focus-default);
+
+  --color-fd-info: var(--support-info);
+  --color-fd-success: var(--support-success);
+  --color-fd-error: var(--support-error);
+  --color-fd-warning: var(--badge-warning-text);
+}
+
 html {
   scrollbar-gutter: stable;
 }
