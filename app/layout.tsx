@@ -2,11 +2,7 @@ import type { Metadata } from "next";
 import { appName, siteUrl } from "@/lib/shared";
 import { RootProvider } from "fumadocs-ui/provider/next";
 import "./global.css";
-import { Inter } from "next/font/google";
-
-const inter = Inter({
-  subsets: ["latin"],
-});
+import "allo-font/allo.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -20,7 +16,7 @@ export const metadata: Metadata = {
 
 export default function Layout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={inter.className} suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
       <body className="flex min-h-screen flex-col">
         <RootProvider>{children}</RootProvider>
       </body>
