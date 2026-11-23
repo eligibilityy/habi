@@ -1,4 +1,10 @@
-import { getRadii, getShadows, getSpacing, getTextStyles } from "@/lib/tokens";
+import {
+  getMotion,
+  getRadii,
+  getShadows,
+  getSpacing,
+  getTextStyles,
+} from "@/lib/tokens";
 
 const rem = (px: number) => `${px / 16}rem`;
 
@@ -84,7 +90,7 @@ export function RadiusScale() {
           />
           <code className="font-mono text-label">rounded-{radius.name}</code>
           <span className="text-body-sm text-text-secondary">
-            {radius.px}px
+            {radius.px}px{radius.alias && ` · same as ${radius.alias}`}
           </span>
         </div>
       ))}
@@ -99,7 +105,7 @@ export function ShadowScale() {
         <div key={shadow.name} className="flex flex-col gap-3">
           <div
             aria-hidden
-            className="h-24 rounded-sm bg-layer-01"
+            className="h-24 rounded-card bg-layer-01"
             style={{ boxShadow: shadow.value }}
           />
           <code className="font-mono text-label">shadow-{shadow.name}</code>
@@ -109,15 +115,64 @@ export function ShadowScale() {
   );
 }
 
+export function MotionScale() {
+  const { durations, easings } = getMotion();
+
+  return (
+    <div className="not-prose my-6 overflow-x-auto">
+      <table className="w-full text-body-sm">
+        <thead className="text-left text-text-secondary">
+          <tr>
+            <th className="py-2 pr-4 font-semibold">Token</th>
+            <th className="py-2 pr-4 font-semibold">Value</th>
+            <th className="py-2 font-semibold">Tailwind</th>
+          </tr>
+        </thead>
+        <tbody>
+          {durations.map((duration) => (
+            <tr
+              key={duration.name}
+              className="border-t border-border-subtle-01"
+            >
+              <td className="py-2 pr-4">
+                <code className="font-mono">--duration-{duration.name}</code>
+              </td>
+              <td className="py-2 pr-4">{duration.ms}ms</td>
+              <td className="py-2">
+                <code className="font-mono">
+                  duration-(--duration-{duration.name})
+                </code>
+              </td>
+            </tr>
+          ))}
+          {easings.map((easing) => (
+            <tr key={easing.name} className="border-t border-border-subtle-01">
+              <td className="py-2 pr-4">
+                <code className="font-mono">--ease-{easing.name}</code>
+              </td>
+              <td className="py-2 pr-4">
+                <code className="font-mono">{easing.value}</code>
+              </td>
+              <td className="py-2">
+                <code className="font-mono">ease-{easing.name}</code>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
 export function FocusRingDemo() {
   return (
     <div className="not-prose my-6 flex flex-wrap items-center gap-6">
-      <span className="inline-flex h-12 items-center rounded-sm bg-button-primary px-4 text-button text-text-on-color focus-ring">
+      <span className="inline-flex h-12 items-center rounded-control bg-button-primary px-4 text-button text-text-on-color focus-ring">
         Focused (example)
       </span>
       <button
         type="button"
-        className="inline-flex h-12 items-center rounded-sm border border-border-strong-01 bg-layer-01 px-4 text-button focus-visible:focus-ring"
+        className="inline-flex h-12 items-center rounded-control border border-border-strong-01 bg-layer-01 px-4 text-button focus-visible:focus-ring"
       >
         Press Tab to focus me
       </button>

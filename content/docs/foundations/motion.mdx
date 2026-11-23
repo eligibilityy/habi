@@ -1,0 +1,27 @@
+---
+title: Motion
+description: Short, gentle movement that explains what changed, and none for people who turn it off.
+---
+
+Motion helps people follow what changed, like a list opening below a field. Keep it short and calm. It should never be the only way to understand what happened.
+
+<MotionScale />
+
+## When to use each
+
+- **`fast` (100ms):** small feedback, like a list fading in or a chevron turning.
+- **`short` (200ms):** small panels opening and closing.
+- **`medium` (400ms):** larger changes, like a modal or a page section expanding.
+- **`long` (600ms):** rare. Use only for big, one-off moments.
+- **`ease-out`:** the default. Things start quickly and settle gently.
+- **`ease-out-back`:** a small overshoot, for playful moments like a success check. Use sparingly.
+
+## Reduced motion
+
+Some people get dizzy or distracted by movement, and turn it off in their device settings. Wrap every transition and movement in `motion-safe:`, so it only runs when they haven't:
+
+```tsx
+<span className="motion-safe:transition-transform motion-safe:duration-(--duration-fast) motion-safe:ease-out" />
+```
+
+Buttons move down half a pixel while pressed. That uses `motion-safe:` too.

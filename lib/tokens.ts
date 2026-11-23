@@ -74,8 +74,28 @@ export function getSpacing() {
   }));
 }
 
+const radii = tokens.radius as Record<string, number | string>;
+
+// Role tokens like "control": "md" point at a step on the scale.
 export function getRadii() {
-  return Object.entries(tokens.radius).map(([name, px]) => ({ name, px }));
+  return Object.entries(radii).map(([name, value]) => {
+    const alias = typeof value === "string" ? value : undefined;
+    const px = alias ? Number(radii[alias]) : Number(value);
+    return { name, px, alias };
+  });
+}
+
+export function getMotion() {
+  return {
+    durations: Object.entries(tokens.motion.duration).map(([name, ms]) => ({
+      name,
+      ms,
+    })),
+    easings: Object.entries(tokens.motion.easing).map(([name, value]) => ({
+      name,
+      value,
+    })),
+  };
 }
 
 export function getShadows() {

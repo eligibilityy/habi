@@ -15,6 +15,7 @@ import {
 } from "@/components/docs/color-tokens";
 import {
   FocusRingDemo,
+  MotionScale,
   RadiusScale,
   ShadowScale,
   SpacingScale,
@@ -41,6 +42,7 @@ export function getMDXComponents(components?: MDXComponents) {
     PrimitiveColors,
     SemanticColors,
     FocusRingDemo,
+    MotionScale,
     RadiusScale,
     ShadowScale,
     SpacingScale,
