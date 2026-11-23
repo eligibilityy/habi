@@ -1,0 +1,183 @@
+---
+title: Checkbox
+description: Lets people answer yes or no, or pick any number of options from a list.
+---
+
+<ComponentPreview name="checkbox-demo" />
+
+## When to use
+
+- **One checkbox** for a yes or no answer, like confirming their details are correct.
+- **A group of checkboxes** when people can pick more than one option.
+- **Only one answer allowed?** Use a radio group instead.
+
+## Installation
+
+```npm
+npm install @base-ui/react @heroicons/react clsx tailwind-merge
+```
+
+Add the `cn` helper if you haven't already:
+
+<ComponentSource src="registry/habi/lib/utils.ts" title="lib/utils.ts" />
+
+Add the status icon and field parts if you haven't already:
+
+<ComponentSource
+  src="registry/habi/ui/status-icon.tsx"
+  title="components/ui/status-icon.tsx"
+/>
+
+<ComponentSource
+  src="registry/habi/ui/field.tsx"
+  title="components/ui/field.tsx"
+/>
+
+Add the component:
+
+<ComponentSource
+  src="registry/habi/ui/checkbox.tsx"
+  title="components/ui/checkbox.tsx"
+/>
+
+## Usage
+
+```tsx
+import { Checkbox } from "@/components/ui/checkbox";
+import { ChoiceLabel, Field } from "@/components/ui/field";
+
+<Field>
+  <ChoiceLabel>
+    <Checkbox name="hasPhilId" />I have a PhilID
+  </ChoiceLabel>
+</Field>;
+```
+
+`ChoiceLabel` wraps the checkbox and its text, so the whole 48px row can be pressed.
+
+## Examples
+
+### Group
+
+Wrap the options in a `Fieldset` rendered as a `CheckboxGroup`. The legend asks the question, and each option sits in its own `FieldItem`.
+
+<ComponentPreview name="checkbox-group" />
+
+### Validation
+
+Use `required` on a single checkbox that must be ticked. For a group where people must pick at least one option, pass a `validate` function to the `Field`.
+
+<ComponentPreview name="checkbox-validation" />
+
+### Select all
+
+Add a parent checkbox that ticks or clears every option. It shows a dash when only some options are ticked. Pass every option's value to `allValues` and add `parent` to the parent checkbox.
+
+<ComponentPreview name="checkbox-parent" />
+
+### Disabled
+
+Disable an option with `disabled` on its `FieldItem`, and say why in its label.
+
+<ComponentPreview name="checkbox-disabled" />
+
+## Props
+
+### Checkbox
+
+<PropsTable
+  rows={[
+    {
+      name: "value",
+      type: "string",
+      description: "Identifies the checkbox inside a CheckboxGroup.",
+    },
+    {
+      name: "name",
+      type: "string",
+      description: "Identifies a single checkbox when the form is submitted.",
+    },
+    {
+      name: "defaultChecked",
+      type: "boolean",
+      default: "false",
+      description: "Whether a single checkbox starts ticked.",
+    },
+    {
+      name: "checked",
+      type: "boolean",
+      description:
+        "Whether a single checkbox is ticked, when you control the state.",
+    },
+    {
+      name: "onCheckedChange",
+      type: "(checked: boolean) => void",
+      description: "Called when a single checkbox is ticked or cleared.",
+    },
+    {
+      name: "required",
+      type: "boolean",
+      default: "false",
+      description: "People must tick it before submitting.",
+    },
+    {
+      name: "parent",
+      type: "boolean",
+      default: "false",
+      description: "Makes this the select-all checkbox for its group.",
+    },
+  ]}
+/>
+
+### CheckboxGroup
+
+<PropsTable
+  rows={[
+    {
+      name: "defaultValue",
+      type: "string[]",
+      description:
+        "The options ticked at first, when you don't control the state.",
+    },
+    {
+      name: "value",
+      type: "string[]",
+      description: "The ticked options, when you control the state.",
+    },
+    {
+      name: "onValueChange",
+      type: "(value: string[]) => void",
+      description: "Called when an option is ticked or cleared.",
+    },
+    {
+      name: "allValues",
+      type: "string[]",
+      description: "Every option's value. Needed for a select-all checkbox.",
+    },
+  ]}
+/>
+
+### FieldsetLegend
+
+<PropsTable
+  rows={[
+    {
+      name: "required",
+      type: "boolean",
+      default: "false",
+      description: "Shows a red asterisk after the question.",
+    },
+  ]}
+/>
+
+## Accessibility
+
+- **Whole row:** the label wraps the box and the text, so the full 48px row can be pressed, not just the 20px box.
+- **Group question:** the legend names the group, so screen readers read the question before each option.
+- **Keyboard:** <kbd>Tab</kbd> moves between checkboxes and <kbd>Space</kbd> ticks or clears one.
+- **State:** screen readers announce "checked", "not checked" or "mixed". The box shows a check or a dash, not just a color.
+- **Errors** appear below the group or checkbox, and focus moves to the first problem when people submit.
+
+## Figma
+
+[Open Checkbox in the Habi Figma file](https://www.figma.com/design/D3nJzUeqpGlyMpimlesib6?node-id=34-35).
