@@ -3,8 +3,16 @@ title: Spacing
 description: A 13-step spacing scale that matches Tailwind's default scale.
 ---
 
-Habi's spacing tokens match Tailwind's default spacing scale, where each step is 4px. In code, use Tailwind's spacing classes (`p-4`, `gap-6`, `mt-8`) directly. The table shows which Figma token each one matches.
+Habi's spacing tokens match Tailwind's default spacing scale, where each unit is 4px: `p-4` is 16px. In code, use Tailwind's spacing classes (`p-4`, `gap-6`, `mt-8`) directly. The table shows which Figma token each one matches.
 
 <SpacingScale />
 
 The same numbers work with every spacing utility: padding (`p-`), margin (`m-`), gap (`gap-`), width (`w-`) and height (`h-`).
+
+## Common spacing
+
+Keep related things close and separate groups, so people can see what belongs together.
+
+- **8px (`gap-2`)** between a label, its field and its hint. Habi's `Field` uses this.
+- **24px (`gap-6`)** between fields in a form.
+- **Page margins:** 16px on phones and 32px on tablets. On desktops, center the content and keep it 1200px wide at most.
