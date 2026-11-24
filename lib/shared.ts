@@ -18,3 +18,6 @@ export function getPageImageUrl(page: { slugs: string[]; locale?: string }) {
 
   return { segments, url: getImageUrl(segments, page.locale) };
 }
+
+export const githubUrl = `https://github.com/${gitConfig.user}/${gitConfig.repo}`;
+export const figmaUrl = "https://www.figma.com/design/D3nJzUeqpGlyMpimlesib6";
