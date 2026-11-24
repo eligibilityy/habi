@@ -134,6 +134,7 @@ Button also accepts the other props of Base UI's [Button](https://base-ui.com/re
 - **Set `type="submit"`** on the button that sends a form. Buttons default to `type="button"`, so they don't submit forms by accident.
 - **Give icon-only buttons an `aria-label`**, like "Search", so screen readers can name them.
 - **Use a link for navigation**, styled with `buttonVariants` if needed, not a Button.
+- **Prevent double submissions.** On slow connections people often press again when nothing seems to happen. After the first press, set `disabled` with `focusableWhenDisabled`, so focus stays on the button, and change the label to say what's happening, like "Paying…".
 
 ## Related components
 
