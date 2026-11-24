@@ -160,7 +160,7 @@ Only disable a field when people can't change the answer, and say why in the des
 
 - **Give every input a visible `FieldLabel`.** A placeholder isn't a label.
 - **Set `autoComplete`** on fields about the person, like `given-name`, `email` or `tel`, so browsers can fill them in (WCAG 1.3.5).
-- **Pick the right keypad** for phones: `type="email"` for email addresses, `type="tel"` for mobile numbers, and `inputMode="numeric"` for reference numbers like a PhilSys Card Number. Don't use `type="number"` for numbers people don't count, like IDs, because it drops leading zeros and adds spinner arrows.
+- **Pick the right keypad** for phones: `type="email"` for email addresses, `type="tel"` for mobile numbers, and `inputMode="numeric"` for reference numbers like a PhilSys Card Number. Don't use `type="number"` for numbers people don't count, like IDs, because it can round long numbers and changes the value when people scroll.
 - **Use Base UI's `Form`**, or your own submit handling, to move focus to the first field with an error after people submit.
 
 ## Related components
