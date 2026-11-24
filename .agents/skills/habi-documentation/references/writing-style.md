@@ -59,6 +59,7 @@ Use consistent terms throughout Habi.
 | Kind       | Variant, type (Habi's style prop is `kind`)                     |
 | Hint       | Helper text, help text (the prop is still `description`)        |
 | Required   | Mandatory, compulsory                                           |
+| Check      | Tick (for checkboxes: "check", "checked", "uncheck")            |
 | Color      | Colour (Habi uses American spelling)                            |
 
 Write sizes with a multiplication sign: "24 × 24px", not "24 x 24px".

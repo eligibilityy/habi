@@ -7,7 +7,7 @@ description: Lets people answer yes or no, or pick any number of options from a 
 
 ## When to use
 
-Use checkboxes when people can tick more than one answer, or none:
+Use checkboxes when people can check more than one answer, or none:
 
 - **One checkbox** for a yes or no answer, like confirming their details are correct.
 - **A group of checkboxes** when people can pick several options, like which IDs they can bring.
@@ -60,13 +60,13 @@ Wrap the options in a `Fieldset` rendered as a `CheckboxGroup`. The legend asks 
 
 ### Validation
 
-Use `required` on a single checkbox that must be ticked. For a group where people must pick at least one option, pass a `validate` function to the `Field`.
+Use `required` on a single checkbox that must be checked. For a group where people must pick at least one option, pass a `validate` function to the `Field`.
 
 <ComponentPreview name="checkbox-validation" />
 
 ### Select all
 
-Add a parent checkbox that ticks or clears every option. It shows a dash when only some options are ticked. Pass every option's value to `allValues` and add `parent` to the parent checkbox.
+Add a parent checkbox that checks or unchecks every option. It shows a dash when only some options are checked. Pass every option's value to `allValues` and add `parent` to the parent checkbox.
 
 <ComponentPreview name="checkbox-parent" />
 
@@ -79,7 +79,7 @@ Disable an option with `disabled` on its `FieldItem`, and say why in its label.
 ## Content guidelines
 
 - **The legend asks the question:** "Which IDs can you bring?"
-- **Add "Select all that apply"** as a description under the legend, so people know they can tick more than one.
+- **Add "Select all that apply"** as a description under the legend, so people know they can check more than one.
 - **Write a single checkbox as a statement people agree with:** "The details I gave are true and correct".
 - **Start each option with a capital letter** and leave off the full stop, so the list is easy to scan.
 
@@ -103,24 +103,24 @@ Disable an option with `disabled` on its `FieldItem`, and say why in its label.
       name: "defaultChecked",
       type: "boolean",
       default: "false",
-      description: "Whether a single checkbox starts ticked.",
+      description: "Whether a single checkbox starts checked.",
     },
     {
       name: "checked",
       type: "boolean",
       description:
-        "Whether a single checkbox is ticked, when you control the state.",
+        "Whether a single checkbox is checked, when you control the state.",
     },
     {
       name: "onCheckedChange",
       type: "(checked: boolean) => void",
-      description: "Called when a single checkbox is ticked or cleared.",
+      description: "Called when a single checkbox is checked or unchecked.",
     },
     {
       name: "required",
       type: "boolean",
       default: "false",
-      description: "People must tick it before submitting.",
+      description: "People must check it before submitting.",
     },
     {
       name: "parent",
@@ -139,17 +139,17 @@ Disable an option with `disabled` on its `FieldItem`, and say why in its label.
       name: "defaultValue",
       type: "string[]",
       description:
-        "The options ticked at first, when you don't control the state.",
+        "The options checked at first, when you don't control the state.",
     },
     {
       name: "value",
       type: "string[]",
-      description: "The ticked options, when you control the state.",
+      description: "The checked options, when you control the state.",
     },
     {
       name: "onValueChange",
       type: "(value: string[]) => void",
-      description: "Called when an option is ticked or cleared.",
+      description: "Called when an option is checked or unchecked.",
     },
     {
       name: "allValues",
@@ -178,7 +178,7 @@ Disable an option with `disabled` on its `FieldItem`, and say why in its label.
 
 - **Whole row:** `ChoiceLabel` wraps the box and the text, so the full 48px row can be pressed, not just the 20px box.
 - **Group question:** the legend names the group, so screen readers read the question with the options.
-- **Keyboard:** <kbd>Tab</kbd> moves between checkboxes and <kbd>Space</kbd> ticks or clears one.
+- **Keyboard:** <kbd>Tab</kbd> moves between checkboxes and <kbd>Space</kbd> checks or unchecks one.
 - **State:** screen readers announce "checked", "not checked" or "mixed". The box shows a check or a dash, not just a color.
 
 ### What you need to do
