@@ -151,7 +151,8 @@ Replace "date of birth" with the field's own name, like "issue date".
 
 - **Group:** the boxes sit in a fieldset named by the label. The hint and any error are linked to it with `aria-describedby`, and each box has its own label: "Day", "Month" or "Year".
 - **Number keypad:** Day and Year use `inputMode="numeric"`, so phones show the number keypad. They aren't `type="number"`, which adds spinner arrows and changes the value when people scroll.
-- **Month names:** months are listed by name, so nobody has to work out whether 03 is March.
+- **Keyboard:** <kbd>Tab</kbd> moves from Day to Month to Year. The month list works like a [Select](/docs/components/select#accessibility): arrow keys move, typing a letter jumps to a month, and <kbd>Enter</kbd> chooses.
+- **Month names:** months are listed by name, so nobody has to work out whether 03 is March. They're in English for now.
 - **Errors aren't just red:** the message has an icon and text.
 - **Small screens:** the three boxes take 336px, so they fit on one row on a 375px-wide phone.
 
