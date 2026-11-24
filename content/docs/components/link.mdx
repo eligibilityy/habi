@@ -7,13 +7,13 @@ description: Takes people to another page, or to another part of the same page.
 
 ## Installation
 
+[Set up Habi](/docs/installation) first, if you haven't already.
+
+Install the packages this component uses:
+
 ```npm
-npm install @base-ui/react class-variance-authority clsx tailwind-merge
+npm install @base-ui/react class-variance-authority
 ```
-
-Add the `cn` helper if you haven't already:
-
-<ComponentSource src="registry/habi/lib/utils.ts" title="lib/utils.ts" />
 
 Add the component:
 
@@ -89,9 +89,4 @@ Link also accepts every prop of the HTML `<a>` element, like `href`, `target` an
 
 ## Figma
 
-- **Underlines:** links in text are always underlined, so people who can't see the color difference can still find them (WCAG 1.4.1).
-- **Link text:** say where the link goes: "Check what to bring", not "Click here". Screen reader users often move from link to link, so the text has to make sense on its own.
-- **Keyboard:** <kbd>Tab</kbd> moves to the link and <kbd>Enter</kbd> follows it. The focus ring shows where you are.
-- **Visited links** turn purple, so people can see which pages they've already read.
-- **Links or buttons:** use a link to go somewhere and a button to do something. If a link must look like a button, use [`buttonVariants`](/docs/components/button#as-a-link).
-- **Icons** are hidden from screen readers. The link text already says where it goes.
+[Open Link in the Habi Figma file](https://www.figma.com/design/D3nJzUeqpGlyMpimlesib6?node-id=39-35).
