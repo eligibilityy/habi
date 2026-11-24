@@ -14,10 +14,15 @@ Shadows are soft and used with a purpose: to lift buttons and cards slightly off
 - **`shadow-overlay`:** menus, select lists, suggestion lists and popovers.
 - **`shadow-modal`:** modals and dialogs.
 
+Shadows are a hint, not the only signal: anything people can press also has a label, a fill or a border, so it's still clear in high-contrast modes where shadows disappear.
+
 ## Focus
 
-Everything interactive shows a 2px `focus/default` ring when it receives keyboard focus. Never remove it.
+Everything interactive shows a 2px `focus/default` ring when it receives keyboard focus, so keyboard users can see where they are (WCAG 2.4.7). Never remove it. The ring is at least 4.2:1 against every background, above the 3:1 WCAG asks for.
 
 <FocusRingDemo />
 
 In code, use `focus-visible:focus-ring`. The ring then appears for keyboard users, but not when someone clicks with a mouse.
+
+- **Text inputs** show focus on every click too, because people need to see where they're typing. They draw it inside the border: `focus:outline-2 focus:-outline-offset-2 focus:outline-focus-default`. Selects keep the ring while their list is open.
+- **Inside a container that clips its content**, like a tab bar, draw the ring inside the element the same way, so it isn't cut off.
