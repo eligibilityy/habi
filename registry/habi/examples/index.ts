@@ -37,6 +37,8 @@ import RadioGroupDemo from "./radio-group-demo";
 import RadioGroupDisabled from "./radio-group-disabled";
 import RadioGroupHints from "./radio-group-hints";
 import RadioGroupValidation from "./radio-group-validation";
+import SearchDemo from "./search-demo";
+import SearchForm from "./search-form";
 import SelectDemo from "./select-demo";
 import SelectValidation from "./select-validation";
 import SelectGrouped from "./select-grouped";
@@ -87,6 +89,8 @@ export const examples: Record<string, ComponentType> = {
   "radio-group-disabled": RadioGroupDisabled,
   "radio-group-hints": RadioGroupHints,
   "radio-group-validation": RadioGroupValidation,
+  "search-demo": SearchDemo,
+  "search-form": SearchForm,
   "select-demo": SelectDemo,
   "select-validation": SelectValidation,
   "select-grouped": SelectGrouped,

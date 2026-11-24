@@ -1,0 +1,254 @@
+---
+title: Search
+description: Helps people find a service by typing, with suggestions as they type.
+---
+
+<ComponentPreview name="search-demo" />
+
+## When to use
+
+Use Search to help people find a service or page on a site with many of them, like an agency's list of online services.
+
+Use something else when:
+
+- **People must pick one option from a known list**, like their region. Use a [Select](/docs/components/select).
+- **People are entering their own answer** in a form, like their name or address. Use a [Text input](/docs/components/text-input).
+
+## Installation
+
+[Set up Habi](/docs/installation) first, if you haven't already.
+
+Install the packages this component uses:
+
+```npm
+npm install @base-ui/react @heroicons/react
+```
+
+Add the component:
+
+<ComponentSource
+  src="registry/habi/ui/search.tsx"
+  title="components/ui/search.tsx"
+/>
+
+## Usage
+
+```tsx
+import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
+
+import {
+  Search,
+  SearchContent,
+  SearchEmpty,
+  SearchInput,
+  SearchItem,
+  SearchItemDescription,
+  SearchItemText,
+  SearchList,
+} from "@/components/ui/search";
+
+type Service = { id: string; title: string; description: string };
+
+const services: Service[] = [
+  {
+    id: "nbi",
+    title: "NBI clearance",
+    description: "Apply for or renew your clearance",
+  },
+  // …
+];
+
+<Search items={services} itemToStringValue={(service) => service.title}>
+  <SearchInput
+    aria-label="Search for a service"
+    placeholder="Search for a service"
+  />
+  <SearchContent>
+    <SearchEmpty>No services match your search.</SearchEmpty>
+    <SearchList>
+      {(service: Service) => (
+        <SearchItem key={service.id} value={service}>
+          <MagnifyingGlassIcon />
+          <SearchItemText>
+            {service.title}
+            <SearchItemDescription>{service.description}</SearchItemDescription>
+          </SearchItemText>
+        </SearchItem>
+      )}
+    </SearchList>
+  </SearchContent>
+</Search>;
+```
+
+The parts:
+
+- **`Search`** holds the list of `items` and filters it as people type. When items are objects, `itemToStringValue` says which text to match and to put in the field.
+- **`SearchInput`** is the field, with the search icon and a clear button that appears once people type.
+- **`SearchContent`** is the menu of suggestions below the field. `SearchList` renders one `SearchItem` per matching item.
+- **`SearchItemText`** holds an item's title and an optional `SearchItemDescription`. Put an icon before it.
+- **`SearchEmpty`** shows when nothing matches.
+
+## Examples
+
+### Search form
+
+Put Search in a `<form role="search">` with a Search button, so people can see every result, not just the suggestions. Choosing a suggestion should take people straight to that service: handle it with the item's `onClick`, which also runs when people press <kbd>Enter</kbd> on a suggestion. Pressing <kbd>Enter</kbd> anywhere else submits the form.
+
+<ComponentPreview name="search-form" />
+
+### Keyboard shortcut
+
+Add `shortcut` to `SearchInput` to let people jump to the search with <kbd>⌘</kbd> <kbd>K</kbd> on a Mac or iPhone, or <kbd>Ctrl</kbd> <kbd>K</kbd> elsewhere. The field shows the shortcut on devices with a mouse or trackpad, and hides it once people type. Try it in the first example on this page.
+
+Use it for one search per page, usually the site search in the header. If another script on the page already handles the shortcut and marks the key press as handled, Search leaves it alone.
+
+## Content guidelines
+
+- **The placeholder says what people can find:** "Search for a service", not just "Search".
+- **Suggestion titles use the service's everyday name:** "NBI clearance", not "Application for NBI Clearance Certificate".
+- **Descriptions say what people can do there,** in a few words: "Apply for or renew your clearance".
+- **The empty message says what to do next:** "No matching services. Press Search to see all results."
+
+## Props
+
+### SearchInput
+
+<PropsTable
+  rows={[
+    {
+      name: "aria-label",
+      type: "string",
+      required: true,
+      description:
+        'Names the field for screen readers, like "Search for a service". Not needed when a FieldLabel names it.',
+    },
+    {
+      name: "placeholder",
+      type: "string",
+      description: "Says what people can search for.",
+    },
+    {
+      name: "shortcut",
+      type: "boolean",
+      default: "false",
+      description: "Focuses the field with ⌘K or Ctrl+K and shows the hint.",
+    },
+    {
+      name: "clearLabel",
+      type: "string",
+      default: '"Clear search"',
+      description:
+        "Names the clear button for screen readers. Translate it when the page isn't in English.",
+    },
+    {
+      name: "className",
+      type: "string",
+      description: "Classes for the field's outer box, like its width.",
+    },
+  ]}
+/>
+
+SearchInput also accepts the props of Base UI's [Autocomplete input](https://base-ui.com/react/components/autocomplete), like `name` and `disabled`.
+
+### Search
+
+<PropsTable
+  rows={[
+    {
+      name: "items",
+      type: "Item[]",
+      description:
+        "Everything people can find. Search filters it as people type.",
+    },
+    {
+      name: "itemToStringValue",
+      type: "(item: Item) => string",
+      description:
+        "The text to match and to put in the field, when items are objects.",
+    },
+    {
+      name: "defaultValue",
+      type: "string",
+      description:
+        "The text in the field at first, when you don't control the state.",
+    },
+    {
+      name: "value",
+      type: "string",
+      description: "The text in the field, when you control the state.",
+    },
+    {
+      name: "onValueChange",
+      type: "(value: string) => void",
+      description:
+        "Called when people type, clear the field or pick a suggestion.",
+    },
+    {
+      name: "filter",
+      type: "(item: Item, query: string) => boolean",
+      description:
+        "Replaces the matching, for example to also match a service's description or other names for it.",
+    },
+    {
+      name: "limit",
+      type: "number",
+      description: "The most suggestions to show.",
+    },
+  ]}
+/>
+
+Search also accepts the other props of Base UI's [Autocomplete](https://base-ui.com/react/components/autocomplete) root.
+
+### SearchItem
+
+<PropsTable
+  rows={[
+    {
+      name: "value",
+      type: "Item",
+      required: true,
+      description: "The item this suggestion shows.",
+    },
+    {
+      name: "onClick",
+      type: "(event) => void",
+      description:
+        "Called when people click the suggestion or press Enter on it. Use it to go to the service.",
+    },
+    {
+      name: "disabled",
+      type: "boolean",
+      default: "false",
+      description: "Stops people choosing the suggestion.",
+    },
+  ]}
+/>
+
+## Accessibility
+
+### What Habi handles
+
+- **Roles:** the field is a combobox that controls a list of suggestions, so screen readers say that suggestions are available and announce the one that's highlighted.
+- **Keyboard:** <kbd>↓</kbd> and <kbd>↑</kbd> move through the suggestions while focus stays in the field. <kbd>Enter</kbd> chooses the highlighted suggestion. <kbd>Esc</kbd> closes the menu, and pressing it again clears the field.
+- **No matches:** the `SearchEmpty` message is announced when it appears.
+- **Clear button:** it's named "Clear search" and appears once people type. Pressing it clears the field and keeps focus there. It's skipped by <kbd>Tab</kbd>, because keyboard users can press <kbd>Esc</kbd> instead.
+- **Shortcut:** with `shortcut`, the field has `aria-keyshortcuts`, so screen readers can announce the shortcut. The visible hint is hidden from them, to avoid saying it twice.
+- **Phones:** the field uses `type="search"`, so phones show a Search key on the keyboard.
+
+### What you need to do
+
+- **Name the field** with `aria-label`, or a `FieldLabel` if the label is shown. A placeholder isn't a name.
+- **Use `<form role="search">`** around the site search, so screen reader users can jump to it as a landmark.
+- **Give people a way to see every result,** with a Search button, not only the suggestions.
+- **Use `shortcut` once per page,** so the shortcut always goes to the same place.
+- **Translate `clearLabel`** when the page isn't in English.
+
+## Related components
+
+- [Select](/docs/components/select): for choosing one option from a list.
+- [Text input](/docs/components/text-input): for answers people type themselves.
+- [Button](/docs/components/button): for the Search button.
+
+## Figma
+
+[Open Search in the Habi Figma file](https://www.figma.com/design/D3nJzUeqpGlyMpimlesib6?node-id=30-24).
