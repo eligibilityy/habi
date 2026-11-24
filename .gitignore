@@ -27,3 +27,5 @@ next-env.d.ts
 
 # local notes (not committed)
 notes/
+# Docs screenshots (pnpm screenshots)
+.screenshots/

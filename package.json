@@ -12,7 +12,8 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "tokens": "node scripts/build-tokens.mjs",
-    "precommit": "prettier --write . && eslint && echo LINT_OK && next typegen && tsc --noEmit"
+    "precommit": "prettier --write . && eslint && echo LINT_OK && next typegen && tsc --noEmit",
+    "screenshots": "node scripts/screenshot-docs.mjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.9.0",
@@ -38,6 +39,7 @@
     "@typescript/native": "npm:typescript@^7.0.2",
     "eslint": "^9.39.4",
     "eslint-config-next": "16.4.6",
+    "playwright": "^1.65.1",
     "postcss": "^8.5.32",
     "prettier": "^3.10.1",
     "prettier-plugin-tailwindcss": "^0.8.1",
