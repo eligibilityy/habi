@@ -49,14 +49,14 @@ Then import `habi.css` right after Tailwind:
 This gives you:
 
 - **Every design token** as a CSS variable and a Tailwind class, like `bg-button-primary`, `text-label`, `rounded-control` and `shadow-card`. See [Foundations](/docs/foundations/color) for the full set.
-- **The `focus-ring` utility**, the 2px focus ring every interactive component uses.
+- **The `focus-ring` utility**, the 2px focus ring that buttons, links and other controls use.
 - **Page defaults:** Allo at its roundest setting, with Habi's text and background colors.
 
-`habi-tokens.css` replaces Tailwind's default color palette, so classes like `bg-blue-500` no longer exist. Use Habi's semantic colors instead, like `bg-interactive-default` or `text-text-secondary`. Their text and background pairs are already checked for contrast. Don't edit this file by hand: it's generated from Habi's design tokens.
+`habi-tokens.css` replaces Tailwind's default color palette, so classes like `bg-blue-500` no longer exist. Use Habi's semantic colors instead, like `bg-interactive-default` or `text-text-secondary`. Their text and background pairs are checked to pass WCAG AA contrast. Don't edit this file by hand: it's generated from Habi's design tokens.
 
 ## 4. Add the `cn` helper
 
-Components use `cn` to combine their classes with yours. It also knows Habi's text styles, like `text-label`, so it doesn't drop them when merging.
+Components use `cn` to combine their classes with yours. It also knows Habi's text styles and radius roles, like `text-label` and `rounded-control`, so a class you pass replaces the component's own instead of both applying.
 
 <ComponentSource src="registry/habi/lib/utils.ts" title="lib/utils.ts" />
 
