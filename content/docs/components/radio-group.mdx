@@ -144,11 +144,13 @@ To disable one option, set `disabled` on its `FieldItem`.
 - **Group question:** the legend names the group, so screen readers read the question with the options.
 - **Keyboard:** <kbd>Tab</kbd> moves into the group, landing on the selected option. The arrow keys move between options and select them. <kbd>Tab</kbd> again leaves the group.
 - **State:** the selected option has a filled dot, not just a color change.
+- **Errors** appear below the group, with an icon and text, not just a red border.
 
 ### What you need to do
 
 - **Ask the question in a `FieldsetLegend`**, so screen reader users hear it with the options.
 - **Stack options vertically**, so they're easy to scan and compare.
+- **Use Base UI's `Form`**, or your own submit handling, to move focus to the group after a failed submit.
 
 ## Related components
 
