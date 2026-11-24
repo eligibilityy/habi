@@ -146,7 +146,7 @@ Every part also accepts the props of the HTML element it renders: `div`, `p`, a 
 - **Set the heading `level`** so it follows the page's headings: under an `h2` section, use the default `h3`.
 - **Make link text unique.** When cards repeat the same words, like "Learn more", add `sr-only` text after the visible words: "Learn more about renewing your passport".
 - **Describe images** that show something the text doesn't. Use `alt=""` when the image only decorates the card.
-- **Keep images light** for people on mobile data: compress them, size them close to the card's width, and add `loading="lazy"` to images further down the page. `CardImage` keeps a fixed 200px height, so the layout doesn't jump while an image loads.
+- **Keep images light** for people on mobile data: compress them, size them close to the card's width, and add `loading="lazy"` to images further down the page. `CardImage` reserves at least 200px of height, so the layout doesn't jump while an image loads.
 - **Don't wrap the whole card in a link** when it contains other links or buttons. Nested interactive elements confuse keyboard and screen reader users.
 
 ## Related components
