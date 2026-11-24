@@ -29,6 +29,10 @@ import LinkExternal from "./link-external";
 import NotificationDemo from "./notification-demo";
 import NotificationDismissible from "./notification-dismissible";
 import NotificationKinds from "./notification-kinds";
+import OtpInputDemo from "./otp-input-demo";
+import OtpInputMpin from "./otp-input-mpin";
+import OtpInputResend from "./otp-input-resend";
+import OtpInputValidation from "./otp-input-validation";
 import RadioGroupDemo from "./radio-group-demo";
 import RadioGroupDisabled from "./radio-group-disabled";
 import RadioGroupHints from "./radio-group-hints";
@@ -75,6 +79,10 @@ export const examples: Record<string, ComponentType> = {
   "notification-demo": NotificationDemo,
   "notification-dismissible": NotificationDismissible,
   "notification-kinds": NotificationKinds,
+  "otp-input-demo": OtpInputDemo,
+  "otp-input-mpin": OtpInputMpin,
+  "otp-input-resend": OtpInputResend,
+  "otp-input-validation": OtpInputValidation,
   "radio-group-demo": RadioGroupDemo,
   "radio-group-disabled": RadioGroupDisabled,
   "radio-group-hints": RadioGroupHints,

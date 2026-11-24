@@ -1,0 +1,173 @@
+---
+title: OTP input
+description: Lets people enter a one-time code from an SMS, or a short PIN like an MPIN.
+---
+
+<ComponentPreview name="otp-input-demo" />
+
+## When to use
+
+Use an OTP input for short codes people enter digit by digit:
+
+- **One-time codes sent by SMS**, to confirm a mobile number or sign in.
+- **An MPIN**, the 6-digit PIN for an e-wallet or government app account.
+
+Use something else when:
+
+- **The code is long**, like a reference or tracking number. Use a [Text input](/docs/components/text-input), which shows the whole code at once and is easier to check and edit.
+- **It's a password.** Use a text input with `type="password"`, so password managers can fill it in.
+
+## Installation
+
+[Set up Habi](/docs/installation) and add the [shared parts](/docs/installation#shared-parts) first, if you haven't already.
+
+Install the packages this component uses:
+
+```npm
+npm install @base-ui/react
+```
+
+Add the component:
+
+<ComponentSource
+  src="registry/habi/ui/otp-input.tsx"
+  title="components/ui/otp-input.tsx"
+/>
+
+## Usage
+
+```tsx
+import { Field, FieldDescription, FieldLabel } from "@/components/ui/field";
+import { OtpInput } from "@/components/ui/otp-input";
+
+<Field name="code">
+  <FieldLabel>Enter the 6-digit code</FieldLabel>
+  <FieldDescription>We sent it by SMS to +63 917 *** 4567.</FieldDescription>
+  <OtpInput />
+</Field>;
+```
+
+Typing moves to the next box, <kbd>Backspace</kbd> goes back, and pasting a whole code fills every box. The first box uses `autocomplete="one-time-code"`, so phones that support it can fill in the code from the SMS.
+
+## Examples
+
+### Resending a code
+
+Say when people can ask for a new code, so they don't leave the page to wait. Show a button once they can.
+
+<ComponentPreview name="otp-input-resend" />
+
+### Validation
+
+Check the code when people press Continue, not as soon as the last box is filled. Submitting on its own catches people off guard before they've checked what they typed (WCAG 3.2.2). Set `invalid` on the `Field` and show a `FieldError` with `match`. Clear the error when the code changes: Base UI's `Form` won't submit while the field is marked invalid.
+
+<ComponentPreview name="otp-input-validation" />
+
+### MPIN
+
+Add `mask` to show dots instead of digits, for a PIN people shouldn't show on screen. Set `autoComplete="off"`, because an MPIN isn't a one-time code. Link to a way to reset it.
+
+<ComponentPreview name="otp-input-mpin" />
+
+## Content guidelines
+
+- **The label says how many digits:** "Enter the 6-digit code".
+- **The hint says where the code went,** with most of the number hidden: "We sent it by SMS to +63 917 \*\*\* 4567."
+- **Errors say what to do next:** "That code didn't match. Check the SMS and try again." For an MPIN, say how many tries are left: "Wrong MPIN. You have 2 tries left."
+- **Say when people can resend:** "Didn't get it? You can resend the code in 0:45."
+
+## Props
+
+<PropsTable
+  rows={[
+    {
+      name: "length",
+      type: "number",
+      default: "6",
+      description: "How many boxes to show.",
+    },
+    {
+      name: "defaultValue",
+      type: "string",
+      description:
+        "The code filled in at first, when you don't control the state.",
+    },
+    {
+      name: "value",
+      type: "string",
+      description: "The code, when you control the state.",
+    },
+    {
+      name: "onValueChange",
+      type: "(value: string) => void",
+      description: "Called when people type, delete or paste.",
+    },
+    {
+      name: "onValueComplete",
+      type: "(value: string) => void",
+      description:
+        "Called when every box is filled. Use it to enable a button, not to submit.",
+    },
+    {
+      name: "mask",
+      type: "boolean",
+      default: "false",
+      description: "Shows dots instead of digits, for an MPIN.",
+    },
+    {
+      name: "validationType",
+      type: '"numeric" | "alpha" | "alphanumeric" | "none"',
+      default: '"numeric"',
+      description:
+        "Which characters people can enter. Numeric also brings up the number keypad.",
+    },
+    {
+      name: "autoComplete",
+      type: "string",
+      default: '"one-time-code"',
+      description: 'Lets phones fill in an SMS code. Set "off" for an MPIN.',
+    },
+    {
+      name: "slotLabel",
+      type: "(position: number, length: number) => string",
+      default: '"Digit 2 of 6"…',
+      description:
+        "Names boxes 2 onwards for screen readers. Translate it when the page isn't in English.",
+    },
+    {
+      name: "disabled",
+      type: "boolean",
+      default: "false",
+      description: "Stops people typing in any box.",
+    },
+  ]}
+/>
+
+OtpInput also accepts the other props of Base UI's [OTP Field](https://base-ui.com/react/components/otp-field) root.
+
+## Accessibility
+
+### What Habi handles
+
+- **Names:** the first box uses the field's label. The others are named "Digit 2 of 6" and so on, so screen reader users know which box they're in.
+- **Keyboard:** <kbd>Tab</kbd> moves into the field once, then out of it. Typing moves forward, <kbd>Backspace</kbd> deletes and moves back, the arrow keys move between boxes, and <kbd>Home</kbd> and <kbd>End</kbd> jump to the first and last box.
+- **Number keypad:** phones show the number keypad, because the field accepts digits only by default.
+- **Errors** appear below the boxes, with an icon and text, not just a red border.
+- **Size:** each box is 48 × 56px with 24px digits, easy to read and tap. Six boxes take 328px, so they fit on a 375px-wide phone, and they shrink to fit narrower containers.
+
+### What you need to do
+
+- **Give it a `FieldLabel`** that says how many digits to enter.
+- **Don't submit automatically** when the last box is filled. Let people check the code and press Continue.
+- **Give people enough time.** Don't expire the code before people can reasonably find the SMS and type it, and let them ask for a new one (WCAG 2.2.1).
+- **Move focus back to the first box** after a wrong code, as the validation example does, so people can type it again.
+- **Translate `slotLabel`** when the page isn't in English.
+
+## Related components
+
+- [Text input](/docs/components/text-input): for longer codes and reference numbers.
+- [Button](/docs/components/button): for Continue and Resend code.
+
+## Figma
+
+[Open OTP input in the Habi Figma file](https://www.figma.com/design/D3nJzUeqpGlyMpimlesib6?node-id=64-102).
