@@ -1,7 +1,9 @@
+import type { ComponentProps } from "react";
 import fs from "node:fs/promises";
 import path from "node:path";
 import { Tabs } from "@base-ui/react/tabs";
 import { highlight } from "fumadocs-core/highlight";
+import { transformerIcon } from "fumadocs-core/mdx-plugins/transformer-icon";
 import { Pre } from "fumadocs-ui/components/codeblock";
 
 import { CodeBlock } from "@/components/docs/code-block";
@@ -18,9 +20,9 @@ async function readSource(file: string) {
     .trim();
 }
 
-function highlightTsx(source: string) {
+function highlightCode(source: string, lang = "tsx") {
   return highlight(source, {
-    lang: "tsx",
+    lang,
     components: { pre: (props) => <Pre {...props} /> },
   });
 }
@@ -33,7 +35,7 @@ export async function ComponentPreview({ name }: { name: string }) {
     );
   }
 
-  const code = await highlightTsx(
+  const code = await highlightCode(
     await readSource(`registry/habi/examples/${name}.tsx`),
   );
 
@@ -70,6 +72,18 @@ export async function ComponentSource({
   src: string;
   title?: string;
 }) {
-  const code = await highlightTsx(await readSource(src));
-  return <CodeBlock title={title}>{code}</CodeBlock>;
+  // Highlight by file type, so CSS files shown on the Installation page read
+  // as CSS. The icon transformer adds the same file icon MDX code blocks get.
+  const lang = path.extname(src).slice(1) || "tsx";
+  return highlight(await readSource(src), {
+    lang,
+    transformers: [transformerIcon()],
+    components: {
+      pre: ({ icon, ...props }: ComponentProps<"pre"> & { icon?: string }) => (
+        <CodeBlock title={title} icon={icon}>
+          <Pre {...props} />
+        </CodeBlock>
+      ),
+    },
+  });
 }

@@ -26,6 +26,11 @@ export function CodeBlock({
         inTabs
           ? "bg-layer-01 last:rounded-b-none"
           : "my-6 rounded-(--radius-control)",
+        // The copy button's blurred backdrop.
+        "[&>.backdrop-blur-lg]:rounded-(--radius-control)",
+        // A titled block's file bar matches the tab bars on code and previews.
+        props.title &&
+          "[&>div:first-child]:h-12 [&>div:first-child]:bg-layer-accent-01",
         className,
       )}
       {...props}
