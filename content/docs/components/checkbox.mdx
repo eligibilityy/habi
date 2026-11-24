@@ -7,9 +7,15 @@ description: Lets people answer yes or no, or pick any number of options from a 
 
 ## When to use
 
+Use checkboxes when people can tick more than one answer, or none:
+
 - **One checkbox** for a yes or no answer, like confirming their details are correct.
-- **A group of checkboxes** when people can pick more than one option.
-- **Only one answer allowed?** Use a radio group instead.
+- **A group of checkboxes** when people can pick several options, like which IDs they can bring.
+
+Use something else when:
+
+- **Only one answer is allowed.** Use a [Radio group](/docs/components/radio-group), which makes that clear: picking one option clears the others.
+- **It filters what's on the page** straight away, outside a form. Use [Tags](/docs/components/tag).
 
 ## Installation
 
@@ -36,7 +42,8 @@ import { ChoiceLabel, Field } from "@/components/ui/field";
 
 <Field>
   <ChoiceLabel>
-    <Checkbox name="hasPhilId" />I have a PhilID
+    <Checkbox name="hasPhilId" />
+    I have a PhilID
   </ChoiceLabel>
 </Field>;
 ```
@@ -68,6 +75,13 @@ Add a parent checkbox that ticks or clears every option. It shows a dash when on
 Disable an option with `disabled` on its `FieldItem`, and say why in its label.
 
 <ComponentPreview name="checkbox-disabled" />
+
+## Content guidelines
+
+- **The legend asks the question:** "Which IDs can you bring?"
+- **Add "Select all that apply"** as a description under the legend, so people know they can tick more than one.
+- **Write a single checkbox as a statement people agree with:** "The details I gave are true and correct".
+- **Start each option with a capital letter** and leave off the full stop, so the list is easy to scan.
 
 ## Props
 
@@ -160,11 +174,22 @@ Disable an option with `disabled` on its `FieldItem`, and say why in its label.
 
 ## Accessibility
 
-- **Whole row:** the label wraps the box and the text, so the full 48px row can be pressed, not just the 20px box.
-- **Group question:** the legend names the group, so screen readers read the question before each option.
+### What Habi handles
+
+- **Whole row:** `ChoiceLabel` wraps the box and the text, so the full 48px row can be pressed, not just the 20px box.
+- **Group question:** the legend names the group, so screen readers read the question with the options.
 - **Keyboard:** <kbd>Tab</kbd> moves between checkboxes and <kbd>Space</kbd> ticks or clears one.
 - **State:** screen readers announce "checked", "not checked" or "mixed". The box shows a check or a dash, not just a color.
-- **Errors** appear below the group or checkbox, and focus moves to the first problem when people submit.
+
+### What you need to do
+
+- **Ask the question in a `FieldsetLegend`** for every group, so screen reader users hear it with the options.
+- **Use Base UI's `Form`**, or your own submit handling, to move focus to the first problem after people submit. Errors appear below the group or checkbox.
+
+## Related components
+
+- [Radio group](/docs/components/radio-group): when only one answer is allowed.
+- [Tag](/docs/components/tag): for filters outside a form.
 
 ## Figma
 

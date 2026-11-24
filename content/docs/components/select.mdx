@@ -7,9 +7,16 @@ description: Lets people choose one option from a list, like their region or ID 
 
 ## When to use
 
-- **6 or more options:** use a Select.
-- **5 or fewer:** use a radio group instead, so people can see every choice without opening anything.
-- **A very long list**, like every city and municipality: use Search, so people can type to filter.
+Use a select when people choose one option from a list that's too long to show all at once:
+
+- **Places**, like a region or province.
+- **Types of document**, like which valid ID someone will bring.
+
+Use something else when:
+
+- **People should compare the options**, or there are only a few. Use a [Radio group](/docs/components/radio-group), which shows every choice without opening anything. About five options is usually where a radio group starts to take too much space, but long labels or a small screen can tip it sooner.
+- **The list is very long**, like every city and municipality. Use a search field, so people can type to filter instead of scrolling.
+- **People can pick more than one.** Use a [Checkbox](/docs/components/checkbox) group.
 
 ## Installation
 
@@ -75,13 +82,20 @@ Set `required` on `Select` and add a `FieldError` with `match="valueMissing"`. B
 
 ### Grouped
 
-Group long lists under headings. Screen readers announce the group with each option.
+Group long lists under headings, so people can find their option faster.
 
 <ComponentPreview name="select-grouped" />
 
 ### Disabled
 
 <ComponentPreview name="select-disabled" />
+
+## Content guidelines
+
+- **The label names the answer:** "Region", not "Select your region".
+- **The placeholder asks for a choice:** "Select a region".
+- **Order options so they're easy to find:** alphabetically, or in an order people already know, like regions from north to south.
+- **Keep option labels short and distinct**, so they don't get cut off and people can tell them apart.
 
 ## Props
 
@@ -103,12 +117,12 @@ Group long lists under headings. Screen readers announce the group with each opt
     },
     {
       name: "value",
-      type: "Value",
+      type: "Value | null",
       description: "The selected option, when you control the state.",
     },
     {
       name: "onValueChange",
-      type: "(value: Value) => void",
+      type: "(value: Value | null) => void",
       description: "Called when people choose an option.",
     },
     {
@@ -172,8 +186,25 @@ Group long lists under headings. Screen readers announce the group with each opt
 
 ## Accessibility
 
+### What Habi handles
+
 - **Keyboard:** <kbd>Enter</kbd>, <kbd>Space</kbd> or <kbd>↓</kbd> opens the list. Arrow keys move, typing a letter jumps to matching options, <kbd>Enter</kbd> chooses, and <kbd>Esc</kbd> closes it. Focus returns to the field.
 - **Label:** `SelectLabel` names the field for screen readers. Clicking it moves focus to the field without opening the list.
 - **Selected option:** shown with a check and a blue background, not just color.
 - **Small screens:** the list never runs past the edge of the screen. It flips above the field and scrolls when space is short.
 - **Motion:** the open and close fade is turned off for people who prefer reduced motion.
+
+### What you need to do
+
+- **Give every select a `SelectLabel`.** The placeholder disappears once people choose.
+- **Pass `items`**, so the field and screen readers show the chosen label, not its value.
+
+## Related components
+
+- [Radio group](/docs/components/radio-group): for a few options people should compare.
+- [Checkbox](/docs/components/checkbox): for picking more than one option.
+- [Date input](/docs/components/date-input): uses a select for the month.
+
+## Figma
+
+[Open Select in the Habi Figma file](https://www.figma.com/design/D3nJzUeqpGlyMpimlesib6?node-id=29-36).

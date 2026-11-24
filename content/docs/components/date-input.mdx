@@ -7,9 +7,15 @@ description: Lets people enter a date they already know, like their date of birt
 
 ## When to use
 
-- **Dates people know by heart**, like a date of birth or the date printed on an ID: use a date input.
-- **Choosing from available dates**, like an appointment: show only the dates people can book instead.
-- **Never use a calendar picker for a date of birth.** Scrolling back decades is slow, and typing the year is quicker.
+Use a date input for dates people know or can copy from a document:
+
+- **Dates of birth.**
+- **Dates printed on an ID or certificate**, like an issue or expiry date.
+
+Use something else when:
+
+- **People are choosing a date**, like an appointment. Show the dates they can book instead, so they don't pick one that isn't available.
+  Don't use a calendar picker for dates of birth. Scrolling back decades is slow, and typing the year is quicker.
 
 ## Installation
 
@@ -49,7 +55,15 @@ Clear the error in `onValueChange`. Base UI's `Form` won't submit while any box 
 
 <ComponentPreview name="date-input-validation" />
 
-Use these messages:
+### Disabled
+
+<ComponentPreview name="date-input-disabled" />
+
+## Content guidelines
+
+- **The label names the date:** "Date of birth", "Date of issue".
+- **The hint shows an example** in the same order as the boxes: "For example, 15 March 1990".
+- **Error messages** cover one problem at a time, the first one people need to fix:
 
 | Problem                                  | Message                             | Mark                |
 | ---------------------------------------- | ----------------------------------- | ------------------- |
@@ -61,10 +75,6 @@ Use these messages:
 
 Replace "date of birth" with the field's own name, like "issue date".
 
-### Disabled
-
-<ComponentPreview name="date-input-disabled" />
-
 ## Props
 
 <PropsTable
@@ -72,6 +82,7 @@ Replace "date of birth" with the field's own name, like "issue date".
     {
       name: "label",
       type: "ReactNode",
+      required: true,
       description: 'The question for the whole date, like "Date of birth".',
     },
     {
@@ -136,11 +147,23 @@ Replace "date of birth" with the field's own name, like "issue date".
 
 ## Accessibility
 
-- **Group:** the boxes sit in a fieldset. Screen readers read the label, hint and any error when people move into the group, then "Day", "Month" or "Year" for each box.
+### What Habi handles
+
+- **Group:** the boxes sit in a fieldset named by the label. The hint and any error are linked to it with `aria-describedby`, and each box has its own label: "Day", "Month" or "Year".
 - **Number keypad:** Day and Year use `inputMode="numeric"`, so phones show the number keypad. They aren't `type="number"`, which adds spinner arrows and changes the value when people scroll.
 - **Month names:** months are listed by name, so nobody has to work out whether 03 is March.
-- **Errors:** after a failed submit, move focus to the first invalid box, as the validation example does. The error is shown in text with an icon, not just a red border.
-- **Small screens:** all three boxes fit on one row on a 375px-wide screen.
+- **Errors aren't just red:** the message has an icon and text.
+- **Small screens:** the three boxes take 336px, so they fit on one row on a 375px-wide phone.
+
+### What you need to do
+
+- **Check the date on submit** and pass the message to `error`, marking only the wrong boxes with `invalid`.
+- **Move focus to the first invalid box** after a failed submit, as the validation example does.
+- **Clear the error when people change the date**, so the next submit isn't blocked.
+
+## Related components
+
+- [Text input](/docs/components/text-input) and [Select](/docs/components/select): the parts Date input is built from.
 
 ## Figma
 
