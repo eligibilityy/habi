@@ -35,3 +35,32 @@ html > body[data-scroll-locked] {
   margin-right: 0px !important;
   --removed-body-scroll-bar-size: 0px !important;
 }
+
+/*
+ * Fumadocs' chrome uses Tailwind's default radius steps (rounded-lg = 8px,
+ * rounded-xl = 12px), which Habi's scale doubles. Map its parts to Habi's role
+ * radii instead. These rules sit outside Tailwind's layers, so they win over
+ * Fumadocs' utility classes.
+ */
+:is(#nd-sidebar, #nd-subnav, #nd-toc)
+  :is(.rounded-md, .rounded-lg, .rounded-xl),
+:is([data-search], [data-search-full]) {
+  border-radius: var(--radius-control);
+}
+
+:is([data-search], [data-search-full]) kbd {
+  border-radius: var(--radius-sm);
+}
+
+#nd-sidebar.rounded-xl,
+[data-sidebar-panel] {
+  border-radius: var(--radius-overlay);
+}
+
+#fd-search-dialog-content {
+  border-radius: var(--radius-card);
+}
+
+#fd-search-dialog-content .rounded-lg {
+  border-radius: var(--radius-sm);
+}

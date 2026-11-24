@@ -25,6 +25,7 @@ import {
   ComponentPreview,
   ComponentSource,
 } from "@/components/docs/component-preview";
+import { DocsCard } from "@/components/docs/docs-card";
 import { PropsTable } from "@/components/docs/props-table";
 
 export function getMDXComponents(components?: MDXComponents) {
@@ -39,6 +40,7 @@ export function getMDXComponents(components?: MDXComponents) {
     CodeBlockTabsList,
     CodeBlockTabsTrigger,
     Callout,
+    Card: DocsCard,
     PrimitiveColors,
     SemanticColors,
     FocusRingDemo,
