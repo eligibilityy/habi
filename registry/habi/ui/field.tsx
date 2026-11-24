@@ -73,6 +73,10 @@ type FieldErrorProps = WithStringClassName<
 > & { children: ReactNode };
 
 function FieldError({ className, children, ...props }: FieldErrorProps) {
+  // With `match`, Base UI always shows the error, so an empty one would
+  // leave a lone icon. Render nothing until there's a message.
+  if (children == null || children === false || children === "") return null;
+
   return (
     <BaseField.Error
       data-slot="field-error"
