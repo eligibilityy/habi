@@ -180,11 +180,13 @@ Disable an option with `disabled` on its `FieldItem`, and say why in its label.
 - **Group question:** the legend names the group, so screen readers read the question with the options.
 - **Keyboard:** <kbd>Tab</kbd> moves between checkboxes and <kbd>Space</kbd> checks or unchecks one.
 - **State:** screen readers announce "checked", "not checked" or "mixed". The box shows a check or a dash, not just a color.
+- **Errors** appear below the group or checkbox, with an icon and text, not just a red border.
+- **Long labels** wrap next to the box, so they stay readable on small screens.
 
 ### What you need to do
 
 - **Ask the question in a `FieldsetLegend`** for every group, so screen reader users hear it with the options.
-- **Use Base UI's `Form`**, or your own submit handling, to move focus to the first problem after people submit. Errors appear below the group or checkbox.
+- **Use Base UI's `Form`**, or your own submit handling, to move focus to the first problem after people submit.
 
 ## Related components
 
