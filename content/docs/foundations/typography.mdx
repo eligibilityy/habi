@@ -23,3 +23,14 @@ Use a text style rather than setting size, line height and weight separately. Ea
 ## Numbers and reference codes
 
 Use the monospace font (`font-mono`) for reference and ID numbers, grouped so they're easy to read aloud: `NBI-2026-1215-0417`.
+
+## Readability
+
+- **Body text is `text-body-md` (16px).** Use the smaller styles, which are 14px, only for labels, hints and secondary details.
+- **Inputs use 16px text,** so phones don't zoom in when people tap a field.
+- **Sizes are in `rem`,** so text grows when people raise their browser's text size or zoom in (WCAG 1.4.4).
+- **Keep lines to about 70 characters** in long text. Longer lines are harder to follow from one line to the next.
+
+## Loading the font
+
+Allo is one 448 KB variable file. It loads with `font-display: swap`, so text appears straight away in the system font and switches to Allo when the file arrives. People on slow connections can start reading immediately.
