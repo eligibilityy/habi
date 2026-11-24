@@ -10,7 +10,7 @@ Habi has two layers of color tokens:
 
 In code, every token is a CSS variable (`--link-primary`) and a Tailwind color you can use with any color utility: `text-link-primary`, `bg-button-primary`, `border-border-subtle-01`.
 
-Every text and background pair below passes WCAG 2.2 AA. If you combine tokens in a new way, check the contrast first.
+Every text, link and icon color passes WCAG 2.2 AA on every background, layer and field color: at least 4.5:1 for text and 3:1 for icons. Disabled text is lighter, which WCAG allows for controls people can't use. If you combine tokens in a new way, check the contrast first.
 
 ## Semantic tokens
 
@@ -56,7 +56,7 @@ Surfaces that sit on the background, like cards and panels.
 
 ### Support
 
-Status colors for notifications and validation.
+Status colors for notifications and validation. `support/warning` is the flag's gold and only 1.5:1 on white, so use it as a fill behind dark text or icons, never for text or thin lines.
 
 <SemanticColors group="support" />
 
@@ -74,6 +74,6 @@ Status colors for notifications and validation.
 
 ## Primitives
 
-Blue, red and gold echo the Philippine flag: `red/60` is the flag's red and `gold/30` its sun.
+Blue, red and gold echo the Philippine flag: `blue/80` is the flag's blue, `red/60` its red and `gold/30` its sun.
 
 <PrimitiveColors />
