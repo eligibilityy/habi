@@ -5,6 +5,19 @@ description: Presents one service, office or update, with a way to start or find
 
 <ComponentPreview name="card-demo" />
 
+## When to use
+
+Use cards when people need to compare several things and pick one:
+
+- **Services**, like "Renew your passport" or "Get an NBI clearance".
+- **Offices or places**, like the nearest DFA consular office.
+- **News and updates**, like a change to requirements.
+
+Use something else when:
+
+- **There's only one thing to show.** Put it on the page as headings and text. A single card adds a box without helping people compare.
+- **People need to read a lot.** Cards hold a summary. Link to a full page for the details.
+
 ## Installation
 
 [Set up Habi](/docs/installation) first, if you haven't already.
@@ -81,11 +94,11 @@ Use the horizontal layout for lists. On screens narrower than 640px it stacks li
 
 <ComponentPreview name="card-horizontal" />
 
-## Writing for cards
+## Content guidelines
 
 - **One card, one task:** each card is one thing people can start or read.
 - **Title as a verb** for services: "Renew your passport", not "Passport renewal".
-- **Meta says time, channel and cost:** "About 15 minutes", "Online", "₱950.00".
+- **Meta says time, channel and cost:** "About 15 minutes", "Online", "₱950.00", so people can compare before they open anything.
 - **Unique link text:** if several cards say "Learn more", add hidden text so each link makes sense on its own.
 
 ## Props
@@ -122,8 +135,24 @@ Every part also accepts the props of the HTML element it renders: `div`, `p`, a 
 
 ## Accessibility
 
-- **Headings:** each card title is a heading, so screen reader users can jump from card to card. Set `level` so it follows the page's headings: under an `h2` section, use the default `h3`.
-- **Link text:** say where each link goes. When cards repeat the same words, like "Learn more", add `sr-only` text after the visible words: "Learn more about renewing your passport".
+### What Habi handles
+
+- **Headings:** each card title is a heading, so screen reader users can jump from card to card.
 - **Meta** is a list, so screen readers say how many facts there are. Its icons are decorative: the text carries the meaning.
-- **Images:** use `alt=""` when the image is decorative, and describe it when it shows something the text doesn't.
-- **Focus order** follows reading order: title, then actions. Don't make the whole card one big link around other links.
+- **Focus order** follows reading order: title, then actions.
+
+### What you need to do
+
+- **Set the heading `level`** so it follows the page's headings: under an `h2` section, use the default `h3`.
+- **Make link text unique.** When cards repeat the same words, like "Learn more", add `sr-only` text after the visible words: "Learn more about renewing your passport".
+- **Describe images** that show something the text doesn't. Use `alt=""` when the image only decorates the card.
+- **Don't wrap the whole card in a link** when it contains other links or buttons. Nested interactive elements confuse keyboard and screen reader users.
+
+## Related components
+
+- [Badge](/docs/components/badge): for a status at the top of the card.
+- [Button](/docs/components/button) and [Link](/docs/components/link): for the card's actions.
+
+## Figma
+
+[Open Card in the Habi Figma file](https://www.figma.com/design/D3nJzUeqpGlyMpimlesib6?node-id=25-80).

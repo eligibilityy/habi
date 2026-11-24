@@ -5,6 +5,19 @@ description: A short status label, like New, Open or Closing soon.
 
 <ComponentPreview name="badge-demo" />
 
+## When to use
+
+Use a badge to show the status of something nearby:
+
+- **A service's availability**, like "Open" or "Closing soon".
+- **Something new**, like "New" next to an announcement.
+- **An application's state**, like "Approved" or "Needs action".
+
+Use something else when:
+
+- **People can select it**, like a filter. Use a [Tag](/docs/components/tag).
+- **People need to know what happened** after an action, or what to do next. Use a [Notification](/docs/components/notification), which has room for an explanation.
+
 ## Installation
 
 [Set up Habi](/docs/installation) first, if you haven't already.
@@ -50,6 +63,12 @@ If the badge describes something nearby, add hidden text so screen reader users 
 
 <ComponentPreview name="badge-in-context" />
 
+## Content guidelines
+
+- **One or two words:** badges don't wrap, and short labels are quicker to scan.
+- **Describe the state, not an action:** "Closed", not "Can't apply".
+- **Use the same words for the same state** across the service, so people learn what each one means.
+
 ## Props
 
 <PropsTable
@@ -67,8 +86,22 @@ Badge also accepts every prop of the HTML `<span>` element.
 
 ## Accessibility
 
-- **Words, not color:** the label carries the meaning. Color only reinforces it, so a badge still makes sense in grayscale or to people who can't tell colors apart (WCAG 1.4.1).
-- **Short labels:** one or two words. Badges don't wrap.
-- **Not interactive:** badges can't be clicked or focused. If people need to pick an option, use a Tag. If it goes somewhere, use a Link.
-- **Context:** add visually hidden text (`sr-only`) when the badge only makes sense next to something else, like "Status: Open".
+### What Habi handles
+
 - **Contrast:** every kind's text and background pass WCAG AA (5.3–6.8:1).
+- **Not interactive:** badges can't be clicked or focused, so they don't add stops for keyboard users.
+
+### What you need to do
+
+- **Let the words carry the meaning.** Color only reinforces it, so a badge still makes sense in grayscale or to people who can't tell colors apart (WCAG 1.4.1).
+- **Add context for screen readers** with visually hidden text (`sr-only`) when the badge only makes sense next to something else, like "Status: Open".
+
+## Related components
+
+- [Tag](/docs/components/tag): a label people can select, like a filter.
+- [Notification](/docs/components/notification): a message about what happened, with room to explain.
+- [Card](/docs/components/card): badges often sit at the top of a card.
+
+## Figma
+
+[Open Badge in the Habi Figma file](https://www.figma.com/design/D3nJzUeqpGlyMpimlesib6?node-id=122-47).

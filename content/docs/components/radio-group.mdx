@@ -7,9 +7,15 @@ description: Lets people choose exactly one option from a short list.
 
 ## When to use
 
-- **5 or fewer options** that people should compare, like how to get a document or how to pay.
-- **6 or more options:** use a Select.
-- **Several answers allowed:** use checkboxes.
+Use a radio group when people choose exactly one option and should see every choice:
+
+- **Comparing options**, like picking up a document or having it delivered.
+- **Choosing how to pay**, when each option has its own fee or timing.
+
+Use something else when:
+
+- **There are many options**, or long ones that crowd a small screen. Use a [Select](/docs/components/select). About five options is usually the limit, but long labels or hints under each option can tip it sooner.
+- **People can pick more than one.** Use a [Checkbox](/docs/components/checkbox) group.
 
 ## Installation
 
@@ -71,6 +77,13 @@ Set `required` on the `RadioGroup` and add a `FieldError` with `match="valueMiss
 
 <ComponentPreview name="radio-group-disabled" />
 
+## Content guidelines
+
+- **The legend asks the question:** "How do you want to get your clearance?"
+- **Options answer it in a few words:** "Pick up in person", "Have it delivered".
+- **Put the most common option first**, unless there's a natural order, like cheapest to most expensive.
+- **Don't preselect an option** when the choice has a cost or consequence, so people make it on purpose.
+
 ## Props
 
 ### RadioGroup
@@ -115,6 +128,7 @@ Set `required` on the `RadioGroup` and add a `FieldError` with `match="valueMiss
     {
       name: "value",
       type: "Value",
+      required: true,
       description: "The value the group takes when this option is picked.",
     },
   ]}
@@ -124,8 +138,23 @@ To disable one option, set `disabled` on its `FieldItem`.
 
 ## Accessibility
 
-- **Whole row:** the label wraps the radio and its text, so the full 48px row can be pressed.
+### What Habi handles
+
+- **Whole row:** `ChoiceLabel` wraps the radio and its text, so the full 48px row can be pressed.
 - **Group question:** the legend names the group, so screen readers read the question with the options.
 - **Keyboard:** <kbd>Tab</kbd> moves into the group, landing on the selected option. The arrow keys move between options and select them. <kbd>Tab</kbd> again leaves the group.
 - **State:** the selected option has a filled dot, not just a color change.
-- **Order:** stack options vertically, so they're easy to scan and compare.
+
+### What you need to do
+
+- **Ask the question in a `FieldsetLegend`**, so screen reader users hear it with the options.
+- **Stack options vertically**, so they're easy to scan and compare.
+
+## Related components
+
+- [Checkbox](/docs/components/checkbox): when people can pick more than one.
+- [Select](/docs/components/select): for longer lists.
+
+## Figma
+
+[Open Radio button in the Habi Figma file](https://www.figma.com/design/D3nJzUeqpGlyMpimlesib6?node-id=35-21).

@@ -5,6 +5,18 @@ description: Lets people take an action, like submitting a form or starting a ta
 
 <ComponentPreview name="button-demo" />
 
+## When to use
+
+Use a button when pressing it does something:
+
+- **Submitting a form**, like "Continue" or "Pay ₱145.00".
+- **Starting a task**, like "Book an appointment".
+- **Changing something on the page**, like "Add another child".
+
+Use something else when:
+
+- **It goes to another page.** Use a [Link](/docs/components/link). If it has to look like a button, style the link with [`buttonVariants`](#as-a-link). Screen readers then announce it as a link, which tells people what will happen.
+
 ## Installation
 
 [Set up Habi](/docs/installation) first, if you haven't already.
@@ -34,7 +46,7 @@ import { Button } from "@/components/ui/button";
 
 ### Kinds
 
-Use **one primary button** per screen, for the main action. Use secondary and tertiary for other actions, subtle for low-emphasis ones, and danger only for actions that delete something or can't be undone.
+Use **one primary button** per screen, for the main action, so people can see what to do next. Use secondary and tertiary for other actions, subtle for low-emphasis ones, and danger only for actions that delete something or can't be undone.
 
 <ComponentPreview name="button-kinds" />
 
@@ -61,6 +73,12 @@ Avoid disabled buttons where you can. People can't tell why a button doesn't wor
 If the button takes people to another page, use a link that looks like a button. Pass `buttonVariants` to your link's `className`. This works with `next/link`, your router's link component, or a plain `<a>` for external sites.
 
 <ComponentPreview name="button-link" />
+
+## Content guidelines
+
+- **Start with a verb** and say what will happen: "Pay ₱145.00", not "Submit".
+- **Keep it short:** one to three words is usually enough. The page around the button explains the rest.
+- **Use the same words as the task.** If the page is about booking an appointment, the button says "Book appointment", not "Proceed".
 
 ## Props
 
@@ -105,9 +123,22 @@ Button also accepts the other props of Base UI's [Button](https://base-ui.com/re
 
 ## Accessibility
 
+### What Habi handles
+
 - **Keyboard:** <kbd>Tab</kbd> moves focus to the button, and <kbd>Enter</kbd> or <kbd>Space</kbd> presses it. A 2px focus ring shows which button has focus.
-- **Size:** buttons are 48px tall, well above the 24 x 24px minimum target size in WCAG 2.2.
-- **Labels:** start with a verb and say what will happen: "Pay ₱145.00" instead of "Submit".
-- **Forms:** buttons default to `type="button"`, so set `type="submit"` on the button that sends a form.
-- **Icons** are hidden from screen readers, because the label already says what the button does. Icon-only buttons need an `aria-label`.
-- **Links:** if it goes to another page, use a link styled with `buttonVariants`, not a Button. Screen readers then announce it as a link.
+- **Size:** buttons are 48px tall, well above the 24 × 24px minimum target size in WCAG 2.2.
+- **Icons** are hidden from screen readers, because the label already says what the button does.
+
+### What you need to do
+
+- **Set `type="submit"`** on the button that sends a form. Buttons default to `type="button"`, so they don't submit forms by accident.
+- **Give icon-only buttons an `aria-label`**, like "Search", so screen readers can name them.
+- **Use a link for navigation**, styled with `buttonVariants` if needed, not a Button.
+
+## Related components
+
+- [Link](/docs/components/link): for going to another page.
+
+## Figma
+
+[Open Button in the Habi Figma file](https://www.figma.com/design/D3nJzUeqpGlyMpimlesib6?node-id=25-12).

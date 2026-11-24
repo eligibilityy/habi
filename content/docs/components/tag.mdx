@@ -5,6 +5,20 @@ description: A filter people can turn on and off, like a service category.
 
 <ComponentPreview name="tag-demo" />
 
+## When to use
+
+Use tags to let people narrow down what they see:
+
+- **Filtering a list of services**, like Passport, IDs or Taxes.
+- **Filtering search results** by category or office.
+
+Tags change what's shown on the page straight away, without a submit button.
+
+Use something else when:
+
+- **It's a status people can't change**, like "Open". Use a [Badge](/docs/components/badge).
+- **It's a question in a form**, like which IDs someone has. Use a [Checkbox](/docs/components/checkbox) group, which is submitted with the rest of the form and can show errors.
+
 ## Installation
 
 [Set up Habi](/docs/installation) first, if you haven't already.
@@ -41,6 +55,11 @@ Use `value` and `onValueChange` when other parts of the page depend on the selec
 ### Disabled
 
 <ComponentPreview name="tag-disabled" />
+
+## Content guidelines
+
+- **One or two words** per tag, like "Passport" or "Health".
+- **Name the category, not an action:** "Taxes", not "Show taxes".
 
 ## Props
 
@@ -116,8 +135,22 @@ Use `value` and `onValueChange` when other parts of the page depend on the selec
 
 ## Accessibility
 
-- **Name the group:** give `TagGroup` an `aria-label`, like "Filter services", so screen reader users know what the tags do.
+### What Habi handles
+
 - **State:** each tag is a toggle button. Screen readers announce whether it's pressed, and a check shows the selected state without relying on color.
 - **Keyboard:** <kbd>Tab</kbd> moves into the group, the arrow keys move between tags, and <kbd>Space</kbd> or <kbd>Enter</kbd> turns a tag on or off.
-- **Size:** tags are 32px tall with 8px gaps, above the 24 x 24px minimum target size in WCAG 2.2.
-- **Tag or Badge:** use a Tag when people can select it. For a status label they can't change, use a [Badge](/docs/components/badge).
+- **Size:** tags are 32px tall with 8px gaps, above the 24 × 24px minimum target size in WCAG 2.2.
+
+### What you need to do
+
+- **Name the group:** give `TagGroup` an `aria-label`, like "Filter services", so screen reader users know what the tags do.
+- **Announce the result** of a change, like the number of services shown, with `aria-live`. The tags themselves don't say what changed on the page.
+
+## Related components
+
+- [Badge](/docs/components/badge): a status label people can't change.
+- [Checkbox](/docs/components/checkbox): for picking several options as part of a form.
+
+## Figma
+
+[Open Tag in the Habi Figma file](https://www.figma.com/design/D3nJzUeqpGlyMpimlesib6?node-id=35-46).

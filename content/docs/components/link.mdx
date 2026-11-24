@@ -5,6 +5,18 @@ description: Takes people to another page, or to another part of the same page.
 
 <ComponentPreview name="link-demo" />
 
+## When to use
+
+Use a link when it takes people somewhere:
+
+- **Another page**, like the list of requirements.
+- **Another part of the same page**, like a section further down.
+- **Another website**, like an agency's official site.
+
+Use something else when:
+
+- **Pressing it does something**, like submitting a form. Use a [Button](/docs/components/button). Screen readers announce links and buttons differently, so people know whether they're going somewhere or doing something.
+
 ## Installation
 
 [Set up Habi](/docs/installation) first, if you haven't already.
@@ -34,7 +46,7 @@ import { Link } from "@/components/ui/link";
 
 ### Standalone
 
-Use a standalone link with a chevron for a "go to" link on its own line, one that takes people to the next step. Standalone links are underlined on hover only, because their position already shows they're links. Never put a chevron link inside a sentence.
+Use a standalone link with a chevron for a "go to" link on its own line, one that takes people to the next step. Standalone links are underlined on hover only, because their position already shows they're links. Don't put a chevron link inside a sentence: the chevron breaks up the text.
 
 <ComponentPreview name="link-standalone" />
 
@@ -49,6 +61,12 @@ Pass your framework's link component to `render`. Habi's styles and props are me
 Open external links in the same tab. Only open a new tab when people would lose their place otherwise, like in the middle of a form, and say so in the link text: "Read the guidance (opens in new tab)".
 
 <ComponentPreview name="link-external" />
+
+## Content guidelines
+
+- **Say where the link goes:** "Check what to bring", not "Click here". Screen reader users often move from link to link, so the text has to make sense on its own.
+- **Don't reuse link text** for links that go to different places, like two "Learn more" links. People can't tell them apart in a list of links.
+- **Say when it opens a new tab**, in the link text itself.
 
 ## Props
 
@@ -80,12 +98,21 @@ Link also accepts every prop of the HTML `<a>` element, like `href`, `target` an
 
 ## Accessibility
 
+### What Habi handles
+
 - **Underlines:** links in text are always underlined, so people who can't see the color difference can still find them (WCAG 1.4.1).
-- **Link text:** say where the link goes: "Check what to bring", not "Click here". Screen reader users often move from link to link, so the text has to make sense on its own.
 - **Keyboard:** <kbd>Tab</kbd> moves to the link and <kbd>Enter</kbd> follows it. The focus ring shows where you are.
 - **Visited links** turn purple, so people can see which pages they've already read.
-- **Links or buttons:** use a link to go somewhere and a button to do something. If a link must look like a button, use [`buttonVariants`](/docs/components/button#as-a-link).
 - **Icons** are hidden from screen readers. The link text already says where it goes.
+
+### What you need to do
+
+- **Write link text that makes sense on its own**, without the sentence around it.
+- **Use a Button for actions.** If a link must look like a button, use [`buttonVariants`](/docs/components/button#as-a-link).
+
+## Related components
+
+- [Button](/docs/components/button): for actions, and for links that need to look like a button.
 
 ## Figma
 
