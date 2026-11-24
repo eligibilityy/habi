@@ -1,0 +1,38 @@
+---
+title: Accordion
+description: Lets people show and hide sections of a page, like the answers in an FAQ.
+status: planned
+---
+
+## When to use
+
+Use an accordion when people only need some of the sections on a page, and can tell from the headings which ones:
+
+- **Frequently asked questions:** "What documents do I need?", "How long does it take?"
+- **Requirements that depend on the person:** a section for first-time applicants and one for renewals.
+
+Use something else when:
+
+- **Everyone needs the content.** Show it on the page. People miss what's hidden.
+- **The sections are steps people go through in order.** Ask one thing per page instead.
+
+## How it will look and work
+
+- **Each item** has a heading row and a panel. The heading row holds the title (Heading/XS) and a chevron. The panel holds the answer (Body/MD, secondary text).
+- **Items stack**, separated by a 1px border, with a border under the last one too.
+- **States:** hover tints the heading row, keyboard focus shows a 2px focus ring inside the row, and an open item turns its chevron up.
+
+It will be built on Base UI's [Accordion](https://base-ui.com/react/components/accordion).
+
+## Accessibility
+
+- **The whole heading row is one button** with `aria-expanded`, so people can open an item with a click, a tap, <kbd>Enter</kbd> or <kbd>Space</kbd>.
+- **Headings stay headings,** so screen reader users can jump between them.
+
+## Related components
+
+- [Modal](/docs/components/modal): for something people must deal with before they go on, rather than extra detail they can choose to open.
+
+## Figma
+
+[Open Accordion in the Habi Figma file](https://www.figma.com/design/D3nJzUeqpGlyMpimlesib6?node-id=38-15).

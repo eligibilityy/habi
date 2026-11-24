@@ -2,6 +2,14 @@
   "name": "habi",
   "version": "0.0.69",
   "private": true,
+  "description": "An unofficial design system for Philippine government digital services.",
+  "license": "MIT",
+  "homepage": "https://habi.yiliya.studio",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eligibilityy/habi.git"
+  },
+  "bugs": "https://github.com/eligibilityy/habi/issues",
   "packageManager": "pnpm@10.18.0",
   "scripts": {
     "build": "next build",
@@ -28,7 +36,8 @@
     "next": "16.4.6",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
-    "tailwind-merge": "^3.7.1"
+    "tailwind-merge": "^3.7.1",
+    "zod": "^4.6.7"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.3.5",
