@@ -19,6 +19,9 @@ import CheckboxDisabled from "./checkbox-disabled";
 import CheckboxGroupDemo from "./checkbox-group";
 import CheckboxParent from "./checkbox-parent";
 import CheckboxValidation from "./checkbox-validation";
+import DateInputDemo from "./date-input-demo";
+import DateInputDisabled from "./date-input-disabled";
+import DateInputValidation from "./date-input-validation";
 import LinkDemo from "./link-demo";
 import LinkStandalone from "./link-standalone";
 import LinkNext from "./link-next";
@@ -62,6 +65,9 @@ export const examples: Record<string, ComponentType> = {
   "checkbox-group": CheckboxGroupDemo,
   "checkbox-parent": CheckboxParent,
   "checkbox-validation": CheckboxValidation,
+  "date-input-demo": DateInputDemo,
+  "date-input-disabled": DateInputDisabled,
+  "date-input-validation": DateInputValidation,
   "link-demo": LinkDemo,
   "link-standalone": LinkStandalone,
   "link-next": LinkNext,

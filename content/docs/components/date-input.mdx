@@ -1,0 +1,151 @@
+---
+title: Date input
+description: Lets people enter a date they already know, like their date of birth or an ID's issue date.
+---
+
+<ComponentPreview name="date-input-demo" />
+
+## When to use
+
+- **Dates people know by heart**, like a date of birth or the date printed on an ID: use a date input.
+- **Choosing from available dates**, like an appointment: show only the dates people can book instead.
+- **Never use a calendar picker for a date of birth.** Scrolling back decades is slow, and typing the year is quicker.
+
+## Installation
+
+```npm
+npm install @base-ui/react @heroicons/react clsx tailwind-merge
+```
+
+Date input is built from Text input and Select. Add them first if you haven't already: follow the installation steps for [Text input](/docs/components/text-input#installation) and [Select](/docs/components/select#installation).
+
+Add the component:
+
+<ComponentSource
+  src="registry/habi/ui/date-input.tsx"
+  title="components/ui/date-input.tsx"
+/>
+
+## Usage
+
+```tsx
+import { DateInput } from "@/components/ui/date-input";
+
+<DateInput
+  label="Date of birth"
+  description="For example, 15 March 1990"
+  name="dob"
+  autoComplete="bday"
+/>;
+```
+
+The value is an object of strings, like `{ day: "15", month: "3", year: "1990" }`. Months are numbered 1 to 12. Strings keep exactly what people typed, so you can show it back to them alongside an error.
+
+With `name="dob"`, the form submits `dob-day`, `dob-month` and `dob-year`.
+
+## Examples
+
+### Validation
+
+Date input doesn't check the date itself, because one message has to cover all three boxes. Check the value when people submit and pass the message to `error`. By default, `error` marks all three boxes. Pass `invalid` to mark only the boxes that are wrong.
+
+Clear the error in `onValueChange`. Base UI's `Form` won't submit while any box is marked invalid, so an error that stays after people fix the date blocks the next submit.
+
+<ComponentPreview name="date-input-validation" />
+
+Use these messages:
+
+| Problem                                  | Message                             | Mark                |
+| ---------------------------------------- | ----------------------------------- | ------------------- |
+| Nothing entered                          | Enter your date of birth.           | All three           |
+| A part is missing                        | Date of birth must include a month. | The missing part(s) |
+| The year isn't 4 digits                  | Year must include 4 numbers.        | Year                |
+| The date doesn't exist, like 31 February | Date of birth must be a real date.  | Day                 |
+| The date is in the future                | Date of birth must be in the past.  | All three           |
+
+Replace "date of birth" with the field's own name, like "issue date".
+
+### Disabled
+
+<ComponentPreview name="date-input-disabled" />
+
+## Props
+
+<PropsTable
+  rows={[
+    {
+      name: "label",
+      type: "ReactNode",
+      description: 'The question for the whole date, like "Date of birth".',
+    },
+    {
+      name: "description",
+      type: "ReactNode",
+      description:
+        'Hint shown under the label, like "For example, 15 March 1990".',
+    },
+    {
+      name: "error",
+      type: "ReactNode",
+      description:
+        "Error shown under the boxes. Marks all three as invalid unless you pass invalid.",
+    },
+    {
+      name: "invalid",
+      type: 'boolean | ("day" | "month" | "year")[]',
+      default: "Boolean(error)",
+      description: "Which boxes to mark as invalid.",
+    },
+    {
+      name: "defaultValue",
+      type: "{ day, month, year }",
+      description:
+        "The date filled in at first, when you don't control the state.",
+    },
+    {
+      name: "value",
+      type: "{ day, month, year }",
+      description: "The date, when you control the state.",
+    },
+    {
+      name: "onValueChange",
+      type: "(value: { day, month, year }) => void",
+      description: "Called when people change any box.",
+    },
+    {
+      name: "name",
+      type: "string",
+      description: "Submits the boxes as name-day, name-month and name-year.",
+    },
+    {
+      name: "autoComplete",
+      type: '"bday"',
+      description:
+        "Lets browsers fill in a saved birthday. Only use it for the person's own date of birth.",
+    },
+    {
+      name: "required",
+      type: "boolean",
+      default: "false",
+      description: "Shows a red asterisk. Check the value yourself on submit.",
+    },
+    {
+      name: "disabled",
+      type: "boolean",
+      default: "false",
+      description: "Stops people changing all three boxes.",
+    },
+  ]}
+/>
+
+## Accessibility
+
+- **Group:** the boxes sit in a fieldset. Screen readers read the label, hint and any error when people move into the group, then "Day", "Month" or "Year" for each box.
+- **Number keypad:** Day and Year use `inputMode="numeric"`, so phones show the number keypad. They aren't `type="number"`, which adds spinner arrows and changes the value when people scroll.
+- **Month names:** months are listed by name, so nobody has to work out whether 03 is March.
+- **Errors:** after a failed submit, move focus to the first invalid box, as the validation example does. The error is shown in text with an icon, not just a red border.
+- **Small screens:** all three boxes fit on one row on a 375px-wide screen.
+
+## Figma
+
+[Open Date input in the Habi Figma file](https://www.figma.com/design/D3nJzUeqpGlyMpimlesib6?node-id=33-45).
