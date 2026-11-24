@@ -7,20 +7,13 @@ description: Tells people what happened after an action, or about something in t
 
 ## Installation
 
+[Set up Habi](/docs/installation) and add the [status icon](/docs/installation#status-icon) first, if you haven't already.
+
+Install the packages this component uses:
+
 ```npm
-npm install @heroicons/react class-variance-authority clsx tailwind-merge
+npm install @heroicons/react class-variance-authority
 ```
-
-Add the `cn` helper if you haven't already:
-
-<ComponentSource src="registry/habi/lib/utils.ts" title="lib/utils.ts" />
-
-Add the status icon, which Notification uses:
-
-<ComponentSource
-  src="registry/habi/ui/status-icon.tsx"
-  title="components/ui/status-icon.tsx"
-/>
 
 Add the component:
 
@@ -88,11 +81,6 @@ Pass `onDismiss` to show a close button. Only make notifications dismissible whe
     },
   ]}
 />
-
-## Accessibility
-
-- **Roles:** errors use `role="alert"`, which screen readers announce straight away. Other kinds use `role="status"`, announced when the screen reader is idle.
-- **Announcements:** screen readers only announce a live region when it's added or changed after the page loads. Show
 
 ## Accessibility
 

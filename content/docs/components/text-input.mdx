@@ -7,29 +7,15 @@ description: Lets people enter a single line of text, like a name or email addre
 
 ## Installation
 
+[Set up Habi](/docs/installation) and add the [shared parts](/docs/installation#shared-parts) first, if you haven't already.
+
+Install the packages this component uses:
+
 ```npm
-npm install @base-ui/react @heroicons/react class-variance-authority clsx tailwind-merge
+npm install @base-ui/react
 ```
 
-Add the `cn` helper if you haven't already:
-
-<ComponentSource src="registry/habi/lib/utils.ts" title="lib/utils.ts" />
-
-Add the status icon, which error messages use:
-
-<ComponentSource
-  src="registry/habi/ui/status-icon.tsx"
-  title="components/ui/status-icon.tsx"
-/>
-
-Add the field parts. Select, Checkbox and Radio group use them too:
-
-<ComponentSource
-  src="registry/habi/ui/field.tsx"
-  title="components/ui/field.tsx"
-/>
-
-Add the input:
+Add the component:
 
 <ComponentSource
   src="registry/habi/ui/input.tsx"

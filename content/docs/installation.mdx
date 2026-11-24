@@ -1,0 +1,95 @@
+---
+title: Installation
+description: Set up your project once, then copy in the components you need.
+---
+
+Habi's components are React components styled with Tailwind CSS. You copy each component's code into your project, so you can read it and change it. This page sets up what every component shares: Habi's styles, its typeface and a small helper.
+
+You need a React project with **Tailwind CSS v4**. The examples on this site use Next.js.
+
+<Callout>
+  A one-line install with the shadcn CLI is coming with the Habi registry.
+</Callout>
+
+## 1. Install the shared packages
+
+```npm
+npm install allo-font clsx tailwind-merge
+```
+
+- **`allo-font`** is Allo, Habi's typeface.
+- **`clsx`** and **`tailwind-merge`** combine class names, so a `className` you pass to a component replaces its own classes instead of clashing with them.
+
+## 2. Load the typeface
+
+Import Allo's stylesheet once, in your root layout:
+
+```tsx title="app/layout.tsx"
+import "allo-font/allo.css";
+```
+
+## 3. Add Habi's styles
+
+Copy both files next to your global stylesheet:
+
+<ComponentSource src="registry/habi/styles/habi.css" title="app/habi.css" />
+
+<ComponentSource
+  src="registry/habi/styles/habi-tokens.css"
+  title="app/habi-tokens.css"
+/>
+
+Then import `habi.css` right after Tailwind:
+
+```css title="app/globals.css"
+@import "tailwindcss";
+@import "./habi.css";
+```
+
+This gives you:
+
+- **Every design token** as a CSS variable and a Tailwind class, like `bg-button-primary`, `text-label`, `rounded-control` and `shadow-card`. See [Foundations](/docs/foundations/color) for the full set.
+- **The `focus-ring` utility**, the 2px focus ring every interactive component uses.
+- **Page defaults:** Allo at its roundest setting, with Habi's text and background colors.
+
+`habi-tokens.css` replaces Tailwind's default color palette, so classes like `bg-blue-500` no longer exist. Use Habi's semantic colors instead, like `bg-interactive-default` or `text-text-secondary`. Their text and background pairs are already checked for contrast. Don't edit this file by hand: it's generated from Habi's design tokens.
+
+## 4. Add the `cn` helper
+
+Components use `cn` to combine their classes with yours. It also knows Habi's text styles, like `text-label`, so it doesn't drop them when merging.
+
+<ComponentSource src="registry/habi/lib/utils.ts" title="lib/utils.ts" />
+
+## 5. Check your import paths
+
+Components import each other with the `@/` alias, like `@/components/ui/field` and `@/lib/utils`. New Next.js projects set this up for you. If yours uses another alias or folder, update the imports after copying a component.
+
+## Shared parts
+
+Some components share parts. Add these when a component page asks for them.
+
+```npm
+npm install @base-ui/react @heroicons/react
+```
+
+### Status icon
+
+Notification and every error message use it.
+
+<ComponentSource
+  src="registry/habi/ui/status-icon.tsx"
+  title="components/ui/status-icon.tsx"
+/>
+
+### Field parts
+
+Labels, hints, errors and fieldsets for Text input, Select, Checkbox, Radio group and Date input.
+
+<ComponentSource
+  src="registry/habi/ui/field.tsx"
+  title="components/ui/field.tsx"
+/>
+
+## Add a component
+
+Each component page lists the packages it needs and the file to copy. Start with [Button](/docs/components/button).
