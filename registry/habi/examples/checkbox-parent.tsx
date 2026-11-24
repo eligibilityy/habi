@@ -38,7 +38,7 @@ export default function CheckboxParent() {
           </ChoiceLabel>
         </FieldItem>
         {requirements.map((item) => (
-          <FieldItem key={item.value} className="ps-8">
+          <FieldItem key={item.value} className="ps-9">
             <ChoiceLabel>
               <Checkbox value={item.value} />
               {item.label}
