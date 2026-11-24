@@ -5,9 +5,13 @@ description: Soft, consistent corners, set by role.
 
 Habi's corners are soft and friendly. Components use **role tokens**: `control`, `card` and `overlay`. Each one points at a step on the scale, so changing a role updates every component that uses it.
 
+Habi's scale isn't Tailwind's default: `rounded-lg` is 16px and `rounded-xl` is 24px, twice Tailwind's. Use a role token where one fits, so you don't have to remember the steps.
+
 <RadiusScale />
 
 ## Role tokens
+
+Some of these components are still being built. They'll use the role listed here.
 
 - **`rounded-control` (8px):** buttons, text inputs, selects, search, OTP boxes, time slots, close buttons and icon buttons in the header.
 - **`rounded-card` (16px):** cards, notifications, modals, the requirements checklist, fee summary, appointment picker, confirmation panel, status tracker, file upload drop zone and file rows, and payment options.
@@ -17,6 +21,6 @@ Habi's corners are soft and friendly. Components use **role tokens**: `control`,
 
 Some parts keep a fixed step:
 
-- **`rounded-md` (8px):** tags.
+- **`rounded-md` (8px):** tags and card icons.
 - **`rounded-sm` (4px):** menu items and checkbox boxes.
 - **`rounded-full`:** badges, radio buttons and date cells.
