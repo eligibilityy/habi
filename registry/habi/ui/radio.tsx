@@ -14,7 +14,7 @@ function Radio({
     <RadioPrimitive.Root
       data-slot="radio"
       className={cn(
-        "mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full border-2 border-border-strong-01 bg-field-01",
+        "m-0.5 flex size-5 shrink-0 items-center justify-center rounded-full border-2 border-border-strong-01 bg-field-01",
         "focus-visible:focus-ring",
         "in-[label:hover]:border-border-hover",
         "data-checked:border-interactive-default",
