@@ -1,3 +1,4 @@
+import { DocsTable } from "@/components/docs/docs-table";
 import {
   getMotion,
   getRadii,
@@ -41,40 +42,38 @@ export function TypeScale() {
 
 export function SpacingScale() {
   return (
-    <div className="not-prose my-6 overflow-x-auto">
-      <table className="w-full text-body-sm">
-        <thead className="text-left text-text-secondary">
-          <tr>
-            <th className="py-2 pr-4 font-semibold">Token</th>
-            <th className="py-2 pr-4 font-semibold">Size</th>
-            <th className="py-2 pr-4 font-semibold">Tailwind</th>
-            <th className="py-2 font-semibold">
-              <span className="sr-only">Preview</span>
-            </th>
+    <DocsTable>
+      <thead>
+        <tr>
+          <th>Token</th>
+          <th>Size</th>
+          <th>Tailwind</th>
+          <th>
+            <span className="sr-only">Preview</span>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        {getSpacing().map((space) => (
+          <tr key={space.token}>
+            <td className="whitespace-nowrap">
+              <code className="font-mono">{space.token}</code>
+            </td>
+            <td className="whitespace-nowrap">{space.px}px</td>
+            <td className="whitespace-nowrap">
+              <code className="font-mono">p-{space.tailwind}</code>
+            </td>
+            <td className="whitespace-nowrap">
+              <span
+                aria-hidden
+                className="block h-4 rounded-sm bg-interactive-default"
+                style={{ width: space.px }}
+              />
+            </td>
           </tr>
-        </thead>
-        <tbody>
-          {getSpacing().map((space) => (
-            <tr key={space.token} className="border-t border-border-subtle-01">
-              <td className="py-2 pr-4">
-                <code className="font-mono">{space.token}</code>
-              </td>
-              <td className="py-2 pr-4">{space.px}px</td>
-              <td className="py-2 pr-4">
-                <code className="font-mono">p-{space.tailwind}</code>
-              </td>
-              <td className="py-2">
-                <span
-                  aria-hidden
-                  className="block h-4 rounded-sm bg-interactive-default"
-                  style={{ width: space.px }}
-                />
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+        ))}
+      </tbody>
+    </DocsTable>
   );
 }
 
@@ -119,48 +118,43 @@ export function MotionScale() {
   const { durations, easings } = getMotion();
 
   return (
-    <div className="not-prose my-6 overflow-x-auto">
-      <table className="w-full text-body-sm">
-        <thead className="text-left text-text-secondary">
-          <tr>
-            <th className="py-2 pr-4 font-semibold">Token</th>
-            <th className="py-2 pr-4 font-semibold">Value</th>
-            <th className="py-2 font-semibold">Tailwind</th>
+    <DocsTable>
+      <thead>
+        <tr>
+          <th>Token</th>
+          <th>Value</th>
+          <th>Tailwind</th>
+        </tr>
+      </thead>
+      <tbody>
+        {durations.map((duration) => (
+          <tr key={duration.name}>
+            <td className="whitespace-nowrap">
+              <code className="font-mono">--duration-{duration.name}</code>
+            </td>
+            <td className="whitespace-nowrap">{duration.ms}ms</td>
+            <td className="whitespace-nowrap">
+              <code className="font-mono">
+                duration-(--duration-{duration.name})
+              </code>
+            </td>
           </tr>
-        </thead>
-        <tbody>
-          {durations.map((duration) => (
-            <tr
-              key={duration.name}
-              className="border-t border-border-subtle-01"
-            >
-              <td className="py-2 pr-4">
-                <code className="font-mono">--duration-{duration.name}</code>
-              </td>
-              <td className="py-2 pr-4">{duration.ms}ms</td>
-              <td className="py-2">
-                <code className="font-mono">
-                  duration-(--duration-{duration.name})
-                </code>
-              </td>
-            </tr>
-          ))}
-          {easings.map((easing) => (
-            <tr key={easing.name} className="border-t border-border-subtle-01">
-              <td className="py-2 pr-4">
-                <code className="font-mono">--ease-{easing.name}</code>
-              </td>
-              <td className="py-2 pr-4">
-                <code className="font-mono">{easing.value}</code>
-              </td>
-              <td className="py-2">
-                <code className="font-mono">ease-{easing.name}</code>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+        ))}
+        {easings.map((easing) => (
+          <tr key={easing.name}>
+            <td className="whitespace-nowrap">
+              <code className="font-mono">--ease-{easing.name}</code>
+            </td>
+            <td className="whitespace-nowrap">
+              <code className="font-mono">{easing.value}</code>
+            </td>
+            <td className="whitespace-nowrap">
+              <code className="font-mono">ease-{easing.name}</code>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </DocsTable>
   );
 }
 

@@ -66,12 +66,16 @@ export function getTextStyles() {
   }));
 }
 
+// Sorted by size: Object.entries lists number-like keys ("10") before
+// zero-padded ones ("01").
 export function getSpacing() {
-  return Object.entries(tokens.spacing).map(([step, px]) => ({
-    token: `spacing/${step}`,
-    px,
-    tailwind: String(px / 4),
-  }));
+  return Object.entries(tokens.spacing)
+    .map(([step, px]) => ({
+      token: `spacing/${step}`,
+      px,
+      tailwind: String(px / 4),
+    }))
+    .sort((a, b) => a.px - b.px);
 }
 
 const radii = tokens.radius as Record<string, number | string>;
