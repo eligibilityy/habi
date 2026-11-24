@@ -12,6 +12,8 @@ import { cn } from "@/registry/habi/lib/utils";
 
 const InCodeBlockTabs = createContext(false);
 
+// rounded-(--radius-control) instead of rounded-control: Fumadocs' own
+// tailwind-merge doesn't know Habi's role radii and would keep its rounded-xl.
 export function CodeBlock({
   className,
   ...props
@@ -21,7 +23,9 @@ export function CodeBlock({
   return (
     <FumadocsCodeBlock
       className={cn(
-        inTabs ? "bg-layer-01 last:rounded-b-none" : "my-6 rounded-sm",
+        inTabs
+          ? "bg-layer-01 last:rounded-b-none"
+          : "my-6 rounded-(--radius-control)",
         className,
       )}
       {...props}
@@ -38,7 +42,10 @@ export function CodeBlockTabs({
   return (
     <InCodeBlockTabs value>
       <FumadocsCodeBlockTabs
-        className={cn("my-6 overflow-hidden rounded-sm", className)}
+        className={cn(
+          "my-6 overflow-hidden rounded-(--radius-control)",
+          className,
+        )}
         {...props}
       />
     </InCodeBlockTabs>

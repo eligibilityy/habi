@@ -7,7 +7,7 @@ type PropRow = {
 
 export function PropsTable({ rows }: { rows: PropRow[] }) {
   return (
-    <div className="not-prose my-6 overflow-x-auto rounded-sm border border-border-subtle-01 bg-layer-01">
+    <div className="not-prose my-6 overflow-x-auto rounded-card border border-border-subtle-01 bg-layer-01">
       <table className="w-full text-body-sm">
         <thead className="border-b border-border-subtle-01 bg-layer-accent-01 text-left text-text-secondary">
           <tr>
