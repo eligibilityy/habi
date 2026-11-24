@@ -12,6 +12,14 @@ export const metadata: Metadata = {
   },
   description:
     "(UNOFFICIAL) An independent design system concept for Philippine government digital services.",
+  openGraph: {
+    siteName: appName,
+    type: "website",
+    locale: "en_PH",
+  },
+  twitter: {
+    card: "summary_large_image",
+  },
 };
 
 export default function Layout({ children }: LayoutProps<"/">) {
