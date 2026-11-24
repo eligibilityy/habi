@@ -1,0 +1,35 @@
+---
+title: Breadcrumb
+description: Shows where a page sits in a site, with links back to the pages above it.
+status: planned
+---
+
+## When to use
+
+Use a breadcrumb on sites with more than two levels, like Home / Services / Passport, so people can see where they are and go back up.
+
+Use something else when:
+
+- **The site is flat**, with every page one level below the home page.
+- **People are going through the steps of a form.** Show their progress in the form, not the site's structure.
+
+## How it will look and work
+
+- **It sits above the page title.**
+- **Each level is a link** (Body/SM), separated by a slash. The last item is the current page, as plain text.
+- **Deep pages** can collapse the middle levels into "…".
+- **On phones**, it shows only the parent page, as a back link.
+
+## Accessibility
+
+- **It's a navigation landmark** named "Breadcrumb", with the levels in an ordered list, so screen readers say how many there are.
+- **The current page** has `aria-current="page"`.
+
+## Related components
+
+- [Link](/docs/components/link): each level is a link.
+- [Header](/docs/components/header): for the site's main navigation.
+
+## Figma
+
+[Open Breadcrumb in the Habi Figma file](https://www.figma.com/design/D3nJzUeqpGlyMpimlesib6?node-id=39-130).

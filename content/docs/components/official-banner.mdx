@@ -1,0 +1,35 @@
+---
+title: Official banner
+description: Helps people check that they're on a real Philippine government website.
+status: planned
+---
+
+<Callout type="warning" title="For real government websites only">
+  Only use the official banner on a real government website ending in .gov.ph.
+  Habi is an unofficial design concept, and the banner must never make any other
+  site look official.
+</Callout>
+
+## When to use
+
+Put the official banner at the very top of every page of a government website, above the [Header](/docs/components/header), so people can tell a real government site from a fake one.
+
+## How it will look and work
+
+- **A dark bar** with a ".gov.ph" badge, the statement "Official PH Government website" and a chevron.
+- **Opening it** shows three ways to check a site: official websites use .gov.ph, the address starts with https://, and people should never share their OTP or PIN.
+- **On phones**, the three reasons stack.
+
+It will be built on Base UI's [Collapsible](https://base-ui.com/react/components/collapsible).
+
+## Accessibility
+
+- **The top row is one button** with `aria-expanded`. Hover underlines the statement, and keyboard focus shows a white focus ring that's visible on the dark bar.
+
+## Related components
+
+- [Header](/docs/components/header): sits right below the banner.
+
+## Figma
+
+[Open Official banner in the Habi Figma file](https://www.figma.com/design/D3nJzUeqpGlyMpimlesib6?node-id=9-47).

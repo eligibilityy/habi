@@ -1,0 +1,35 @@
+---
+title: Tooltip
+description: Shows a short label when people point at or focus a control, like the name of an icon-only button.
+status: planned
+---
+
+## When to use
+
+Use a tooltip to:
+
+- **Name an icon-only button**, like "Copy reference number".
+- **Give a brief hint** about a control.
+
+Don't use a tooltip for anything people need. Phones have no hover, so most people on phones never see it. Never put essential information, links or actions in one: write them on the page.
+
+## How it will look and work
+
+- **One short line** of Body/SM text on a dark background, with an arrow pointing at the control. Longer text wraps at 240px.
+- **Placement** is the side of the control it appears on: top, bottom, left or right. **Align** slides it along that side, so it stays on screen near the edges.
+
+It will be built on Base UI's [Tooltip](https://base-ui.com/react/components/tooltip).
+
+## Accessibility
+
+- **It appears on hover and on keyboard focus**, after a short delay.
+- **It stays open while the pointer is over it**, and <kbd>Esc</kbd> closes it (WCAG 1.4.13).
+- **The words must exist elsewhere too.** For an icon-only button, put them in its `aria-label` as well.
+
+## Related components
+
+- [Button](/docs/components/button): icon-only buttons need a tooltip and an accessible name.
+
+## Figma
+
+[Open Tooltip in the Habi Figma file](https://www.figma.com/design/D3nJzUeqpGlyMpimlesib6?node-id=159-63).

@@ -1,0 +1,42 @@
+---
+title: Modal
+description: Asks people to make a decision or finish a short task without leaving the page.
+status: planned
+---
+
+## When to use
+
+Use a modal for something people must deal with before they go on:
+
+- **Confirming an action that's hard to undo:** "Cancel this appointment?"
+- **A short task** that belongs to the current page, like adding one more document.
+
+Use something else when:
+
+- **The task is long**, like a whole application form. Give it its own page.
+- **People need to read the page behind it** to answer. Put the question on the page.
+- **It's only information.** Use a [Notification](/docs/components/notification).
+
+## How it will look and work
+
+- **Header:** the title (Heading/SM), which asks the question or names the task, and a close button.
+- **Body:** any content: text, a form, a checklist or a [File input](/docs/components/file-input).
+- **Footer:** the actions, on the right. For an action that's hard to undo, the main button is the Danger kind: "Cancel appointment", next to "Keep appointment".
+- **On phones**, it becomes a bottom sheet with a handle, and full-width buttons with the main action on top.
+
+It will be built on Base UI's [Dialog](https://base-ui.com/react/components/dialog), with [Drawer](https://base-ui.com/react/components/drawer) for the bottom sheet.
+
+## Accessibility
+
+- **Focus moves into the modal** when it opens, stays inside while it's open, and goes back to what opened it when it closes.
+- **<kbd>Esc</kbd> and the close button** close it. The close button is named "Close".
+- **The title names the modal** for screen readers.
+
+## Related components
+
+- [Button](/docs/components/button): for the actions.
+- [Notification](/docs/components/notification): for information that doesn't need a decision.
+
+## Figma
+
+[Open Modal in the Habi Figma file](https://www.figma.com/design/D3nJzUeqpGlyMpimlesib6?node-id=61-31).

@@ -9,6 +9,7 @@ import {
 } from "fumadocs-ui/layouts/docs/page";
 import { notFound } from "next/navigation";
 import { getMDXComponents } from "@/components/mdx";
+import { Callout } from "@/components/docs/callout";
 import type { Metadata } from "next";
 import { createRelativeLink } from "fumadocs-ui/mdx";
 import { getPageImageUrl, gitConfig } from "@/lib/shared";
@@ -35,6 +36,13 @@ export default async function Page(props: PageProps<"/docs/[[...slug]]">) {
         />
       </div>
       <DocsBody>
+        {page.data.status === "planned" && (
+          <Callout type="info" title="Planned">
+            This component is designed in Figma but not built yet, so
+            there&apos;s no code to install. This page describes what it will
+            do.
+          </Callout>
+        )}
         <MDX
           components={getMDXComponents({
             a: createRelativeLink(source, page),

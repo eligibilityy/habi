@@ -74,15 +74,17 @@ Shared parts with no Figma component of their own:
 
 ### Next, in order
 
-| Component       | Figma node       | Notes                                  |
-| --------------- | ---------------- | -------------------------------------- |
-| Accordion       | `38:15`          | Base UI Accordion                      |
-| Modal           | `61:31`          | Base UI Dialog; bottom sheet on phones |
-| Tooltip         | `159:2` _(page)_ | Base UI Tooltip                        |
-| Breadcrumb      | `39:130`         | `<nav aria-label="Breadcrumb"><ol>`    |
-| Official banner | `9:47`           | Base UI Collapsible                    |
-| Header          | `40:35`          | Mobile menu in a Drawer or Dialog      |
-| Footer          | `41:62`          | Figma mentions a logo but has no slot  |
+Each has a "Planned" page on the docs site, written from its Figma description.
+
+| Component       | Figma node | Notes                                  |
+| --------------- | ---------- | -------------------------------------- |
+| Accordion       | `38:15`    | Base UI Accordion                      |
+| Modal           | `61:31`    | Base UI Dialog; bottom sheet on phones |
+| Tooltip         | `159:63`   | Base UI Tooltip                        |
+| Breadcrumb      | `39:130`   | `<nav aria-label="Breadcrumb"><ol>`    |
+| Official banner | `9:47`     | Base UI Collapsible                    |
+| Header          | `40:35`    | Mobile menu in a Drawer or Dialog      |
+| Footer          | `41:62`    | Logo slot for the agency mark          |
 
 ### In Figma, not planned yet
 
@@ -107,7 +109,7 @@ Changes the Figma file should make to match code. Newest first.
 - [ ] **Read me page:** missing (what Habi is, enabling the library, credits, changelog, disclaimer).
 - [ ] **Examples page:** has a component named "Header" (`107:2607`). Rename it, for example `_Example header`.
 - [ ] **Foundations:** two frames are named "Icons". Tidy.
-- [ ] **Footer (`41:62`):** the description mentions a logo placeholder, but there's no Logo slot.
+- [x] **Footer (`41:62`):** the description mentioned a logo placeholder with no Logo slot. Figma now has a Logo slot (checked 2026-11-24).
 - [ ] **Missing Hover/Focus states:** Breadcrumb links, Step links, Header nav items, Footer links, Notification close, Modal close, Official banner toggle, Requirement row.
 
 No change needed, for the record:
