@@ -191,6 +191,7 @@ Group long lists under headings, so people can find their option faster.
 - **Keyboard:** <kbd>Enter</kbd>, <kbd>Space</kbd> or <kbd>↓</kbd> opens the list. Arrow keys move, typing a letter jumps to matching options, <kbd>Enter</kbd> chooses, and <kbd>Esc</kbd> closes it. Focus returns to the field.
 - **Label:** `SelectLabel` names the field for screen readers. Clicking it moves focus to the field without opening the list.
 - **Selected option:** shown with a check and a blue background, not just color.
+- **Errors** appear below the field, with an icon and text, not just a red border.
 - **Small screens:** the list never runs past the edge of the screen. It flips above the field and scrolls when space is short.
 - **Motion:** the open and close fade is turned off for people who prefer reduced motion.
 
@@ -198,6 +199,7 @@ Group long lists under headings, so people can find their option faster.
 
 - **Give every select a `SelectLabel`.** The placeholder disappears once people choose.
 - **Pass `items`**, so the field and screen readers show the chosen label, not its value.
+- **Use Base UI's `Form`**, or your own submit handling, to move focus to the field after a failed submit.
 
 ## Related components
 
