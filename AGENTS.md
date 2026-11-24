@@ -12,3 +12,7 @@ This site is built with [Fumadocs](https://fumadocs.dev) on Next.js. The APIs an
 # Documentation
 
 When writing, editing or reviewing a docs page, follow the Habi documentation skill in `.agents/skills/habi-documentation/SKILL.md` and the reference files it lists.
+
+# Design sync
+
+The Figma file is designed by a separate agent (Claude desktop with the Figma connector). `design/SYNC.md` explains how the two stay in step. Before building a component, read the Figma file's Changelog page and copy new entries into SYNC.md. When code differs from Figma, add a Code → Figma item. When a PR merges, update the component status in SYNC.md.
