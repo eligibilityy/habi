@@ -22,6 +22,8 @@ import CheckboxValidation from "./checkbox-validation";
 import DateInputDemo from "./date-input-demo";
 import DateInputDisabled from "./date-input-disabled";
 import DateInputValidation from "./date-input-validation";
+import FileInputDemo from "./file-input-demo";
+import FileInputValidation from "./file-input-validation";
 import LinkDemo from "./link-demo";
 import LinkStandalone from "./link-standalone";
 import LinkNext from "./link-next";
@@ -74,6 +76,8 @@ export const examples: Record<string, ComponentType> = {
   "date-input-demo": DateInputDemo,
   "date-input-disabled": DateInputDisabled,
   "date-input-validation": DateInputValidation,
+  "file-input-demo": FileInputDemo,
+  "file-input-validation": FileInputValidation,
   "link-demo": LinkDemo,
   "link-standalone": LinkStandalone,
   "link-next": LinkNext,

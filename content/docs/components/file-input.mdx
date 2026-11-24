@@ -1,0 +1,193 @@
+---
+title: File input
+description: Lets people upload one file, like a photo of their ID or a scanned certificate.
+---
+
+<ComponentPreview name="file-input-demo" />
+
+## When to use
+
+Use a file input when a service needs a document people already have, like a photo of a valid ID, a barangay certificate or a scanned payslip.
+
+Use something else when:
+
+- **You can get the information another way.** Ask for an ID number with a [Text input](/docs/components/text-input) if you can check it yourself, instead of asking for a photo of the card.
+- **People need to send several files.** File input takes one file. Use one file input per document, each with its own label, so people know what's still missing.
+
+## Installation
+
+[Set up Habi](/docs/installation) and add the [shared parts](/docs/installation#shared-parts) first, if you haven't already. File input also uses [Button](/docs/components/button) and [Link](/docs/components/link) styles, so add those components too.
+
+Install the packages this component uses:
+
+```npm
+npm install @base-ui/react @heroicons/react
+```
+
+Add the component:
+
+<ComponentSource
+  src="registry/habi/ui/file-input.tsx"
+  title="components/ui/file-input.tsx"
+/>
+
+## Usage
+
+```tsx
+import {
+  Field,
+  FieldDescription,
+  FieldError,
+  FieldLabel,
+} from "@/components/ui/field";
+import { FileInput } from "@/components/ui/file-input";
+
+<Field invalid={error !== null}>
+  <FieldLabel>Photo of your valid ID</FieldLabel>
+  <FieldDescription>JPG, PNG or PDF, up to 5 MB.</FieldDescription>
+  <FileInput
+    accept="image/jpeg,image/png,application/pdf"
+    file={file}
+    progress={progress}
+    onFileSelect={(chosen) => {
+      // Check the type and size, then start uploading.
+    }}
+    onRemove={() => {
+      // Cancel the upload or delete the file.
+    }}
+  />
+  <FieldError match>{error}</FieldError>
+</Field>;
+```
+
+People can drag a file onto the drop zone, or press it to open their device's file picker. On phones, the picker also offers the camera when `accept` includes image types.
+
+FileInput shows each step, and you handle the upload:
+
+- **`onFileSelect`** gives you the file people chose. Check its type and size there: `accept` only filters the file picker, and people can still drop any file.
+- **`file`** is the file to show. While it's set, a row with its name and size replaces the drop zone. It can also be a file uploaded earlier, described as `{ name, size }`.
+- **`progress`** shows a progress bar from 0 to 100. Leave it out once the upload is done, and the row shows a check and Remove.
+- **`onRemove`** runs when people cancel the upload or remove the file. Set `file` back to `null`.
+
+FileInput doesn't keep the file in the form. Upload it as soon as people choose it, as the example does, and send what your server returns when the form is submitted.
+
+## Examples
+
+### Required file
+
+Check for the file when people press Continue. Set `invalid` on the `Field`, show a `FieldError` with `match`, and move focus to the file input. Clear the error when people choose a file: Base UI's `Form` won't submit while the field is marked invalid.
+
+Mark the label `required` instead of the input: FileInput doesn't take a `required` prop.
+
+<ComponentPreview name="file-input-validation" />
+
+## Content guidelines
+
+- **The label names the document:** "Photo of your valid ID", "Barangay certificate". Not "Upload file".
+- **The hint says which files work:** "JPG, PNG or PDF, up to 5 MB."
+- **A tip helps people get it right the first time,** especially for photos: "Take the photo on a flat surface. Make sure all four corners of the ID are visible and the text is sharp." Put it in a `FieldDescription` with an info `StatusIcon` below the file input, as the first example does.
+- **Errors say what's wrong and what to do:** "This file is larger than 5 MB. Choose a smaller photo." Not "Invalid file".
+- **Keep file limits generous.** Phone photos are often 3 to 5 MB. If your server can, shrink photos after upload instead of asking people to.
+
+## Props
+
+<PropsTable
+  rows={[
+    {
+      name: "file",
+      type: "{ name: string; size: number } | null",
+      description:
+        "The file to show. A File works. While it's set, the file row replaces the drop zone.",
+    },
+    {
+      name: "progress",
+      type: "number",
+      description:
+        "Upload progress from 0 to 100. Leave it out once the upload is done.",
+    },
+    {
+      name: "onFileSelect",
+      type: "(file: File) => void",
+      description:
+        "Called with the file people chose or dropped. Check its type and size here.",
+    },
+    {
+      name: "onRemove",
+      type: "() => void",
+      description: "Called when people cancel the upload or remove the file.",
+    },
+    {
+      name: "accept",
+      type: "string",
+      description:
+        'The file types the picker shows, like "image/jpeg,image/png,application/pdf". Include image types to offer the camera on phones.',
+    },
+    {
+      name: "disabled",
+      type: "boolean",
+      default: "false",
+      description: "Stops people choosing or removing a file.",
+    },
+    {
+      name: "prompt",
+      type: "string",
+      default: '"Drag a file here, or"',
+      description: "The text above the button.",
+    },
+    {
+      name: "chooseLabel",
+      type: "string",
+      default: '"Choose file"',
+      description: "The button's text.",
+    },
+    {
+      name: "removeLabel",
+      type: "string",
+      default: '"Remove"',
+      description: "The remove button's text.",
+    },
+    {
+      name: "cancelLabel",
+      type: "string",
+      default: '"Cancel upload"',
+      description: "Names the cancel button for screen readers.",
+    },
+    {
+      name: "uploadingText",
+      type: "(progress: number) => string",
+      default: '"Uploading, 60%"…',
+      description: "The progress text after the file size.",
+    },
+  ]}
+/>
+
+Translate the text props when the page isn't in English. FileInput also accepts the other props of Base UI's [Input](https://base-ui.com/react/components/input), like `name` and `id`.
+
+## Accessibility
+
+### What Habi handles
+
+- **A real file input:** the drop zone holds the browser's own file input, so it works with the keyboard, screen readers and voice control. It takes its name from the `FieldLabel`, and the hint and error are read with it.
+- **Keyboard:** <kbd>Tab</kbd> moves to the file input, and <kbd>Enter</kbd> or <kbd>Space</kbd> opens the file picker. Dragging is never the only way to add a file.
+- **Focus:** after people choose a file, focus moves to the file row's Cancel or Remove button. After they remove it, focus goes back to the file input.
+- **Progress:** the progress bar reports its value to screen readers. "Uploading" and "uploaded" are announced once each, not at every percent.
+- **Buttons:** Remove is read with the file name, like "Remove philid-front.jpg", and Cancel is named "Cancel upload".
+- **Errors** appear below the file input, with an icon and text, not just a red border.
+
+### What you need to do
+
+- **Give it a `FieldLabel`** that names the document.
+- **Check every file** in `onFileSelect`, and on your server. `accept` doesn't stop people dropping other files.
+- **Say what went wrong** in a `FieldError`, and keep the drop zone so people can try again.
+- **Move focus to the file input** when an error appears on submit, as the required file example does.
+- **Translate the text props** when the page isn't in English.
+
+## Related components
+
+- [Text input](/docs/components/text-input): for ID and reference numbers you can check without a photo.
+- [Button](/docs/components/button): for Continue.
+- [Notification](/docs/components/notification): to confirm the form was saved.
+
+## Figma
+
+[Open File upload in the Habi Figma file](https://www.figma.com/design/D3nJzUeqpGlyMpimlesib6?node-id=63-57).

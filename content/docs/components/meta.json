@@ -6,6 +6,7 @@
     "card",
     "checkbox",
     "date-input",
+    "file-input",
     "link",
     "notification",
     "otp-input",
