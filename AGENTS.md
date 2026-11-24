@@ -8,3 +8,7 @@ This site is built with [Fumadocs](https://fumadocs.dev) on Next.js. The APIs an
 - Changing the theme and colors: https://fumadocs.dev/docs/ui/theme.md
 - Upgrading Fumadocs: https://fumadocs.dev/docs/next/upgrade.md
 - Other tasks: https://fumadocs.dev/llms.txt lists every docs page.
+
+# Documentation
+
+When writing, editing or reviewing a docs page, follow the Habi documentation skill in `.agents/skills/habi-documentation/SKILL.md` and the reference files it lists.
