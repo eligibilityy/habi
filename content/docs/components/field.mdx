@@ -1,0 +1,246 @@
+---
+title: Field
+description: Gives a form control its label, hint and error message, and groups related controls under one question.
+---
+
+<ComponentPreview name="field-demo" />
+
+## When to use
+
+Use the field parts around every form control: [Text input](/docs/components/text-input), [Select](/docs/components/select), [Checkbox](/docs/components/checkbox), [Radio group](/docs/components/radio-group), [OTP input](/docs/components/otp-input) and [File input](/docs/components/file-input). They tie the label, hint and error to the control, so people and screen readers get all three together.
+
+- **One control:** wrap it in a `Field` with a `FieldLabel`.
+- **One question with several controls,** like a group of radio buttons: wrap them in a `Fieldset` and ask the question in a `FieldsetLegend`.
+
+[Date input](/docs/components/date-input) has the field parts built in, so you don't add them yourself.
+
+## Installation
+
+[Set up Habi](/docs/installation) first, if you haven't already.
+
+<InstallationTabs>
+<InstallationTab value="command">
+
+Add the component with the shadcn CLI. It also adds the Habi parts the component uses.
+
+```npm
+npx shadcn@latest add https://habi.yiliya.studio/r/field.json
+```
+
+</InstallationTab>
+<InstallationTab value="manual">
+
+Add the [Status icon](/docs/components/status-icon#installation) first, then install the packages this component uses:
+
+```npm
+npm install @base-ui/react
+```
+
+Add the component:
+
+<ComponentSource
+  src="registry/habi/ui/field.tsx"
+  title="components/ui/field.tsx"
+/>
+
+</InstallationTab>
+</InstallationTabs>
+
+## Usage
+
+```tsx
+import {
+  Field,
+  FieldDescription,
+  FieldError,
+  FieldLabel,
+} from "@/components/ui/field";
+import { Input } from "@/components/ui/input";
+
+<Field>
+  <FieldLabel required>Mobile number</FieldLabel>
+  <Input type="tel" autoComplete="tel-national" required />
+  <FieldDescription>We'll send your reference number to this number by SMS.</FieldDescription>
+  <FieldError match="valueMissing">Enter your mobile number.</FieldError>
+</Field>;
+```
+
+Put the label first and the error last. The hint usually goes under the control. Put it above when people need it before they start, like the file types for [File input](/docs/components/file-input) or where the code was sent for [OTP input](/docs/components/otp-input).
+
+## Examples
+
+### Errors
+
+`FieldError` only shows when `match` says so. Use a browser check, like `"valueMissing"`, for problems the browser finds when people submit. When your own code finds the problem, set `invalid` on the `Field` and `match` on the error.
+
+<ComponentPreview name="text-input-server-error" />
+
+See [Text input](/docs/components/text-input#validation) for checking a whole form when people submit it.
+
+### Questions with several controls
+
+Put the controls in a `Fieldset` and ask the question in its `FieldsetLegend`. Give the fieldset the group's behavior with `render`, like `render={<RadioGroup />}`. Wrap each option in a `FieldItem`, and its control and text in a `ChoiceLabel`.
+
+<ComponentPreview name="radio-group-demo" />
+
+## Content guidelines
+
+- **Labels name what to enter,** in a few words: "Mobile number", not "Please enter your mobile number below".
+- **Legends ask the question** the options answer: "How do you want to get your clearance?"
+- **Hints help people answer:** where to find something ("16 digits, printed on the front of your card") or the format to use ("For example, 15 March 1990"). Leave the hint out when the label says enough.
+- **Errors say what's wrong and how to fix it:** "Enter a mobile number, like 917 123 4567", not "Invalid number".
+- **Mark required questions** with `required`, and say "\* means required" once near the top of the form.
+
+## Props
+
+### Field
+
+<PropsTable
+  rows={[
+    {
+      name: "name",
+      type: "string",
+      description:
+        "Identifies the field when the form is submitted, and matches errors passed to Form.",
+    },
+    {
+      name: "invalid",
+      type: "boolean",
+      description:
+        "Marks the field as invalid when your own code finds a problem.",
+    },
+    {
+      name: "disabled",
+      type: "boolean",
+      default: "false",
+      description: "Disables the label, control and messages together.",
+    },
+  ]}
+/>
+
+Field also accepts the other props of Base UI's [Field Root](https://base-ui.com/react/components/field#root), like `validate`.
+
+### FieldLabel
+
+<PropsTable
+  rows={[
+    {
+      name: "required",
+      type: "boolean",
+      default: "false",
+      description:
+        "Shows a red asterisk. Also set required on the control, which screen readers announce.",
+    },
+  ]}
+/>
+
+### FieldDescription
+
+<PropsTable
+  rows={[
+    {
+      name: "children",
+      type: "ReactNode",
+      required: true,
+      description: "The hint.",
+    },
+  ]}
+/>
+
+### FieldError
+
+<PropsTable
+  rows={[
+    {
+      name: "match",
+      type: 'true | "valueMissing" | "typeMismatch" | "patternMismatch" | "tooShort" | "tooLong" | …',
+      description:
+        "When to show the error. Use a check name for browser validation, or true to show it whenever it renders.",
+    },
+    {
+      name: "children",
+      type: "ReactNode",
+      required: true,
+      description:
+        "The message: say what's wrong and how to fix it. Without one, nothing renders.",
+    },
+  ]}
+/>
+
+### Fieldset
+
+<PropsTable
+  rows={[
+    {
+      name: "render",
+      type: "ReactElement",
+      description:
+        "Gives the fieldset a group's behavior, like render={<RadioGroup />} or render={<CheckboxGroup />}.",
+    },
+  ]}
+/>
+
+### FieldsetLegend
+
+<PropsTable
+  rows={[
+    {
+      name: "required",
+      type: "boolean",
+      default: "false",
+      description: "Shows a red asterisk after the question.",
+    },
+  ]}
+/>
+
+### FieldItem
+
+<PropsTable
+  rows={[
+    {
+      name: "disabled",
+      type: "boolean",
+      default: "false",
+      description: "Disables one option in a group.",
+    },
+  ]}
+/>
+
+### ChoiceLabel
+
+<PropsTable
+  rows={[
+    {
+      name: "children",
+      type: "ReactNode",
+      required: true,
+      description: "A checkbox or radio, then its text.",
+    },
+  ]}
+/>
+
+## Accessibility
+
+### What Habi handles
+
+- **Labels:** `FieldLabel` is linked to the control, so clicking the label focuses the control and screen readers read it.
+- **Hints and errors** are linked to the control with `aria-describedby`, so screen readers read them when the control gets focus.
+- **Errors aren't just red:** each one has an icon and text.
+- **The asterisk is hidden from screen readers.** They announce "required" from the `required` attribute on the control instead.
+- **Questions:** the legend names its fieldset, so screen readers read the question with the options.
+- **Whole row:** `ChoiceLabel` wraps the control and its text, so the full 48px row can be pressed.
+
+### What you need to do
+
+- **Give every control a visible `FieldLabel` or `FieldsetLegend`.** A placeholder isn't a label.
+- **Set `required` on the control** whenever you set it on the label or legend.
+- **Use Base UI's `Form`**, or your own submit handling, to move focus to the first problem after people submit.
+
+## Related components
+
+- [Text input](/docs/components/text-input), [Select](/docs/components/select), [Checkbox](/docs/components/checkbox) and [Radio group](/docs/components/radio-group): the controls that go inside a field.
+- [Status icon](/docs/components/status-icon): the icon in each error message.
+
+## Figma
+
+Field has no Figma component of its own. Figma draws the label, hint and error inside each form component, like [Text input](https://www.figma.com/design/D3nJzUeqpGlyMpimlesib6?node-id=28-28).

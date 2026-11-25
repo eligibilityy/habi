@@ -1,0 +1,102 @@
+---
+title: Status icon
+description: Shows at a glance whether a message is information, a success, a warning or an error.
+---
+
+<ComponentPreview name="status-icon-demo" />
+
+## When to use
+
+[Notification](/docs/components/notification) and the error messages in [Field](/docs/components/field) already include a status icon. Use it yourself when you build another message with a status, like the result of each step in an application summary.
+
+Use something else when:
+
+- **The status is a short label,** like "Open" or "Closing soon". Use a [Badge](/docs/components/badge).
+- **The icon has nothing to do with a status,** like a calendar next to a date. Use an icon from `@heroicons/react` directly.
+
+## Installation
+
+[Set up Habi](/docs/installation) first, if you haven't already.
+
+<InstallationTabs>
+<InstallationTab value="command">
+
+Add the component with the shadcn CLI. It also adds the Habi parts the component uses.
+
+```npm
+npx shadcn@latest add https://habi.yiliya.studio/r/status-icon.json
+```
+
+</InstallationTab>
+<InstallationTab value="manual">
+
+Install the packages this component uses:
+
+```npm
+npm install @heroicons/react
+```
+
+Add the component:
+
+<ComponentSource
+  src="registry/habi/ui/status-icon.tsx"
+  title="components/ui/status-icon.tsx"
+/>
+
+</InstallationTab>
+</InstallationTabs>
+
+## Usage
+
+```tsx
+import { StatusIcon } from "@/components/ui/status-icon";
+
+<p className="flex items-start gap-2">
+  <StatusIcon kind="success" />
+  We've checked your documents.
+</p>;
+```
+
+Put the icon before text that says the same thing. Align it to the start of the text, so it stays next to the first line when the text wraps.
+
+## Content guidelines
+
+- **Pick the kind by meaning,** not by color: info for news, success when something worked, warning for something people should act on soon, and error when something went wrong.
+- **The text carries the message.** Write it so it makes sense without the icon.
+
+## Props
+
+<PropsTable
+  rows={[
+    {
+      name: "kind",
+      type: '"info" | "success" | "warning" | "error"',
+      required: true,
+      description: "The status, which sets the icon and its color.",
+    },
+  ]}
+/>
+
+StatusIcon also accepts the props of the HTML `<span>` element, like `className`.
+
+## Accessibility
+
+### What Habi handles
+
+- **Hidden from screen readers:** the icon has `aria-hidden`, so the message isn't read twice. The text next to it carries the meaning.
+- **Not just color:** each kind has its own shape (an i, a check, a triangle or an exclamation mark), so people can tell them apart without color.
+- **Readable on tinted backgrounds:** a backing behind each mark keeps it clear on a colored Notification.
+
+### What you need to do
+
+- **Always put text next to the icon** that says the same thing. Screen readers don't read the icon.
+
+## Related components
+
+- [Notification](/docs/components/notification): a message with a status icon, a title and details.
+- [Field](/docs/components/field): its error messages use the error icon.
+- [Badge](/docs/components/badge): a short status label in words.
+
+## Figma
+
+[Open the status icons in the Habi Figma file](https://www.figma.com/design/D3nJzUeqpGlyMpimlesib6?node-id=27-2).

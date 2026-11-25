@@ -26,6 +26,7 @@ import CheckboxValidation from "./checkbox-validation";
 import DateInputDemo from "./date-input-demo";
 import DateInputDisabled from "./date-input-disabled";
 import DateInputValidation from "./date-input-validation";
+import FieldDemo from "./field-demo";
 import FileInputDemo from "./file-input-demo";
 import FileInputValidation from "./file-input-validation";
 import LinkDemo from "./link-demo";
@@ -49,6 +50,7 @@ import SelectDemo from "./select-demo";
 import SelectDisabled from "./select-disabled";
 import SelectGrouped from "./select-grouped";
 import SelectValidation from "./select-validation";
+import StatusIconDemo from "./status-icon-demo";
 import TagControlled from "./tag-controlled";
 import TagDemo from "./tag-demo";
 import TagDisabled from "./tag-disabled";
@@ -82,6 +84,7 @@ export const examples: Record<string, ComponentType> = {
   "date-input-demo": DateInputDemo,
   "date-input-disabled": DateInputDisabled,
   "date-input-validation": DateInputValidation,
+  "field-demo": FieldDemo,
   "file-input-demo": FileInputDemo,
   "file-input-validation": FileInputValidation,
   "link-demo": LinkDemo,
@@ -105,6 +108,7 @@ export const examples: Record<string, ComponentType> = {
   "select-disabled": SelectDisabled,
   "select-grouped": SelectGrouped,
   "select-validation": SelectValidation,
+  "status-icon-demo": StatusIconDemo,
   "tag-controlled": TagControlled,
   "tag-demo": TagDemo,
   "tag-disabled": TagDisabled,

@@ -33,7 +33,7 @@ npx shadcn@latest add https://habi.yiliya.studio/r/checkbox.json
 </InstallationTab>
 <InstallationTab value="manual">
 
-Add the [shared parts](/docs/installation#shared-parts) first, then install the packages this component uses:
+Add [Field](/docs/components/field#installation) first, then install the packages this component uses:
 
 ```npm
 npm install @base-ui/react @heroicons/react
@@ -175,18 +175,7 @@ Disable an option with `disabled` on its `FieldItem`, and say why in its label.
   ]}
 />
 
-### FieldsetLegend
-
-<PropsTable
-  rows={[
-    {
-      name: "required",
-      type: "boolean",
-      default: "false",
-      description: "Shows a red asterisk after the question.",
-    },
-  ]}
-/>
+The question and its options use [Field](/docs/components/field#props) parts, like `FieldsetLegend` and `ChoiceLabel`. See their props there.
 
 ## Accessibility
 

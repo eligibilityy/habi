@@ -35,7 +35,7 @@ npx shadcn@latest add https://habi.yiliya.studio/r/text-input.json
 </InstallationTab>
 <InstallationTab value="manual">
 
-Add the [shared parts](/docs/installation#shared-parts) first, then install the packages this component uses:
+Add [Field](/docs/components/field#installation) first, then install the packages this component uses:
 
 ```npm
 npm install @base-ui/react
@@ -101,63 +101,7 @@ Only disable a field when people can't change the answer, and say why in the des
 
 ## Props
 
-### Field
-
-<PropsTable
-  rows={[
-    {
-      name: "name",
-      type: "string",
-      description:
-        "Identifies the field when the form is submitted, and matches errors passed to Form.",
-    },
-    {
-      name: "invalid",
-      type: "boolean",
-      description:
-        "Marks the field as invalid when your own code finds a problem.",
-    },
-    {
-      name: "disabled",
-      type: "boolean",
-      default: "false",
-      description: "Disables the label, control and messages together.",
-    },
-  ]}
-/>
-
-### FieldLabel
-
-<PropsTable
-  rows={[
-    {
-      name: "required",
-      type: "boolean",
-      default: "false",
-      description:
-        "Shows a red asterisk. Also set required on the input, which screen readers announce.",
-    },
-  ]}
-/>
-
-### FieldError
-
-<PropsTable
-  rows={[
-    {
-      name: "match",
-      type: 'true | "valueMissing" | "typeMismatch" | "patternMismatch" | "tooShort" | "tooLong" | …',
-      description:
-        "When to show the error. Use a check name for browser validation, or true to show it whenever it renders.",
-    },
-    {
-      name: "children",
-      type: "ReactNode",
-      required: true,
-      description: "The message: say what's wrong and how to fix it.",
-    },
-  ]}
-/>
+The label, hint and error are [Field](/docs/components/field#props) parts. See their props there.
 
 `Input` accepts every prop of the HTML `<input>` element, like `type`, `autoComplete`, `inputMode` and `required`.
 
