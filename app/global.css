@@ -64,3 +64,39 @@ html > body[data-scroll-locked] {
 #fd-search-dialog-content .rounded-lg {
   border-radius: var(--radius-sm);
 }
+
+/*
+ * Docs type. Body text at full strength (Fumadocs fades it to 90%), and
+ * headings that step down clearly from the page title with tight tracking:
+ * title 32px, h2 24px, h3 18px. Only headings written in the page, not ones
+ * inside component previews. Scoped to the page, since the table of contents
+ * reuses the prose class.
+ */
+#nd-page .prose {
+  --tw-prose-body: var(--text-primary);
+  line-height: 1.625rem;
+}
+
+#nd-page .prose > :is(h2, h3, h4) {
+  font-weight: 600;
+}
+
+#nd-page .prose > h2 {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  letter-spacing: -0.015em;
+}
+
+#nd-page .prose > h3 {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  letter-spacing: -0.01em;
+}
+
+/* Inline code: a grey fill, no border. */
+#nd-page .prose :not(pre) > code:not(.not-prose *) {
+  border: 0;
+  border-radius: var(--radius-sm);
+  padding: 0.125rem 0.3rem;
+  background: var(--layer-accent-01);
+}

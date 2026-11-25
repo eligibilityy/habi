@@ -27,18 +27,33 @@ export default async function Page(props: PageProps<"/docs/[[...slug]]">) {
   const markdownUrl = `${page.url}.md`;
 
   return (
-    <DocsPage toc={page.data.toc} full={page.data.full}>
-      <DocsTitle>{page.data.title}</DocsTitle>
+    <DocsPage
+      toc={page.data.toc}
+      full={page.data.full}
+      // A column of about 75 characters, centred between the sidebar and the
+      // table of contents.
+      className="*:mx-auto *:w-full *:max-w-180"
+    >
+      <DocsTitle className="text-[2rem] leading-10 font-bold tracking-[-0.02em]">
+        {page.data.title}
+      </DocsTitle>
       <DocsDescription className="mb-0">
         {page.data.description}
       </DocsDescription>
-      <div className="-ms-2 flex flex-row items-center gap-1">
-        <MarkdownCopyButton markdownUrl={markdownUrl} className={pageAction} />
-        <ViewOptionsPopover
-          className={pageAction}
-          markdownUrl={markdownUrl}
-          githubUrl={`https://github.com/${gitConfig.user}/${gitConfig.repo}/blob/${gitConfig.branch}/content/docs/${encodeURI(page.path)}`}
-        />
+      {/* The wrapper keeps the column's margins; the row inside lines the
+          action text up with the title. */}
+      <div>
+        <div className="-ms-2 flex flex-row items-center gap-1">
+          <MarkdownCopyButton
+            markdownUrl={markdownUrl}
+            className={pageAction}
+          />
+          <ViewOptionsPopover
+            className={pageAction}
+            markdownUrl={markdownUrl}
+            githubUrl={`https://github.com/${gitConfig.user}/${gitConfig.repo}/blob/${gitConfig.branch}/content/docs/${encodeURI(page.path)}`}
+          />
+        </div>
       </div>
       <DocsBody>
         {page.data.status === "planned" && (
