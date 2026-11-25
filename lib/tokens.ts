@@ -45,12 +45,25 @@ export function getPrimitiveRamps() {
 export function getSemanticColors(group: string): ColorToken[] {
   const colors = Object.entries(tokens.color)
     .filter(([path]) => path.startsWith(`${group}/`))
-    .map(([path, ref]) => ({
-      name: path,
-      ref,
-      hex: resolvePrimitive(ref),
-      cssVar: `--${toCssName(path)}`,
-    }));
+    .map(([path, value]) => {
+      if (typeof value === "string") {
+        return {
+          name: path,
+          ref: value,
+          hex: resolvePrimitive(value),
+          cssVar: `--${toCssName(path)}`,
+        };
+      }
+      const alphaHex = Math.round((value.alpha / 100) * 255)
+        .toString(16)
+        .padStart(2, "0");
+      return {
+        name: path,
+        ref: `${value.ref} at ${value.alpha}%`,
+        hex: `${resolvePrimitive(value.ref)}${alphaHex}`,
+        cssVar: `--${toCssName(path)}`,
+      };
+    });
   if (colors.length === 0) throw new Error(`No color tokens in "${group}"`);
   return colors;
 }
@@ -63,6 +76,7 @@ export function getTextStyles() {
     size: style.size,
     lineHeight: style.lineHeight,
     weight: tokens.font.weight[style.weight as Weight],
+    mono: "family" in style && style.family === "mono",
   }));
 }
 

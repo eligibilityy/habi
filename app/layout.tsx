@@ -3,6 +3,7 @@ import { appName, siteUrl } from "@/lib/shared";
 import { RootProvider } from "fumadocs-ui/provider/next";
 import "./global.css";
 import "allo-font/allo.css";
+import "@fontsource/jetbrains-mono/400.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

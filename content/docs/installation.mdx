@@ -14,18 +14,20 @@ You need a React project with **Tailwind CSS v4**. The examples on this site use
 ## 1. Install the shared packages
 
 ```npm
-npm install allo-font clsx tailwind-merge
+npm install allo-font @fontsource/jetbrains-mono clsx tailwind-merge
 ```
 
 - **`allo-font`** is Allo, Habi's typeface.
+- **`@fontsource/jetbrains-mono`** is JetBrains Mono, for reference numbers and shortcut hints.
 - **`clsx`** and **`tailwind-merge`** combine class names, so a `className` you pass to a component replaces its own classes instead of clashing with them.
 
-## 2. Load the typeface
+## 2. Load the typefaces
 
-Import Allo's stylesheet once, in your root layout:
+Import both stylesheets once, in your root layout:
 
 ```tsx title="app/layout.tsx"
 import "allo-font/allo.css";
+import "@fontsource/jetbrains-mono/400.css";
 ```
 
 ## 3. Add Habi's styles
