@@ -30,6 +30,7 @@ export function TypeScale() {
               fontSize: rem(style.size),
               lineHeight: rem(style.lineHeight),
               fontWeight: style.weight,
+              fontFamily: style.mono ? "var(--font-mono)" : undefined,
             }}
           >
             Book your NBI clearance appointment

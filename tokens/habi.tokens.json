@@ -147,7 +147,8 @@
     "badge/warning-bg": "gold/10",
     "badge/warning-text": "gold/70",
     "badge/error-bg": "red/10",
-    "badge/error-text": "red/70"
+    "badge/error-text": "red/70",
+    "overlay/hover": { "ref": "neutral/100", "alpha": 8 }
   },
   "spacing": {
     "01": 2,
@@ -177,7 +178,7 @@
   },
   "font": {
     "sans": "Allo",
-    "mono": "ui-monospace, \"JetBrains Mono\", monospace",
+    "mono": "\"JetBrains Mono\", ui-monospace, monospace",
     "weight": {
       "regular": 400,
       "medium": 500,
@@ -198,7 +199,25 @@
     "body-sm": { "size": 14, "lineHeight": 20, "weight": "regular" },
     "label": { "size": 14, "lineHeight": 20, "weight": "semibold" },
     "helper": { "size": 14, "lineHeight": 20, "weight": "regular" },
-    "button": { "size": 16, "lineHeight": 24, "weight": "semibold" }
+    "button": { "size": 16, "lineHeight": 24, "weight": "semibold" },
+    "mono-lg": {
+      "size": 18,
+      "lineHeight": 28,
+      "weight": "regular",
+      "family": "mono"
+    },
+    "mono-sm": {
+      "size": 14,
+      "lineHeight": 20,
+      "weight": "regular",
+      "family": "mono"
+    },
+    "mono-xs": {
+      "size": 12,
+      "lineHeight": 20,
+      "weight": "regular",
+      "family": "mono"
+    }
   },
   "shadow": {
     "button": "0 1px 3px 0 rgb(33 33 33 / 0.08)",

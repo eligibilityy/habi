@@ -30,13 +30,25 @@ for (const [group, value] of Object.entries(tokens.primitive)) {
 }
 const primitiveNames = new Set(primitives.map(([name]) => name));
 
-const semantics = Object.entries(tokens.color).map(([path, ref]) => {
+// A semantic color is a primitive, or { ref, alpha } for a see-through one.
+const semantics = Object.entries(tokens.color).map(([path, value]) => {
+  const ref = typeof value === "string" ? value : value.ref;
   const target = toName(ref);
   if (!primitiveNames.has(target)) {
     throw new Error(`"${path}" points to "${ref}", which is not a primitive`);
   }
-  return [toName(path), target];
+  const css =
+    typeof value === "string"
+      ? `var(--${target})`
+      : withAlpha(primitives.find(([name]) => name === target)[1], value.alpha);
+  return [toName(path), css];
 });
+
+// A plain rgb() value, so older browsers don't fall back to the solid colour.
+function withAlpha(hex, alpha) {
+  const [r, g, b] = [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16));
+  return `rgb(${r} ${g} ${b} / ${alpha / 100})`;
+}
 
 const colorNames = [...primitives, ...semantics].map(([name]) => name);
 const { font, motion } = tokens;
@@ -47,7 +59,7 @@ const css = [
   ":root {",
   ...primitives.map(([name, hex]) => `  --${name}: ${hex};`),
   "",
-  ...semantics.map(([name, target]) => `  --${name}: var(--${target});`),
+  ...semantics.map(([name, css]) => `  --${name}: ${css};`),
   "",
   `  --font-roundness: ${font.roundness};`,
   "}",
@@ -84,6 +96,15 @@ const css = [
   ),
   "}",
   "",
+  // Theme text sizes can't set a font family, so a utility of the same name adds it.
+  ...Object.entries(tokens.textStyle)
+    .filter(([, style]) => style.family)
+    .flatMap(([name, style]) => [
+      `@utility text-${name} {`,
+      `  font-family: var(--font-${style.family});`,
+      "}",
+      "",
+    ]),
 ].join("\n");
 
 await mkdir(dirname(OUTPUT), { recursive: true });
