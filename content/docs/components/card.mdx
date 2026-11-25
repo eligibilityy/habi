@@ -20,13 +20,21 @@ Use something else when:
 
 ## Installation
 
-[Set up Habi](/docs/installation) first, if you haven't already. Then add the component with the shadcn CLI, which also adds the Habi parts it uses:
+[Set up Habi](/docs/installation) first, if you haven't already.
+
+<InstallationTabs>
+<InstallationTab value="command">
+
+Add the component with the shadcn CLI. It also adds the Habi parts the component uses.
 
 ```npm
 npx shadcn@latest add https://habi.yiliya.studio/r/card.json
 ```
 
-To add it by hand instead, install the packages this component uses:
+</InstallationTab>
+<InstallationTab value="manual">
+
+Install the packages this component uses:
 
 ```npm
 npm install class-variance-authority
@@ -38,6 +46,9 @@ Add the component:
   src="registry/habi/ui/card.tsx"
   title="components/ui/card.tsx"
 />
+
+</InstallationTab>
+</InstallationTabs>
 
 Cards usually contain a [Badge](/docs/components/badge), [Button](/docs/components/button) or [Link](/docs/components/link), so add those too.
 

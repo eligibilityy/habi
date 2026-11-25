@@ -21,13 +21,21 @@ Use something else when:
 
 ## Installation
 
-[Set up Habi](/docs/installation) first, if you haven't already. Then add the component with the shadcn CLI, which also adds the Habi parts it uses:
+[Set up Habi](/docs/installation) first, if you haven't already.
+
+<InstallationTabs>
+<InstallationTab value="command">
+
+Add the component with the shadcn CLI. It also adds the Habi parts the component uses.
 
 ```npm
 npx shadcn@latest add https://habi.yiliya.studio/r/text-input.json
 ```
 
-To add it by hand instead, add the [shared parts](/docs/installation#shared-parts) first, then install the packages this component uses:
+</InstallationTab>
+<InstallationTab value="manual">
+
+Add the [shared parts](/docs/installation#shared-parts) first, then install the packages this component uses:
 
 ```npm
 npm install @base-ui/react
@@ -39,6 +47,9 @@ Add the component:
   src="registry/habi/ui/input.tsx"
   title="components/ui/input.tsx"
 />
+
+</InstallationTab>
+</InstallationTabs>
 
 ## Usage
 

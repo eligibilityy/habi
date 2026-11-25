@@ -21,13 +21,21 @@ Use something else when:
 
 ## Installation
 
-[Set up Habi](/docs/installation) first, if you haven't already. Then add the component with the shadcn CLI, which also adds the Habi parts it uses:
+[Set up Habi](/docs/installation) first, if you haven't already.
+
+<InstallationTabs>
+<InstallationTab value="command">
+
+Add the component with the shadcn CLI. It also adds the Habi parts the component uses.
 
 ```npm
 npx shadcn@latest add https://habi.yiliya.studio/r/tag.json
 ```
 
-To add it by hand instead, install the packages this component uses:
+</InstallationTab>
+<InstallationTab value="manual">
+
+Install the packages this component uses:
 
 ```npm
 npm install @base-ui/react @heroicons/react
@@ -36,6 +44,9 @@ npm install @base-ui/react @heroicons/react
 Add the component:
 
 <ComponentSource src="registry/habi/ui/tag.tsx" title="components/ui/tag.tsx" />
+
+</InstallationTab>
+</InstallationTabs>
 
 ## Usage
 
