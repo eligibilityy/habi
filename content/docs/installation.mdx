@@ -1,23 +1,20 @@
 ---
 title: Installation
-description: Set up your project once, then copy in the components you need.
+description: Set up your project once, then add the components you need.
 ---
 
-Habi's components are React components styled with Tailwind CSS. Each component's code goes into your project, added with the shadcn CLI or copied by hand, so you can read it and change it. This page sets up what every component shares: Habi's styles, its typeface and a small helper.
+Habi's components are React components styled with Tailwind CSS. You add each component's code to your project, with the shadcn CLI or by copying it, so you can read it and change it. This page sets up what every component shares: Habi's typefaces, its styles and the `cn` helper.
 
 You need a React project with **Tailwind CSS v4**. The examples on this site use Next.js.
 
-## 1. Install the shared packages
+## 1. Add the typefaces
 
 ```npm
-npm install allo-font @fontsource/jetbrains-mono clsx tailwind-merge
+npm install allo-font @fontsource/jetbrains-mono
 ```
 
 - **`allo-font`** is Allo, Habi's typeface.
 - **`@fontsource/jetbrains-mono`** is JetBrains Mono, for reference numbers and shortcut hints.
-- **`clsx`** and **`tailwind-merge`** combine class names, so a `className` you pass to a component replaces its own classes instead of clashing with them.
-
-## 2. Load the typefaces
 
 Import both stylesheets once, in your root layout:
 
@@ -26,7 +23,7 @@ import "allo-font/allo.css";
 import "@fontsource/jetbrains-mono/400.css";
 ```
 
-## 3. Add Habi's styles
+## 2. Add Habi's styles
 
 Copy both files next to your global stylesheet:
 
@@ -52,17 +49,12 @@ This gives you:
 
 `habi-tokens.css` replaces Tailwind's default color palette, so classes like `bg-blue-500` no longer exist. Use Habi's semantic colors instead, like `bg-interactive-default` or `text-text-secondary`. Their text and background pairs are checked to pass WCAG AA contrast. Don't edit this file by hand: it's generated from Habi's design tokens.
 
-## 4. Add the `cn` helper
+## 3. Choose how to add components
 
-Components use `cn` to combine their classes with yours. It also knows Habi's text styles and radius roles, like `text-label` and `rounded-control`, so a class you pass replaces the component's own instead of both applying.
+<InstallationTabs>
+<InstallationTab value="command">
 
-<ComponentSource src="registry/habi/lib/utils.ts" title="lib/utils.ts" />
-
-The shadcn CLI adds this file for you when you add your first component.
-
-## 5. Set up the shadcn CLI
-
-The CLI adds a component and every Habi part it uses in one step, and installs the packages they need. It reads `components.json` to know where files go. Add one at the root of your project:
+The shadcn CLI adds a component, the Habi parts it uses and the packages they need, in one step. It reads `components.json` to know where to put the files. Add this one at the root of your project:
 
 ```json title="components.json"
 {
@@ -86,19 +78,41 @@ The CLI adds a component and every Habi part it uses in one step, and installs t
 }
 ```
 
-Don't run `shadcn init` instead. It adds shadcn's own colors to your global stylesheet, which clash with Habi's.
+If your global stylesheet isn't `app/globals.css`, or your project doesn't use the `@/` alias, change `css` and `aliases` to match.
 
-Then add components by their address, like Button:
+Don't create this file with `shadcn init`. It also adds shadcn's own colors to your global stylesheet, and those clash with Habi's.
+
+Each component page has the command that adds it. For Button:
 
 ```npm
 npx shadcn@latest add https://habi.yiliya.studio/r/button.json
 ```
 
-The CLI changes the components' imports to match your `aliases`. If you copy a component by hand instead, its imports use the `@/` alias, like `@/components/ui/field` and `@/lib/utils`. New Next.js projects set this up for you. If yours uses another alias or folder, update the imports after copying.
+The CLI also adds the `cn` helper, and changes each component's imports to match your `aliases`.
+
+</InstallationTab>
+<InstallationTab value="manual">
+
+Components use the `cn` helper to combine their classes with yours. It knows Habi's text styles and radius roles, like `text-label` and `rounded-control`, so a class you pass replaces the component's own instead of both applying.
+
+Install the packages it uses:
+
+```npm
+npm install clsx tailwind-merge
+```
+
+Add the helper:
+
+<ComponentSource src="registry/habi/lib/utils.ts" title="lib/utils.ts" />
+
+Components import each other with the `@/` alias, like `@/components/ui/field` and `@/lib/utils`. New Next.js projects set this up for you. If yours uses another alias or folder, update the imports after you copy a component.
+
+</InstallationTab>
+</InstallationTabs>
 
 ## Shared parts
 
-Some components share parts. The CLI adds them for you. If you copy components by hand, add these when a component page asks for them.
+Some components share these parts. The CLI adds them for you. If you copy components by hand, add them when a component page asks for them.
 
 ```npm
 npm install @base-ui/react @heroicons/react
@@ -124,4 +138,4 @@ Labels, hints, errors and fieldsets for Text input, Select, Checkbox, Radio grou
 
 ## Add a component
 
-Each component page has its CLI command, and the packages and file to copy if you'd rather do it by hand. Start with [Button](/docs/components/button).
+Each component page has a Command tab with its CLI command, and a Manual tab with the packages and file to copy. Start with [Button](/docs/components/button).
