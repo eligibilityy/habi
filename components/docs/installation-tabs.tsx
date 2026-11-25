@@ -4,7 +4,7 @@ import { Tabs } from "@base-ui/react/tabs";
 import { cn } from "@/registry/habi/lib/utils";
 
 export const tabClass =
-  "text-label text-text-secondary hover:text-text-primary data-active:text-text-primary data-active:border-text-primary focus-visible:outline-focus-default -mb-px flex h-12 items-center border-b-2 border-transparent px-3 focus-visible:outline-2 focus-visible:-outline-offset-2";
+  "text-label text-text-secondary hover:text-text-primary data-active:text-text-primary data-active:border-interactive-default focus-visible:outline-focus-default -mb-px flex h-12 items-center border-b-2 border-transparent px-3 focus-visible:outline-2 focus-visible:-outline-offset-2";
 
 /** Command and Manual tabs for a component page's Installation section. */
 export function InstallationTabs({ children }: { children: ReactNode }) {

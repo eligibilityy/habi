@@ -13,7 +13,15 @@ export default function Layout({ children }: LayoutProps<"/docs">) {
       {...base}
       nav={{ ...nav, mode: "top" }}
       slots={{ header: DocsHeader }}
-      sidebar={{ components: sidebarComponents, collapsible: false }}
+      sidebar={{
+        components: sidebarComponents,
+        collapsible: false,
+        // Like shadcn's: a panel that stops short of the bottom of the
+        // screen, with a line on its right, instead of a full-height column.
+        // md: only, because the phone menu drawer gets the same classes.
+        className:
+          "md:inset-y-auto md:top-6 md:h-[calc(100%-5rem)] md:border-e md:border-border-subtle-01",
+      }}
       tree={source.getPageTree()}
     >
       {children}
