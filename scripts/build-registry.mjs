@@ -21,9 +21,6 @@ const COMPONENT_DOCS_DIR = "content/docs/components";
 const descriptions = {
   utils:
     "The cn helper, which merges Tailwind classes with Habi's text styles and radius roles.",
-  field: "Labels, hints, errors and fieldsets for Habi's form components.",
-  "status-icon":
-    "The info, success, warning and error icons, with their backing.",
 };
 
 const siteUrl = (await readFile("lib/shared.ts", "utf8")).match(
@@ -104,12 +101,22 @@ const pages = await Promise.all(
 
 // A component's registry name is its docs page's name: input.tsx is "text-input".
 const pageMeta = new Map();
+// Parts that wrap other components, like Field around Text input. When a
+// page's code imports one, the CLI adds it with that page's component, even
+// though the component file doesn't import it.
+const WRAPPERS = new Set(["field"]);
+const usedOnPage = new Map();
 for (const page of pages) {
   if (!page.file.startsWith(COMPONENT_DOCS_DIR)) continue;
   const slug = path.basename(page.file, ".mdx");
+  const used = [...page.source.matchAll(/from "@\/components\/ui\/([\w-]+)"/g)]
+    .map((match) => match[1])
+    .filter((part) => WRAPPERS.has(part))
+    .map((part) => `${UI_DIR}/${part}.tsx`);
   for (const src of sourcesIn(page.source)) {
     internalNames.set(src, slug);
     pageMeta.set(src, page.meta);
+    usedOnPage.set(src, used);
   }
 }
 
@@ -134,7 +141,13 @@ const items = [UTILS, ...uiFiles]
   .map((file) => {
     const name = internalNames.get(file);
     const meta = pageMeta.get(file);
-    const { packages, files } = importsByFile.get(file);
+    const { packages } = importsByFile.get(file);
+    const files = [
+      ...new Set([
+        ...importsByFile.get(file).files,
+        ...(usedOnPage.get(file) ?? []),
+      ]),
+    ].filter((dep) => dep !== file && importsByFile.has(dep));
     const isLib = file === UTILS;
     const description = meta?.description ?? descriptions[name];
     if (!description) {
