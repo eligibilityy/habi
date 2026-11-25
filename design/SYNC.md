@@ -143,6 +143,7 @@ Built in this order so each one's parts already exist: Tooltip before the compon
 
 Changes the Figma file should make to match code. Newest first.
 
+- [ ] **Dark theme (planned):** the docs site and components will get a dark theme, designed in Figma first. Code waits for a dark set of semantic colour variables (same names, dark values) and dark examples of each built component. Until then the site stays light only.
 - [ ] **Modal (`61:31`):** code dims the page behind with a new `overlay/backdrop` token (neutral/100 at 50%). Figma has no backdrop; add the variable and show it behind an example.
 - [ ] **Modal (`61:31`):** the phone bottom sheet has no handle in code. It's built on Base UI Dialog, which has no swipe gesture, and a handle would look draggable. Remove the handle, or say if swiping down to close is wanted (that needs Base UI Drawer).
 - [ ] **Tooltip (`159:63`):** code defaults to Align=Center, so the arrow points at the middle of the control. Figma's default variant is Align=Start. Consider making Center the default.
