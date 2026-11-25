@@ -73,7 +73,7 @@ Put the icon **before** the label for actions, like Download or Add. Put it **af
 
 ### Icon only
 
-Use these only where the icon is widely understood, like search or delete. Every icon-only button needs an `aria-label` that says what it does.
+Use these only where the icon is widely understood, like search or delete. Every icon-only button needs an `aria-label` that says what it does, and a [Tooltip](/docs/components/tooltip) with the same words for people who can see the screen.
 
 <ComponentPreview name="button-icon-only" />
 
@@ -147,13 +147,15 @@ Button also accepts the other props of Base UI's [Button](https://base-ui.com/re
 ### What you need to do
 
 - **Set `type="submit"`** on the button that sends a form. Buttons default to `type="button"`, so they don't submit forms by accident.
-- **Give icon-only buttons an `aria-label`**, like "Search", so screen readers can name them.
+- **Give icon-only buttons an `aria-label`**, like "Search", so screen readers can name them, and a [Tooltip](/docs/components/tooltip) with the same words.
 - **Use a link for navigation**, styled with `buttonVariants` if needed, not a Button.
 - **Prevent double submissions.** On slow connections people often press again when nothing seems to happen. After the first press, set `disabled` with `focusableWhenDisabled`, so focus stays on the button, and change the label to say what's happening, like "Paying…".
 
 ## Related components
 
 - [Link](/docs/components/link): for going to another page.
+- [Tooltip](/docs/components/tooltip): names an icon-only button.
+- [Modal](/docs/components/modal): asks people to confirm before a Danger action.
 
 ## Figma
 
