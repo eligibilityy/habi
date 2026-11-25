@@ -47,7 +47,7 @@ The Figma agent can't push to this repo, so it never edits this file. Its change
 
 Node IDs are component sets unless marked _(component)_. v1 is every component page in the Figma file except Header and Footer: 46 components.
 
-### Built (15 of 46)
+### Built (18 of 46)
 
 | Component    | Figma node | Code                                | Docs                                                                    |
 | ------------ | ---------- | ----------------------------------- | ----------------------------------------------------------------------- |
@@ -66,26 +66,26 @@ Node IDs are component sets unless marked _(component)_. v1 is every component p
 | OTP input    | `64:102`   | `registry/habi/ui/otp-input.tsx`    | [otp-input](https://habi.yiliya.studio/docs/components/otp-input)       |
 | Search       | `30:24`    | `registry/habi/ui/search.tsx`       | [search](https://habi.yiliya.studio/docs/components/search)             |
 | File input   | `63:57`    | `registry/habi/ui/file-input.tsx`   | [file-input](https://habi.yiliya.studio/docs/components/file-input)     |
+| Modal        | `61:31`    | `registry/habi/ui/modal.tsx`        | [modal](https://habi.yiliya.studio/docs/components/modal)               |
+| Tooltip      | `159:63`   | `registry/habi/ui/tooltip.tsx`      | [tooltip](https://habi.yiliya.studio/docs/components/tooltip)           |
+| Breadcrumb   | `39:130`   | `registry/habi/ui/breadcrumb.tsx`   | [breadcrumb](https://habi.yiliya.studio/docs/components/breadcrumb)     |
 
 Shared parts with no Figma component of their own:
 
 - **Field** (`registry/habi/ui/field.tsx`, docs [field](https://habi.yiliya.studio/docs/components/field)): label, hint, error, fieldset. Figma draws them inside each form component.
 - **Status icon** (`registry/habi/ui/status-icon.tsx`, docs [status-icon](https://habi.yiliya.studio/docs/components/status-icon)): Figma's `Icon/status-*` icons (`27:2`) with their backing.
 - **Menu** (`101:246`, Menu item `101:91`): no file of its own. Select and Search style their own menus to match it.
-- **Close button** (`165:2624`): no file of its own. Notification, Search and File input draw a 24px one; Modal will draw the 32px one.
+- **Close button** (`165:2624`): no file of its own. Notification, Search and File input draw a 24px one; Modal draws the 32px one.
 
-### To build, in order (31)
+### To build, in order (28)
 
 Built in this order so each one's parts already exist: Tooltip before the components that use it, Error summary before the form patterns that list errors, and the page frame before the service patterns. Components marked _New_ are still marked New in Figma, so check the Changelog before starting them.
 
 **1. Planned (have a "Planned" docs page)**
 
-| Component       | Figma node | Notes                                  |
-| --------------- | ---------- | -------------------------------------- |
-| Modal           | `61:31`    | Base UI Dialog; bottom sheet on phones |
-| Tooltip         | `159:63`   | Base UI Tooltip                        |
-| Breadcrumb      | `39:130`   | `<nav aria-label="Breadcrumb"><ol>`    |
-| Official banner | `9:47`     | Base UI Collapsible                    |
+| Component       | Figma node | Notes               |
+| --------------- | ---------- | ------------------- |
+| Official banner | `9:47`     | Base UI Collapsible |
 
 **2. Page frame and content**
 
@@ -143,6 +143,11 @@ Built in this order so each one's parts already exist: Tooltip before the compon
 
 Changes the Figma file should make to match code. Newest first.
 
+- [ ] **Modal (`61:31`):** code dims the page behind with a new `overlay/backdrop` token (neutral/100 at 50%). Figma has no backdrop; add the variable and show it behind an example.
+- [ ] **Modal (`61:31`):** the phone bottom sheet has no handle in code. It's built on Base UI Dialog, which has no swipe gesture, and a handle would look draggable. Remove the handle, or say if swiping down to close is wanted (that needs Base UI Drawer).
+- [ ] **Tooltip (`159:63`):** code defaults to Align=Center, so the arrow points at the middle of the control. Figma's default variant is Align=Start. Consider making Center the default.
+- [ ] **Breadcrumb (`39:130`):** "…" is plain text in code, not a link: a link named "…" doesn't say where it goes. Change Item 3 in Levels=Multiple to text.
+- [ ] **Breadcrumb (`39:130`):** on phones, code shows the page above by name ("‹ Services") rather than "‹ Back", so people know where it goes. Update the usage example.
 - [ ] **Accordion (`38:15`):** the content has 64px on the right, so it lines up inside the chevron. Code keeps that from 640px wide, and uses 16px below that, so answers aren't squeezed on a phone. Consider a Mobile example.
 - [ ] **Tag (`35:53`):** the Anatomy note says the container is radius/full. The component (and code) use radius/md (8px). Fix the note.
 - [ ] **Text input (`28:28`) / Select (`29:36`):** the Disabled state notes say field/02 fill. The components (and code) use layer/accent-01. Fix the notes.
@@ -176,7 +181,7 @@ Ticked off from Figma Changelog entries on 2026-11-24.
 
 ## Figma → code
 
-Changes from the Figma Changelog page that code still has to pick up. The code agent copies entries here and ticks them off when they ship. New components are listed under [To build](#to-build-in-order-31); read their Changelog entries and docs page in Figma before starting one.
+Changes from the Figma Changelog page that code still has to pick up. The code agent copies entries here and ticks them off when they ship. New components are listed under [To build](#to-build-in-order-28); read their Changelog entries and docs page in Figma before starting one.
 
 Copied 2026-11-25 (Changelog entries up to Spinner, 2026-11-25).
 
@@ -188,7 +193,7 @@ Copied 2026-11-25 (Changelog entries up to Spinner, 2026-11-25).
 - [x] **Close button (`165:2624`):** Hover fills overlay/hover (neutral/100 at 8%). Code has the `overlay/hover` token, and the Notification close, Search clear and File input cancel buttons use it. Small is 24px, as in code.
 - [x] **Checkbox (`34:35`):** don't pre-tick a box for something people didn't ask for. Added to the Checkbox docs page.
 - [ ] **Mobile number input (`31:36`):** use "Enter a mobile number, like 917 123 4567." for an invalid number. (When it's built.)
-- [ ] **Modal (`61:31`):** close button is Medium, 32 × 32px. (When it's built.)
+- [x] **Modal (`61:31`):** close button is Medium, 32 × 32px.
 - [ ] **Digital ID card (`72:46`):** uses shadow-card. (When it's built.)
 - [ ] **Cookie banner (`211:499`):** full-width band on layer/accent-01 with a 1px border/subtle-01 line below, no corners or shadow; Accept and Reject are both Tertiary. (When it's built.)
 - [ ] **Button + Spinner:** inside a Primary button, a Small Inverse Spinner takes the icon's place ("Paying…"). Add it to the Button docs when Spinner ships.
