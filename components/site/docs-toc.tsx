@@ -6,7 +6,7 @@ import { cn } from "@/registry/habi/lib/utils";
 
 /**
  * "On this page", like Base UI's: plain grey links with no heading or
- * indicator line, the section you're reading in blue. Screen readers still
+ * indicator line, the section you're reading in blue with a dot beside it. Screen readers still
  * hear the list's name.
  */
 export function DocsToc() {
@@ -28,7 +28,8 @@ export function DocsToc() {
       aria-label="On this page"
       className="sticky top-(--fd-docs-row-3) flex h-[calc(var(--fd-docs-height)-var(--fd-docs-row-3))] w-(--fd-toc-width) flex-col overflow-y-auto pe-4 pt-14 pb-2 [grid-area:toc] max-xl:hidden xl:layout:[--fd-toc-width:268px]"
     >
-      <ul className="flex flex-col">
+      {/* ps-4 leaves room for the dot, which sits left of the text. */}
+      <ul className="flex flex-col ps-4">
         {items.map((item) => {
           const current = item.url === `#${active}`;
           return (
@@ -37,11 +38,17 @@ export function DocsToc() {
                 href={item.url}
                 aria-current={current ? "location" : undefined}
                 className={cn(
-                  "block rounded-sm py-1 text-body-sm text-text-secondary outline-none hover:text-text-primary focus-visible:focus-ring",
+                  "relative block rounded-sm py-1 text-body-sm text-text-secondary outline-none hover:text-text-primary focus-visible:focus-ring",
                   current &&
                     "text-interactive-default hover:text-interactive-default",
                 )}
               >
+                {current && (
+                  <span
+                    aria-hidden
+                    className="absolute -start-3 top-1/2 size-1.5 -translate-y-1/2 rounded-full bg-interactive-default"
+                  />
+                )}
                 {item.title}
               </a>
             </li>
