@@ -6,13 +6,17 @@ import {
   DocsTitle,
   MarkdownCopyButton,
   ViewOptionsPopover,
-} from "fumadocs-ui/layouts/docs/page";
+} from "fumadocs-ui/layouts/notebook/page";
 import { notFound } from "next/navigation";
 import { getMDXComponents } from "@/components/mdx";
 import { Callout } from "@/components/docs/callout";
 import type { Metadata } from "next";
 import { createRelativeLink } from "fumadocs-ui/mdx";
 import { getPageImageUrl, gitConfig } from "@/lib/shared";
+
+// Quiet text actions under the description, instead of bordered buttons.
+const pageAction =
+  "border-0 bg-transparent px-2 text-fd-muted-foreground hover:bg-fd-accent hover:text-fd-foreground";
 
 export default async function Page(props: PageProps<"/docs/[[...slug]]">) {
   const params = await props.params;
@@ -28,9 +32,10 @@ export default async function Page(props: PageProps<"/docs/[[...slug]]">) {
       <DocsDescription className="mb-0">
         {page.data.description}
       </DocsDescription>
-      <div className="flex flex-row items-center gap-2 border-b pb-6">
-        <MarkdownCopyButton markdownUrl={markdownUrl} />
+      <div className="-ms-2 flex flex-row items-center gap-1">
+        <MarkdownCopyButton markdownUrl={markdownUrl} className={pageAction} />
         <ViewOptionsPopover
+          className={pageAction}
           markdownUrl={markdownUrl}
           githubUrl={`https://github.com/${gitConfig.user}/${gitConfig.repo}/blob/${gitConfig.branch}/content/docs/${encodeURI(page.path)}`}
         />
