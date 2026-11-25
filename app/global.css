@@ -13,8 +13,8 @@
   --color-fd-card: var(--layer-01);
   --color-fd-card-foreground: var(--text-primary);
   --color-fd-border: var(--border-subtle-01);
-  --color-fd-primary: var(--text-primary);
-  --color-fd-primary-foreground: var(--text-inverse);
+  --color-fd-primary: var(--interactive-default);
+  --color-fd-primary-foreground: var(--text-on-color);
   --color-fd-secondary: var(--layer-accent-01);
   --color-fd-secondary-foreground: var(--text-primary);
   --color-fd-accent: var(--background-hover);

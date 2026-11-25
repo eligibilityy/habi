@@ -48,7 +48,7 @@ export function NavLinks() {
             }
             className={cn(
               "rounded-sm text-body-sm text-text-secondary outline-none hover:text-text-primary focus-visible:focus-ring",
-              current && "text-text-primary",
+              current && "text-interactive-default",
             )}
           >
             {text}
