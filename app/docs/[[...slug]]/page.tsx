@@ -7,7 +7,12 @@ import {
   MarkdownCopyButton,
   ViewOptionsPopover,
 } from "fumadocs-ui/layouts/notebook/page";
+import {
+  TOCPopover,
+  TOCProvider,
+} from "fumadocs-ui/layouts/notebook/page/slots/toc";
 import { notFound } from "next/navigation";
+import { DocsToc } from "@/components/site/docs-toc";
 import { getMDXComponents } from "@/components/mdx";
 import { Callout } from "@/components/docs/callout";
 import type { Metadata } from "next";
@@ -30,6 +35,9 @@ export default async function Page(props: PageProps<"/docs/[[...slug]]">) {
     <DocsPage
       toc={page.data.toc}
       full={page.data.full}
+      slots={{
+        toc: { provider: TOCProvider, main: DocsToc, popover: TOCPopover },
+      }}
       // A column of about 75 characters, centred between the sidebar and the
       // table of contents.
       className="*:mx-auto *:w-full *:max-w-180"
