@@ -1,40 +1,200 @@
 ---
 title: Modal
 description: Asks people to make a decision or finish a short task without leaving the page.
-status: planned
 ---
+
+<ComponentPreview name="modal-demo" />
 
 ## When to use
 
 Use a modal for something people must deal with before they go on:
 
 - **Confirming an action that's hard to undo:** "Cancel this appointment?"
-- **A short task** that belongs to the current page, like adding one more document.
+- **A short task** that belongs to the current page, like changing a mobile number.
 
 Use something else when:
 
 - **The task is long**, like a whole application form. Give it its own page.
 - **People need to read the page behind it** to answer. Put the question on the page.
 - **It's only information.** Use a [Notification](/docs/components/notification).
+- **People didn't ask for it,** like a newsletter sign-up. Don't interrupt them.
 
-## How it will look and work
+## Installation
 
-- **Header:** the title (Heading/SM), which asks the question or names the task, and a close button.
-- **Body:** any content: text, a form, a checklist or a [File input](/docs/components/file-input).
-- **Footer:** the actions, on the right. For an action that's hard to undo, the main button is the Danger kind: "Cancel appointment", next to "Keep appointment".
-- **On phones**, it becomes a bottom sheet with a handle, and full-width buttons with the main action on top.
+[Set up Habi](/docs/installation) first, if you haven't already.
 
-It will be built on Base UI's [Dialog](https://base-ui.com/react/components/dialog), with [Drawer](https://base-ui.com/react/components/drawer) for the bottom sheet.
+<InstallationTabs>
+<InstallationTab value="command">
+
+Add the component with the shadcn CLI. It also adds the Habi parts the component uses.
+
+```npm
+npx shadcn@latest add https://habi.yiliya.studio/r/modal.json
+```
+
+</InstallationTab>
+<InstallationTab value="manual">
+
+Install the packages this component uses:
+
+```npm
+npm install @base-ui/react @heroicons/react
+```
+
+Add the component:
+
+<ComponentSource
+  src="registry/habi/ui/modal.tsx"
+  title="components/ui/modal.tsx"
+/>
+
+</InstallationTab>
+</InstallationTabs>
+
+The buttons inside a modal are [Buttons](/docs/components/button#installation), so add that component too.
+
+## Usage
+
+```tsx
+import { Button } from "@/components/ui/button";
+import {
+  Modal,
+  ModalBody,
+  ModalClose,
+  ModalContent,
+  ModalDescription,
+  ModalFooter,
+  ModalTitle,
+  ModalTrigger,
+} from "@/components/ui/modal";
+
+<Modal>
+  <ModalTrigger render={<Button kind="tertiary" />}>
+    Cancel appointment
+  </ModalTrigger>
+  <ModalContent>
+    <ModalTitle>Cancel this appointment?</ModalTitle>
+    <ModalBody>
+      <ModalDescription>
+        Your appointment on 15 December 2026 will be released to other
+        applicants.
+      </ModalDescription>
+    </ModalBody>
+    <ModalFooter>
+      <ModalClose render={<Button kind="secondary" />}>
+        Keep appointment
+      </ModalClose>
+      <Button kind="danger" onClick={cancelAppointment}>
+        Cancel appointment
+      </Button>
+    </ModalFooter>
+  </ModalContent>
+</Modal>;
+```
+
+From 640px wide, the modal is a 560px panel in the middle of the screen, with its buttons on the right. On phones it's a sheet along the bottom of the screen, with full-width buttons and the main action on top.
+
+## Examples
+
+### A short task
+
+Put a short form in `ModalBody`. Control the modal with `open` and `onOpenChange`, and close it once the task is done.
+
+<ComponentPreview name="modal-form" />
+
+## Content guidelines
+
+- **The title asks the question** or names the task: "Cancel this appointment?", "Change your mobile number".
+- **The description says what will happen,** with the details people need to decide: dates, amounts, what they'll lose.
+- **Each button says what it does:** "Keep appointment" and "Cancel appointment", not "OK" and "Cancel".
+- **Use the Danger kind** for the main button when the action can't be undone.
+
+## Props
+
+### Modal
+
+<PropsTable
+  rows={[
+    {
+      name: "open",
+      type: "boolean",
+      description:
+        "Whether the modal is open. Use with onOpenChange to control it, like closing it after a form is sent.",
+    },
+    {
+      name: "defaultOpen",
+      type: "boolean",
+      default: "false",
+      description: "Whether the modal starts open, when you don't control it.",
+    },
+    {
+      name: "onOpenChange",
+      type: "(open: boolean) => void",
+      description: "Called when the modal opens or closes.",
+    },
+  ]}
+/>
+
+Modal also accepts the other props of Base UI's [Dialog Root](https://base-ui.com/react/components/dialog#root).
+
+### ModalTrigger and ModalClose
+
+<PropsTable
+  rows={[
+    {
+      name: "render",
+      type: "ReactElement",
+      description:
+        'The button to use, like render={<Button kind="secondary" />}.',
+    },
+  ]}
+/>
+
+`ModalTrigger` opens the modal. `ModalClose` closes it.
+
+### ModalContent
+
+<PropsTable
+  rows={[
+    {
+      name: "showClose",
+      type: "boolean",
+      default: "true",
+      description: "Shows the close button in the top corner.",
+    },
+    {
+      name: "closeLabel",
+      type: "string",
+      default: '"Close"',
+      description:
+        'The close button\'s accessible name. Translate it, like "Isara".',
+    },
+  ]}
+/>
+
+### ModalTitle, ModalBody, ModalDescription and ModalFooter
+
+Each takes `children`. `ModalTitle` is the modal's heading, `ModalBody` holds any content, `ModalDescription` is the text that explains the title, and `ModalFooter` holds the buttons.
 
 ## Accessibility
 
-- **Focus moves into the modal** when it opens, stays inside while it's open, and goes back to what opened it when it closes.
-- **<kbd>Esc</kbd> and the close button** close it. The close button is named "Close".
-- **The title names the modal** for screen readers.
+### What Habi handles
+
+- **Focus moves into the modal** when it opens, stays inside while it's open, and goes back to the button that opened it when it closes.
+- **The page behind can't be used** while the modal is open.
+- **<kbd>Esc</kbd> and the close button close it.** The close button is named "Close" and is 32 × 32px.
+- **Names:** screen readers read `ModalTitle` as the modal's name and `ModalDescription` as its description as soon as it opens.
+- **Reduced motion:** the modal opens and closes without moving when people ask their device for less motion.
+
+### What you need to do
+
+- **Always add a `ModalTitle`.** It's how screen readers name the modal.
+- **Put the safe choice first** in `ModalFooter`, like "Keep appointment". It comes first for screen readers and keyboard users, and phones show the main action on top.
+- **Translate `closeLabel`** when the page isn't in English.
 
 ## Related components
 
-- [Button](/docs/components/button): for the actions.
+- [Button](/docs/components/button): for the actions and the button that opens the modal.
 - [Notification](/docs/components/notification): for information that doesn't need a decision.
 
 ## Figma
