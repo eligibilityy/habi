@@ -12,11 +12,11 @@ function RequiredNote() {
 
 export function PropsTable({ rows }: { rows: PropRow[] }) {
   return (
-    <div className="not-prose my-6 overflow-hidden rounded-card border border-border-subtle-01 bg-layer-01 text-body-sm">
+    <div className="not-prose my-6 text-body-sm">
       {/* Phones: one block per prop, so nothing scrolls sideways. */}
       <dl className="divide-y divide-border-subtle-01 sm:hidden">
         {rows.map((row) => (
-          <div key={row.name} className="flex flex-col gap-1 px-4 py-3">
+          <div key={row.name} className="flex flex-col gap-1 py-3">
             <dt className="flex flex-wrap items-baseline gap-x-2">
               <code className="font-mono font-semibold">{row.name}</code>
               {row.required && <RequiredNote />}
@@ -38,17 +38,17 @@ export function PropsTable({ rows }: { rows: PropRow[] }) {
           phones, so Type and Description both get room. */}
       <div className="hidden overflow-x-auto sm:block">
         <table className="w-full">
-          <thead className="border-b border-border-subtle-01 bg-layer-accent-01 text-left text-text-secondary">
+          <thead className="border-b border-border-subtle-01 text-left text-text-secondary">
             <tr>
-              <th className="w-0 px-4 py-3 font-semibold">Prop</th>
-              <th className="px-4 py-3 font-semibold">Type</th>
-              <th className="min-w-56 px-4 py-3 font-semibold">Description</th>
+              <th className="w-0 py-3 pe-4 font-semibold">Prop</th>
+              <th className="py-3 pe-4 font-semibold">Type</th>
+              <th className="min-w-56 py-3 font-semibold">Description</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-border-subtle-01">
             {rows.map((row) => (
               <tr key={row.name} className="align-top">
-                <td className="px-4 py-3 whitespace-nowrap">
+                <td className="py-3 pe-4 whitespace-nowrap">
                   <code className="font-mono">{row.name}</code>
                   {row.required && (
                     <span className="mt-1 block">
@@ -56,7 +56,7 @@ export function PropsTable({ rows }: { rows: PropRow[] }) {
                     </span>
                   )}
                 </td>
-                <td className="px-4 py-3 text-text-secondary">
+                <td className="py-3 pe-4 text-text-secondary">
                   <code className="font-mono">{row.type}</code>
                   {row.default && (
                     <span className="mt-1 block">
@@ -64,7 +64,7 @@ export function PropsTable({ rows }: { rows: PropRow[] }) {
                     </span>
                   )}
                 </td>
-                <td className="px-4 py-3">{row.description}</td>
+                <td className="py-3">{row.description}</td>
               </tr>
             ))}
           </tbody>

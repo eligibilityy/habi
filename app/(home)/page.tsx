@@ -149,7 +149,7 @@ export default function HomePage() {
             </a>
           </div>
         </div>
-        <div className="w-full max-w-5xl overflow-hidden rounded-t-xl border border-b-0 border-border-subtle-01 bg-layer-01 shadow-card">
+        <div className="w-full max-w-5xl overflow-hidden rounded-t-card border border-b-0 border-border-subtle-01 bg-layer-01">
           <Image
             src={heroImage}
             alt="Habi components: a service search, filter tags, status badges, a date picker, time slots, radio buttons and an appointment confirmation."
@@ -176,7 +176,7 @@ export default function HomePage() {
           <ul className="grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
             {benefits.map(({ icon: Icon, title, description }) => (
               <li key={title} className="flex flex-col gap-3">
-                <Icon className="size-8 text-icon-interactive" />
+                <Icon className="size-8 text-icon-primary" />
                 <h3 className="text-heading-sm text-text-primary">{title}</h3>
                 <p className="text-body-md text-text-secondary">
                   {description}
@@ -202,13 +202,13 @@ export default function HomePage() {
                 index % 2 === 1 && "md:order-last",
               )}
             >
-              <p className="text-label text-interactive-default">{eyebrow}</p>
+              <p className="text-label text-text-secondary">{eyebrow}</p>
               <h2 className="text-3xl leading-tight font-bold tracking-[-0.015em] text-balance text-text-primary sm:text-4xl">
                 {title}
               </h2>
               <p className="text-body-lg text-text-secondary">{description}</p>
             </div>
-            <div className="min-w-0 rounded-xl bg-layer-01 p-6 shadow-card sm:p-10">
+            <div className="min-w-0 rounded-card bg-background-default p-6 sm:p-10">
               {preview}
             </div>
           </article>
@@ -217,7 +217,7 @@ export default function HomePage() {
 
       <section className="px-4 py-20 sm:px-8 sm:py-28">
         <div className="mx-auto flex max-w-6xl flex-col items-center gap-6 rounded-xl text-center">
-          <RocketLaunchIcon className="size-14 text-icon-interactive" />
+          <RocketLaunchIcon className="size-14 text-icon-primary" />
           <h2 className="text-4xl leading-tight font-bold tracking-[-0.015em] text-balance text-text-primary sm:text-5xl">
             Early bird gets the worm
           </h2>

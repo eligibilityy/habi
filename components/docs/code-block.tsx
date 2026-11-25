@@ -23,14 +23,15 @@ export function CodeBlock({
   return (
     <FumadocsCodeBlock
       className={cn(
+        // Flat: a grey fill and no border. In tabs, the tabs' box has the fill.
+        "border-0",
         inTabs
-          ? "bg-layer-01 last:rounded-b-none"
-          : "my-6 rounded-(--radius-control)",
+          ? "mx-0 mb-0 bg-transparent last:rounded-b-none"
+          : "my-6 rounded-(--radius-control) bg-layer-accent-01",
         // The copy button's blurred backdrop.
         "[&>.backdrop-blur-lg]:rounded-(--radius-control)",
-        // A titled block's file bar matches the tab bars on code and previews.
-        props.title &&
-          "[&>div:first-child]:h-12 [&>div:first-child]:bg-layer-accent-01",
+        // A titled block's file bar is as tall as the tab bars.
+        props.title && "[&>div:first-child]:h-10",
         className,
       )}
       {...props}
@@ -48,7 +49,7 @@ export function CodeBlockTabs({
     <InCodeBlockTabs value>
       <FumadocsCodeBlockTabs
         className={cn(
-          "my-6 overflow-hidden rounded-(--radius-control)",
+          "my-6 overflow-hidden rounded-(--radius-control) border-0 bg-layer-accent-01",
           className,
         )}
         {...props}
@@ -63,7 +64,7 @@ export function CodeBlockTabsList({
 }: WithStringClassName<ComponentProps<typeof FumadocsCodeBlockTabsList>>) {
   return (
     <FumadocsCodeBlockTabsList
-      className={cn("bg-layer-accent-01", className)}
+      className={cn("border-b border-border-subtle-01", className)}
       {...props}
     />
   );
@@ -78,7 +79,7 @@ export function CodeBlockTabsTrigger({
   return (
     <FumadocsCodeBlockTabsTrigger
       className={cn(
-        "h-12 px-3 text-sm font-semibold text-text-secondary hover:text-text-primary focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-focus-default data-active:text-text-primary [&>div]:inset-x-0 [&>div]:h-0.5",
+        "h-10 px-3 text-sm font-semibold text-text-secondary hover:text-text-primary focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-focus-default data-active:text-text-primary [&>div]:inset-x-0 [&>div]:h-0.5",
         className,
       )}
       {...props}
