@@ -19,13 +19,21 @@ Use something else when:
 
 ## Installation
 
-[Set up Habi](/docs/installation) first, if you haven't already. Then add the component with the shadcn CLI, which also adds the Habi parts it uses:
+[Set up Habi](/docs/installation) first, if you haven't already.
+
+<InstallationTabs>
+<InstallationTab value="command">
+
+Add the component with the shadcn CLI. It also adds the Habi parts the component uses.
 
 ```npm
 npx shadcn@latest add https://habi.yiliya.studio/r/date-input.json
 ```
 
-To add it by hand instead, add [Text input](/docs/components/text-input#installation) and [Select](/docs/components/select#installation) first. Date input is built from both.
+</InstallationTab>
+<InstallationTab value="manual">
+
+Add [Text input](/docs/components/text-input#installation) and [Select](/docs/components/select#installation) first. Date input is built from both.
 
 Add the component:
 
@@ -33,6 +41,9 @@ Add the component:
   src="registry/habi/ui/date-input.tsx"
   title="components/ui/date-input.tsx"
 />
+
+</InstallationTab>
+</InstallationTabs>
 
 ## Usage
 

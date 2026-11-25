@@ -7,10 +7,8 @@ import { transformerIcon } from "fumadocs-core/mdx-plugins/transformer-icon";
 import { Pre } from "fumadocs-ui/components/codeblock";
 
 import { CodeBlock } from "@/components/docs/code-block";
+import { tabClass } from "@/components/docs/installation-tabs";
 import { examples } from "@/registry/habi/examples";
-
-const tabClass =
-  "text-label text-text-secondary hover:text-text-primary data-active:text-text-primary data-active:border-interactive-default focus-visible:outline-focus-default -mb-px flex h-12 items-center border-b-2 border-transparent px-3 focus-visible:outline-2 focus-visible:-outline-offset-2";
 
 async function readSource(file: string) {
   const source = await fs.readFile(path.join(process.cwd(), file), "utf8");
