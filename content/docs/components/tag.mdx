@@ -21,12 +21,16 @@ Use something else when:
 
 ## Installation
 
-[Set up Habi](/docs/installation) first, if you haven't already.
-
-Install the packages this component uses:
+[Set up Habi](/docs/installation) first, if you haven't already. Then add the component with the shadcn CLI, which also adds the Habi parts it uses:
 
 ```npm
-npm install @base-ui/react @heroicons/react class-variance-authority
+npx shadcn@latest add https://habi.yiliya.studio/r/tag.json
+```
+
+To add it by hand instead, install the packages this component uses:
+
+```npm
+npm install @base-ui/react @heroicons/react
 ```
 
 Add the component:
