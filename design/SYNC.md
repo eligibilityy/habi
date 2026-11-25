@@ -69,8 +69,8 @@ Node IDs are component sets unless marked _(component)_. v1 is every component p
 
 Shared parts with no Figma component of their own:
 
-- **Field parts** (`registry/habi/ui/field.tsx`): label, hint, error, fieldset. Figma draws them inside each form component.
-- **Status icon** (`registry/habi/ui/status-icon.tsx`): Figma's `Icon/status-*` icons with their backing.
+- **Field** (`registry/habi/ui/field.tsx`, docs [field](https://habi.yiliya.studio/docs/components/field)): label, hint, error, fieldset. Figma draws them inside each form component.
+- **Status icon** (`registry/habi/ui/status-icon.tsx`, docs [status-icon](https://habi.yiliya.studio/docs/components/status-icon)): Figma's `Icon/status-*` icons (`27:2`) with their backing.
 - **Menu** (`101:246`, Menu item `101:91`): no file of its own. Select and Search style their own menus to match it.
 - **Close button** (`165:2624`): no file of its own. Notification, Search and File input draw a 24px one; Modal will draw the 32px one.
 
