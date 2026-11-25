@@ -148,7 +148,8 @@
     "badge/warning-text": "gold/70",
     "badge/error-bg": "red/10",
     "badge/error-text": "red/70",
-    "overlay/hover": { "ref": "neutral/100", "alpha": 8 }
+    "overlay/hover": { "ref": "neutral/100", "alpha": 8 },
+    "overlay/backdrop": { "ref": "neutral/100", "alpha": 50 }
   },
   "spacing": {
     "01": 2,
