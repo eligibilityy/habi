@@ -8,6 +8,8 @@ import BadgeDemo from "./badge-demo";
 import BadgeInContext from "./badge-in-context";
 import BadgeKinds from "./badge-kinds";
 import BadgeWithIcon from "./badge-with-icon";
+import BreadcrumbCollapsed from "./breadcrumb-collapsed";
+import BreadcrumbDemo from "./breadcrumb-demo";
 import ButtonDemo from "./button-demo";
 import ButtonDisabled from "./button-disabled";
 import ButtonIconOnly from "./button-icon-only";
@@ -33,6 +35,8 @@ import LinkDemo from "./link-demo";
 import LinkExternal from "./link-external";
 import LinkNext from "./link-next";
 import LinkStandalone from "./link-standalone";
+import ModalDemo from "./modal-demo";
+import ModalForm from "./modal-form";
 import NotificationDemo from "./notification-demo";
 import NotificationDismissible from "./notification-dismissible";
 import NotificationKinds from "./notification-kinds";
@@ -58,6 +62,8 @@ import TextInputDemo from "./text-input-demo";
 import TextInputDisabled from "./text-input-disabled";
 import TextInputServerError from "./text-input-server-error";
 import TextInputValidation from "./text-input-validation";
+import TooltipDemo from "./tooltip-demo";
+import TooltipGroup from "./tooltip-group";
 
 export const examples: Record<string, ComponentType> = {
   "accordion-demo": AccordionDemo,
@@ -66,6 +72,8 @@ export const examples: Record<string, ComponentType> = {
   "badge-in-context": BadgeInContext,
   "badge-kinds": BadgeKinds,
   "badge-with-icon": BadgeWithIcon,
+  "breadcrumb-collapsed": BreadcrumbCollapsed,
+  "breadcrumb-demo": BreadcrumbDemo,
   "button-demo": ButtonDemo,
   "button-disabled": ButtonDisabled,
   "button-icon-only": ButtonIconOnly,
@@ -91,6 +99,8 @@ export const examples: Record<string, ComponentType> = {
   "link-external": LinkExternal,
   "link-next": LinkNext,
   "link-standalone": LinkStandalone,
+  "modal-demo": ModalDemo,
+  "modal-form": ModalForm,
   "notification-demo": NotificationDemo,
   "notification-dismissible": NotificationDismissible,
   "notification-kinds": NotificationKinds,
@@ -116,4 +126,6 @@ export const examples: Record<string, ComponentType> = {
   "text-input-disabled": TextInputDisabled,
   "text-input-server-error": TextInputServerError,
   "text-input-validation": TextInputValidation,
+  "tooltip-demo": TooltipDemo,
+  "tooltip-group": TooltipGroup,
 };

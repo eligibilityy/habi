@@ -3,6 +3,7 @@
   "pages": [
     "accordion",
     "badge",
+    "breadcrumb",
     "button",
     "card",
     "checkbox",
@@ -10,6 +11,7 @@
     "field",
     "file-input",
     "link",
+    "modal",
     "notification",
     "otp-input",
     "radio-group",
@@ -18,10 +20,8 @@
     "status-icon",
     "tag",
     "text-input",
-    "---Planned---",
-    "modal",
     "tooltip",
-    "breadcrumb",
+    "---Planned---",
     "official-banner"
   ]
 }
