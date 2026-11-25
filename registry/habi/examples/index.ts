@@ -1,5 +1,7 @@
 import type { ComponentType } from "react";
 
+import AccordionDemo from "./accordion-demo";
+import AccordionMultiple from "./accordion-multiple";
 import BadgeDemo from "./badge-demo";
 import BadgeInContext from "./badge-in-context";
 import BadgeKinds from "./badge-kinds";
@@ -54,6 +56,8 @@ import TextInputServerError from "./text-input-server-error";
 import TextInputValidation from "./text-input-validation";
 
 export const examples: Record<string, ComponentType> = {
+  "accordion-demo": AccordionDemo,
+  "accordion-multiple": AccordionMultiple,
   "badge-demo": BadgeDemo,
   "badge-in-context": BadgeInContext,
   "badge-kinds": BadgeKinds,
