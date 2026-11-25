@@ -20,9 +20,13 @@ Use something else when:
 
 ## Installation
 
-[Set up Habi](/docs/installation) and add the [status icon](/docs/installation#status-icon) first, if you haven't already.
+[Set up Habi](/docs/installation) first, if you haven't already. Then add the component with the shadcn CLI, which also adds the Habi parts it uses:
 
-Install the packages this component uses:
+```npm
+npx shadcn@latest add https://habi.yiliya.studio/r/notification.json
+```
+
+To add it by hand instead, add the [status icon](/docs/installation#status-icon) first, then install the packages this component uses:
 
 ```npm
 npm install @heroicons/react class-variance-authority
