@@ -34,3 +34,8 @@ jobs:
         run: |
           pnpm tokens
           git diff --exit-code registry/habi/styles/habi-tokens.css
+
+      - name: Registry and install lines are up to date
+        run: |
+          node scripts/build-registry.mjs
+          git diff --exit-code registry.json registry/habi/examples/index.ts content/docs

@@ -12,15 +12,16 @@
   "bugs": "https://github.com/eligibilityy/habi/issues",
   "packageManager": "pnpm@10.18.0",
   "scripts": {
-    "build": "next build",
-    "dev": "next dev",
+    "build": "pnpm registry && next build",
+    "dev": "pnpm registry && next dev",
     "start": "next start",
     "types:check": "next typegen && tsc --noEmit",
     "lint": "eslint",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "tokens": "node scripts/build-tokens.mjs",
-    "precommit": "prettier --write . && eslint && echo LINT_OK && next typegen && tsc --noEmit",
+    "registry": "node scripts/build-registry.mjs && shadcn build",
+    "precommit": "node scripts/build-registry.mjs && prettier --write . && eslint && echo LINT_OK && next typegen && tsc --noEmit",
     "screenshots": "node scripts/screenshot-docs.mjs"
   },
   "dependencies": {
@@ -53,6 +54,7 @@
     "postcss": "^8.5.32",
     "prettier": "^3.10.1",
     "prettier-plugin-tailwindcss": "^0.8.1",
+    "shadcn": "^4.23.0",
     "tailwindcss": "^4.3.5",
     "typescript": "npm:@typescript/typescript6@^6.0.2"
   }

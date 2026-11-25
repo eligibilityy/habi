@@ -1,0 +1,207 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "habi",
+  "homepage": "https://habi.yiliya.studio",
+  "items": [
+    {
+      "name": "accordion",
+      "type": "registry:ui",
+      "title": "Accordion",
+      "description": "Lets people show and hide sections of a page, like the answers in an FAQ.",
+      "dependencies": ["@base-ui/react", "@heroicons/react"],
+      "registryDependencies": ["https://habi.yiliya.studio/r/utils.json"],
+      "files": [
+        { "path": "registry/habi/ui/accordion.tsx", "type": "registry:ui" }
+      ]
+    },
+    {
+      "name": "badge",
+      "type": "registry:ui",
+      "title": "Badge",
+      "description": "A short status label, like New, Open or Closing soon.",
+      "dependencies": ["class-variance-authority"],
+      "registryDependencies": ["https://habi.yiliya.studio/r/utils.json"],
+      "files": [{ "path": "registry/habi/ui/badge.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "title": "Button",
+      "description": "Lets people take an action, like submitting a form or starting a task.",
+      "dependencies": ["@base-ui/react", "class-variance-authority"],
+      "registryDependencies": ["https://habi.yiliya.studio/r/utils.json"],
+      "files": [
+        { "path": "registry/habi/ui/button.tsx", "type": "registry:ui" }
+      ]
+    },
+    {
+      "name": "card",
+      "type": "registry:ui",
+      "title": "Card",
+      "description": "Presents one service, office or update, with a way to start or find out more.",
+      "dependencies": ["class-variance-authority"],
+      "registryDependencies": ["https://habi.yiliya.studio/r/utils.json"],
+      "files": [{ "path": "registry/habi/ui/card.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "checkbox",
+      "type": "registry:ui",
+      "title": "Checkbox",
+      "description": "Lets people answer yes or no, or pick any number of options from a list.",
+      "dependencies": ["@base-ui/react", "@heroicons/react"],
+      "registryDependencies": ["https://habi.yiliya.studio/r/utils.json"],
+      "files": [
+        { "path": "registry/habi/ui/checkbox.tsx", "type": "registry:ui" }
+      ]
+    },
+    {
+      "name": "date-input",
+      "type": "registry:ui",
+      "title": "Date input",
+      "description": "Lets people enter a date they already know, like their date of birth or an ID's issue date.",
+      "registryDependencies": [
+        "https://habi.yiliya.studio/r/utils.json",
+        "https://habi.yiliya.studio/r/field.json",
+        "https://habi.yiliya.studio/r/text-input.json",
+        "https://habi.yiliya.studio/r/select.json",
+        "https://habi.yiliya.studio/r/status-icon.json"
+      ],
+      "files": [
+        { "path": "registry/habi/ui/date-input.tsx", "type": "registry:ui" }
+      ]
+    },
+    {
+      "name": "field",
+      "type": "registry:ui",
+      "description": "Labels, hints, errors and fieldsets for Habi's form components.",
+      "dependencies": ["@base-ui/react"],
+      "registryDependencies": [
+        "https://habi.yiliya.studio/r/utils.json",
+        "https://habi.yiliya.studio/r/status-icon.json"
+      ],
+      "files": [{ "path": "registry/habi/ui/field.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "file-input",
+      "type": "registry:ui",
+      "title": "File input",
+      "description": "Lets people upload one file, like a photo of their ID or a scanned certificate.",
+      "dependencies": ["@base-ui/react", "@heroicons/react"],
+      "registryDependencies": [
+        "https://habi.yiliya.studio/r/utils.json",
+        "https://habi.yiliya.studio/r/button.json",
+        "https://habi.yiliya.studio/r/link.json",
+        "https://habi.yiliya.studio/r/status-icon.json"
+      ],
+      "files": [
+        { "path": "registry/habi/ui/file-input.tsx", "type": "registry:ui" }
+      ]
+    },
+    {
+      "name": "link",
+      "type": "registry:ui",
+      "title": "Link",
+      "description": "Takes people to another page, or to another part of the same page.",
+      "dependencies": ["@base-ui/react", "class-variance-authority"],
+      "registryDependencies": ["https://habi.yiliya.studio/r/utils.json"],
+      "files": [{ "path": "registry/habi/ui/link.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "notification",
+      "type": "registry:ui",
+      "title": "Notification",
+      "description": "Tells people what happened after an action, or about something in their records.",
+      "dependencies": ["@heroicons/react", "class-variance-authority"],
+      "registryDependencies": [
+        "https://habi.yiliya.studio/r/utils.json",
+        "https://habi.yiliya.studio/r/status-icon.json"
+      ],
+      "files": [
+        { "path": "registry/habi/ui/notification.tsx", "type": "registry:ui" }
+      ]
+    },
+    {
+      "name": "otp-input",
+      "type": "registry:ui",
+      "title": "OTP input",
+      "description": "Lets people enter a one-time code from an SMS, or a short PIN like an MPIN.",
+      "dependencies": ["@base-ui/react"],
+      "registryDependencies": ["https://habi.yiliya.studio/r/utils.json"],
+      "files": [
+        { "path": "registry/habi/ui/otp-input.tsx", "type": "registry:ui" }
+      ]
+    },
+    {
+      "name": "radio-group",
+      "type": "registry:ui",
+      "title": "Radio group",
+      "description": "Lets people choose exactly one option from a short list.",
+      "dependencies": ["@base-ui/react"],
+      "registryDependencies": ["https://habi.yiliya.studio/r/utils.json"],
+      "files": [{ "path": "registry/habi/ui/radio.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "search",
+      "type": "registry:ui",
+      "title": "Search",
+      "description": "Helps people find a service by typing, with suggestions as they type.",
+      "dependencies": ["@base-ui/react", "@heroicons/react"],
+      "registryDependencies": ["https://habi.yiliya.studio/r/utils.json"],
+      "files": [
+        { "path": "registry/habi/ui/search.tsx", "type": "registry:ui" }
+      ]
+    },
+    {
+      "name": "select",
+      "type": "registry:ui",
+      "title": "Select",
+      "description": "Lets people choose one option from a list, like their region or ID type.",
+      "dependencies": ["@base-ui/react", "@heroicons/react"],
+      "registryDependencies": [
+        "https://habi.yiliya.studio/r/utils.json",
+        "https://habi.yiliya.studio/r/field.json"
+      ],
+      "files": [
+        { "path": "registry/habi/ui/select.tsx", "type": "registry:ui" }
+      ]
+    },
+    {
+      "name": "status-icon",
+      "type": "registry:ui",
+      "description": "The info, success, warning and error icons, with their backing.",
+      "dependencies": ["@heroicons/react"],
+      "registryDependencies": ["https://habi.yiliya.studio/r/utils.json"],
+      "files": [
+        { "path": "registry/habi/ui/status-icon.tsx", "type": "registry:ui" }
+      ]
+    },
+    {
+      "name": "tag",
+      "type": "registry:ui",
+      "title": "Tag",
+      "description": "A filter people can turn on and off, like a service category.",
+      "dependencies": ["@base-ui/react", "@heroicons/react"],
+      "registryDependencies": ["https://habi.yiliya.studio/r/utils.json"],
+      "files": [{ "path": "registry/habi/ui/tag.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "text-input",
+      "type": "registry:ui",
+      "title": "Text input",
+      "description": "Lets people enter a single line of text, like a name or email address.",
+      "dependencies": ["@base-ui/react"],
+      "registryDependencies": ["https://habi.yiliya.studio/r/utils.json"],
+      "files": [{ "path": "registry/habi/ui/input.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "utils",
+      "type": "registry:lib",
+      "description": "The cn helper, which merges Tailwind classes with Habi's text styles and radius roles.",
+      "dependencies": ["clsx", "tailwind-merge"],
+      "registryDependencies": [],
+      "files": [
+        { "path": "registry/habi/lib/utils.ts", "type": "registry:lib" }
+      ]
+    }
+  ]
+}
