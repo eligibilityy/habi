@@ -1,29 +1,15 @@
 import type { BaseLayoutProps } from "fumadocs-ui/layouts/shared";
 
-import { DocsLinksMenu } from "@/components/site/docs-links-menu";
+import { FigmaIcon, GitHubIcon } from "@/components/site/brand-icons";
 import { HabiMark } from "@/components/site/habi-mark";
+import { NavLinks } from "@/components/site/nav-links";
 import { appName, figmaUrl, githubUrl } from "./shared";
 
 /**
- * The docs: the mark alone at the top of the sidebar, with a Resources menu
- * for GitHub and Figma. The sidebar already lists every section.
+ * The top bar, shared by the home page and the docs: the mark and name, the
+ * sections, then GitHub and Figma as icons.
  */
 export function baseOptions(): BaseLayoutProps {
-  return {
-    nav: {
-      title: (
-        <>
-          <HabiMark mono className="h-5 w-[27px] text-text-primary" />
-          <span className="sr-only">{appName}</span>
-        </>
-      ),
-      children: <DocsLinksMenu />,
-    },
-    themeSwitch: { enabled: false },
-  };
-}
-
-export function homeOptions(): BaseLayoutProps {
   return {
     nav: {
       title: (
@@ -32,15 +18,26 @@ export function homeOptions(): BaseLayoutProps {
           {appName}
         </>
       ),
+      children: <NavLinks />,
     },
     links: [
-      { text: "Get started", url: "/docs" },
-      // The sections have no index page, so these link to their first page.
-      { text: "Foundations", url: "/docs/foundations/color" },
-      { text: "Components", url: "/docs/components/button" },
-      { text: "Figma", url: figmaUrl, external: true },
+      {
+        type: "icon",
+        text: "GitHub",
+        label: "GitHub",
+        icon: <GitHubIcon />,
+        url: githubUrl,
+        external: true,
+      },
+      {
+        type: "icon",
+        text: "Figma",
+        label: "Figma",
+        icon: <FigmaIcon />,
+        url: figmaUrl,
+        external: true,
+      },
     ],
-    githubUrl,
     themeSwitch: { enabled: false },
   };
 }
