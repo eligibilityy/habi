@@ -22,8 +22,6 @@
     "modal",
     "tooltip",
     "breadcrumb",
-    "official-banner",
-    "header",
-    "footer"
+    "official-banner"
   ]
 }

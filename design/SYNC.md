@@ -45,9 +45,9 @@ The Figma agent can't push to this repo, so it never edits this file. Its change
 
 ## Component status
 
-Node IDs are component sets unless marked _(component)_. v1 is every component page in the Figma file: 48 components.
+Node IDs are component sets unless marked _(component)_. v1 is every component page in the Figma file except Header and Footer: 46 components.
 
-### Built (15 of 48)
+### Built (15 of 46)
 
 | Component    | Figma node | Code                                | Docs                                                                    |
 | ------------ | ---------- | ----------------------------------- | ----------------------------------------------------------------------- |
@@ -74,7 +74,7 @@ Shared parts with no Figma component of their own:
 - **Menu** (`101:246`, Menu item `101:91`): no file of its own. Select and Search style their own menus to match it.
 - **Close button** (`165:2624`): no file of its own. Notification, Search and File input draw a 24px one; Modal will draw the 32px one.
 
-### To build, in order (33)
+### To build, in order (31)
 
 Built in this order so each one's parts already exist: Tooltip before the components that use it, Error summary before the form patterns that list errors, and the page frame before the service patterns. Components marked _New_ are still marked New in Figma, so check the Changelog before starting them.
 
@@ -86,8 +86,6 @@ Built in this order so each one's parts already exist: Tooltip before the compon
 | Tooltip         | `159:63`   | Base UI Tooltip                        |
 | Breadcrumb      | `39:130`   | `<nav aria-label="Breadcrumb"><ol>`    |
 | Official banner | `9:47`     | Base UI Collapsible                    |
-| Header          | `40:35`    | Mobile menu in a Drawer or Dialog      |
-| Footer          | `41:62`    | Logo slot for the agency mark          |
 
 **2. Page frame and content**
 
@@ -139,6 +137,7 @@ Built in this order so each one's parts already exist: Tooltip before the compon
 ### Not building
 
 - **Icon:** there's no Icon component. Code uses `@heroicons/react` directly.
+- **Header (`40:35`) and Footer (`41:62`):** dropped from v1 on 2026-11-25. The Figma pages can stay.
 
 ## Code → Figma
 
@@ -177,7 +176,7 @@ Ticked off from Figma Changelog entries on 2026-11-24.
 
 ## Figma → code
 
-Changes from the Figma Changelog page that code still has to pick up. The code agent copies entries here and ticks them off when they ship. New components are listed under [To build](#to-build-in-order-33); read their Changelog entries and docs page in Figma before starting one.
+Changes from the Figma Changelog page that code still has to pick up. The code agent copies entries here and ticks them off when they ship. New components are listed under [To build](#to-build-in-order-31); read their Changelog entries and docs page in Figma before starting one.
 
 Copied 2026-11-25 (Changelog entries up to Spinner, 2026-11-25).
 
