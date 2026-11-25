@@ -31,7 +31,7 @@ export async function ComponentPreview({ name }: { name: string }) {
   const Example = examples[name];
   if (!Example) {
     throw new Error(
-      `No example "${name}". Add it to registry/habi/examples/index.ts`,
+      `No example "${name}". Add registry/habi/examples/${name}.tsx and run pnpm registry.`,
     );
   }
 
