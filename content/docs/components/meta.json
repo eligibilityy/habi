@@ -1,6 +1,7 @@
 {
   "title": "Components",
   "pages": [
+    "accordion",
     "badge",
     "button",
     "card",
@@ -16,7 +17,6 @@
     "tag",
     "text-input",
     "---Planned---",
-    "accordion",
     "modal",
     "tooltip",
     "breadcrumb",

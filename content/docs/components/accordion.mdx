@@ -1,8 +1,9 @@
 ---
 title: Accordion
 description: Lets people show and hide sections of a page, like the answers in an FAQ.
-status: planned
 ---
+
+<ComponentPreview name="accordion-demo" />
 
 ## When to use
 
@@ -13,21 +14,154 @@ Use an accordion when people only need some of the sections on a page, and can t
 
 Use something else when:
 
-- **Everyone needs the content.** Show it on the page. People miss what's hidden.
+- **Everyone needs the content,** like fees and deadlines. Show it on the page. People miss what's hidden.
+- **There's only one section.** Show the content.
 - **The sections are steps people go through in order.** Ask one thing per page instead.
 
-## How it will look and work
+## Installation
 
-- **Each item** has a heading row and a panel. The heading row holds the title (Heading/XS) and a chevron. The panel holds the answer (Body/MD, secondary text).
-- **Items stack**, separated by a 1px border, with a border under the last one too.
-- **States:** hover tints the heading row, keyboard focus shows a 2px focus ring inside the row, and an open item turns its chevron up.
+[Set up Habi](/docs/installation) first, if you haven't already.
 
-It will be built on Base UI's [Accordion](https://base-ui.com/react/components/accordion).
+Install the packages this component uses:
+
+```npm
+npm install @base-ui/react @heroicons/react
+```
+
+Add the component:
+
+<ComponentSource
+  src="registry/habi/ui/accordion.tsx"
+  title="components/ui/accordion.tsx"
+/>
+
+## Usage
+
+```tsx
+import {
+  Accordion,
+  AccordionItem,
+  AccordionPanel,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+
+<Accordion>
+  <AccordionItem>
+    <AccordionTrigger>What documents do I need?</AccordionTrigger>
+    <AccordionPanel>
+      One valid government ID and your PSA birth certificate.
+    </AccordionPanel>
+  </AccordionItem>
+</Accordion>;
+```
+
+Each `AccordionItem` has a border above it, and `Accordion` adds one below the last item.
+
+## Examples
+
+### Several open at once
+
+By default, opening an item closes the one that was open. Add `multiple` when people may need to compare sections, like requirements that apply to them. Give items a `value` and list the ones to open first in `defaultValue`.
+
+<ComponentPreview name="accordion-multiple" />
+
+## Content guidelines
+
+- **Write headings people can scan:** a question they'd ask ("Can someone else pick it up?") or a short label ("If you're renewing your passport").
+- **Answer in the first sentence** of each panel, then add the details.
+- **Keep panels short.** Text, a short list or a link to a full page.
+- **Don't hide what everyone needs,** like fees, deadlines or the main requirements.
+
+## Props
+
+### Accordion
+
+<PropsTable
+  rows={[
+    {
+      name: "multiple",
+      type: "boolean",
+      default: "false",
+      description: "Lets more than one item be open at the same time.",
+    },
+    {
+      name: "defaultValue",
+      type: "any[]",
+      description:
+        "The `value` of each item that starts open. Use `value` and `onValueChange` instead to control it.",
+    },
+    {
+      name: "hiddenUntilFound",
+      type: "boolean",
+      default: "true",
+      description:
+        "Lets the browser's find in page search closed items, and opens the one with a match.",
+    },
+  ]}
+/>
+
+Accordion also accepts the other props of Base UI's [Accordion Root](https://base-ui.com/react/components/accordion#root), like `value` and `onValueChange`.
+
+### AccordionItem
+
+<PropsTable
+  rows={[
+    {
+      name: "value",
+      type: "any",
+      description:
+        "Names the item for `defaultValue` and `value`. Without it, Base UI makes one up.",
+    },
+  ]}
+/>
+
+### AccordionTrigger
+
+<PropsTable
+  rows={[
+    {
+      name: "children",
+      type: "ReactNode",
+      required: true,
+      description: "The heading text.",
+    },
+    {
+      name: "level",
+      type: "2 | 3 | 4 | 5 | 6",
+      default: "3",
+      description:
+        "The heading level around the button. Match it to the page's outline.",
+    },
+  ]}
+/>
+
+### AccordionPanel
+
+<PropsTable
+  rows={[
+    {
+      name: "children",
+      type: "ReactNode",
+      required: true,
+      description: "The content that shows when the item is open.",
+    },
+  ]}
+/>
 
 ## Accessibility
 
-- **The whole heading row is one button** with `aria-expanded`, so people can open an item with a click, a tap, <kbd>Enter</kbd> or <kbd>Space</kbd>.
-- **Headings stay headings,** so screen reader users can jump between them.
+### What Habi handles
+
+- **One button per heading:** the whole heading row is a button inside a heading, so people can open an item with a click, a tap, <kbd>Enter</kbd> or <kbd>Space</kbd>.
+- **Open or closed is read out:** the button has `aria-expanded`, and its panel is labelled by the heading. The chevron is hidden from screen readers.
+- **Keyboard:** <kbd>Tab</kbd> moves from one heading to the next, and into an open panel's links.
+- **Find in page:** closed panels stay on the page, so the browser's find in page (<kbd>Ctrl</kbd> + <kbd>F</kbd>) can find text in them and opens the item. Older browsers skip closed panels.
+- **Reduced motion:** items open and close without animating when people ask their device for less motion.
+
+### What you need to do
+
+- **Set `level`** so the headings fit the page. Under an `h2`, the default `h3` is right.
+- **Don't put interactive content in `AccordionTrigger`.** It's already a button.
 
 ## Related components
 
