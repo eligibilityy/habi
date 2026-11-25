@@ -47,10 +47,11 @@ The Figma agent can't push to this repo, so it never edits this file. Its change
 
 Node IDs are component sets unless marked _(component)_. v1 is every component page in the Figma file: 48 components.
 
-### Built (14 of 48)
+### Built (15 of 48)
 
 | Component    | Figma node | Code                                | Docs                                                                    |
 | ------------ | ---------- | ----------------------------------- | ----------------------------------------------------------------------- |
+| Accordion    | `38:15`    | `registry/habi/ui/accordion.tsx`    | [accordion](https://habi.yiliya.studio/docs/components/accordion)       |
 | Button       | `4:28`     | `registry/habi/ui/button.tsx`       | [button](https://habi.yiliya.studio/docs/components/button)             |
 | Link         | `39:35`    | `registry/habi/ui/link.tsx`         | [link](https://habi.yiliya.studio/docs/components/link)                 |
 | Badge        | `122:47`   | `registry/habi/ui/badge.tsx`        | [badge](https://habi.yiliya.studio/docs/components/badge)               |
@@ -73,7 +74,7 @@ Shared parts with no Figma component of their own:
 - **Menu** (`101:246`, Menu item `101:91`): no file of its own. Select and Search style their own menus to match it.
 - **Close button** (`165:2624`): no file of its own. Notification, Search and File input draw a 24px one; Modal will draw the 32px one.
 
-### To build, in order (34)
+### To build, in order (33)
 
 Built in this order so each one's parts already exist: Tooltip before the components that use it, Error summary before the form patterns that list errors, and the page frame before the service patterns. Components marked _New_ are still marked New in Figma, so check the Changelog before starting them.
 
@@ -81,7 +82,6 @@ Built in this order so each one's parts already exist: Tooltip before the compon
 
 | Component       | Figma node | Notes                                  |
 | --------------- | ---------- | -------------------------------------- |
-| Accordion       | `38:15`    | Base UI Accordion                      |
 | Modal           | `61:31`    | Base UI Dialog; bottom sheet on phones |
 | Tooltip         | `159:63`   | Base UI Tooltip                        |
 | Breadcrumb      | `39:130`   | `<nav aria-label="Breadcrumb"><ol>`    |
@@ -144,6 +144,7 @@ Built in this order so each one's parts already exist: Tooltip before the compon
 
 Changes the Figma file should make to match code. Newest first.
 
+- [ ] **Accordion (`38:15`):** the content has 64px on the right, so it lines up inside the chevron. Code keeps that from 640px wide, and uses 16px below that, so answers aren't squeezed on a phone. Consider a Mobile example.
 - [ ] **Tag (`35:53`):** the Anatomy note says the container is radius/full. The component (and code) use radius/md (8px). Fix the note.
 - [ ] **Text input (`28:28`) / Select (`29:36`):** the Disabled state notes say field/02 fill. The components (and code) use layer/accent-01. Fix the notes.
 - [ ] **Card (`120:2118`):** the Anatomy note says the container is background/default. The component (and code) use layer/01. Fix the note.
@@ -176,7 +177,7 @@ Ticked off from Figma Changelog entries on 2026-11-24.
 
 ## Figma → code
 
-Changes from the Figma Changelog page that code still has to pick up. The code agent copies entries here and ticks them off when they ship. New components are listed under [To build](#to-build-in-order-34); read their Changelog entries and docs page in Figma before starting one.
+Changes from the Figma Changelog page that code still has to pick up. The code agent copies entries here and ticks them off when they ship. New components are listed under [To build](#to-build-in-order-33); read their Changelog entries and docs page in Figma before starting one.
 
 Copied 2026-11-25 (Changelog entries up to Spinner, 2026-11-25).
 
