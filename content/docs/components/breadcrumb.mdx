@@ -1,34 +1,148 @@
 ---
 title: Breadcrumb
 description: Shows where a page sits in a site, with links back to the pages above it.
-status: planned
 ---
+
+<ComponentPreview name="breadcrumb-demo" />
 
 ## When to use
 
-Use a breadcrumb on sites with more than two levels, like Home / Services / Passport, so people can see where they are and go back up.
+Use a breadcrumb on sites with more than two levels, like Home / Services / Passport, so people can see where they are and go back up. Put it above the page title.
 
 Use something else when:
 
 - **The site is flat**, with every page one level below the home page.
 - **People are going through the steps of a form.** Show their progress in the form, not the site's structure.
 
-## How it will look and work
+## Installation
 
-- **It sits above the page title.**
-- **Each level is a link** (Body/SM), separated by a slash. The last item is the current page, as plain text.
-- **Deep pages** can collapse the middle levels into "…".
-- **On phones**, it shows only the parent page, as a back link.
+[Set up Habi](/docs/installation) first, if you haven't already.
+
+<InstallationTabs>
+<InstallationTab value="command">
+
+Add the component with the shadcn CLI. It also adds the Habi parts the component uses.
+
+```npm
+npx shadcn@latest add https://habi.yiliya.studio/r/breadcrumb.json
+```
+
+</InstallationTab>
+<InstallationTab value="manual">
+
+Add [Link](/docs/components/link#installation) first, then install the packages this component uses:
+
+```npm
+npm install @heroicons/react
+```
+
+Add the component:
+
+<ComponentSource
+  src="registry/habi/ui/breadcrumb.tsx"
+  title="components/ui/breadcrumb.tsx"
+/>
+
+</InstallationTab>
+</InstallationTabs>
+
+## Usage
+
+```tsx
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
+
+<Breadcrumb>
+  <BreadcrumbList>
+    <BreadcrumbItem>
+      <BreadcrumbLink href="/">Home</BreadcrumbLink>
+    </BreadcrumbItem>
+    <BreadcrumbSeparator />
+    <BreadcrumbItem>
+      <BreadcrumbLink href="/services">Services</BreadcrumbLink>
+    </BreadcrumbItem>
+    <BreadcrumbSeparator />
+    <BreadcrumbItem>
+      <BreadcrumbPage>Passport</BreadcrumbPage>
+    </BreadcrumbItem>
+  </BreadcrumbList>
+</Breadcrumb>;
+```
+
+End with the current page as a `BreadcrumbPage`, not a link. On phones, the breadcrumb shows only the page above it, as a back link: "‹ Services". To use your framework's link, like Next.js's, pass it to `BreadcrumbLink` with `render`, the same way as [Link](/docs/components/link).
+
+## Examples
+
+### Deep pages
+
+Shorten the middle levels to "…" with `BreadcrumbEllipsis`, and keep the first level and the page above the current one.
+
+<ComponentPreview name="breadcrumb-collapsed" />
+
+## Content guidelines
+
+- **Use each page's title,** or a shorter form of it people will recognize: "Passport", not "Passport application and renewal services".
+- **Start from the home page** of the site or service.
+
+## Props
+
+`Breadcrumb` is a `<nav>`, `BreadcrumbList` an `<ol>`, `BreadcrumbItem` and `BreadcrumbSeparator` are `<li>`s, and `BreadcrumbPage` and `BreadcrumbEllipsis` are `<span>`s. Each accepts its element's props.
+
+### Breadcrumb
+
+<PropsTable
+  rows={[
+    {
+      name: "aria-label",
+      type: "string",
+      default: '"Breadcrumb"',
+      description:
+        "Names the navigation for screen readers. Translate it when the page isn't in English.",
+    },
+  ]}
+/>
+
+### BreadcrumbLink
+
+`BreadcrumbLink` is a small standalone [Link](/docs/components/link#props), and takes the same props, like `href` and `render`.
+
+### BreadcrumbSeparator
+
+<PropsTable
+  rows={[
+    {
+      name: "children",
+      type: "ReactNode",
+      default: '"/"',
+      description: "The separator between levels.",
+    },
+  ]}
+/>
 
 ## Accessibility
 
-- **It's a navigation landmark** named "Breadcrumb", with the levels in an ordered list, so screen readers say how many there are.
-- **The current page** has `aria-current="page"`.
+### What Habi handles
+
+- **A navigation landmark** named "Breadcrumb", so screen reader users can find it and know what it is.
+- **An ordered list,** so screen readers say how many levels there are.
+- **The current page** has `aria-current="page"`, so screen readers say it's the current page.
+- **Separators and "…" are hidden** from screen readers.
+- **Keyboard:** <kbd>Tab</kbd> moves through the links in order, with a focus ring on each.
+
+### What you need to do
+
+- **Make the last item the current page** with `BreadcrumbPage`, so it isn't a link to the page people are on.
+- **Translate `aria-label`** when the page isn't in English.
 
 ## Related components
 
 - [Link](/docs/components/link): each level is a link.
-- [Header](/docs/components/header): for the site's main navigation.
 
 ## Figma
 
