@@ -9,7 +9,7 @@ const linkVariants = cva(
   [
     "text-link-primary visited:text-link-visited hover:text-link-primary-hover",
     "decoration-from-font [text-underline-position:from-font]",
-    "rounded-[2px] focus-visible:focus-ring",
+    "rounded-sm focus-visible:focus-ring",
     "[&_svg]:shrink-0",
   ],
   {
