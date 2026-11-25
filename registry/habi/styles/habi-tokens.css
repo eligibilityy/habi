@@ -137,6 +137,7 @@
   --badge-error-bg: var(--red-10);
   --badge-error-text: var(--red-70);
   --overlay-hover: rgb(33 33 33 / 0.08);
+  --overlay-backdrop: rgb(33 33 33 / 0.5);
 
   --font-roundness: 100;
 }
@@ -278,6 +279,7 @@
   --color-badge-error-bg: var(--badge-error-bg);
   --color-badge-error-text: var(--badge-error-text);
   --color-overlay-hover: var(--overlay-hover);
+  --color-overlay-backdrop: var(--overlay-backdrop);
 
   --text-display: 2.5rem;
   --text-display--line-height: 3rem;
