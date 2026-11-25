@@ -1,13 +1,12 @@
 import type { ComponentProps } from "react";
 import fs from "node:fs/promises";
 import path from "node:path";
-import { Tabs } from "@base-ui/react/tabs";
 import { highlight } from "fumadocs-core/highlight";
 import { transformerIcon } from "fumadocs-core/mdx-plugins/transformer-icon";
 import { Pre } from "fumadocs-ui/components/codeblock";
 
 import { CodeBlock } from "@/components/docs/code-block";
-import { tabClass } from "@/components/docs/installation-tabs";
+import { CollapsibleCode } from "@/components/docs/collapsible-code";
 import { examples } from "@/registry/habi/examples";
 
 async function readSource(file: string) {
@@ -37,29 +36,18 @@ export async function ComponentPreview({ name }: { name: string }) {
     await readSource(`registry/habi/examples/${name}.tsx`),
   );
 
+  // The preview on top, its code underneath, as on Base UI's docs.
   return (
-    <Tabs.Root
-      defaultValue="preview"
-      className="my-6 overflow-hidden rounded-card border border-border-subtle-01 bg-layer-01"
-    >
-      <Tabs.List className="flex border-b border-border-subtle-01 px-2">
-        <Tabs.Tab value="preview" className={tabClass}>
-          Preview
-        </Tabs.Tab>
-        <Tabs.Tab value="code" className={tabClass}>
-          Code
-        </Tabs.Tab>
-      </Tabs.List>
-      <Tabs.Panel
-        value="preview"
-        className="not-prose flex min-h-48 flex-wrap items-center justify-center gap-4 p-6 sm:p-10"
-      >
+    <div className="my-6 overflow-hidden rounded-card border border-border-subtle-01 bg-layer-01">
+      <div className="not-prose flex min-h-48 flex-wrap items-center justify-center gap-4 p-6 sm:p-10">
         <Example />
-      </Tabs.Panel>
-      <Tabs.Panel value="code">
-        <CodeBlock className="my-0 rounded-none border-0">{code}</CodeBlock>
-      </Tabs.Panel>
-    </Tabs.Root>
+      </div>
+      <CollapsibleCode>
+        <CodeBlock className="my-0 rounded-none bg-transparent">
+          {code}
+        </CodeBlock>
+      </CollapsibleCode>
+    </div>
   );
 }
 

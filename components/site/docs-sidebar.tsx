@@ -14,10 +14,7 @@ function isCurrent(url: string, pathname: string) {
   return strip(url) === strip(pathname);
 }
 
-/**
- * A page link. Like shadcn's sidebar, the pill fits the name rather than the
- * full width. The current page is blue and bold, on a grey pill.
- */
+/** A page link. The current page is blue and bold, on a grey pill. */
 function Item({ item }: Parameters<SidebarPageTreeComponents["Item"]>[0]) {
   const pathname = usePathname();
   const current = isCurrent(item.url, pathname);
@@ -28,7 +25,7 @@ function Item({ item }: Parameters<SidebarPageTreeComponents["Item"]>[0]) {
       external={item.external}
       active={current}
       className={cn(
-        "flex h-8 w-fit items-center rounded-control px-2 text-body-sm text-text-primary outline-none hover:bg-background-hover focus-visible:focus-ring",
+        "flex h-8 items-center rounded-control px-2 text-body-sm text-text-primary outline-none hover:bg-background-hover focus-visible:focus-ring",
         current && "bg-layer-accent-01 text-label text-interactive-default",
       )}
     >
