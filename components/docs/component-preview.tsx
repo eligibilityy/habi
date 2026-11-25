@@ -42,7 +42,7 @@ export async function ComponentPreview({ name }: { name: string }) {
       defaultValue="preview"
       className="my-6 overflow-hidden rounded-card border border-border-subtle-01 bg-layer-01"
     >
-      <Tabs.List className="flex border-b border-border-subtle-01 bg-layer-accent-01 px-2">
+      <Tabs.List className="flex border-b border-border-subtle-01 px-2">
         <Tabs.Tab value="preview" className={tabClass}>
           Preview
         </Tabs.Tab>
