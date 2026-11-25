@@ -5,7 +5,7 @@ How the Figma file and the code stay in step. Two agents use this file:
 - **The code agent** (Claude Code, in this repo) builds components, demos and docs pages.
 - **The Figma agent** (Claude desktop, with the Figma connector) designs in the [Habi Figma file](https://www.figma.com/design/D3nJzUeqpGlyMpimlesib6).
 
-Last updated 2026-11-24.
+Last updated 2026-11-25.
 
 ## Where everything lives
 
@@ -45,9 +45,9 @@ The Figma agent can't push to this repo, so it never edits this file. Its change
 
 ## Component status
 
-Node IDs are component sets unless marked _(page)_.
+Node IDs are component sets unless marked _(component)_. v1 is every component page in the Figma file: 48 components.
 
-### Built (14 of 21)
+### Built (14 of 48)
 
 | Component    | Figma node | Code                                | Docs                                                                    |
 | ------------ | ---------- | ----------------------------------- | ----------------------------------------------------------------------- |
@@ -71,10 +71,13 @@ Shared parts with no Figma component of their own:
 - **Field parts** (`registry/habi/ui/field.tsx`): label, hint, error, fieldset. Figma draws them inside each form component.
 - **Status icon** (`registry/habi/ui/status-icon.tsx`): Figma's `Icon/status-*` icons with their backing.
 - **Menu** (`101:246`, Menu item `101:91`): no file of its own. Select and Search style their own menus to match it.
+- **Close button** (`165:2624`): no file of its own. Notification, Search and File input draw a 24px one; Modal will draw the 32px one.
 
-### Next, in order
+### To build, in order (34)
 
-Each has a "Planned" page on the docs site, written from its Figma description.
+Built in this order so each one's parts already exist: Tooltip before the components that use it, Error summary before the form patterns that list errors, and the page frame before the service patterns. Components marked _New_ are still marked New in Figma, so check the Changelog before starting them.
+
+**1. Planned (have a "Planned" docs page)**
 
 | Component       | Figma node | Notes                                  |
 | --------------- | ---------- | -------------------------------------- |
@@ -86,9 +89,52 @@ Each has a "Planned" page on the docs site, written from its Figma description.
 | Header          | `40:35`    | Mobile menu in a Drawer or Dialog      |
 | Footer          | `41:62`    | Logo slot for the agency mark          |
 
-### In Figma, not planned yet
+**2. Page frame and content**
 
-Appointment picker `68:63` · Back link `192:43` _(page)_ · Confirmation panel `70:314` · Cookie banner `211:275` _(page)_ · Digital ID card `72:46` · Error summary `190:41` _(page)_ · ID number input `32:78` · Mobile number input `31:36` · Name fields `33:71` · Payment method picker `69:53` · Phase banner `209:245` _(page)_ · Privacy consent `211:61` _(page)_ · Requirements checklist `67:51` · Skip link `209:61` _(page)_ · Status tracker `71:70` · Step indicator `65:74` · Summary list `191:41` _(page)_ · Textarea `188:35` _(page)_
+| Component    | Figma node              | Notes                                   |
+| ------------ | ----------------------- | --------------------------------------- |
+| Skip link    | `209:223` _(component)_ | Hidden until focused                    |
+| Phase banner | `209:434`               | Badge + Link                            |
+| Back link    | `192:209`               | Links to the previous step's URL        |
+| Inset text   | `317:260` _(component)_ | _New_                                   |
+| Warning text | `321:182` _(component)_ | _New_                                   |
+| Details      | `317:245`               | _New_. Native `details`/`summary`       |
+| Spinner      | `321:227`               | _New_. Small Inverse goes inside Button |
+
+**3. Forms**
+
+| Component           | Figma node            | Notes                             |
+| ------------------- | --------------------- | --------------------------------- |
+| Textarea            | `188:40`              | Character count; uses Tooltip     |
+| Password input      | `292:283`             | _New_. Show/Hide button           |
+| Mobile number input | `31:36`               | +63 prefix                        |
+| ID number input     | `32:78`               | Grouped as printed on the card    |
+| Name fields         | `33:71` _(component)_ | Given, middle, surname, suffix    |
+| Error summary       | `190:211`             | Takes focus after a failed submit |
+| Summary list        | `191:228`             | "Change" links name their field   |
+| Privacy consent     | `211:262`             | Checkbox + Link; RA 10173         |
+
+**4. Navigation and data**
+
+| Component      | Figma node | Notes                                       |
+| -------------- | ---------- | ------------------------------------------- |
+| Tabs           | `295:208`  | _New_. Base UI Tabs                         |
+| Pagination     | `292:382`  | _New_. `aria-current="page"`                |
+| Table          | `298:354`  | _New_. Rows stack into blocks on phones     |
+| Step indicator | `65:74`    | Step `65:23`                                |
+| Task list      | `295:343`  | _New_. Task list item `295:342`, uses Badge |
+
+**5. Service patterns**
+
+| Component              | Figma node             | Notes                                       |
+| ---------------------- | ---------------------- | ------------------------------------------- |
+| Cookie banner          | `211:499`              | Full-width band; Tertiary buttons           |
+| Requirements checklist | `67:51` _(component)_  | Requirement `67:41`                         |
+| Appointment picker     | `68:63` _(component)_  | Date cell `68:22`, Time slot `68:49`        |
+| Payment method picker  | `69:53` _(component)_  | Payment option `69:27`, Fee summary `69:37` |
+| Confirmation panel     | `70:314` _(component)_ | Reference number in Mono/LG                 |
+| Status tracker         | `71:70` _(component)_  | Status step `71:52`; reference in Mono/SM   |
+| Digital ID card        | `72:46`                | shadow-card; ID number in Mono/SM           |
 
 ### Not building
 
@@ -98,27 +144,51 @@ Appointment picker `68:63` · Back link `192:43` _(page)_ · Confirmation panel 
 
 Changes the Figma file should make to match code. Newest first.
 
-- [ ] **Link (`39:35`):** code underlines links in text (WCAG 1.4.1); standalone links underline on hover. The description now says this (Inline=True/False). Check the variants match it.
-- [ ] **Button (`4:28`):** the Focus variant draws the ring inside as a 2px border; code draws it outside (outline, offset 0) for better contrast against dark fills. Consider matching the Focus/Ring effect style.
-- [ ] **Link / Button:** code has no icon position prop. The icon goes where the child is placed. The Figma property can stay; note it in the description.
-- [ ] **Menu item (`101:91`):** Selected background is bound to `support/info-subtle`; Tag's selected state uses `highlight/default` (the same blue). Code uses `highlight/default` for both. Rebind Menu item so "selected" means one token.
-- [ ] **Date input (`33:45`):** field widths are Day 64px, Month 152px, Year 88px. "September" didn't fit the 140px Month box.
-- [ ] **Search (`30:24`):** code shows the shortcut as ⌘K on Apple devices and "Ctrl K" elsewhere, and only on devices with a mouse or trackpad.
-- [ ] **File upload (`63:57`):** code shows the Focus state's ring outside the "Choose file" button (outline, offset 0), like other buttons.
-- [ ] **Cover:** says "v1". Change it to "v0.1 Preview".
-- [ ] **Read me page:** missing (what Habi is, enabling the library, credits, changelog, disclaimer).
-- [ ] **Examples page:** has a component named "Header" (`107:2607`). Rename it, for example `_Example header`.
-- [ ] **Foundations:** two frames are named "Icons". Tidy.
-- [x] **Footer (`41:62`):** the description mentioned a logo placeholder with no Logo slot. Figma now has a Logo slot (checked 2026-11-24).
-- [ ] **Missing Hover/Focus states:** Breadcrumb links, Step links, Header nav items, Footer links, Notification close, Modal close, Official banner toggle, Requirement row.
+- [ ] **Tag (`35:53`):** the Anatomy note says the container is radius/full. The component (and code) use radius/md (8px). Fix the note.
+- [ ] **Text input (`28:28`) / Select (`29:36`):** the Disabled state notes say field/02 fill. The components (and code) use layer/accent-01. Fix the notes.
+- [ ] **Card (`120:2118`):** the Anatomy note says the container is background/default. The component (and code) use layer/01. Fix the note.
+- [ ] **Card meta (`117:40`):** the Variants note says a 16px icon. The component (and code) use 20px. Fix the note.
+- [ ] **Select (`29:36`):** the Anatomy note says the chevron is icon/secondary. The component (and code) use icon/primary. Fix the note.
+- [ ] **Select (`29:36`):** the Open state note says the menu opens in duration/short (200ms). Code fades Select and Search menus in over duration/fast (100ms), so they feel instant. Change the note, or say why it should be slower.
 
 No change needed, for the record:
 
 - **Select (`29:36`):** Focus and Open use a 2px inside border; code draws a 2px inset outline. Same look.
 - **Radio button (`35:21`) / Checkbox (`34:35`):** code matches the 24px control frame.
 
+### Done
+
+Ticked off from Figma Changelog entries on 2026-11-24.
+
+- [x] **Link (`39:35`):** underline rules for Inline=True/False checked; no change needed.
+- [x] **Button (`4:28`):** all 20 Focus variants draw the ring outside.
+- [x] **Link / Button:** descriptions say there's no icon position prop in code.
+- [x] **Menu item (`101:91`):** Selected rebound to highlight/default.
+- [x] **Date input (`33:45`):** Day 64px, Month 152px, Year 88px.
+- [x] **Search (`30:24`):** description covers ⌘K / Ctrl K and pointer-only.
+- [x] **File upload (`63:57`):** Focus ring already outside "Choose file".
+- [x] **Cover:** badge says "v0.1 Preview".
+- [x] **Read me page:** added after Cover.
+- [x] **Examples page:** component already named `_Example header`.
+- [x] **Foundations:** colour frame renamed "Icon colors".
+- [x] **Footer (`41:62`):** Logo slot added.
+- [x] **Missing Hover/Focus states:** each lives on the part the component uses (Link, Step, Nav item, Footer link, Close button, Official banner, Requirement).
+
 ## Figma → code
 
-Changes from the Figma Changelog page that code still has to pick up. The code agent copies entries here and ticks them off when they ship.
+Changes from the Figma Changelog page that code still has to pick up. The code agent copies entries here and ticks them off when they ship. New components are listed under [To build](#to-build-in-order-34); read their Changelog entries and docs page in Figma before starting one.
 
-_None yet._
+Copied 2026-11-25 (Changelog entries up to Spinner, 2026-11-25).
+
+### For built components
+
+- [x] **Mono text styles:** Mono/LG 18/28, Mono/SM 14/20, Mono/XS 12/20 in JetBrains Mono. Code has `text-mono-lg`, `text-mono-sm` and `text-mono-xs`; Search's shortcut hint uses `text-mono-xs`.
+- [x] **JetBrains Mono:** `--font-mono` lists JetBrains Mono first. `@fontsource/jetbrains-mono` (400) loads next to `allo-font`, and the Installation page says to install it.
+- [x] **Focus ring corners on text links:** Link's focus outline uses radius/sm (4px). Back link, Footer link, Nav item, Error summary item, Official banner and Step use it when they're built.
+- [x] **Close button (`165:2624`):** Hover fills overlay/hover (neutral/100 at 8%). Code has the `overlay/hover` token, and the Notification close, Search clear and File input cancel buttons use it. Small is 24px, as in code.
+- [x] **Checkbox (`34:35`):** don't pre-tick a box for something people didn't ask for. Added to the Checkbox docs page.
+- [ ] **Mobile number input (`31:36`):** use "Enter a mobile number, like 917 123 4567." for an invalid number. (When it's built.)
+- [ ] **Modal (`61:31`):** close button is Medium, 32 × 32px. (When it's built.)
+- [ ] **Digital ID card (`72:46`):** uses shadow-card. (When it's built.)
+- [ ] **Cookie banner (`211:499`):** full-width band on layer/accent-01 with a 1px border/subtle-01 line below, no corners or shadow; Accept and Reject are both Tertiary. (When it's built.)
+- [ ] **Button + Spinner:** inside a Primary button, a Small Inverse Spinner takes the icon's place ("Paying…"). Add it to the Button docs when Spinner ships.
