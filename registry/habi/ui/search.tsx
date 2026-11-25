@@ -107,7 +107,7 @@ function SearchInput({
       {showHint && (
         <kbd
           aria-hidden="true"
-          className="hidden shrink-0 rounded-sm border border-border-subtle-01 px-1.5 font-mono text-xs/5 text-text-secondary group-has-[[data-slot=search-clear]]/search:hidden! group-data-disabled/search:hidden! pointer-fine:inline-flex"
+          className="hidden shrink-0 rounded-sm border border-border-subtle-01 px-1.5 text-mono-xs text-text-secondary group-has-[[data-slot=search-clear]]/search:hidden! group-data-disabled/search:hidden! pointer-fine:inline-flex"
         >
           {isApple ? "⌘K" : "Ctrl K"}
         </kbd>
@@ -115,7 +115,7 @@ function SearchInput({
       <Autocomplete.Clear
         data-slot="search-clear"
         aria-label={clearLabel}
-        className="-m-0.5 inline-flex size-6 shrink-0 cursor-default items-center justify-center rounded-control text-icon-primary focus-visible:focus-ring"
+        className="-m-0.5 inline-flex size-6 shrink-0 cursor-default items-center justify-center rounded-control text-icon-primary hover:bg-overlay-hover focus-visible:focus-ring"
       >
         <XMarkIcon className="size-5" />
       </Autocomplete.Clear>

@@ -57,7 +57,7 @@ function Notification({
           type="button"
           aria-label={dismissLabel}
           onClick={onDismiss}
-          className="-m-0.5 inline-flex size-6 shrink-0 items-center justify-center rounded-control text-icon-primary focus-visible:focus-ring"
+          className="-m-0.5 inline-flex size-6 shrink-0 items-center justify-center rounded-control text-icon-primary hover:bg-overlay-hover focus-visible:focus-ring"
         >
           <XMarkIcon className="size-5" />
         </button>

@@ -184,7 +184,7 @@ function FileInput({
             className={cn(
               "shrink-0 disabled:cursor-not-allowed disabled:text-text-disabled",
               uploading
-                ? "-m-0.5 inline-flex size-6 items-center justify-center rounded-control text-icon-primary focus-visible:focus-ring"
+                ? "-m-0.5 inline-flex size-6 items-center justify-center rounded-control text-icon-primary hover:not-disabled:bg-overlay-hover focus-visible:focus-ring"
                 : linkVariants({ size: "small", standalone: true }),
             )}
           >
