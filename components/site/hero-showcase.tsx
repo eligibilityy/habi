@@ -1,11 +1,32 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { MapPinIcon } from "@heroicons/react/20/solid";
+import Image from "next/image";
+import { CalendarIcon, ClockIcon, MapPinIcon } from "@heroicons/react/20/solid";
 
 import { cn } from "@/registry/habi/lib/utils";
+import jeepneyPhoto from "@/public/home/jeepney.jpg";
+import mayonPhoto from "@/public/home/mayon.jpg";
+import {
+  Accordion,
+  AccordionItem,
+  AccordionPanel,
+  AccordionTrigger,
+} from "@/registry/habi/ui/accordion";
 import { Badge } from "@/registry/habi/ui/badge";
 import { Button } from "@/registry/habi/ui/button";
+import {
+  Card,
+  CardBadges,
+  CardBody,
+  CardDescription,
+  CardHeader,
+  CardImage,
+  CardMeta,
+  CardMetaItem,
+  CardTitle,
+} from "@/registry/habi/ui/card";
+import { Checkbox, CheckboxGroup } from "@/registry/habi/ui/checkbox";
 import {
   ChoiceLabel,
   Field,
@@ -16,6 +37,7 @@ import {
   FieldsetLegend,
 } from "@/registry/habi/ui/field";
 import { FileInput } from "@/registry/habi/ui/file-input";
+import { Link } from "@/registry/habi/ui/link";
 import { Notification } from "@/registry/habi/ui/notification";
 import { OtpInput } from "@/registry/habi/ui/otp-input";
 import { Radio, RadioGroup } from "@/registry/habi/ui/radio";
@@ -281,36 +303,197 @@ function UploadPanel() {
   );
 }
 
+function AdvisoryCard() {
+  return (
+    <Card className="shadow-none">
+      <CardImage>
+        <Image
+          src={mayonPhoto}
+          alt=""
+          placeholder="blur"
+          sizes="(min-width: 1280px) 300px, (min-width: 768px) 50vw, 100vw"
+        />
+      </CardImage>
+      <CardBody>
+        <CardHeader>
+          <CardBadges>
+            <Badge kind="warning">Alert level 2</Badge>
+          </CardBadges>
+          <CardTitle>Mayon Volcano advisory</CardTitle>
+          <CardDescription>
+            Stay out of the 6 km permanent danger zone. Check evacuation centres
+            near you.
+          </CardDescription>
+        </CardHeader>
+        <CardMeta>
+          <CardMetaItem>
+            <ClockIcon />
+            Updated 8:00 AM today
+          </CardMetaItem>
+        </CardMeta>
+      </CardBody>
+    </Card>
+  );
+}
+
+function FareCard() {
+  return (
+    <Card className="shadow-none">
+      <CardImage>
+        <Image
+          src={jeepneyPhoto}
+          alt=""
+          placeholder="blur"
+          sizes="(min-width: 1280px) 300px, 100vw"
+        />
+      </CardImage>
+      <CardBody>
+        <CardHeader>
+          <CardBadges>
+            <Badge kind="info">Updated</Badge>
+          </CardBadges>
+          <CardTitle>Jeepney fare guide</CardTitle>
+          <CardDescription>
+            ₱13 for the first 4 km. Students, seniors and PWDs get 20% off.
+          </CardDescription>
+        </CardHeader>
+        <CardMeta>
+          <CardMetaItem>
+            <CalendarIcon />
+            Posted 20 November
+          </CardMetaItem>
+        </CardMeta>
+      </CardBody>
+    </Card>
+  );
+}
+
+function FaqPanel() {
+  return (
+    <Panel title="Common questions" className="gap-2 pb-2">
+      <Accordion defaultValue={["documents"]} className="-mx-6 w-auto">
+        <AccordionItem value="documents">
+          <AccordionTrigger className="px-6">
+            What do I need to bring?
+          </AccordionTrigger>
+          <AccordionPanel className="px-6 sm:pr-12">
+            Your appointment slip, PSA birth certificate and one valid ID.
+          </AccordionPanel>
+        </AccordionItem>
+        <AccordionItem value="minors">
+          <AccordionTrigger className="px-6">
+            Can I apply for my child?
+          </AccordionTrigger>
+          <AccordionPanel className="px-6 sm:pr-12">
+            Yes, with their birth certificate.
+          </AccordionPanel>
+        </AccordionItem>
+        <AccordionItem value="lost">
+          <AccordionTrigger className="px-6">
+            What if I lost my passport?
+          </AccordionTrigger>
+          <AccordionPanel className="px-6 sm:pr-12">
+            Report it to the DFA first.
+          </AccordionPanel>
+        </AccordionItem>
+      </Accordion>
+    </Panel>
+  );
+}
+
+function IdCard() {
+  return (
+    <div className="flex flex-col gap-5 rounded-card bg-interactive-default p-6 text-text-on-color shadow-card">
+      <div className="flex items-center justify-between text-body-sm">
+        <span>Republika ng Pilipinas</span>
+        <span className="text-label">PhilSys</span>
+      </div>
+      <div className="flex items-center gap-4">
+        <span className="flex size-14 shrink-0 items-center justify-center rounded-full bg-text-on-color text-heading-sm text-interactive-default">
+          JD
+        </span>
+        <span className="flex flex-col">
+          <span className="text-heading-xs">Juan Dela Cruz</span>
+          <span className="text-body-sm">Born 15 March 1990</span>
+        </span>
+      </div>
+      <div className="flex flex-col gap-1">
+        <span className="text-body-sm">PhilSys card number</span>
+        <span className="text-mono-sm">1234-5678-9012-3456</span>
+      </div>
+    </div>
+  );
+}
+
+function IdsPanel() {
+  return (
+    <Panel>
+      <Field name="ids">
+        <Fieldset render={<CheckboxGroup defaultValue={["philsys", "umid"]} />}>
+          <FieldsetLegend>Which IDs can you bring?</FieldsetLegend>
+          <FieldDescription>Select all that apply.</FieldDescription>
+          {[
+            ["philsys", "PhilSys ID"],
+            ["passport", "Philippine passport"],
+            ["license", "Driver's license"],
+            ["umid", "UMID"],
+          ].map(([value, label]) => (
+            <FieldItem key={value}>
+              <ChoiceLabel>
+                <Checkbox value={value} />
+                {label}
+              </ChoiceLabel>
+            </FieldItem>
+          ))}
+        </Fieldset>
+      </Field>
+      <Link href="#" size="small">
+        Other IDs we accept
+      </Link>
+    </Panel>
+  );
+}
+
 /**
- * The home page hero: real Habi components arranged as pieces of a service,
+ * The home page hero: real Habi components arranged as pieces of services,
  * cropped and faded at the bottom. It's a picture, not something to use, so
  * it's inert: no Tab stops before the page's content, and screen readers
  * hear one description.
+ *
+ * Photos from Unsplash (Unsplash License): /home/mayon.jpg (DA6jJw-IcJc) and
+ * /home/jeepney.jpg (HCvM5CAlYFQ).
  */
 export function HeroShowcase() {
   return (
     <div
       role="img"
-      aria-label="Habi components in a government service: booking a passport appointment, an application status with a reference number, a payment, a service search with filter tags, an MPIN and an ID upload."
-      className="relative h-[34rem] w-full max-w-6xl overflow-hidden mask-b-from-75% sm:h-[38rem] sm:mask-b-from-60%"
+      aria-label="Habi components in government services: booking a passport appointment, common questions, a Mayon Volcano advisory, an application status, a service search, a National ID card, an MPIN, a payment, a jeepney fare notice, a list of IDs and an ID upload."
+      className="relative h-[36rem] w-full max-w-7xl overflow-hidden mask-b-from-75% sm:h-[48rem] sm:mask-b-from-70% xl:h-[56rem]"
     >
       <div
         inert
-        className="grid grid-cols-1 items-start gap-4 md:grid-cols-2 lg:grid-cols-3"
+        className="grid grid-cols-1 items-start gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
       >
         <div className="flex flex-col gap-4">
           <AppointmentPanel />
           <Notification kind="success" title="Payment received">
             We sent the receipt to juan.delacruz@email.com.
           </Notification>
+          <FaqPanel />
         </div>
         <div className="hidden flex-col gap-4 md:flex">
+          <AdvisoryCard />
           <StatusPanel />
-          <PaymentPanel />
         </div>
         <div className="hidden flex-col gap-4 lg:flex">
           <SearchPanel />
+          <IdCard />
           <MpinPanel />
+        </div>
+        <div className="hidden flex-col gap-4 xl:flex">
+          <PaymentPanel />
+          <FareCard />
+          <IdsPanel />
           <UploadPanel />
         </div>
       </div>
