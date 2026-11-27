@@ -1,0 +1,106 @@
+---
+title: Back link
+description: Takes people to the previous step of a form that's split over several pages.
+---
+
+<ComponentPreview name="back-link-demo" />
+
+## When to use
+
+Use a back link at the top of each page of a multi-page form, so people can change an earlier answer. Put it above the step indicator and heading, outside the `<form>`.
+
+Leave it out on the first page of a service. Use a [Breadcrumb](/docs/components/breadcrumb) to go back up a site's sections instead.
+
+## Installation
+
+[Set up Habi](/docs/installation) first, if you haven't already.
+
+<InstallationTabs>
+<InstallationTab value="command">
+
+Add the component with the shadcn CLI. It also adds the Habi parts the component uses.
+
+```npm
+npx shadcn@latest add https://habi.yiliya.studio/r/back-link.json
+```
+
+</InstallationTab>
+<InstallationTab value="manual">
+
+Add [Link](/docs/components/link#installation) first, then install the packages this component uses:
+
+```npm
+npm install @heroicons/react
+```
+
+Add the component:
+
+<ComponentSource
+  src="registry/habi/ui/back-link.tsx"
+  title="components/ui/back-link.tsx"
+/>
+
+</InstallationTab>
+</InstallationTabs>
+
+## Usage
+
+```tsx
+import { BackLink } from "@/components/ui/back-link";
+
+<BackLink href="/apply/address" />;
+```
+
+Link to the previous step's URL, not to the browser's history. The link works before JavaScript loads, and people come back to their saved answers, not a resubmitted form.
+
+`BackLink` is a [Link](/docs/components/link), so to use your framework's link, like Next.js's, pass it with `render`.
+
+## Examples
+
+### Filipino
+
+```tsx
+<BackLink href="/apply/address">Bumalik</BackLink>
+```
+
+## Props
+
+`BackLink` takes the same props as [Link](/docs/components/link#props), apart from `size` and `standalone`.
+
+<PropsTable
+  rows={[
+    {
+      name: "href",
+      type: "string",
+      required: true,
+      description: "The previous step's URL.",
+    },
+    {
+      name: "children",
+      type: "ReactNode",
+      default: '"Back"',
+      description: "The link's words.",
+    },
+  ]}
+/>
+
+## Accessibility
+
+### What Habi handles
+
+- **A real link,** so it works with a keyboard, before JavaScript loads, and in a screen reader's links list.
+- **The chevron is hidden** from screen readers, so they read "Back, link".
+- **Keyboard:** <kbd>Tab</kbd> reaches it, with a focus ring around the chevron and the words.
+
+### What you need to do
+
+- **Link to the previous step,** and keep people's answers when they go back.
+
+## Related components
+
+- [Link](/docs/components/link): Back link is a standalone link.
+- [Breadcrumb](/docs/components/breadcrumb): goes back up a site's sections, not a form's steps.
+
+## Figma
+
+[Open Back link in the Habi Figma file](https://www.figma.com/design/D3nJzUeqpGlyMpimlesib6?node-id=192-209).
