@@ -1,0 +1,94 @@
+---
+title: Details
+description: A short link that opens extra help underneath, for help only some people need.
+---
+
+<ComponentPreview name="details-demo" />
+
+## When to use
+
+Use details for help only some people need, like where to find a reference number. Everyone else can skip it, so the page stays short.
+
+Don't hide something everyone needs in details. If most people would open it, put it on the page. For several questions in a row, use an [Accordion](/docs/components/accordion).
+
+## Installation
+
+[Set up Habi](/docs/installation) first, if you haven't already.
+
+<InstallationTabs>
+<InstallationTab value="command">
+
+Add the component with the shadcn CLI. It also adds the Habi parts the component uses.
+
+```npm
+npx shadcn@latest add https://habi.yiliya.studio/r/details.json
+```
+
+</InstallationTab>
+<InstallationTab value="manual">
+
+Install the packages this component uses:
+
+```npm
+npm install @heroicons/react
+```
+
+Add the component:
+
+<ComponentSource
+  src="registry/habi/ui/details.tsx"
+  title="components/ui/details.tsx"
+/>
+
+</InstallationTab>
+</InstallationTabs>
+
+## Usage
+
+```tsx
+import {
+  Details,
+  DetailsContent,
+  DetailsSummary,
+} from "@/components/ui/details";
+
+<Details>
+  <DetailsSummary>Help with your reference number</DetailsSummary>
+  <DetailsContent>
+    Your reference number is in the email we sent after you applied.
+  </DetailsContent>
+</Details>;
+```
+
+It's built on the browser's own `<details>` and `<summary>`, so it works before JavaScript loads. It's closed by default; add `open` to start it open.
+
+## Content guidelines
+
+- **Write the summary as what people need help with,** like "Help with your reference number" or "I don't have a PhilSys ID".
+- **Keep the content short.** Link to a full page for anything longer.
+
+## Props
+
+`Details` is a `<details>`, `DetailsSummary` a `<summary>` and `DetailsContent` a `<div>`. Each accepts its element's props, like `open` and `onToggle` on `Details`.
+
+## Accessibility
+
+### What Habi handles
+
+- **The summary works like a button:** screen readers say whether it's expanded or collapsed.
+- **Keyboard:** <kbd>Tab</kbd> reaches the summary, with a focus ring, and <kbd>Enter</kbd> or <kbd>Space</kbd> opens and closes it.
+- **Find in page:** in most browsers, searching the page opens it to show a match inside.
+- **Reduced motion:** the chevron turns without animating.
+
+### What you need to do
+
+- **Write a summary that makes sense on its own,** as it's all screen reader users hear until they open it.
+
+## Related components
+
+- [Accordion](/docs/components/accordion): for several sections of related content.
+- [Inset text](/docs/components/inset-text): for text everyone should see.
+
+## Figma
+
+[Open Details in the Habi Figma file](https://www.figma.com/design/D3nJzUeqpGlyMpimlesib6?node-id=317-245).
