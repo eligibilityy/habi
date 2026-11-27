@@ -1,4 +1,3 @@
-import Image from "next/image";
 import NextLink from "next/link";
 import type { ComponentType, ReactNode, SVGProps } from "react";
 import { ArrowTopRightOnSquareIcon } from "@heroicons/react/20/solid";
@@ -13,6 +12,7 @@ import {
 } from "@heroicons/react/24/solid";
 
 import { HabiMark } from "@/components/site/habi-mark";
+import { HeroShowcase } from "@/components/site/hero-showcase";
 import {
   ConfirmationPreview,
   FormPreview,
@@ -22,7 +22,6 @@ import { cn } from "@/registry/habi/lib/utils";
 import { Badge } from "@/registry/habi/ui/badge";
 import { buttonVariants } from "@/registry/habi/ui/button";
 import { Link } from "@/registry/habi/ui/link";
-import heroImage from "@/public/home/components.png";
 import { RocketLaunchIcon } from "@heroicons/react/24/solid";
 
 const figmaUrl = "https://www.figma.com/design/D3nJzUeqpGlyMpimlesib6";
@@ -149,15 +148,7 @@ export default function HomePage() {
             </a>
           </div>
         </div>
-        <div className="w-full max-w-5xl overflow-hidden rounded-t-card border border-b-0 border-border-subtle-01 bg-layer-01">
-          <Image
-            src={heroImage}
-            alt="Habi components: a service search, filter tags, status badges, a date picker, time slots, radio buttons and an appointment confirmation."
-            priority
-            sizes="(min-width: 1024px) 1024px, 100vw"
-            className="h-auto w-full"
-          />
-        </div>
+        <HeroShowcase />
       </section>
 
       <section
