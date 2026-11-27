@@ -1,0 +1,83 @@
+---
+title: Inset text
+description: Sets apart a short block of text people should notice, like what happens next.
+---
+
+<ComponentPreview name="inset-text-demo" />
+
+## When to use
+
+Use inset text to set apart something people should notice in the text around it: what happens next, a quote, or an example.
+
+Use something else when:
+
+- **Not acting on it could cost people something,** like a fine or a cancelled application. Use [Warning text](/docs/components/warning-text).
+- **People need to act on it,** or it's about the whole page. Use a [Notification](/docs/components/notification).
+
+Use it sparingly. The more you set apart, the less each one stands out.
+
+## Installation
+
+[Set up Habi](/docs/installation) first, if you haven't already.
+
+<InstallationTabs>
+<InstallationTab value="command">
+
+Add the component with the shadcn CLI. It also adds the Habi parts the component uses.
+
+```npm
+npx shadcn@latest add https://habi.yiliya.studio/r/inset-text.json
+```
+
+</InstallationTab>
+<InstallationTab value="manual">
+
+Add the component:
+
+<ComponentSource
+  src="registry/habi/ui/inset-text.tsx"
+  title="components/ui/inset-text.tsx"
+/>
+
+</InstallationTab>
+</InstallationTabs>
+
+## Usage
+
+```tsx
+import { InsetText } from "@/components/ui/inset-text";
+
+<InsetText>
+  It can take up to 5 working days to process your application after you pay.
+</InsetText>;
+```
+
+It's up to 640px wide. Put several paragraphs in it as `<p>`s, and they're spaced 16px apart.
+
+## Content guidelines
+
+- **Keep it short:** one or two sentences.
+
+## Props
+
+`InsetText` is a `<div>` and accepts its props.
+
+## Accessibility
+
+### What Habi handles
+
+- **It's plain text,** read in order with the rest of the page. The line on the left is only visual.
+
+### What you need to do
+
+- **Make the text make sense on its own.** Screen readers don't announce the line, so don't rely on it to show that the text matters.
+
+## Related components
+
+- [Warning text](/docs/components/warning-text): for what could go wrong if people don't act.
+- [Notification](/docs/components/notification): for what people need to act on.
+- [Details](/docs/components/details): for help only some people need.
+
+## Figma
+
+[Open Inset text in the Habi Figma file](https://www.figma.com/design/D3nJzUeqpGlyMpimlesib6?node-id=317-260).
