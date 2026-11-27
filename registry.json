@@ -15,6 +15,20 @@
       ]
     },
     {
+      "name": "back-link",
+      "type": "registry:ui",
+      "title": "Back link",
+      "description": "Takes people to the previous step of a form that's split over several pages.",
+      "dependencies": ["@heroicons/react"],
+      "registryDependencies": [
+        "https://habi.yiliya.studio/r/utils.json",
+        "https://habi.yiliya.studio/r/link.json"
+      ],
+      "files": [
+        { "path": "registry/habi/ui/back-link.tsx", "type": "registry:ui" }
+      ]
+    },
+    {
       "name": "badge",
       "type": "registry:ui",
       "title": "Badge",
@@ -88,6 +102,17 @@
       ]
     },
     {
+      "name": "details",
+      "type": "registry:ui",
+      "title": "Details",
+      "description": "A short link that opens extra help underneath, for help only some people need.",
+      "dependencies": ["@heroicons/react"],
+      "registryDependencies": ["https://habi.yiliya.studio/r/utils.json"],
+      "files": [
+        { "path": "registry/habi/ui/details.tsx", "type": "registry:ui" }
+      ]
+    },
+    {
       "name": "field",
       "type": "registry:ui",
       "title": "Field",
@@ -114,6 +139,16 @@
       ],
       "files": [
         { "path": "registry/habi/ui/file-input.tsx", "type": "registry:ui" }
+      ]
+    },
+    {
+      "name": "inset-text",
+      "type": "registry:ui",
+      "title": "Inset text",
+      "description": "Sets apart a short block of text people should notice, like what happens next.",
+      "registryDependencies": ["https://habi.yiliya.studio/r/utils.json"],
+      "files": [
+        { "path": "registry/habi/ui/inset-text.tsx", "type": "registry:ui" }
       ]
     },
     {
@@ -149,6 +184,20 @@
       ]
     },
     {
+      "name": "official-banner",
+      "type": "registry:ui",
+      "title": "Official banner",
+      "description": "Helps people check that they're on a real Philippine government website.",
+      "dependencies": ["@base-ui/react", "@heroicons/react"],
+      "registryDependencies": ["https://habi.yiliya.studio/r/utils.json"],
+      "files": [
+        {
+          "path": "registry/habi/ui/official-banner.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "otp-input",
       "type": "registry:ui",
       "title": "OTP input",
@@ -160,6 +209,19 @@
       ],
       "files": [
         { "path": "registry/habi/ui/otp-input.tsx", "type": "registry:ui" }
+      ]
+    },
+    {
+      "name": "phase-banner",
+      "type": "registry:ui",
+      "title": "Phase banner",
+      "description": "Tells people a service is new and still changing, and asks for their feedback.",
+      "registryDependencies": [
+        "https://habi.yiliya.studio/r/utils.json",
+        "https://habi.yiliya.studio/r/badge.json"
+      ],
+      "files": [
+        { "path": "registry/habi/ui/phase-banner.tsx", "type": "registry:ui" }
       ]
     },
     {
@@ -197,6 +259,27 @@
       ],
       "files": [
         { "path": "registry/habi/ui/select.tsx", "type": "registry:ui" }
+      ]
+    },
+    {
+      "name": "skip-link",
+      "type": "registry:ui",
+      "title": "Skip link",
+      "description": "Lets keyboard users jump past the banner and header, straight to the page's main content.",
+      "registryDependencies": ["https://habi.yiliya.studio/r/utils.json"],
+      "files": [
+        { "path": "registry/habi/ui/skip-link.tsx", "type": "registry:ui" }
+      ]
+    },
+    {
+      "name": "spinner",
+      "type": "registry:ui",
+      "title": "Spinner",
+      "description": "Shows that something is loading, like a payment being checked.",
+      "dependencies": ["class-variance-authority"],
+      "registryDependencies": ["https://habi.yiliya.studio/r/utils.json"],
+      "files": [
+        { "path": "registry/habi/ui/spinner.tsx", "type": "registry:ui" }
       ]
     },
     {
@@ -250,6 +333,16 @@
       "registryDependencies": [],
       "files": [
         { "path": "registry/habi/lib/utils.ts", "type": "registry:lib" }
+      ]
+    },
+    {
+      "name": "warning-text",
+      "type": "registry:ui",
+      "title": "Warning text",
+      "description": "Tells people about something serious that could happen if they don't act, like a fine or a missed deadline.",
+      "registryDependencies": ["https://habi.yiliya.studio/r/utils.json"],
+      "files": [
+        { "path": "registry/habi/ui/warning-text.tsx", "type": "registry:ui" }
       ]
     }
   ]
