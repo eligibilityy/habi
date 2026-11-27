@@ -1,0 +1,94 @@
+---
+title: Warning text
+description: Tells people about something serious that could happen if they don't act, like a fine or a missed deadline.
+---
+
+<ComponentPreview name="warning-text-demo" />
+
+## When to use
+
+Use warning text when not doing something could cost people: a fine, a cancelled application or a missed deadline. Put it next to the thing it's about.
+
+Use it once per page at most. Use [Inset text](/docs/components/inset-text) for something people should notice but that won't cost them, and a [Notification](/docs/components/notification) for messages about the whole page.
+
+## Installation
+
+[Set up Habi](/docs/installation) first, if you haven't already.
+
+<InstallationTabs>
+<InstallationTab value="command">
+
+Add the component with the shadcn CLI. It also adds the Habi parts the component uses.
+
+```npm
+npx shadcn@latest add https://habi.yiliya.studio/r/warning-text.json
+```
+
+</InstallationTab>
+<InstallationTab value="manual">
+
+Add the component:
+
+<ComponentSource
+  src="registry/habi/ui/warning-text.tsx"
+  title="components/ui/warning-text.tsx"
+/>
+
+</InstallationTab>
+</InstallationTabs>
+
+## Usage
+
+```tsx
+import { WarningText } from "@/components/ui/warning-text";
+
+<WarningText>
+  Your appointment will be cancelled if you don’t pay within 3 days.
+</WarningText>;
+```
+
+## Content guidelines
+
+- **Say what will happen and when:** "Your appointment will be cancelled if you don't pay within 3 days", not "Pay on time".
+- **Keep it to one sentence.**
+
+## Props
+
+`WarningText` is a `<div>` and accepts its props.
+
+<PropsTable
+  rows={[
+    {
+      name: "label",
+      type: "string",
+      default: '"Warning"',
+      description:
+        'Read out before the text, in place of the "!". Translate it when the page isn\'t in English, like "Babala".',
+    },
+    {
+      name: "children",
+      type: "ReactNode",
+      description: "The warning.",
+    },
+  ]}
+/>
+
+## Accessibility
+
+### What Habi handles
+
+- **"Warning" is read out first,** as hidden text, and the "!" circle is hidden from screen readers. The warning doesn't rely on the icon.
+- **The text is bold** (`<strong>`), as well as next to the icon.
+
+### What you need to do
+
+- **Translate `label`** when the page isn't in English.
+
+## Related components
+
+- [Inset text](/docs/components/inset-text): for something people should notice that won't cost them.
+- [Notification](/docs/components/notification): for messages about the whole page.
+
+## Figma
+
+[Open Warning text in the Habi Figma file](https://www.figma.com/design/D3nJzUeqpGlyMpimlesib6?node-id=321-182).
