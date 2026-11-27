@@ -1,7 +1,6 @@
 ---
 title: Official banner
 description: Helps people check that they're on a real Philippine government website.
-status: planned
 ---
 
 <Callout type="warning" title="For real government websites only">
@@ -10,21 +9,129 @@ status: planned
   site look official.
 </Callout>
 
+<ComponentPreview name="official-banner-demo" />
+
 ## When to use
 
-Put the official banner at the very top of every page of a government website, above the site's header, so people can tell a real government site from a fake one.
+Put the official banner, sometimes called a masthead, at the very top of every page of a government website, above the site's header. People learn to look for it, so it helps them tell a real government site from a fake one.
 
-## How it will look and work
+Don't use it on sites that aren't official government services, or change its words or colors. It only works if it looks the same everywhere.
 
-- **A dark bar** with a ".gov.ph" badge, the statement "Official PH Government website" and a chevron.
-- **Opening it** shows three ways to check a site: official websites use .gov.ph, the address starts with https://, and people should never share their OTP or PIN.
-- **On phones**, the three reasons stack.
+## Installation
 
-It will be built on Base UI's [Collapsible](https://base-ui.com/react/components/collapsible).
+[Set up Habi](/docs/installation) first, if you haven't already.
+
+<InstallationTabs>
+<InstallationTab value="command">
+
+Add the component with the shadcn CLI. It also adds the Habi parts the component uses.
+
+```npm
+npx shadcn@latest add https://habi.yiliya.studio/r/official-banner.json
+```
+
+</InstallationTab>
+<InstallationTab value="manual">
+
+Install the packages this component uses:
+
+```npm
+npm install @base-ui/react @heroicons/react
+```
+
+Add the component:
+
+<ComponentSource
+  src="registry/habi/ui/official-banner.tsx"
+  title="components/ui/official-banner.tsx"
+/>
+
+</InstallationTab>
+</InstallationTabs>
+
+## Usage
+
+```tsx
+import { OfficialBanner } from "@/components/ui/official-banner";
+
+<body>
+  <SkipLink />
+  <OfficialBanner />
+  <header>…</header>
+  <main id="main-content">…</main>
+</body>;
+```
+
+Put it straight after the [Skip link](/docs/components/skip-link) and before the header. It's closed until people open it, and it spans the page with its contents in a 1200px column.
+
+On computers the three reasons sit in a row. Below 640px wide, the top row lines up on the left and the reasons stack.
+
+## Examples
+
+### Filipino
+
+Translate the button, the reasons and the landmark's name with `statement`, `reasons` and `aria-label`. Set `lang` so screen readers pronounce it in Filipino.
+
+<ComponentPreview name="official-banner-filipino" />
+
+## Content guidelines
+
+- **Keep the words as they are,** apart from translating them. People learn to trust the banner as it is.
+- **Don't add messages to it,** like "Welcome to our new website!". Put news on the page instead.
+
+## Props
+
+`OfficialBanner` is built on Base UI's [Collapsible](https://base-ui.com/react/components/collapsible) and takes its root props, like `open`, `defaultOpen` and `onOpenChange`. It renders a `<section>`.
+
+<PropsTable
+  rows={[
+    {
+      name: "statement",
+      type: "ReactNode",
+      default: '"Official PH Government website"',
+      description:
+        "The words on the button. Change them only to translate them.",
+    },
+    {
+      name: "reasons",
+      type: "{ title: ReactNode; description: ReactNode }[]",
+      default: "The three English reasons",
+      description: "How to check the site, shown when the banner is open.",
+    },
+    {
+      name: "aria-label",
+      type: "string",
+      default: '"Official government website"',
+      description: "Names the banner's landmark for screen readers.",
+    },
+    {
+      name: "defaultOpen",
+      type: "boolean",
+      default: "false",
+      description: "Starts the banner open. Leave it closed on real pages.",
+    },
+  ]}
+/>
 
 ## Accessibility
 
-- **The top row is one button** with `aria-expanded`. Hover underlines the statement, and keyboard focus shows a white focus ring that's visible on the dark bar.
+### What Habi handles
+
+- **A region landmark** named "Official government website", so screen reader users can find it.
+- **The top row is one button** with `aria-expanded`, so screen readers say whether it's open or closed.
+- **The reasons are read straight after the button** when it's open.
+- **Keyboard:** <kbd>Enter</kbd> or <kbd>Space</kbd> opens and closes it. Focus shows a white ring, so it stays visible on the dark banner.
+- **Reduced motion:** with reduced motion turned on, it opens without sliding.
+
+### What you need to do
+
+- **Keep it first,** after the [Skip link](/docs/components/skip-link) and before the header, on every page.
+- **Translate `aria-label`** along with the words when the page isn't in English.
+
+## Related components
+
+- [Skip link](/docs/components/skip-link): comes just before the banner.
+- [Phase banner](/docs/components/phase-banner): goes under the header, while a service is new.
 
 ## Figma
 
