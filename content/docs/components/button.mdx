@@ -83,6 +83,12 @@ Avoid disabled buttons where you can. People can't tell why a button doesn't wor
 
 <ComponentPreview name="button-disabled" />
 
+### While it works
+
+When pressing the button starts something that takes a while, like a payment, put a Small Inverse [Spinner](/docs/components/spinner) in place of the icon and say what's happening: "Paying…". Ignore more presses until it's done, rather than disabling the button, so the white spinner stays visible.
+
+<ComponentPreview name="spinner-button" />
+
 ### As a link
 
 If the button takes people to another page, use a link that looks like a button. Pass `buttonVariants` to your link's `className`. This works with `next/link`, your router's link component, or a plain `<a>` for external sites.
@@ -156,6 +162,7 @@ Button also accepts the other props of Base UI's [Button](https://base-ui.com/re
 - [Link](/docs/components/link): for going to another page.
 - [Tooltip](/docs/components/tooltip): names an icon-only button.
 - [Modal](/docs/components/modal): asks people to confirm before a Danger action.
+- [Spinner](/docs/components/spinner): shows that the button is working.
 
 ## Figma
 
