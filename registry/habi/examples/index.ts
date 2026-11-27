@@ -4,6 +4,7 @@ import type { ComponentType } from "react";
 
 import AccordionDemo from "./accordion-demo";
 import AccordionMultiple from "./accordion-multiple";
+import BackLinkDemo from "./back-link-demo";
 import BadgeDemo from "./badge-demo";
 import BadgeInContext from "./badge-in-context";
 import BadgeKinds from "./badge-kinds";
@@ -28,9 +29,11 @@ import CheckboxValidation from "./checkbox-validation";
 import DateInputDemo from "./date-input-demo";
 import DateInputDisabled from "./date-input-disabled";
 import DateInputValidation from "./date-input-validation";
+import DetailsDemo from "./details-demo";
 import FieldDemo from "./field-demo";
 import FileInputDemo from "./file-input-demo";
 import FileInputValidation from "./file-input-validation";
+import InsetTextDemo from "./inset-text-demo";
 import LinkDemo from "./link-demo";
 import LinkExternal from "./link-external";
 import LinkNext from "./link-next";
@@ -40,10 +43,13 @@ import ModalForm from "./modal-form";
 import NotificationDemo from "./notification-demo";
 import NotificationDismissible from "./notification-dismissible";
 import NotificationKinds from "./notification-kinds";
+import OfficialBannerDemo from "./official-banner-demo";
+import OfficialBannerFilipino from "./official-banner-filipino";
 import OtpInputDemo from "./otp-input-demo";
 import OtpInputMpin from "./otp-input-mpin";
 import OtpInputResend from "./otp-input-resend";
 import OtpInputValidation from "./otp-input-validation";
+import PhaseBannerDemo from "./phase-banner-demo";
 import RadioGroupDemo from "./radio-group-demo";
 import RadioGroupDisabled from "./radio-group-disabled";
 import RadioGroupHints from "./radio-group-hints";
@@ -54,6 +60,10 @@ import SelectDemo from "./select-demo";
 import SelectDisabled from "./select-disabled";
 import SelectGrouped from "./select-grouped";
 import SelectValidation from "./select-validation";
+import SkipLinkDemo from "./skip-link-demo";
+import SpinnerButton from "./spinner-button";
+import SpinnerDemo from "./spinner-demo";
+import SpinnerLabel from "./spinner-label";
 import StatusIconDemo from "./status-icon-demo";
 import TagControlled from "./tag-controlled";
 import TagDemo from "./tag-demo";
@@ -64,10 +74,12 @@ import TextInputServerError from "./text-input-server-error";
 import TextInputValidation from "./text-input-validation";
 import TooltipDemo from "./tooltip-demo";
 import TooltipGroup from "./tooltip-group";
+import WarningTextDemo from "./warning-text-demo";
 
 export const examples: Record<string, ComponentType> = {
   "accordion-demo": AccordionDemo,
   "accordion-multiple": AccordionMultiple,
+  "back-link-demo": BackLinkDemo,
   "badge-demo": BadgeDemo,
   "badge-in-context": BadgeInContext,
   "badge-kinds": BadgeKinds,
@@ -92,9 +104,11 @@ export const examples: Record<string, ComponentType> = {
   "date-input-demo": DateInputDemo,
   "date-input-disabled": DateInputDisabled,
   "date-input-validation": DateInputValidation,
+  "details-demo": DetailsDemo,
   "field-demo": FieldDemo,
   "file-input-demo": FileInputDemo,
   "file-input-validation": FileInputValidation,
+  "inset-text-demo": InsetTextDemo,
   "link-demo": LinkDemo,
   "link-external": LinkExternal,
   "link-next": LinkNext,
@@ -104,10 +118,13 @@ export const examples: Record<string, ComponentType> = {
   "notification-demo": NotificationDemo,
   "notification-dismissible": NotificationDismissible,
   "notification-kinds": NotificationKinds,
+  "official-banner-demo": OfficialBannerDemo,
+  "official-banner-filipino": OfficialBannerFilipino,
   "otp-input-demo": OtpInputDemo,
   "otp-input-mpin": OtpInputMpin,
   "otp-input-resend": OtpInputResend,
   "otp-input-validation": OtpInputValidation,
+  "phase-banner-demo": PhaseBannerDemo,
   "radio-group-demo": RadioGroupDemo,
   "radio-group-disabled": RadioGroupDisabled,
   "radio-group-hints": RadioGroupHints,
@@ -118,6 +135,10 @@ export const examples: Record<string, ComponentType> = {
   "select-disabled": SelectDisabled,
   "select-grouped": SelectGrouped,
   "select-validation": SelectValidation,
+  "skip-link-demo": SkipLinkDemo,
+  "spinner-button": SpinnerButton,
+  "spinner-demo": SpinnerDemo,
+  "spinner-label": SpinnerLabel,
   "status-icon-demo": StatusIconDemo,
   "tag-controlled": TagControlled,
   "tag-demo": TagDemo,
@@ -128,4 +149,5 @@ export const examples: Record<string, ComponentType> = {
   "text-input-validation": TextInputValidation,
   "tooltip-demo": TooltipDemo,
   "tooltip-group": TooltipGroup,
+  "warning-text-demo": WarningTextDemo,
 };

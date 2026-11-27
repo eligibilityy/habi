@@ -5,7 +5,7 @@ How the Figma file and the code stay in step. Two agents use this file:
 - **The code agent** (Claude Code, in this repo) builds components, demos and docs pages.
 - **The Figma agent** (Claude desktop, with the Figma connector) designs in the [Habi Figma file](https://www.figma.com/design/D3nJzUeqpGlyMpimlesib6).
 
-Last updated 2026-11-25.
+Last updated 2026-11-27.
 
 ## Where everything lives
 
@@ -47,28 +47,36 @@ The Figma agent can't push to this repo, so it never edits this file. Its change
 
 Node IDs are component sets unless marked _(component)_. v1 is every component page in the Figma file except Header and Footer: 46 components.
 
-### Built (18 of 46)
+### Built (26 of 46)
 
-| Component    | Figma node | Code                                | Docs                                                                    |
-| ------------ | ---------- | ----------------------------------- | ----------------------------------------------------------------------- |
-| Accordion    | `38:15`    | `registry/habi/ui/accordion.tsx`    | [accordion](https://habi.yiliya.studio/docs/components/accordion)       |
-| Button       | `4:28`     | `registry/habi/ui/button.tsx`       | [button](https://habi.yiliya.studio/docs/components/button)             |
-| Link         | `39:35`    | `registry/habi/ui/link.tsx`         | [link](https://habi.yiliya.studio/docs/components/link)                 |
-| Badge        | `122:47`   | `registry/habi/ui/badge.tsx`        | [badge](https://habi.yiliya.studio/docs/components/badge)               |
-| Tag          | `35:53`    | `registry/habi/ui/tag.tsx`          | [tag](https://habi.yiliya.studio/docs/components/tag)                   |
-| Notification | `37:42`    | `registry/habi/ui/notification.tsx` | [notification](https://habi.yiliya.studio/docs/components/notification) |
-| Card         | `120:2118` | `registry/habi/ui/card.tsx`         | [card](https://habi.yiliya.studio/docs/components/card)                 |
-| Text input   | `28:28`    | `registry/habi/ui/input.tsx`        | [text-input](https://habi.yiliya.studio/docs/components/text-input)     |
-| Select       | `29:36`    | `registry/habi/ui/select.tsx`       | [select](https://habi.yiliya.studio/docs/components/select)             |
-| Checkbox     | `34:35`    | `registry/habi/ui/checkbox.tsx`     | [checkbox](https://habi.yiliya.studio/docs/components/checkbox)         |
-| Radio group  | `35:21`    | `registry/habi/ui/radio.tsx`        | [radio-group](https://habi.yiliya.studio/docs/components/radio-group)   |
-| Date input   | `33:45`    | `registry/habi/ui/date-input.tsx`   | [date-input](https://habi.yiliya.studio/docs/components/date-input)     |
-| OTP input    | `64:102`   | `registry/habi/ui/otp-input.tsx`    | [otp-input](https://habi.yiliya.studio/docs/components/otp-input)       |
-| Search       | `30:24`    | `registry/habi/ui/search.tsx`       | [search](https://habi.yiliya.studio/docs/components/search)             |
-| File input   | `63:57`    | `registry/habi/ui/file-input.tsx`   | [file-input](https://habi.yiliya.studio/docs/components/file-input)     |
-| Modal        | `61:31`    | `registry/habi/ui/modal.tsx`        | [modal](https://habi.yiliya.studio/docs/components/modal)               |
-| Tooltip      | `159:63`   | `registry/habi/ui/tooltip.tsx`      | [tooltip](https://habi.yiliya.studio/docs/components/tooltip)           |
-| Breadcrumb   | `39:130`   | `registry/habi/ui/breadcrumb.tsx`   | [breadcrumb](https://habi.yiliya.studio/docs/components/breadcrumb)     |
+| Component       | Figma node              | Code                                   | Docs                                                                          |
+| --------------- | ----------------------- | -------------------------------------- | ----------------------------------------------------------------------------- |
+| Accordion       | `38:15`                 | `registry/habi/ui/accordion.tsx`       | [accordion](https://habi.yiliya.studio/docs/components/accordion)             |
+| Button          | `4:28`                  | `registry/habi/ui/button.tsx`          | [button](https://habi.yiliya.studio/docs/components/button)                   |
+| Link            | `39:35`                 | `registry/habi/ui/link.tsx`            | [link](https://habi.yiliya.studio/docs/components/link)                       |
+| Badge           | `122:47`                | `registry/habi/ui/badge.tsx`           | [badge](https://habi.yiliya.studio/docs/components/badge)                     |
+| Tag             | `35:53`                 | `registry/habi/ui/tag.tsx`             | [tag](https://habi.yiliya.studio/docs/components/tag)                         |
+| Notification    | `37:42`                 | `registry/habi/ui/notification.tsx`    | [notification](https://habi.yiliya.studio/docs/components/notification)       |
+| Card            | `120:2118`              | `registry/habi/ui/card.tsx`            | [card](https://habi.yiliya.studio/docs/components/card)                       |
+| Text input      | `28:28`                 | `registry/habi/ui/input.tsx`           | [text-input](https://habi.yiliya.studio/docs/components/text-input)           |
+| Select          | `29:36`                 | `registry/habi/ui/select.tsx`          | [select](https://habi.yiliya.studio/docs/components/select)                   |
+| Checkbox        | `34:35`                 | `registry/habi/ui/checkbox.tsx`        | [checkbox](https://habi.yiliya.studio/docs/components/checkbox)               |
+| Radio group     | `35:21`                 | `registry/habi/ui/radio.tsx`           | [radio-group](https://habi.yiliya.studio/docs/components/radio-group)         |
+| Date input      | `33:45`                 | `registry/habi/ui/date-input.tsx`      | [date-input](https://habi.yiliya.studio/docs/components/date-input)           |
+| OTP input       | `64:102`                | `registry/habi/ui/otp-input.tsx`       | [otp-input](https://habi.yiliya.studio/docs/components/otp-input)             |
+| Search          | `30:24`                 | `registry/habi/ui/search.tsx`          | [search](https://habi.yiliya.studio/docs/components/search)                   |
+| File input      | `63:57`                 | `registry/habi/ui/file-input.tsx`      | [file-input](https://habi.yiliya.studio/docs/components/file-input)           |
+| Modal           | `61:31`                 | `registry/habi/ui/modal.tsx`           | [modal](https://habi.yiliya.studio/docs/components/modal)                     |
+| Tooltip         | `159:63`                | `registry/habi/ui/tooltip.tsx`         | [tooltip](https://habi.yiliya.studio/docs/components/tooltip)                 |
+| Breadcrumb      | `39:130`                | `registry/habi/ui/breadcrumb.tsx`      | [breadcrumb](https://habi.yiliya.studio/docs/components/breadcrumb)           |
+| Official banner | `9:47`                  | `registry/habi/ui/official-banner.tsx` | [official-banner](https://habi.yiliya.studio/docs/components/official-banner) |
+| Skip link       | `209:223` _(component)_ | `registry/habi/ui/skip-link.tsx`       | [skip-link](https://habi.yiliya.studio/docs/components/skip-link)             |
+| Phase banner    | `209:434`               | `registry/habi/ui/phase-banner.tsx`    | [phase-banner](https://habi.yiliya.studio/docs/components/phase-banner)       |
+| Back link       | `192:209`               | `registry/habi/ui/back-link.tsx`       | [back-link](https://habi.yiliya.studio/docs/components/back-link)             |
+| Inset text      | `317:260` _(component)_ | `registry/habi/ui/inset-text.tsx`      | [inset-text](https://habi.yiliya.studio/docs/components/inset-text)           |
+| Warning text    | `321:182` _(component)_ | `registry/habi/ui/warning-text.tsx`    | [warning-text](https://habi.yiliya.studio/docs/components/warning-text)       |
+| Details         | `317:245`               | `registry/habi/ui/details.tsx`         | [details](https://habi.yiliya.studio/docs/components/details)                 |
+| Spinner         | `321:227`               | `registry/habi/ui/spinner.tsx`         | [spinner](https://habi.yiliya.studio/docs/components/spinner)                 |
 
 Shared parts with no Figma component of their own:
 
@@ -77,29 +85,11 @@ Shared parts with no Figma component of their own:
 - **Menu** (`101:246`, Menu item `101:91`): no file of its own. Select and Search style their own menus to match it.
 - **Close button** (`165:2624`): no file of its own. Notification, Search and File input draw a 24px one; Modal draws the 32px one.
 
-### To build, in order (28)
+### To build, in order (20)
 
-Built in this order so each one's parts already exist: Tooltip before the components that use it, Error summary before the form patterns that list errors, and the page frame before the service patterns. Components marked _New_ are still marked New in Figma, so check the Changelog before starting them.
+Built in this order so each one's parts already exist: Error summary before the form patterns that list errors. Components marked _New_ are still marked New in Figma, so check the Changelog before starting them.
 
-**1. Planned (have a "Planned" docs page)**
-
-| Component       | Figma node | Notes               |
-| --------------- | ---------- | ------------------- |
-| Official banner | `9:47`     | Base UI Collapsible |
-
-**2. Page frame and content**
-
-| Component    | Figma node              | Notes                                   |
-| ------------ | ----------------------- | --------------------------------------- |
-| Skip link    | `209:223` _(component)_ | Hidden until focused                    |
-| Phase banner | `209:434`               | Badge + Link                            |
-| Back link    | `192:209`               | Links to the previous step's URL        |
-| Inset text   | `317:260` _(component)_ | _New_                                   |
-| Warning text | `321:182` _(component)_ | _New_                                   |
-| Details      | `317:245`               | _New_. Native `details`/`summary`       |
-| Spinner      | `321:227`               | _New_. Small Inverse goes inside Button |
-
-**3. Forms**
+**1. Forms**
 
 | Component           | Figma node            | Notes                             |
 | ------------------- | --------------------- | --------------------------------- |
@@ -112,7 +102,7 @@ Built in this order so each one's parts already exist: Tooltip before the compon
 | Summary list        | `191:228`             | "Change" links name their field   |
 | Privacy consent     | `211:262`             | Checkbox + Link; RA 10173         |
 
-**4. Navigation and data**
+**2. Navigation and data**
 
 | Component      | Figma node | Notes                                       |
 | -------------- | ---------- | ------------------------------------------- |
@@ -122,7 +112,7 @@ Built in this order so each one's parts already exist: Tooltip before the compon
 | Step indicator | `65:74`    | Step `65:23`                                |
 | Task list      | `295:343`  | _New_. Task list item `295:342`, uses Badge |
 
-**5. Service patterns**
+**3. Service patterns**
 
 | Component              | Figma node             | Notes                                       |
 | ---------------------- | ---------------------- | ------------------------------------------- |
@@ -182,7 +172,7 @@ Ticked off from Figma Changelog entries on 2026-11-24.
 
 ## Figma → code
 
-Changes from the Figma Changelog page that code still has to pick up. The code agent copies entries here and ticks them off when they ship. New components are listed under [To build](#to-build-in-order-28); read their Changelog entries and docs page in Figma before starting one.
+Changes from the Figma Changelog page that code still has to pick up. The code agent copies entries here and ticks them off when they ship. New components are listed under [To build](#to-build-in-order-20); read their Changelog entries and docs page in Figma before starting one.
 
 Copied 2026-11-25 (Changelog entries up to Spinner, 2026-11-25).
 
@@ -197,4 +187,4 @@ Copied 2026-11-25 (Changelog entries up to Spinner, 2026-11-25).
 - [x] **Modal (`61:31`):** close button is Medium, 32 × 32px.
 - [ ] **Digital ID card (`72:46`):** uses shadow-card. (When it's built.)
 - [ ] **Cookie banner (`211:499`):** full-width band on layer/accent-01 with a 1px border/subtle-01 line below, no corners or shadow; Accept and Reject are both Tertiary. (When it's built.)
-- [ ] **Button + Spinner:** inside a Primary button, a Small Inverse Spinner takes the icon's place ("Paying…"). Add it to the Button docs when Spinner ships.
+- [x] **Button + Spinner:** inside a Primary button, a Small Inverse Spinner takes the icon's place ("Paying…"). The Button docs show it under "While it works".
