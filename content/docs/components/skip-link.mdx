@@ -1,0 +1,103 @@
+---
+title: Skip link
+description: Lets keyboard users jump past the banner and header, straight to the page's main content.
+---
+
+<ComponentPreview name="skip-link-demo" />
+
+## When to use
+
+Put a skip link first on every page. People who use a keyboard or a screen reader would otherwise Tab through the banner, the header and the menu on every page before reaching the content.
+
+It's hidden until someone presses <kbd>Tab</kbd>. Then it shows at the top left of the page, above everything else.
+
+## Installation
+
+[Set up Habi](/docs/installation) first, if you haven't already.
+
+<InstallationTabs>
+<InstallationTab value="command">
+
+Add the component with the shadcn CLI. It also adds the Habi parts the component uses.
+
+```npm
+npx shadcn@latest add https://habi.yiliya.studio/r/skip-link.json
+```
+
+</InstallationTab>
+<InstallationTab value="manual">
+
+Add the component:
+
+<ComponentSource
+  src="registry/habi/ui/skip-link.tsx"
+  title="components/ui/skip-link.tsx"
+/>
+
+</InstallationTab>
+</InstallationTabs>
+
+## Usage
+
+```tsx
+import { SkipLink } from "@/components/ui/skip-link";
+
+<body>
+  <SkipLink />
+  <OfficialBanner />
+  <header>…</header>
+  <main id="main-content">…</main>
+</body>;
+```
+
+Make it the first thing in `<body>`, and give your `<main>` the `id` it links to, `main-content` by default. Selecting it moves focus to the main content, so the next <kbd>Tab</kbd> goes to the first link or field there.
+
+## Examples
+
+### Filipino
+
+```tsx
+<SkipLink>Lumaktaw sa pangunahing nilalaman</SkipLink>
+```
+
+## Props
+
+`SkipLink` is an `<a>` and accepts its props.
+
+<PropsTable
+  rows={[
+    {
+      name: "href",
+      type: "string",
+      default: '"#main-content"',
+      description: "The `id` of the main content, after a #.",
+    },
+    {
+      name: "children",
+      type: "ReactNode",
+      default: '"Skip to main content"',
+      description: "The link's words.",
+    },
+  ]}
+/>
+
+## Accessibility
+
+### What Habi handles
+
+- **Hidden until focused,** but never removed from the page, so <kbd>Tab</kbd> and screen readers still reach it.
+- **Moves focus** to the main content, not just the scroll position. It gives the target `tabindex="-1"` until focus leaves, as `<main>` can't take focus otherwise.
+- **A focus border and shadow,** so it stands out over whatever is at the top of the page.
+
+### What you need to do
+
+- **Make it the first focusable thing** on the page.
+- **Give `<main>` the matching `id`.** Without it, the link does nothing.
+
+## Related components
+
+- [Official banner](/docs/components/official-banner): comes straight after the skip link.
+
+## Figma
+
+[Open Skip link in the Habi Figma file](https://www.figma.com/design/D3nJzUeqpGlyMpimlesib6?node-id=209-223).
