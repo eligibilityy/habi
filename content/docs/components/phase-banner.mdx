@@ -1,0 +1,100 @@
+---
+title: Phase banner
+description: Tells people a service is new and still changing, and asks for their feedback.
+---
+
+<ComponentPreview name="phase-banner-demo" />
+
+## When to use
+
+Use a phase banner while a service is being tested, so people know to expect changes and can tell you what's not working. Put it directly under the header, on every page of the service.
+
+Remove it when the service is live.
+
+## Installation
+
+[Set up Habi](/docs/installation) first, if you haven't already.
+
+<InstallationTabs>
+<InstallationTab value="command">
+
+Add the component with the shadcn CLI. It also adds the Habi parts the component uses.
+
+```npm
+npx shadcn@latest add https://habi.yiliya.studio/r/phase-banner.json
+```
+
+</InstallationTab>
+<InstallationTab value="manual">
+
+Add [Badge](/docs/components/badge#installation) first, then add the component:
+
+<ComponentSource
+  src="registry/habi/ui/phase-banner.tsx"
+  title="components/ui/phase-banner.tsx"
+/>
+
+</InstallationTab>
+</InstallationTabs>
+
+Phase banners link to a feedback form, so add [Link](/docs/components/link) too.
+
+## Usage
+
+```tsx
+import { Link } from "@/components/ui/link";
+import { PhaseBanner } from "@/components/ui/phase-banner";
+
+<PhaseBanner phase="Beta">
+  This is a new service. Your feedback will help us improve it.
+  <Link href="/feedback" size="small">
+    Give feedback
+  </Link>
+</PhaseBanner>;
+```
+
+On computers the link follows the message. Below 640px wide, it goes on its own line.
+
+## Content guidelines
+
+- **"Alpha"** means a small group is testing the service. **"Beta"** means anyone can use it, but it's still improving.
+- **Keep the message to one sentence,** and link to a short feedback form.
+
+## Props
+
+`PhaseBanner` is a `<div>` and accepts its props.
+
+<PropsTable
+  rows={[
+    {
+      name: "phase",
+      type: "string",
+      default: '"Beta"',
+      description: 'The badge: "Alpha" or "Beta", or a translation of them.',
+    },
+    {
+      name: "children",
+      type: "ReactNode",
+      description: "The message and the feedback link.",
+    },
+  ]}
+/>
+
+## Accessibility
+
+### What Habi handles
+
+- **The phase is a word, not a color,** so it's read out with the message: "Beta. This is a new service…".
+
+### What you need to do
+
+- **Say where the link goes,** like "Give feedback", not "Click here".
+
+## Related components
+
+- [Badge](/docs/components/badge): shows the phase.
+- [Official banner](/docs/components/official-banner): goes above the header, on every government site.
+
+## Figma
+
+[Open Phase banner in the Habi Figma file](https://www.figma.com/design/D3nJzUeqpGlyMpimlesib6?node-id=209-434).
