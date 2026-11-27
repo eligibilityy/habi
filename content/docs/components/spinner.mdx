@@ -1,0 +1,130 @@
+---
+title: Spinner
+description: Shows that something is loading, like a payment being checked.
+---
+
+<ComponentPreview name="spinner-demo" />
+
+## When to use
+
+Use a spinner when people have to wait for something they asked for, like a payment being checked or a search running. It tells them the service hasn't stopped.
+
+Use something else when:
+
+- **You know how far along it is,** like an upload. Show the progress, as [File input](/docs/components/file-input) does.
+- **It's quick.** Don't show a spinner for less than a second: it flashes and distracts.
+
+## Installation
+
+[Set up Habi](/docs/installation) first, if you haven't already.
+
+<InstallationTabs>
+<InstallationTab value="command">
+
+Add the component with the shadcn CLI. It also adds the Habi parts the component uses.
+
+```npm
+npx shadcn@latest add https://habi.yiliya.studio/r/spinner.json
+```
+
+</InstallationTab>
+<InstallationTab value="manual">
+
+Install the packages this component uses:
+
+```npm
+npm install class-variance-authority
+```
+
+Add the component:
+
+<ComponentSource
+  src="registry/habi/ui/spinner.tsx"
+  title="components/ui/spinner.tsx"
+/>
+
+</InstallationTab>
+</InstallationTabs>
+
+## Usage
+
+```tsx
+import { Spinner } from "@/components/ui/spinner";
+
+<Spinner size="medium" label="Checking your payment…" />;
+```
+
+Always set `label` to say what's loading. It's hidden next to the ring, but screen readers read it out. It turns once a second.
+
+## Examples
+
+### With a label
+
+Show the label with `showLabel` when people would otherwise wonder what they're waiting for.
+
+<ComponentPreview name="spinner-label" />
+
+### In a button
+
+Inside a Primary [Button](/docs/components/button), use a Small Inverse spinner in place of the icon, and change the button's words to say what's happening. Ignore more presses until it's done, so people aren't charged twice.
+
+<ComponentPreview name="spinner-button" />
+
+The button's own words say what's happening, so the spinner is hidden from screen readers with `aria-hidden`.
+
+## Props
+
+`Spinner` is a `<span>` and accepts its props.
+
+<PropsTable
+  rows={[
+    {
+      name: "size",
+      type: '"small" | "medium" | "large"',
+      default: '"small"',
+      description:
+        "A 16, 24 or 48px ring. Small goes next to text and inside buttons.",
+    },
+    {
+      name: "tone",
+      type: '"default" | "inverse"',
+      default: '"default"',
+      description:
+        "Inverse is white, for dark backgrounds and Primary buttons.",
+    },
+    {
+      name: "label",
+      type: "string",
+      default: '"Loading…"',
+      description: "What's loading. Read out by screen readers.",
+    },
+    {
+      name: "showLabel",
+      type: "boolean",
+      default: "false",
+      description: "Shows the label next to the ring.",
+    },
+  ]}
+/>
+
+## Accessibility
+
+### What Habi handles
+
+- **A status message,** with `role="status"`, so screen readers read the label without moving focus.
+- **Reduced motion:** with reduced motion turned on, the ring stops turning and the label shows instead.
+
+### What you need to do
+
+- **Set a `label` that says what's loading.** "Loading…" alone doesn't tell people much.
+- **Add the spinner to a part of the page that's already there,** or announce the wait another way. Some screen readers only read a status message when it changes, not when it first appears.
+- **Move focus or announce the result** when loading finishes, so screen reader users know it's done.
+
+## Related components
+
+- [Button](/docs/components/button): shows a spinner while it works.
+- [File input](/docs/components/file-input): shows upload progress.
+
+## Figma
+
+[Open Spinner in the Habi Figma file](https://www.figma.com/design/D3nJzUeqpGlyMpimlesib6?node-id=321-227).
