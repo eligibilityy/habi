@@ -19,7 +19,7 @@ Habi includes a Figma library and React components built around the same design 
 
 Habi is still a work in progress. Some components are ready to use, while others are still being designed and are marked **Planned** on the website.
 
-You can follow the project's progress in [`design/SYNC.md`](./design/SYNC.md).
+You can see which components are built and which are planned in [`ROADMAP.md`](./ROADMAP.md).
 
 ## Getting started
 
@@ -27,27 +27,27 @@ Habi components are copied into your project rather than installed as a package.
 
 To get started, follow the [installation guide](https://habi.yiliya.studio/docs/installation).
 
-Habi is built with React, Base UI, and Tailwind CSS. I plan to add support for other frameworks besides React
+Habi is built with React, Base UI, and Tailwind CSS. Support for other frameworks is planned.
 
-## What's inside
+## Contributing
 
-- `registry/habi/ui/` — React components
-- `registry/habi/styles/` — Design tokens and base styles
-- `registry/habi/examples/` — Component examples
-- `tokens/` — Design tokens shared with Figma
-- `content/docs/` — Documentation
-- `design/SYNC.md` — Figma and code progress
+Contributions are welcome. Read [`CONTRIBUTING.md`](./CONTRIBUTING.md) to get started.
 
 ## Running locally
 
-You'll need [Node.js 24](https://nodejs.org/) and [pnpm 10](https://pnpm.io/).
+### Prerequisites
+
+- [Node.js 24](https://nodejs.org/)
+- [pnpm 10](https://pnpm.io/)
+
+### Local Development
 
 ```sh
 pnpm install
 pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) to view the website.
+Open [http://localhost:3000](http://localhost:3000).
 
 ## Feedback
 
