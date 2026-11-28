@@ -49,6 +49,8 @@ import OtpInputDemo from "./otp-input-demo";
 import OtpInputMpin from "./otp-input-mpin";
 import OtpInputResend from "./otp-input-resend";
 import OtpInputValidation from "./otp-input-validation";
+import PasswordInputCreate from "./password-input-create";
+import PasswordInputDemo from "./password-input-demo";
 import PhaseBannerDemo from "./phase-banner-demo";
 import RadioGroupDemo from "./radio-group-demo";
 import RadioGroupDisabled from "./radio-group-disabled";
@@ -127,6 +129,8 @@ export const examples: Record<string, ComponentType> = {
   "otp-input-mpin": OtpInputMpin,
   "otp-input-resend": OtpInputResend,
   "otp-input-validation": OtpInputValidation,
+  "password-input-create": PasswordInputCreate,
+  "password-input-demo": PasswordInputDemo,
   "phase-banner-demo": PhaseBannerDemo,
   "radio-group-demo": RadioGroupDemo,
   "radio-group-disabled": RadioGroupDisabled,
