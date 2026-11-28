@@ -72,6 +72,9 @@ import TextInputDemo from "./text-input-demo";
 import TextInputDisabled from "./text-input-disabled";
 import TextInputServerError from "./text-input-server-error";
 import TextInputValidation from "./text-input-validation";
+import TextareaDemo from "./textarea-demo";
+import TextareaDisabled from "./textarea-disabled";
+import TextareaValidation from "./textarea-validation";
 import TooltipDemo from "./tooltip-demo";
 import TooltipGroup from "./tooltip-group";
 import WarningTextDemo from "./warning-text-demo";
@@ -147,6 +150,9 @@ export const examples: Record<string, ComponentType> = {
   "text-input-disabled": TextInputDisabled,
   "text-input-server-error": TextInputServerError,
   "text-input-validation": TextInputValidation,
+  "textarea-demo": TextareaDemo,
+  "textarea-disabled": TextareaDisabled,
+  "textarea-validation": TextareaValidation,
   "tooltip-demo": TooltipDemo,
   "tooltip-group": TooltipGroup,
   "warning-text-demo": WarningTextDemo,

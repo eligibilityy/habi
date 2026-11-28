@@ -438,6 +438,26 @@
       ]
     },
     {
+      "name": "textarea",
+      "type": "registry:ui",
+      "title": "Textarea",
+      "description": "Lets people enter a longer answer, with an optional character count.",
+      "dependencies": ["@base-ui/react", "class-variance-authority"],
+      "registryDependencies": [
+        "https://habi.yiliya.studio/r/utils.json",
+        "https://habi.yiliya.studio/r/status-icon.json",
+        "https://habi.yiliya.studio/r/tooltip.json",
+        "https://habi.yiliya.studio/r/field.json"
+      ],
+      "files": [
+        { "path": "registry/habi/ui/textarea.tsx", "type": "registry:ui" },
+        {
+          "path": "registry/habi/ui/textarea.variants.ts",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "tooltip",
       "type": "registry:ui",
       "title": "Tooltip",
