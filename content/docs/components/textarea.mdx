@@ -1,0 +1,227 @@
+---
+title: Textarea
+description: Lets people enter a longer answer, with an optional character count.
+---
+
+<ComponentPreview name="textarea-demo" />
+
+## When to use
+
+Use a textarea when people need to explain something in their own words, usually in more than one sentence.
+
+Use something else when:
+
+- **The answer is short.** Use a [Text input](/docs/components/text-input).
+- **People are choosing from a list.** Use a [Radio group](/docs/components/radio-group) or [Select](/docs/components/select).
+
+## Installation
+
+[Set up Habi](/docs/installation) first, if you haven't already.
+
+<InstallationTabs>
+<InstallationTab value="command">
+
+Add the component with the shadcn CLI. It also adds the Habi parts the component uses.
+
+```npm
+npx shadcn@latest add https://habi.yiliya.studio/r/textarea.json
+```
+
+</InstallationTab>
+<InstallationTab value="manual">
+
+Add [Field](/docs/components/field#installation), [Status icon](/docs/components/status-icon#installation) and [Tooltip](/docs/components/tooltip#installation) first, then install the packages this component uses:
+
+```npm
+npm install @base-ui/react class-variance-authority
+```
+
+Add the component:
+
+<ComponentSource
+  src="registry/habi/ui/textarea.tsx"
+  title="components/ui/textarea.tsx"
+/>
+
+Add its classes, in a file next to it:
+
+<ComponentSource
+  src="registry/habi/ui/textarea.variants.ts"
+  title="components/ui/textarea.variants.ts"
+/>
+
+</InstallationTab>
+</InstallationTabs>
+
+## Usage
+
+Put the textarea in a [Field](/docs/components/field), so its label, hint, errors and count are linked to it.
+
+```tsx
+import {
+  Field,
+  FieldDescription,
+  FieldError,
+  FieldLabel,
+} from "@/components/ui/field";
+import { Textarea } from "@/components/ui/textarea";
+
+<Field>
+  <FieldLabel required>Why do you need a new copy?</FieldLabel>
+  <Textarea required />
+  <FieldDescription>
+    A few sentences is enough. Don't include ID numbers.
+  </FieldDescription>
+  <FieldError match="valueMissing">Tell us why you need a new copy.</FieldError>
+</Field>;
+```
+
+The textarea starts 4 lines tall and grows as people type. In browsers that can't grow it yet, like Firefox, it scrolls instead and people can drag it taller.
+
+### Character count
+
+Add a count when the service has a real limit, like a database column. Set `characterLimit` on the textarea, and put `TextareaCharacterCount` last in the field. The count needs the current value, so control it with `value` and `onValueChange`.
+
+```tsx
+"use client";
+
+import { useState } from "react";
+import {
+  Field,
+  FieldDescription,
+  FieldLabel,
+} from "@/components/ui/field";
+import {
+  Textarea,
+  TextareaCharacterCount,
+} from "@/components/ui/textarea";
+
+const characterLimit = 500;
+
+function ReasonField() {
+  const [reason, setReason] = useState("");
+
+  return (
+    <Field>
+      <FieldLabel>Why do you need a new copy?</FieldLabel>
+      <Textarea
+        value={reason}
+        onValueChange={setReason}
+        characterLimit={characterLimit}
+      />
+      <FieldDescription>
+        A few sentences is enough. Don't include ID numbers.
+      </FieldDescription>
+      <TextareaCharacterCount
+        value={reason}
+        limit={characterLimit}
+        overLimitMessage="Your reason is too long"
+      />
+    </Field>
+  );
+}
+```
+
+The limit doesn't stop people typing. Over the limit, the count goes negative and turns red, so people can see how much to remove.
+
+## Examples
+
+### Validation
+
+Check the answer when people submit the form. The count doesn't block submission, so check the limit too: return a message from the field's `validate` function, and show it with `<FieldError match="customError">`. Name the field in the message, like "Your reason is too long". The count below already says how much to remove, so the message doesn't need to. While the error shows, the count drops its icon, so only the error message has one.
+
+<ComponentPreview name="textarea-validation" />
+
+### Disabled
+
+Only disable a textarea when people can't change the answer, and say why in the description.
+
+<ComponentPreview name="textarea-disabled" />
+
+## Content guidelines
+
+- **Labels say what to explain:** "Why do you need a new copy?", not "Details".
+- **Hints say what makes a useful answer:** give a length or content suggestion, and mention information people should leave out.
+- **Don't put instructions in the placeholder.** They disappear when people start typing.
+- **Set a useful limit.** Don't make people write more than the service needs.
+- **Over-limit messages name the field:** "Your reason is too long", not "Too many characters".
+
+## Props
+
+The label, hint and errors are [Field](/docs/components/field#props) parts. See their props there.
+
+### Textarea
+
+`Textarea` accepts the props of Base UI's [Input](https://base-ui.com/react/components/input), like `value`, `defaultValue`, `onValueChange`, `placeholder` and `required`, plus the `<textarea>` props `rows`, `cols` and `wrap`.
+
+<PropsTable
+  rows={[
+    {
+      name: "characterLimit",
+      type: "number",
+      description:
+        "Gives the textarea a red border once the answer is longer than this. It doesn't stop people typing.",
+    },
+  ]}
+/>
+
+### TextareaCharacterCount
+
+Use it inside a `Field`.
+
+<PropsTable
+  rows={[
+    {
+      name: "value",
+      type: "string",
+      required: true,
+      description: "The textarea's current value.",
+    },
+    {
+      name: "limit",
+      type: "number",
+      required: true,
+      description: "The number of characters people can enter.",
+    },
+    {
+      name: "overLimitMessage",
+      type: "string",
+      description:
+        'Shown in a tooltip when people point at the count over the limit, like "Your reason is too long". Without it, the count has no tooltip.',
+    },
+    {
+      name: "announceDelay",
+      type: "number",
+      default: "1000",
+      description:
+        "How long to wait after people stop typing before screen readers read the count, in milliseconds.",
+    },
+  ]}
+/>
+
+## Accessibility
+
+### What Habi handles
+
+- **Labels, hints and errors** are linked to the textarea, so screen readers read them when it gets focus.
+- **The limit is read with the label:** the count adds a hidden "You can enter up to 500 characters." to the textarea's description.
+- **The count is read when people pause typing,** not on every key press, as "You have 12 characters remaining" or "You have 3 characters too many".
+- **Over the limit isn't just red:** the count gets an error icon and a negative number.
+- **Text size:** the textarea uses 16px text, so phones don't zoom in when people tap it.
+- **Focus:** a 2px blue outline shows which field is active, even on a field with an error.
+
+### What you need to do
+
+- **Give every textarea a visible `FieldLabel`.** A placeholder isn't a label.
+- **Check the limit when people submit,** and on your server. The tooltip only shows on hover, so it's extra help, not the error message.
+- **Use Base UI's `Form`**, or your own submit handling, to move focus to the first field with an error after people submit.
+
+## Related components
+
+- [Field](/docs/components/field): gives the textarea its label, hint and error.
+- [Text input](/docs/components/text-input): for short, single-line answers.
+- [Tooltip](/docs/components/tooltip): explains the over-limit state.
+
+## Figma
+
+[Open Textarea in the Habi Figma file](https://www.figma.com/design/D3nJzUeqpGlyMpimlesib6/Habi--Beta?node-id=188-40).

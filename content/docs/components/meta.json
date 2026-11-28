@@ -27,6 +27,7 @@
     "status-icon",
     "tag",
     "text-input",
+    "textarea",
     "tooltip",
     "warning-text"
   ]

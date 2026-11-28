@@ -49,7 +49,7 @@ Which Habi components are built and which are planned. Built components have a d
 | [Tag]                  | Built   |
 | Task list              | Planned |
 | [Text input]           | Built   |
-| Textarea               | Planned |
+| [Textarea]             | Built   |
 | [Tooltip]              | Built   |
 | [Warning text]         | Built   |
 
@@ -83,5 +83,6 @@ Which Habi components are built and which are planned. Built components have a d
 [Status icon]: https://habi.yiliya.studio/docs/components/status-icon
 [Tag]: https://habi.yiliya.studio/docs/components/tag
 [Text input]: https://habi.yiliya.studio/docs/components/text-input
+[Textarea]: https://habi.yiliya.studio/docs/components/textarea
 [Tooltip]: https://habi.yiliya.studio/docs/components/tooltip
 [Warning text]: https://habi.yiliya.studio/docs/components/warning-text
