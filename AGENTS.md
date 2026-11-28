@@ -11,7 +11,7 @@ This site is built with [Fumadocs](https://fumadocs.dev) on Next.js. The APIs an
 
 # Documentation
 
-When writing, editing or reviewing a docs page, follow the Habi documentation skill in `.agents/skills/habi-documentation/SKILL.md` and the reference files it lists.
+When writing, editing or reviewing a docs page, follow the Habi documentation skill in `skills/habi-documentation/SKILL.md` and the reference files it lists.
 
 # Design sync
 

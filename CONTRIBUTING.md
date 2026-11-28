@@ -51,16 +51,16 @@ feat(textarea): add Textarea
 
 ## Quick find
 
-| Folder or file                       | Description                                      |
-| ------------------------------------ | ------------------------------------------------ |
-| `registry/habi/ui/`                  | React components                                 |
-| `registry/habi/examples/`            | React examples                                   |
-| `registry/habi/styles/`              | Base styles and design tokens as CSS             |
-| `registry/habi/lib/utils.ts`         | `cn()` helper                                    |
-| `tokens/habi.tokens.json`            | Design tokens                                    |
-| `content/docs/`                      | Documentation site pages                         |
-| `ROADMAP.md`                         | Which components are built and which are planned |
-| `.agents/skills/habi-documentation/` | How to write a docs page                         |
+| Folder or file               | Description                                                                                |
+| ---------------------------- | ------------------------------------------------------------------------------------------ |
+| `registry/habi/ui/`          | React components                                                                           |
+| `registry/habi/examples/`    | React examples                                                                             |
+| `registry/habi/styles/`      | Base styles and design tokens as CSS                                                       |
+| `registry/habi/lib/utils.ts` | `cn()` helper                                                                              |
+| `tokens/habi.tokens.json`    | Design tokens                                                                              |
+| `content/docs/`              | Documentation site pages                                                                   |
+| `ROADMAP.md`                 | Which components are built and which are planned                                           |
+| `skills/habi-documentation/` | How to write a docs page. Add it to your own agent with `npx skills add eligibilityy/habi` |
 
 Some files are generated, don't edit these by hand:
 
@@ -84,7 +84,7 @@ Keep these guidelines in mind when creating a new Habi component:
 
 ## Writing docs
 
-Follow the docs skill in [`.agents/skills/habi-documentation/SKILL.md`](.agents/skills/habi-documentation/SKILL.md) and its writing style guide.
+Follow the docs skill in [`skills/habi-documentation/SKILL.md`](skills/habi-documentation/SKILL.md) and its writing style guide.
 
 ## Using AI coding agents
 
