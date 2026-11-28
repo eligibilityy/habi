@@ -294,6 +294,27 @@
       ]
     },
     {
+      "name": "password-input",
+      "type": "registry:ui",
+      "title": "Password input",
+      "description": "Lets people enter a password, and show it to check what they typed.",
+      "dependencies": ["@base-ui/react", "class-variance-authority"],
+      "registryDependencies": [
+        "https://habi.yiliya.studio/r/utils.json",
+        "https://habi.yiliya.studio/r/field.json"
+      ],
+      "files": [
+        {
+          "path": "registry/habi/ui/password-input.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/habi/ui/password-input.variants.ts",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "phase-banner",
       "type": "registry:ui",
       "title": "Phase banner",
