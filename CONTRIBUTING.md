@@ -1,18 +1,26 @@
 # Contributing to Habi
 
-Thanks for helping with Habi. You can help by reporting bugs, fixing them, improving the docs, or building Habi for a framework other than React.
+Hey! Thanks for checking out Habi. You can contribute by reporting bugs, fixing them with pull requests, improving the docs, or implementing Habi in different frameworks.
 
 ## Before you start
 
+Currently, contributing is only for the development side of Habi. I plan on creating documentation for the design principles soon, if that's what you want to work on.
+
 For anything bigger than a small fix, [open an issue](https://github.com/eligibilityy/habi/issues) first. That way you can agree on the approach before you spend time on it.
 
-Habi is an independent project. It is not affiliated with the Government of the Philippines. Don't add government seals, logos or trademarks.
+Habi is an independent project. It is not affiliated with the Government of the Philippines. Don't add official government seals, logos or trademarks.
 
 ## Setting up
 
-You'll need [Node.js 24](https://nodejs.org/) and [pnpm 10](https://pnpm.io/).
+### Prerequisites
 
-1. [Fork the repo](https://github.com/eligibilityy/habi/fork), then clone your fork.
+- [Node.js 24](https://nodejs.org/)
+- [pnpm 10](https://pnpm.io/)
+
+### Local development
+
+1. Fork the repository and then clone the fork.
+
 2. Install and start the docs site:
 
    ```sh
@@ -24,16 +32,11 @@ You'll need [Node.js 24](https://nodejs.org/) and [pnpm 10](https://pnpm.io/).
 
 ## Making a change
 
-1. Create a branch in your fork, like `fix/select-focus` or `feat/svelte-button`.
-2. Make your change.
-3. Run `pnpm precommit`. It rebuilds the registry, formats, lints and type-checks, which is what CI checks.
-4. Open a pull request against `main`. Say what you changed and why. Add screenshots for anything visual.
+1. Create a branch for your change.
+2. Run `pnpm precommit`. This will rebuild the registry, then format, lint and type-check the code.
+3. Open a PR against `main` with your changes, and link any issue the PR resolves or addresses. Add screenshots for anything visual.
 
-After you open it:
-
-- **CI** runs the same checks as `pnpm precommit`. On your first pull request, a maintainer has to approve the run.
-- **Vercel** builds a preview of the docs site. A maintainer has to authorize previews from forks, and the pull request can't merge until the preview passes.
-- A maintainer reviews it and rebase-merges it. `main` keeps a straight history, so if your branch falls behind, rebase it on `main` rather than merging `main` in.
+The maintainer will review the PR once they are able to. Patience is key! ;;
 
 ## Commit messages
 
@@ -43,42 +46,44 @@ Use [Conventional Commits](https://www.conventionalcommits.org/), with the compo
 feat(select): add a grouped kind
 fix(checkbox): keep the focus ring visible when checked
 docs(button): explain when to use the subtle kind
-feat(svelte): add Badge
+feat(textarea): add Textarea
 ```
 
-Common types are `feat`, `fix`, `docs`, `refactor`, `style`, `test`, `build`, `ci` and `chore`. Give the pull request title the same format.
+## Quick find
 
-## How the repo is organized
+| Folder or file                       | Description                                      |
+| ------------------------------------ | ------------------------------------------------ |
+| `registry/habi/ui/`                  | React components                                 |
+| `registry/habi/examples/`            | React examples                                   |
+| `registry/habi/styles/`              | Base styles and design tokens as CSS             |
+| `registry/habi/lib/utils.ts`         | `cn()` helper                                    |
+| `tokens/habi.tokens.json`            | Design tokens                                    |
+| `content/docs/`                      | Documentation site pages                         |
+| `ROADMAP.md`                         | Which components are built and which are planned |
+| `.agents/skills/habi-documentation/` | How to write a docs page                         |
 
-| Folder or file                       | What it holds                                                                        |
-| ------------------------------------ | ------------------------------------------------------------------------------------ |
-| `registry/habi/ui/`                  | React components                                                                     |
-| `registry/habi/examples/`            | React examples, shown on the docs pages                                              |
-| `registry/habi/styles/`              | Base styles and design tokens as CSS, shared by every framework                      |
-| `registry/habi/lib/utils.ts`         | The `cn()` helper, shared by every framework                                         |
-| `tokens/habi.tokens.json`            | Design tokens, shared with Figma                                                     |
-| `content/docs/`                      | The docs site's pages                                                                |
-| `design/SYNC.md`                     | How Figma and code stay in step, and the status of each component                    |
-| `frameworks/`                        | Habi for other frameworks. Start with [`frameworks/README.md`](frameworks/README.md) |
-| `.agents/skills/habi-documentation/` | How to write a docs page                                                             |
+Some files are generated, don't edit these by hand:
 
-Some files are generated. Don't edit them by hand:
-
-- `registry/habi/styles/habi-tokens.css`: run `pnpm tokens` after changing `tokens/habi.tokens.json`.
-- `registry.json`, `registry/habi/examples/index.ts` and the install commands on docs pages: `pnpm registry` (and `pnpm dev`) rebuilds them.
+- `registry/habi/styles/habi-tokens.css`
+  - This file is built from `tokens/habi.tokens.json` and is generated when you run `pnpm tokens`
+- `registry.json`, `registry/habi/examples/index.ts` and the install commands on docs pages
+  - Rebuilt whenever you run `pnpm registry` or `pnpm dev`
 
 ## Building a component
 
-- **Design comes from Figma.** Read [`design/SYNC.md`](design/SYNC.md) before you start. If the code has to differ from the Figma design, add an item to its Code → Figma list saying what and why.
-- **React comes first.** A component is built in React, then in other frameworks. See [`frameworks/README.md`](frameworks/README.md).
-- **Each component has three parts:** the component in `registry/habi/ui/`, at least one example in `registry/habi/examples/` (named `<component>-demo.tsx`), and a docs page in `content/docs/components/`.
-- **Behavior comes from [Base UI](https://base-ui.com).** Use it for anything interactive, rather than writing focus handling or keyboard support yourself.
-- **Styles are Tailwind classes that use Habi's tokens.** The style prop is called `kind`. Give each part a `data-slot` attribute, like `data-slot="card-title"`.
-- **Components must be accessible.** They need to work with a keyboard and a screen reader, and meet WCAG 2 level AA.
+Keep these guidelines in mind when creating a new Habi component:
+
+- **Follow the design.** Each component is designed in the [Habi Figma file](https://www.figma.com/design/D3nJzUeqpGlyMpimlesib6) first. If your implementation has to differ from it, say what changed and why in your pull request.
+- **Update the roadmap.** When a component is built, change its status in [`ROADMAP.md`](ROADMAP.md) to Built and link it to its docs page.
+- **Start with React.** Build the React version first. Other frameworks come later.
+- **Include all three parts.** Every component needs an implementation in `registry/habi/ui/`, a demo in `registry/habi/examples/` (`<component>-demo.tsx`), and a docs page in `content/docs/components/`.
+- **Use Base UI for behavior.** Rely on [Base UI](https://base-ui.com) for interactive features like focus management and keyboard support.
+- **Follow Habi's styling conventions.** Use Tailwind classes with Habi's tokens, `kind` for variants, and `data-slot` attributes for component parts.
+- **Keep accessibility in mind.** Components must support keyboard and screen reader use and meet WCAG 2.2 Level AA.
 
 ## Writing docs
 
-Follow the docs skill in [`.agents/skills/habi-documentation/SKILL.md`](.agents/skills/habi-documentation/SKILL.md) and its writing style guide. In short: use plain English and American spelling, and say "people" rather than "users".
+Follow the docs skill in [`.agents/skills/habi-documentation/SKILL.md`](.agents/skills/habi-documentation/SKILL.md) and its writing style guide.
 
 ## Using AI coding agents
 
@@ -86,4 +91,4 @@ You're welcome to use one. [`AGENTS.md`](AGENTS.md) and the docs skill are writt
 
 ## License
 
-Habi is licensed under the [MIT License](LICENSE). By contributing, you agree that your contributions are licensed under it too. Only contribute code you have the right to license that way.
+Habi is licensed under the [MIT License](LICENSE). By contributing, you agree that your contributions are licensed under it too.

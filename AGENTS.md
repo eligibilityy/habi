@@ -15,4 +15,4 @@ When writing, editing or reviewing a docs page, follow the Habi documentation sk
 
 # Design sync
 
-The Figma file is designed by a separate agent (Claude desktop with the Figma connector). `design/SYNC.md` explains how the two stay in step. Before building a component, read the Figma file's Changelog page and copy new entries into SYNC.md. When code differs from Figma, add a Code → Figma item. When a PR merges, update the component status in SYNC.md.
+The Figma file is designed by a separate agent (Claude desktop with the Figma connector). Before building a component, read the Figma file's Changelog page and any comments on the component. When code has to differ from Figma, say what and why in the PR description. When a PR merges, mark the component Built in `ROADMAP.md`.
