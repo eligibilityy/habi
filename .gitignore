@@ -30,3 +30,6 @@ next-env.d.ts
 notes/
 # Docs screenshots (pnpm screenshots)
 .screenshots/
+
+# Agent skills installed with `npx skills` (Habi's own skills live in skills/)
+.agents/
