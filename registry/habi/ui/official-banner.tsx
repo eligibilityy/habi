@@ -3,6 +3,19 @@ import { Collapsible } from "@base-ui/react/collapsible";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 
 import { cn } from "@/registry/habi/lib/utils";
+import {
+  officialBannerContainerVariants,
+  officialBannerDomainVariants,
+  officialBannerPanelVariants,
+  officialBannerReasonDescriptionVariants,
+  officialBannerReasonTitleVariants,
+  officialBannerReasonVariants,
+  officialBannerReasonsVariants,
+  officialBannerStatementVariants,
+  officialBannerTriggerIconVariants,
+  officialBannerTriggerVariants,
+  officialBannerVariants,
+} from "@/registry/habi/ui/official-banner.variants";
 
 type Reason = { title: ReactNode; description: ReactNode };
 
@@ -47,37 +60,32 @@ function OfficialBanner({
     <Collapsible.Root
       data-slot="official-banner"
       render={<section aria-label={ariaLabel} />}
-      className={cn(
-        "w-full bg-background-inverse text-text-inverse",
-        className,
-      )}
+      className={cn(officialBannerVariants(), className)}
       {...props}
     >
-      <div className="mx-auto flex max-w-300 flex-col px-4 py-2 sm:items-center">
+      <div className={officialBannerContainerVariants()}>
         <Collapsible.Trigger
           data-slot="official-banner-trigger"
-          className="group flex cursor-pointer items-center gap-2 rounded-sm text-left text-helper focus-visible:outline-2 focus-visible:outline-focus-inverse"
+          className={officialBannerTriggerVariants()}
         >
-          <span className="rounded-sm border border-border-subtle-01 px-1 text-label">
-            .gov.ph
-          </span>
-          <span className="flex-1 text-balance decoration-from-font [text-underline-position:from-font] group-hover:underline">
-            {statement}
-          </span>
+          <span className={officialBannerDomainVariants()}>.gov.ph</span>
+          <span className={officialBannerStatementVariants()}>{statement}</span>
           <ChevronDownIcon
             aria-hidden
-            className="size-5 shrink-0 group-data-panel-open:rotate-180 motion-safe:transition-transform motion-safe:duration-(--duration-fast) motion-safe:ease-out"
+            className={officialBannerTriggerIconVariants()}
           />
         </Collapsible.Trigger>
         <Collapsible.Panel
           data-slot="official-banner-panel"
-          className="h-(--collapsible-panel-height) w-full overflow-hidden data-ending-style:h-0 data-starting-style:h-0 motion-safe:transition-[height] motion-safe:duration-(--duration-short) motion-safe:ease-out"
+          className={officialBannerPanelVariants()}
         >
-          <ul className="grid gap-4 pt-5 pb-4 sm:grid-cols-3 sm:gap-8 sm:pt-6 sm:pb-6">
+          <ul className={officialBannerReasonsVariants()}>
             {reasons.map((reason, index) => (
-              <li key={index} className="flex flex-col gap-1">
-                <span className="text-label">{reason.title}</span>
-                <span className="text-helper text-balance">
+              <li key={index} className={officialBannerReasonVariants()}>
+                <span className={officialBannerReasonTitleVariants()}>
+                  {reason.title}
+                </span>
+                <span className={officialBannerReasonDescriptionVariants()}>
                   {reason.description}
                 </span>
               </li>

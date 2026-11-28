@@ -3,6 +3,17 @@ import { Field as BaseField } from "@base-ui/react/field";
 import { Fieldset as BaseFieldset } from "@base-ui/react/fieldset";
 
 import { cn } from "@/registry/habi/lib/utils";
+import {
+  choiceLabelVariants,
+  fieldDescriptionVariants,
+  fieldErrorVariants,
+  fieldItemVariants,
+  fieldLabelVariants,
+  fieldRequiredVariants,
+  fieldVariants,
+  fieldsetLegendVariants,
+  fieldsetVariants,
+} from "@/registry/habi/ui/field.variants";
 import { StatusIcon } from "@/registry/habi/ui/status-icon";
 
 type WithStringClassName<T> = Omit<T, "className"> & { className?: string };
@@ -14,7 +25,7 @@ function Field({
   return (
     <BaseField.Root
       data-slot="field"
-      className={cn("flex flex-col gap-2", className)}
+      className={cn(fieldVariants(), className)}
       {...props}
     />
   );
@@ -33,18 +44,12 @@ function FieldLabel({
   return (
     <BaseField.Label
       data-slot="field-label"
-      className={cn(
-        "text-label text-text-primary data-disabled:text-text-disabled",
-        className,
-      )}
+      className={cn(fieldLabelVariants(), className)}
       {...props}
     >
       {children}
       {required && (
-        <span
-          aria-hidden
-          className="ms-1 text-text-error in-data-disabled:text-text-disabled"
-        >
+        <span aria-hidden className={fieldRequiredVariants()}>
           *
         </span>
       )}
@@ -59,10 +64,7 @@ function FieldDescription({
   return (
     <BaseField.Description
       data-slot="field-description"
-      className={cn(
-        "text-helper text-text-helper data-disabled:text-text-disabled",
-        className,
-      )}
+      className={cn(fieldDescriptionVariants(), className)}
       {...props}
     />
   );
@@ -80,10 +82,7 @@ function FieldError({ className, children, ...props }: FieldErrorProps) {
   return (
     <BaseField.Error
       data-slot="field-error"
-      className={cn(
-        "flex items-start gap-2 text-helper text-text-error",
-        className,
-      )}
+      className={cn(fieldErrorVariants(), className)}
       {...props}
     >
       <StatusIcon kind="error" />
@@ -99,7 +98,7 @@ function FieldItem({
   return (
     <BaseField.Item
       data-slot="field-item"
-      className={cn("flex flex-col", className)}
+      className={cn(fieldItemVariants(), className)}
       {...props}
     />
   );
@@ -112,11 +111,7 @@ function ChoiceLabel({
   return (
     <BaseField.Label
       data-slot="choice-label"
-      className={cn(
-        "flex w-fit cursor-pointer items-start gap-3 py-3 text-body-md text-text-primary",
-        "has-data-disabled:cursor-not-allowed has-data-disabled:text-text-disabled data-disabled:cursor-not-allowed data-disabled:text-text-disabled",
-        className,
-      )}
+      className={cn(choiceLabelVariants(), className)}
       {...props}
     />
   );
@@ -129,7 +124,7 @@ function Fieldset({
   return (
     <BaseFieldset.Root
       data-slot="fieldset"
-      className={cn("flex flex-col", className)}
+      className={cn(fieldsetVariants(), className)}
       {...props}
     />
   );
@@ -148,18 +143,12 @@ function FieldsetLegend({
   return (
     <BaseFieldset.Legend
       data-slot="fieldset-legend"
-      className={cn(
-        "text-label text-text-primary data-disabled:text-text-disabled",
-        className,
-      )}
+      className={cn(fieldsetLegendVariants(), className)}
       {...props}
     >
       {children}
       {required && (
-        <span
-          aria-hidden
-          className="ms-1 text-text-error in-data-disabled:text-text-disabled"
-        >
+        <span aria-hidden className={fieldRequiredVariants()}>
           *
         </span>
       )}

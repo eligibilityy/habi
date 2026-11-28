@@ -2,6 +2,12 @@ import type { ComponentProps } from "react";
 import { Tooltip as TooltipPrimitive } from "@base-ui/react/tooltip";
 
 import { cn } from "@/registry/habi/lib/utils";
+import {
+  tooltipArrowShapeVariants,
+  tooltipArrowVariants,
+  tooltipPositionerVariants,
+  tooltipVariants,
+} from "@/registry/habi/ui/tooltip.variants";
 
 const TooltipProvider = TooltipPrimitive.Provider;
 
@@ -41,20 +47,16 @@ function TooltipContent({
         align={align}
         sideOffset={sideOffset}
         collisionPadding={8}
-        className="z-50"
+        className={tooltipPositionerVariants()}
       >
         <TooltipPrimitive.Popup
           data-slot="tooltip"
-          className={cn(
-            "max-w-60 origin-(--transform-origin) rounded-overlay bg-background-inverse px-3 py-2 text-body-sm text-text-inverse shadow-overlay",
-            "data-ending-style:scale-98 data-ending-style:opacity-0 data-instant:transition-none data-starting-style:scale-98 data-starting-style:opacity-0 motion-safe:transition-[scale,opacity] motion-safe:duration-(--duration-fast) motion-safe:ease-out",
-            className,
-          )}
+          className={cn(tooltipVariants(), className)}
           {...props}
         >
-          <TooltipPrimitive.Arrow className="flex data-[side=bottom]:-top-1.5 data-[side=left]:-right-2.25 data-[side=left]:rotate-90 data-[side=right]:-left-2.25 data-[side=right]:-rotate-90 data-[side=top]:-bottom-1.5 data-[side=top]:rotate-180">
+          <TooltipPrimitive.Arrow className={tooltipArrowVariants()}>
             <svg width="12" height="6" viewBox="0 0 12 6" aria-hidden>
-              <path d="M0 6 6 0l6 6Z" className="fill-background-inverse" />
+              <path d="M0 6 6 0l6 6Z" className={tooltipArrowShapeVariants()} />
             </svg>
           </TooltipPrimitive.Arrow>
           {children}

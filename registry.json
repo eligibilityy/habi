@@ -8,10 +8,18 @@
       "type": "registry:ui",
       "title": "Accordion",
       "description": "Lets people show and hide sections of a page, like the answers in an FAQ.",
-      "dependencies": ["@base-ui/react", "@heroicons/react"],
+      "dependencies": [
+        "@base-ui/react",
+        "@heroicons/react",
+        "class-variance-authority"
+      ],
       "registryDependencies": ["https://habi.yiliya.studio/r/utils.json"],
       "files": [
-        { "path": "registry/habi/ui/accordion.tsx", "type": "registry:ui" }
+        { "path": "registry/habi/ui/accordion.tsx", "type": "registry:ui" },
+        {
+          "path": "registry/habi/ui/accordion.variants.ts",
+          "type": "registry:ui"
+        }
       ]
     },
     {
@@ -19,13 +27,17 @@
       "type": "registry:ui",
       "title": "Back link",
       "description": "Takes people to the previous step of a form that's split over several pages.",
-      "dependencies": ["@heroicons/react"],
+      "dependencies": ["@heroicons/react", "class-variance-authority"],
       "registryDependencies": [
         "https://habi.yiliya.studio/r/utils.json",
         "https://habi.yiliya.studio/r/link.json"
       ],
       "files": [
-        { "path": "registry/habi/ui/back-link.tsx", "type": "registry:ui" }
+        { "path": "registry/habi/ui/back-link.tsx", "type": "registry:ui" },
+        {
+          "path": "registry/habi/ui/back-link.variants.ts",
+          "type": "registry:ui"
+        }
       ]
     },
     {
@@ -35,20 +47,27 @@
       "description": "A short status label, like New, Open or Closing soon.",
       "dependencies": ["class-variance-authority"],
       "registryDependencies": ["https://habi.yiliya.studio/r/utils.json"],
-      "files": [{ "path": "registry/habi/ui/badge.tsx", "type": "registry:ui" }]
+      "files": [
+        { "path": "registry/habi/ui/badge.tsx", "type": "registry:ui" },
+        { "path": "registry/habi/ui/badge.variants.ts", "type": "registry:ui" }
+      ]
     },
     {
       "name": "breadcrumb",
       "type": "registry:ui",
       "title": "Breadcrumb",
       "description": "Shows where a page sits in a site, with links back to the pages above it.",
-      "dependencies": ["@heroicons/react"],
+      "dependencies": ["@heroicons/react", "class-variance-authority"],
       "registryDependencies": [
         "https://habi.yiliya.studio/r/utils.json",
         "https://habi.yiliya.studio/r/link.json"
       ],
       "files": [
-        { "path": "registry/habi/ui/breadcrumb.tsx", "type": "registry:ui" }
+        { "path": "registry/habi/ui/breadcrumb.tsx", "type": "registry:ui" },
+        {
+          "path": "registry/habi/ui/breadcrumb.variants.ts",
+          "type": "registry:ui"
+        }
       ]
     },
     {
@@ -59,7 +78,8 @@
       "dependencies": ["@base-ui/react", "class-variance-authority"],
       "registryDependencies": ["https://habi.yiliya.studio/r/utils.json"],
       "files": [
-        { "path": "registry/habi/ui/button.tsx", "type": "registry:ui" }
+        { "path": "registry/habi/ui/button.tsx", "type": "registry:ui" },
+        { "path": "registry/habi/ui/button.variants.ts", "type": "registry:ui" }
       ]
     },
     {
@@ -69,20 +89,31 @@
       "description": "Presents one service, office or update, with a way to start or find out more.",
       "dependencies": ["class-variance-authority"],
       "registryDependencies": ["https://habi.yiliya.studio/r/utils.json"],
-      "files": [{ "path": "registry/habi/ui/card.tsx", "type": "registry:ui" }]
+      "files": [
+        { "path": "registry/habi/ui/card.tsx", "type": "registry:ui" },
+        { "path": "registry/habi/ui/card.variants.ts", "type": "registry:ui" }
+      ]
     },
     {
       "name": "checkbox",
       "type": "registry:ui",
       "title": "Checkbox",
       "description": "Lets people answer yes or no, or pick any number of options from a list.",
-      "dependencies": ["@base-ui/react", "@heroicons/react"],
+      "dependencies": [
+        "@base-ui/react",
+        "@heroicons/react",
+        "class-variance-authority"
+      ],
       "registryDependencies": [
         "https://habi.yiliya.studio/r/utils.json",
         "https://habi.yiliya.studio/r/field.json"
       ],
       "files": [
-        { "path": "registry/habi/ui/checkbox.tsx", "type": "registry:ui" }
+        { "path": "registry/habi/ui/checkbox.tsx", "type": "registry:ui" },
+        {
+          "path": "registry/habi/ui/checkbox.variants.ts",
+          "type": "registry:ui"
+        }
       ]
     },
     {
@@ -90,6 +121,7 @@
       "type": "registry:ui",
       "title": "Date input",
       "description": "Lets people enter a date they already know, like their date of birth or an ID's issue date.",
+      "dependencies": ["class-variance-authority"],
       "registryDependencies": [
         "https://habi.yiliya.studio/r/utils.json",
         "https://habi.yiliya.studio/r/field.json",
@@ -98,7 +130,11 @@
         "https://habi.yiliya.studio/r/status-icon.json"
       ],
       "files": [
-        { "path": "registry/habi/ui/date-input.tsx", "type": "registry:ui" }
+        { "path": "registry/habi/ui/date-input.tsx", "type": "registry:ui" },
+        {
+          "path": "registry/habi/ui/date-input.variants.ts",
+          "type": "registry:ui"
+        }
       ]
     },
     {
@@ -106,10 +142,14 @@
       "type": "registry:ui",
       "title": "Details",
       "description": "A short link that opens extra help underneath, for help only some people need.",
-      "dependencies": ["@heroicons/react"],
+      "dependencies": ["@heroicons/react", "class-variance-authority"],
       "registryDependencies": ["https://habi.yiliya.studio/r/utils.json"],
       "files": [
-        { "path": "registry/habi/ui/details.tsx", "type": "registry:ui" }
+        { "path": "registry/habi/ui/details.tsx", "type": "registry:ui" },
+        {
+          "path": "registry/habi/ui/details.variants.ts",
+          "type": "registry:ui"
+        }
       ]
     },
     {
@@ -117,19 +157,26 @@
       "type": "registry:ui",
       "title": "Field",
       "description": "Gives a form control its label, hint and error message, and groups related controls under one question.",
-      "dependencies": ["@base-ui/react"],
+      "dependencies": ["@base-ui/react", "class-variance-authority"],
       "registryDependencies": [
         "https://habi.yiliya.studio/r/utils.json",
         "https://habi.yiliya.studio/r/status-icon.json"
       ],
-      "files": [{ "path": "registry/habi/ui/field.tsx", "type": "registry:ui" }]
+      "files": [
+        { "path": "registry/habi/ui/field.tsx", "type": "registry:ui" },
+        { "path": "registry/habi/ui/field.variants.ts", "type": "registry:ui" }
+      ]
     },
     {
       "name": "file-input",
       "type": "registry:ui",
       "title": "File input",
       "description": "Lets people upload one file, like a photo of their ID or a scanned certificate.",
-      "dependencies": ["@base-ui/react", "@heroicons/react"],
+      "dependencies": [
+        "@base-ui/react",
+        "@heroicons/react",
+        "class-variance-authority"
+      ],
       "registryDependencies": [
         "https://habi.yiliya.studio/r/utils.json",
         "https://habi.yiliya.studio/r/button.json",
@@ -138,7 +185,11 @@
         "https://habi.yiliya.studio/r/field.json"
       ],
       "files": [
-        { "path": "registry/habi/ui/file-input.tsx", "type": "registry:ui" }
+        { "path": "registry/habi/ui/file-input.tsx", "type": "registry:ui" },
+        {
+          "path": "registry/habi/ui/file-input.variants.ts",
+          "type": "registry:ui"
+        }
       ]
     },
     {
@@ -146,9 +197,14 @@
       "type": "registry:ui",
       "title": "Inset text",
       "description": "Sets apart a short block of text people should notice, like what happens next.",
+      "dependencies": ["class-variance-authority"],
       "registryDependencies": ["https://habi.yiliya.studio/r/utils.json"],
       "files": [
-        { "path": "registry/habi/ui/inset-text.tsx", "type": "registry:ui" }
+        { "path": "registry/habi/ui/inset-text.tsx", "type": "registry:ui" },
+        {
+          "path": "registry/habi/ui/inset-text.variants.ts",
+          "type": "registry:ui"
+        }
       ]
     },
     {
@@ -158,16 +214,26 @@
       "description": "Takes people to another page, or to another part of the same page.",
       "dependencies": ["@base-ui/react", "class-variance-authority"],
       "registryDependencies": ["https://habi.yiliya.studio/r/utils.json"],
-      "files": [{ "path": "registry/habi/ui/link.tsx", "type": "registry:ui" }]
+      "files": [
+        { "path": "registry/habi/ui/link.tsx", "type": "registry:ui" },
+        { "path": "registry/habi/ui/link.variants.ts", "type": "registry:ui" }
+      ]
     },
     {
       "name": "modal",
       "type": "registry:ui",
       "title": "Modal",
       "description": "Asks people to make a decision or finish a short task without leaving the page.",
-      "dependencies": ["@base-ui/react", "@heroicons/react"],
+      "dependencies": [
+        "@base-ui/react",
+        "@heroicons/react",
+        "class-variance-authority"
+      ],
       "registryDependencies": ["https://habi.yiliya.studio/r/utils.json"],
-      "files": [{ "path": "registry/habi/ui/modal.tsx", "type": "registry:ui" }]
+      "files": [
+        { "path": "registry/habi/ui/modal.tsx", "type": "registry:ui" },
+        { "path": "registry/habi/ui/modal.variants.ts", "type": "registry:ui" }
+      ]
     },
     {
       "name": "notification",
@@ -180,7 +246,11 @@
         "https://habi.yiliya.studio/r/status-icon.json"
       ],
       "files": [
-        { "path": "registry/habi/ui/notification.tsx", "type": "registry:ui" }
+        { "path": "registry/habi/ui/notification.tsx", "type": "registry:ui" },
+        {
+          "path": "registry/habi/ui/notification.variants.ts",
+          "type": "registry:ui"
+        }
       ]
     },
     {
@@ -188,11 +258,19 @@
       "type": "registry:ui",
       "title": "Official banner",
       "description": "Helps people check that they're on a real Philippine government website.",
-      "dependencies": ["@base-ui/react", "@heroicons/react"],
+      "dependencies": [
+        "@base-ui/react",
+        "@heroicons/react",
+        "class-variance-authority"
+      ],
       "registryDependencies": ["https://habi.yiliya.studio/r/utils.json"],
       "files": [
         {
           "path": "registry/habi/ui/official-banner.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/habi/ui/official-banner.variants.ts",
           "type": "registry:ui"
         }
       ]
@@ -202,13 +280,17 @@
       "type": "registry:ui",
       "title": "OTP input",
       "description": "Lets people enter a one-time code from an SMS, or a short PIN like an MPIN.",
-      "dependencies": ["@base-ui/react"],
+      "dependencies": ["@base-ui/react", "class-variance-authority"],
       "registryDependencies": [
         "https://habi.yiliya.studio/r/utils.json",
         "https://habi.yiliya.studio/r/field.json"
       ],
       "files": [
-        { "path": "registry/habi/ui/otp-input.tsx", "type": "registry:ui" }
+        { "path": "registry/habi/ui/otp-input.tsx", "type": "registry:ui" },
+        {
+          "path": "registry/habi/ui/otp-input.variants.ts",
+          "type": "registry:ui"
+        }
       ]
     },
     {
@@ -216,12 +298,17 @@
       "type": "registry:ui",
       "title": "Phase banner",
       "description": "Tells people a service is new and still changing, and asks for their feedback.",
+      "dependencies": ["class-variance-authority"],
       "registryDependencies": [
         "https://habi.yiliya.studio/r/utils.json",
         "https://habi.yiliya.studio/r/badge.json"
       ],
       "files": [
-        { "path": "registry/habi/ui/phase-banner.tsx", "type": "registry:ui" }
+        { "path": "registry/habi/ui/phase-banner.tsx", "type": "registry:ui" },
+        {
+          "path": "registry/habi/ui/phase-banner.variants.ts",
+          "type": "registry:ui"
+        }
       ]
     },
     {
@@ -229,22 +316,30 @@
       "type": "registry:ui",
       "title": "Radio group",
       "description": "Lets people choose exactly one option from a short list.",
-      "dependencies": ["@base-ui/react"],
+      "dependencies": ["@base-ui/react", "class-variance-authority"],
       "registryDependencies": [
         "https://habi.yiliya.studio/r/utils.json",
         "https://habi.yiliya.studio/r/field.json"
       ],
-      "files": [{ "path": "registry/habi/ui/radio.tsx", "type": "registry:ui" }]
+      "files": [
+        { "path": "registry/habi/ui/radio.tsx", "type": "registry:ui" },
+        { "path": "registry/habi/ui/radio.variants.ts", "type": "registry:ui" }
+      ]
     },
     {
       "name": "search",
       "type": "registry:ui",
       "title": "Search",
       "description": "Helps people find a service by typing, with suggestions as they type.",
-      "dependencies": ["@base-ui/react", "@heroicons/react"],
+      "dependencies": [
+        "@base-ui/react",
+        "@heroicons/react",
+        "class-variance-authority"
+      ],
       "registryDependencies": ["https://habi.yiliya.studio/r/utils.json"],
       "files": [
-        { "path": "registry/habi/ui/search.tsx", "type": "registry:ui" }
+        { "path": "registry/habi/ui/search.tsx", "type": "registry:ui" },
+        { "path": "registry/habi/ui/search.variants.ts", "type": "registry:ui" }
       ]
     },
     {
@@ -252,13 +347,18 @@
       "type": "registry:ui",
       "title": "Select",
       "description": "Lets people choose one option from a list, like their region or ID type.",
-      "dependencies": ["@base-ui/react", "@heroicons/react"],
+      "dependencies": [
+        "@base-ui/react",
+        "@heroicons/react",
+        "class-variance-authority"
+      ],
       "registryDependencies": [
         "https://habi.yiliya.studio/r/utils.json",
         "https://habi.yiliya.studio/r/field.json"
       ],
       "files": [
-        { "path": "registry/habi/ui/select.tsx", "type": "registry:ui" }
+        { "path": "registry/habi/ui/select.tsx", "type": "registry:ui" },
+        { "path": "registry/habi/ui/select.variants.ts", "type": "registry:ui" }
       ]
     },
     {
@@ -266,9 +366,14 @@
       "type": "registry:ui",
       "title": "Skip link",
       "description": "Lets keyboard users jump past the banner and header, straight to the page's main content.",
+      "dependencies": ["class-variance-authority"],
       "registryDependencies": ["https://habi.yiliya.studio/r/utils.json"],
       "files": [
-        { "path": "registry/habi/ui/skip-link.tsx", "type": "registry:ui" }
+        { "path": "registry/habi/ui/skip-link.tsx", "type": "registry:ui" },
+        {
+          "path": "registry/habi/ui/skip-link.variants.ts",
+          "type": "registry:ui"
+        }
       ]
     },
     {
@@ -279,7 +384,11 @@
       "dependencies": ["class-variance-authority"],
       "registryDependencies": ["https://habi.yiliya.studio/r/utils.json"],
       "files": [
-        { "path": "registry/habi/ui/spinner.tsx", "type": "registry:ui" }
+        { "path": "registry/habi/ui/spinner.tsx", "type": "registry:ui" },
+        {
+          "path": "registry/habi/ui/spinner.variants.ts",
+          "type": "registry:ui"
+        }
       ]
     },
     {
@@ -287,10 +396,14 @@
       "type": "registry:ui",
       "title": "Status icon",
       "description": "Shows at a glance whether a message is information, a success, a warning or an error.",
-      "dependencies": ["@heroicons/react"],
+      "dependencies": ["@heroicons/react", "class-variance-authority"],
       "registryDependencies": ["https://habi.yiliya.studio/r/utils.json"],
       "files": [
-        { "path": "registry/habi/ui/status-icon.tsx", "type": "registry:ui" }
+        { "path": "registry/habi/ui/status-icon.tsx", "type": "registry:ui" },
+        {
+          "path": "registry/habi/ui/status-icon.variants.ts",
+          "type": "registry:ui"
+        }
       ]
     },
     {
@@ -298,31 +411,45 @@
       "type": "registry:ui",
       "title": "Tag",
       "description": "A filter people can turn on and off, like a service category.",
-      "dependencies": ["@base-ui/react", "@heroicons/react"],
+      "dependencies": [
+        "@base-ui/react",
+        "@heroicons/react",
+        "class-variance-authority"
+      ],
       "registryDependencies": ["https://habi.yiliya.studio/r/utils.json"],
-      "files": [{ "path": "registry/habi/ui/tag.tsx", "type": "registry:ui" }]
+      "files": [
+        { "path": "registry/habi/ui/tag.tsx", "type": "registry:ui" },
+        { "path": "registry/habi/ui/tag.variants.ts", "type": "registry:ui" }
+      ]
     },
     {
       "name": "text-input",
       "type": "registry:ui",
       "title": "Text input",
       "description": "Lets people enter a single line of text, like a name or email address.",
-      "dependencies": ["@base-ui/react"],
+      "dependencies": ["@base-ui/react", "class-variance-authority"],
       "registryDependencies": [
         "https://habi.yiliya.studio/r/utils.json",
         "https://habi.yiliya.studio/r/field.json"
       ],
-      "files": [{ "path": "registry/habi/ui/input.tsx", "type": "registry:ui" }]
+      "files": [
+        { "path": "registry/habi/ui/input.tsx", "type": "registry:ui" },
+        { "path": "registry/habi/ui/input.variants.ts", "type": "registry:ui" }
+      ]
     },
     {
       "name": "tooltip",
       "type": "registry:ui",
       "title": "Tooltip",
       "description": "Shows a short label when people point at or focus a control, like the name of an icon-only button.",
-      "dependencies": ["@base-ui/react"],
+      "dependencies": ["@base-ui/react", "class-variance-authority"],
       "registryDependencies": ["https://habi.yiliya.studio/r/utils.json"],
       "files": [
-        { "path": "registry/habi/ui/tooltip.tsx", "type": "registry:ui" }
+        { "path": "registry/habi/ui/tooltip.tsx", "type": "registry:ui" },
+        {
+          "path": "registry/habi/ui/tooltip.variants.ts",
+          "type": "registry:ui"
+        }
       ]
     },
     {
@@ -340,9 +467,14 @@
       "type": "registry:ui",
       "title": "Warning text",
       "description": "Tells people about something serious that could happen if they don't act, like a fine or a missed deadline.",
+      "dependencies": ["class-variance-authority"],
       "registryDependencies": ["https://habi.yiliya.studio/r/utils.json"],
       "files": [
-        { "path": "registry/habi/ui/warning-text.tsx", "type": "registry:ui" }
+        { "path": "registry/habi/ui/warning-text.tsx", "type": "registry:ui" },
+        {
+          "path": "registry/habi/ui/warning-text.variants.ts",
+          "type": "registry:ui"
+        }
       ]
     }
   ]

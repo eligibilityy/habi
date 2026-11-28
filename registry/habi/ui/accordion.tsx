@@ -3,6 +3,15 @@ import { Accordion as AccordionPrimitive } from "@base-ui/react/accordion";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 
 import { cn } from "@/registry/habi/lib/utils";
+import {
+  accordionItemVariants,
+  accordionPanelContentVariants,
+  accordionPanelVariants,
+  accordionTriggerIconVariants,
+  accordionTriggerLabelVariants,
+  accordionTriggerVariants,
+  accordionVariants,
+} from "@/registry/habi/ui/accordion.variants";
 
 type WithStringClassName<T> = Omit<T, "className"> & { className?: string };
 
@@ -15,10 +24,7 @@ function Accordion({
     <AccordionPrimitive.Root
       data-slot="accordion"
       hiddenUntilFound={hiddenUntilFound}
-      className={cn(
-        "flex w-full flex-col border-b border-border-subtle-01",
-        className,
-      )}
+      className={cn(accordionVariants(), className)}
       {...props}
     />
   );
@@ -31,7 +37,7 @@ function AccordionItem({
   return (
     <AccordionPrimitive.Item
       data-slot="accordion-item"
-      className={cn("border-t border-border-subtle-01", className)}
+      className={cn(accordionItemVariants(), className)}
       {...props}
     />
   );
@@ -59,18 +65,13 @@ function AccordionTrigger({
     >
       <AccordionPrimitive.Trigger
         data-slot="accordion-trigger"
-        className={cn(
-          "group flex w-full cursor-pointer items-center gap-4 p-4 text-left text-heading-xs text-text-primary",
-          "hover:bg-background-hover",
-          "focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-focus-default",
-          className,
-        )}
+        className={cn(accordionTriggerVariants(), className)}
         {...props}
       >
-        <span className="min-w-0 flex-1">{children}</span>
+        <span className={accordionTriggerLabelVariants()}>{children}</span>
         <ChevronDownIcon
           aria-hidden
-          className="size-5 shrink-0 text-icon-primary group-data-panel-open:rotate-180 motion-safe:transition-transform motion-safe:duration-(--duration-fast) motion-safe:ease-out"
+          className={accordionTriggerIconVariants()}
         />
       </AccordionPrimitive.Trigger>
     </AccordionPrimitive.Header>
@@ -85,15 +86,10 @@ function AccordionPanel({
   return (
     <AccordionPrimitive.Panel
       data-slot="accordion-panel"
-      className="h-(--accordion-panel-height) overflow-hidden data-ending-style:h-0 data-starting-style:h-0 motion-safe:transition-[height] motion-safe:duration-(--duration-short) motion-safe:ease-out"
+      className={accordionPanelVariants()}
       {...props}
     >
-      <div
-        className={cn(
-          "px-4 pb-6 text-body-md text-text-secondary sm:pr-16",
-          className,
-        )}
-      >
+      <div className={cn(accordionPanelContentVariants(), className)}>
         {children}
       </div>
     </AccordionPrimitive.Panel>

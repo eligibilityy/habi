@@ -2,6 +2,12 @@ import type { ComponentProps } from "react";
 import { ChevronRightIcon } from "@heroicons/react/20/solid";
 
 import { cn } from "@/registry/habi/lib/utils";
+import {
+  detailsContentVariants,
+  detailsSummaryIconVariants,
+  detailsSummaryVariants,
+  detailsVariants,
+} from "@/registry/habi/ui/details.variants";
 
 /**
  * Native `<details>`: it opens with Enter or Space, works before JavaScript
@@ -11,7 +17,7 @@ function Details({ className, ...props }: ComponentProps<"details">) {
   return (
     <details
       data-slot="details"
-      className={cn("group/details max-w-160 text-body-md", className)}
+      className={cn(detailsVariants(), className)}
       {...props}
     />
   );
@@ -25,18 +31,10 @@ function DetailsSummary({
   return (
     <summary
       data-slot="details-summary"
-      className={cn(
-        "inline-flex cursor-pointer list-none items-center gap-2 rounded-sm text-link-primary [&::-webkit-details-marker]:hidden",
-        "decoration-from-font [text-underline-position:from-font] hover:text-link-primary-hover hover:underline",
-        "focus-visible:focus-ring",
-        className,
-      )}
+      className={cn(detailsSummaryVariants(), className)}
       {...props}
     >
-      <ChevronRightIcon
-        aria-hidden
-        className="size-5 shrink-0 group-open/details:rotate-90 motion-safe:transition-transform motion-safe:duration-(--duration-fast) motion-safe:ease-out"
-      />
+      <ChevronRightIcon aria-hidden className={detailsSummaryIconVariants()} />
       {children}
     </summary>
   );
@@ -46,10 +44,7 @@ function DetailsContent({ className, ...props }: ComponentProps<"div">) {
   return (
     <div
       data-slot="details-content"
-      className={cn(
-        "mt-3 flex flex-col gap-4 border-l-4 border-border-subtle-01 py-4 pl-5 text-text-primary",
-        className,
-      )}
+      className={cn(detailsContentVariants(), className)}
       {...props}
     />
   );

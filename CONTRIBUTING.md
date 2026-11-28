@@ -76,9 +76,10 @@ Keep these guidelines in mind when creating a new Habi component:
 - **Follow the design.** Each component is designed in the [Habi Figma file](https://www.figma.com/design/D3nJzUeqpGlyMpimlesib6) first. If your implementation has to differ from it, say what changed and why in your pull request.
 - **Update the roadmap.** When a component is built, change its status in [`ROADMAP.md`](ROADMAP.md) to Built and link it to its docs page.
 - **Start with React.** Build the React version first. Other frameworks come later.
-- **Include all three parts.** Every component needs an implementation in `registry/habi/ui/`, a demo in `registry/habi/examples/` (`<component>-demo.tsx`), and a docs page in `content/docs/components/`.
+- **Include all four parts.** Every component needs an implementation in `registry/habi/ui/`, a classes file next to it (`<component>.variants.ts`), a demo in `registry/habi/examples/` (`<component>-demo.tsx`), and a docs page in `content/docs/components/`.
 - **Use Base UI for behavior.** Rely on [Base UI](https://base-ui.com) for interactive features like focus management and keyboard support.
 - **Follow Habi's styling conventions.** Use Tailwind classes with Habi's tokens, `kind` for variants, and `data-slot` attributes for component parts.
+- **Keep classes in the classes file.** Put every class string in `<component>.variants.ts`, with one [`cva()`](https://cva.style) export for each part, like `accordionTriggerVariants`. Use variants for anything that changes the classes, rather than conditions in the component. The component file has no class strings of its own, so other frameworks can share the classes file.
 - **Keep accessibility in mind.** Components must support keyboard and screen reader use and meet WCAG 2.2 Level AA.
 
 ## Writing docs

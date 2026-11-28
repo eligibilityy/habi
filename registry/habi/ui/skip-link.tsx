@@ -3,6 +3,7 @@
 import type { ComponentProps, MouseEvent } from "react";
 
 import { cn } from "@/registry/habi/lib/utils";
+import { skipLinkVariants } from "@/registry/habi/ui/skip-link.variants";
 
 /**
  * Moves focus to the element the link points at. Browsers scroll to it but
@@ -38,13 +39,7 @@ function SkipLink({
         onClick?.(event);
         if (!event.defaultPrevented) focusTarget(event);
       }}
-      className={cn(
-        // Hidden until focused, but never display: none, so Tab still reaches it.
-        "sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50",
-        "rounded-control border-2 border-focus-default bg-layer-01 px-3.5 py-2.5 shadow-overlay outline-none",
-        "text-body-md text-link-primary underline decoration-from-font [text-underline-position:from-font]",
-        className,
-      )}
+      className={cn(skipLinkVariants(), className)}
       {...props}
     >
       {children}

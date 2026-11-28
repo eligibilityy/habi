@@ -2,6 +2,10 @@ import type { ComponentProps } from "react";
 import { OTPField } from "@base-ui/react/otp-field";
 
 import { cn } from "@/registry/habi/lib/utils";
+import {
+  otpInputSlotVariants,
+  otpInputVariants,
+} from "@/registry/habi/ui/otp-input.variants";
 
 type OtpInputProps = Omit<
   ComponentProps<typeof OTPField.Root>,
@@ -27,7 +31,7 @@ function OtpInput({
     <OTPField.Root
       data-slot="otp-input"
       length={length}
-      className={cn("flex gap-2", className)}
+      className={cn(otpInputVariants(), className)}
       {...props}
     >
       {Array.from({ length }, (_, index) => (
@@ -35,13 +39,7 @@ function OtpInput({
           key={index}
           data-slot="otp-input-slot"
           aria-label={index === 0 ? undefined : slotLabel(index + 1, length)}
-          className={cn(
-            "h-14 w-12 min-w-0 rounded-control border border-border-strong-01 bg-field-01 text-center text-heading-md text-text-primary tabular-nums",
-            "hover:not-data-invalid:not-data-disabled:border-border-hover",
-            "focus:outline-2 focus:-outline-offset-2 focus:outline-focus-default",
-            "data-invalid:border-support-error data-invalid:ring-1 data-invalid:ring-support-error data-invalid:ring-inset",
-            "data-disabled:cursor-not-allowed data-disabled:border-border-disabled data-disabled:bg-layer-accent-01 data-disabled:text-text-disabled",
-          )}
+          className={cn(otpInputSlotVariants())}
         />
       ))}
     </OTPField.Root>

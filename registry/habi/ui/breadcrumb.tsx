@@ -2,6 +2,12 @@ import type { ComponentProps } from "react";
 import { ChevronLeftIcon } from "@heroicons/react/16/solid";
 
 import { cn } from "@/registry/habi/lib/utils";
+import {
+  breadcrumbBackIconVariants,
+  breadcrumbItemVariants,
+  breadcrumbListVariants,
+  breadcrumbPageVariants,
+} from "@/registry/habi/ui/breadcrumb.variants";
 import { Link, type LinkProps } from "@/registry/habi/ui/link";
 
 function Breadcrumb({
@@ -15,13 +21,7 @@ function BreadcrumbList({ className, ...props }: ComponentProps<"ol">) {
   return (
     <ol
       data-slot="breadcrumb-list"
-      className={cn(
-        "flex flex-wrap items-center gap-2 text-body-sm text-text-secondary",
-        // Phones show only the page above the current one, as a back link.
-        // It's the third item from the end: page above, separator, current page.
-        "max-sm:*:hidden max-sm:[&>li:nth-last-child(3)]:inline-flex max-sm:[&>li:nth-last-child(3)_[data-slot=breadcrumb-back-icon]]:block",
-        className,
-      )}
+      className={cn(breadcrumbListVariants(), className)}
       {...props}
     />
   );
@@ -31,7 +31,7 @@ function BreadcrumbItem({ className, ...props }: ComponentProps<"li">) {
   return (
     <li
       data-slot="breadcrumb-item"
-      className={cn("inline-flex items-center", className)}
+      className={cn(breadcrumbItemVariants(), className)}
       {...props}
     />
   );
@@ -40,7 +40,10 @@ function BreadcrumbItem({ className, ...props }: ComponentProps<"li">) {
 function BreadcrumbLink({ children, ...props }: Omit<LinkProps, "size">) {
   return (
     <Link data-slot="breadcrumb-link" size="small" standalone {...props}>
-      <ChevronLeftIcon data-slot="breadcrumb-back-icon" className="hidden" />
+      <ChevronLeftIcon
+        data-slot="breadcrumb-back-icon"
+        className={breadcrumbBackIconVariants()}
+      />
       {children}
     </Link>
   );
@@ -51,7 +54,7 @@ function BreadcrumbPage({ className, ...props }: ComponentProps<"span">) {
     <span
       data-slot="breadcrumb-page"
       aria-current="page"
-      className={cn("text-text-primary", className)}
+      className={cn(breadcrumbPageVariants(), className)}
       {...props}
     />
   );
