@@ -30,6 +30,13 @@
     "text-input",
     "textarea",
     "tooltip",
-    "warning-text"
+    "warning-text",
+    "---Planned---",
+    "mobile-number-input",
+    "id-number-input",
+    "name-fields",
+    "error-summary",
+    "summary-list",
+    "privacy-consent"
   ]
 }

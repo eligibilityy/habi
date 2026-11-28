@@ -1,0 +1,53 @@
+---
+title: ID number input
+description: Lets people enter a government ID number, grouped the way it's printed on the card.
+status: planned
+---
+
+## When to use
+
+Use an ID number input when you ask for one of these numbers:
+
+- **PhilSys Card Number (PCN):** 0000-0000-0000-0000.
+- **TIN:** 000-000-000-000.
+- **SSS number.**
+- **PhilHealth number.**
+- **Pag-IBIG MID number.**
+
+Use something else when:
+
+- **The number isn't on this list.** Use a [Text input](/docs/components/text-input) with a hint that shows the format.
+
+## How it will look and work
+
+- **A Text input that groups the digits as people type,** with the grouping printed on each card. Dashes appear by themselves.
+- **People can type or paste the number** with or without dashes and spaces.
+- **The label gives the ID's full name and short name,** like "PhilSys Card Number (PCN)".
+- **A hint says where to find it,** like "The 16-digit number on the front of your PhilID."
+- **States:** Default, Hover, Focus and Error. Required adds the red asterisk.
+
+## Content guidelines
+
+- **Group the digits the way they're printed on the card.**
+- **Don't make people type the dashes.**
+- **Say where to find the number,** like "Your Taxpayer Identification Number from the BIR."
+- **Only check the length here.** Let the agency's records check the rest, and say so if the number isn't found: "We couldn't find this number in our records."
+
+## Accessibility
+
+- **The label says the ID's name in full,** so people know which card to get.
+- **On phones,** it opens the number keypad when the ID is all numbers.
+- **Errors** sit below the field, with an icon and text.
+
+## Related components
+
+- [Text input](/docs/components/text-input): the field it's built from.
+
+## Figma
+
+<FigmaExport
+  name="id-number-input"
+  alt="ID number input's Figma page: anatomy, ID types, states, usage and accessibility notes."
+/>
+
+[Open ID number input in the Habi Figma file](https://www.figma.com/design/D3nJzUeqpGlyMpimlesib6/Habi--Beta?node-id=32-78).

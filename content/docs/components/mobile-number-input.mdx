@@ -1,0 +1,49 @@
+---
+title: Mobile number input
+description: Lets people enter a Philippine mobile number, with +63 already filled in.
+status: planned
+---
+
+## When to use
+
+Use a mobile number input when you need a Philippine mobile number, like to send a one-time PIN (OTP) or an appointment reminder.
+
+Use something else when:
+
+- **The number can be from another country.** Use a [Text input](/docs/components/text-input) with `type="tel"`.
+
+## How it will look and work
+
+- **A Text input with +63 fixed at the start,** in secondary text with a divider. People don't type or delete it.
+- **The number is shown in groups** as people type: 917 123 4567.
+- **It accepts the number however people write it:** 0917…, 917… or +63917…, with or without spaces.
+- **A hint says why you need it,** like "We'll send a one-time PIN (OTP) to this number."
+- **States** match Text input: Default, Hover, Focus, Error and Disabled.
+
+## Content guidelines
+
+- **Show +63,** so people don't have to type the country code.
+- **Use one field.** Don't split the number across several boxes.
+- **Errors say what to type:** "Enter a mobile number, like 917 123 4567."
+- **Don't make it the only way back into an account.** Many households share one phone.
+
+## Accessibility
+
+- **The label names the field,** and screen readers hear +63 with it.
+- **The prefix is part of the field,** not something people type or delete.
+- **On phones,** it opens the number keypad and can fill in a saved number.
+- **Errors** sit below the field, with an icon and text.
+
+## Related components
+
+- [Text input](/docs/components/text-input): the field it's built from.
+- [OTP input](/docs/components/otp-input): for the code you send to the number.
+
+## Figma
+
+<FigmaExport
+  name="mobile-number-input"
+  alt="Mobile number input's Figma page: anatomy, states, usage and accessibility notes."
+/>
+
+[Open Mobile number input in the Habi Figma file](https://www.figma.com/design/D3nJzUeqpGlyMpimlesib6/Habi--Beta?node-id=31-36).
