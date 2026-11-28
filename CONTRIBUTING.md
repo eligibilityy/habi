@@ -51,16 +51,17 @@ feat(textarea): add Textarea
 
 ## Quick find
 
-| Folder or file                       | Description                                      |
-| ------------------------------------ | ------------------------------------------------ |
-| `registry/habi/ui/`                  | React components                                 |
-| `registry/habi/examples/`            | React examples                                   |
-| `registry/habi/styles/`              | Base styles and design tokens as CSS             |
-| `registry/habi/lib/utils.ts`         | `cn()` helper                                    |
-| `tokens/habi.tokens.json`            | Design tokens                                    |
-| `content/docs/`                      | Documentation site pages                         |
-| `ROADMAP.md`                         | Which components are built and which are planned |
-| `.agents/skills/habi-documentation/` | How to write a docs page                         |
+| Folder or file                       | Description                                                                          |
+| ------------------------------------ | ------------------------------------------------------------------------------------ |
+| `registry/habi/ui/`                  | React components                                                                     |
+| `registry/habi/examples/`            | React examples                                                                       |
+| `registry/habi/styles/`              | Base styles and design tokens as CSS                                                 |
+| `registry/habi/lib/utils.ts`         | `cn()` helper                                                                        |
+| `tokens/habi.tokens.json`            | Design tokens                                                                        |
+| `content/docs/`                      | Documentation site pages                                                             |
+| `ROADMAP.md`                         | Which components are built and which are planned                                     |
+| `frameworks/`                        | Habi for other frameworks. Start with [`frameworks/README.md`](frameworks/README.md) |
+| `.agents/skills/habi-documentation/` | How to write a docs page                                                             |
 
 Some files are generated, don't edit these by hand:
 
@@ -75,7 +76,7 @@ Keep these guidelines in mind when creating a new Habi component:
 
 - **Follow the design.** Each component is designed in the [Habi Figma file](https://www.figma.com/design/D3nJzUeqpGlyMpimlesib6) first. If your implementation has to differ from it, say what changed and why in your pull request.
 - **Update the roadmap.** When a component is built, change its status in [`ROADMAP.md`](ROADMAP.md) to Built and link it to its docs page.
-- **Start with React.** Build the React version first. Other frameworks come later.
+- **Start with React.** Build the React version first, then adapt it for other frameworks. See [`frameworks/README.md`](frameworks/README.md).
 - **Include all three parts.** Every component needs an implementation in `registry/habi/ui/`, a demo in `registry/habi/examples/` (`<component>-demo.tsx`), and a docs page in `content/docs/components/`.
 - **Use Base UI for behavior.** Rely on [Base UI](https://base-ui.com) for interactive features like focus management and keyboard support.
 - **Follow Habi's styling conventions.** Use Tailwind classes with Habi's tokens, `kind` for variants, and `data-slot` attributes for component parts.
