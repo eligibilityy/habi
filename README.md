@@ -27,7 +27,7 @@ Habi components are copied into your project rather than installed as a package.
 
 To get started, follow the [installation guide](https://habi.yiliya.studio/docs/installation).
 
-Habi is built with React, Base UI, and Tailwind CSS. Support for other frameworks is planned.
+Habi is built with React, Base UI, and Tailwind CSS. If you want to implement Habi for different frameworks, see [`frameworks/README.md`](./frameworks/README.md).
 
 ## Contributing
 
