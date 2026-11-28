@@ -7,28 +7,17 @@ import {
 } from "@heroicons/react/20/solid";
 
 import { cn } from "@/registry/habi/lib/utils";
+import {
+  statusIconBackingVariants,
+  statusIconIconVariants,
+  statusIconVariants,
+} from "@/registry/habi/ui/status-icon.variants";
 
 const statusIcons = {
-  info: {
-    Icon: InformationCircleIcon,
-    color: "text-support-info",
-    backing: "inset-[17.5%] rounded-full bg-white",
-  },
-  success: {
-    Icon: CheckCircleIcon,
-    color: "text-support-success",
-    backing: "inset-[17.5%] rounded-full bg-white",
-  },
-  warning: {
-    Icon: ExclamationTriangleIcon,
-    color: "text-support-warning",
-    backing: "inset-x-[45%] top-[23.75%] bottom-[28.75%] bg-icon-primary",
-  },
-  error: {
-    Icon: ExclamationCircleIcon,
-    color: "text-support-error",
-    backing: "inset-[17.5%] rounded-full bg-white",
-  },
+  info: InformationCircleIcon,
+  success: CheckCircleIcon,
+  warning: ExclamationTriangleIcon,
+  error: ExclamationCircleIcon,
 };
 
 type StatusKind = keyof typeof statusIcons;
@@ -36,17 +25,17 @@ type StatusKind = keyof typeof statusIcons;
 type StatusIconProps = ComponentProps<"span"> & { kind: StatusKind };
 
 function StatusIcon({ kind, className, ...props }: StatusIconProps) {
-  const { Icon, color, backing } = statusIcons[kind];
+  const Icon = statusIcons[kind];
 
   return (
     <span
       data-slot="status-icon"
       aria-hidden
-      className={cn("relative inline-block size-5 shrink-0", className)}
+      className={cn(statusIconVariants(), className)}
       {...props}
     >
-      <span className={cn("absolute", backing)} />
-      <Icon className={cn("relative size-5", color)} />
+      <span className={statusIconBackingVariants({ kind })} />
+      <Icon className={statusIconIconVariants({ kind })} />
     </span>
   );
 }

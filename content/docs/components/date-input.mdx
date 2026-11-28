@@ -33,6 +33,12 @@ npx shadcn@latest add https://habi.yiliya.studio/r/date-input.json
 </InstallationTab>
 <InstallationTab value="manual">
 
+Install the packages this component uses:
+
+```npm
+npm install class-variance-authority
+```
+
 Add [Text input](/docs/components/text-input#installation) and [Select](/docs/components/select#installation) first. Date input is built from both.
 
 Add the component:
@@ -40,6 +46,13 @@ Add the component:
 <ComponentSource
   src="registry/habi/ui/date-input.tsx"
   title="components/ui/date-input.tsx"
+/>
+
+Add its classes, in a file next to it:
+
+<ComponentSource
+  src="registry/habi/ui/date-input.variants.ts"
+  title="components/ui/date-input.variants.ts"
 />
 
 </InstallationTab>

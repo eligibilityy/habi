@@ -4,6 +4,18 @@ import { useId, useState, type ReactNode } from "react";
 
 import { cn } from "@/registry/habi/lib/utils";
 import {
+  dateInputDayVariants,
+  dateInputDescriptionVariants,
+  dateInputErrorVariants,
+  dateInputMonthListVariants,
+  dateInputMonthVariants,
+  dateInputPartLabelVariants,
+  dateInputPartVariants,
+  dateInputPartsVariants,
+  dateInputVariants,
+  dateInputYearVariants,
+} from "@/registry/habi/ui/date-input.variants";
+import {
   Field,
   FieldLabel,
   Fieldset,
@@ -39,8 +51,6 @@ const months = [
   "November",
   "December",
 ].map((label, index) => ({ value: String(index + 1), label }));
-
-const partLabelClass = "text-helper text-text-secondary";
 
 type DateInputProps = {
   label: ReactNode;
@@ -96,49 +106,48 @@ function DateInput({
       aria-describedby={
         [descriptionId, errorId].filter(Boolean).join(" ") || undefined
       }
-      className={cn("gap-2", className)}
+      className={cn(dateInputVariants(), className)}
     >
       <FieldsetLegend required={required}>{label}</FieldsetLegend>
       {description && (
-        <p
-          id={descriptionId}
-          className="text-helper text-text-helper in-data-disabled:text-text-disabled"
-        >
+        <p id={descriptionId} className={dateInputDescriptionVariants()}>
           {description}
         </p>
       )}
-      <div className="flex flex-wrap gap-4">
+      <div className={dateInputPartsVariants()}>
         <Field
           name={partName("day")}
           invalid={isInvalid("day")}
-          className="gap-1"
+          className={dateInputPartVariants()}
         >
-          <FieldLabel className={partLabelClass}>Day</FieldLabel>
+          <FieldLabel className={dateInputPartLabelVariants()}>Day</FieldLabel>
           <Input
             value={current.day}
             onValueChange={(day) => update("day", day)}
             inputMode="numeric"
             autoComplete={partAutoComplete("day")}
             placeholder="DD"
-            className="w-16 tabular-nums"
+            className={dateInputDayVariants()}
           />
         </Field>
         <Field
           name={partName("month")}
           invalid={isInvalid("month")}
-          className="gap-1"
+          className={dateInputPartVariants()}
         >
-          <SelectLabel className={partLabelClass}>Month</SelectLabel>
+          <SelectLabel className={dateInputPartLabelVariants()}>
+            Month
+          </SelectLabel>
           <Select
             items={months}
             value={current.month || null}
             onValueChange={(month) => update("month", month ?? "")}
             autoComplete={partAutoComplete("month")}
           >
-            <SelectTrigger className="w-38">
+            <SelectTrigger className={dateInputMonthVariants()}>
               <SelectValue placeholder="Select" />
             </SelectTrigger>
-            <SelectContent className="w-50">
+            <SelectContent className={dateInputMonthListVariants()}>
               {months.map((month) => (
                 <SelectItem key={month.value} value={month.value}>
                   {month.label}
@@ -150,24 +159,21 @@ function DateInput({
         <Field
           name={partName("year")}
           invalid={isInvalid("year")}
-          className="gap-1"
+          className={dateInputPartVariants()}
         >
-          <FieldLabel className={partLabelClass}>Year</FieldLabel>
+          <FieldLabel className={dateInputPartLabelVariants()}>Year</FieldLabel>
           <Input
             value={current.year}
             onValueChange={(year) => update("year", year)}
             inputMode="numeric"
             autoComplete={partAutoComplete("year")}
             placeholder="YYYY"
-            className="w-22 tabular-nums"
+            className={dateInputYearVariants()}
           />
         </Field>
       </div>
       {error && (
-        <div
-          id={errorId}
-          className="flex items-start gap-2 text-helper text-text-error"
-        >
+        <div id={errorId} className={dateInputErrorVariants()}>
           <StatusIcon kind="error" />
           <span>{error}</span>
         </div>

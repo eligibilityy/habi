@@ -7,8 +7,24 @@ import { XMarkIcon } from "@heroicons/react/20/solid";
 import { ArrowUpTrayIcon, DocumentTextIcon } from "@heroicons/react/24/outline";
 
 import { cn } from "@/registry/habi/lib/utils";
-import { buttonVariants } from "@/registry/habi/ui/button";
-import { linkVariants } from "@/registry/habi/ui/link";
+import {
+  fileInputActionVariants,
+  fileInputButtonVariants,
+  fileInputCancelIconVariants,
+  fileInputControlVariants,
+  fileInputFileIconVariants,
+  fileInputFileInfoVariants,
+  fileInputFileNameVariants,
+  fileInputFileSizeVariants,
+  fileInputFileVariants,
+  fileInputHiddenTextVariants,
+  fileInputIconVariants,
+  fileInputProgressIndicatorVariants,
+  fileInputProgressTrackVariants,
+  fileInputPromptVariants,
+  fileInputVariants,
+  fileInputZoneVariants,
+} from "@/registry/habi/ui/file-input.variants";
 import { StatusIcon } from "@/registry/habi/ui/status-icon";
 
 /** A chosen file, or one uploaded earlier that your server describes. */
@@ -104,25 +120,19 @@ function FileInput({
     <div
       ref={rootRef}
       data-slot="file-input"
-      className={cn("w-full", className)}
+      className={cn(fileInputVariants(), className)}
     >
       <div
         data-slot="file-input-zone"
         data-dragging={dragging || undefined}
-        className={cn(
-          "relative flex flex-col items-center gap-3 rounded-card border border-dashed border-border-strong-01 bg-background-default p-6 text-center",
-          "data-dragging:border-2 data-dragging:border-interactive-default data-dragging:bg-highlight-default data-dragging:p-[23px]",
-          "has-data-invalid:border-2 has-data-invalid:border-support-error has-data-invalid:p-[23px]",
-          "has-disabled:border-border-disabled has-disabled:bg-layer-accent-01",
-          hasFile && "hidden",
-        )}
+        className={cn(fileInputZoneVariants({ hasFile }))}
       >
         <BaseInput
           ref={inputRef}
           type="file"
           data-slot="file-input-control"
           disabled={disabled}
-          className="peer absolute inset-0 size-full cursor-pointer opacity-0 file:cursor-pointer disabled:cursor-not-allowed"
+          className={fileInputControlVariants()}
           onChange={(event) => {
             const input = event.currentTarget;
             const chosen = input.files?.[0];
@@ -136,42 +146,32 @@ function FileInput({
           onDrop={() => setDragging(false)}
           {...props}
         />
-        <ArrowUpTrayIcon className="size-8 text-icon-secondary peer-disabled:text-text-disabled" />
-        <p className="text-body-sm text-text-secondary peer-disabled:text-text-disabled">
-          {prompt}
-        </p>
-        <span
-          aria-hidden="true"
-          className={cn(
-            buttonVariants({ kind: "tertiary" }),
-            "peer-hover:bg-button-tertiary-hover-bg peer-focus-visible:focus-ring",
-            "peer-disabled:border-border-disabled peer-disabled:bg-transparent peer-disabled:text-text-disabled peer-disabled:shadow-none",
-          )}
-        >
+        <ArrowUpTrayIcon className={fileInputIconVariants()} />
+        <p className={fileInputPromptVariants()}>{prompt}</p>
+        <span aria-hidden="true" className={cn(fileInputButtonVariants())}>
           {chooseLabel}
         </span>
       </div>
 
       {file && (
-        <div
-          data-slot="file-input-file"
-          className="flex items-center gap-3 rounded-card border border-border-subtle-01 bg-layer-01 py-3 ps-4 pe-3"
-        >
+        <div data-slot="file-input-file" className={fileInputFileVariants()}>
           {uploading ? (
-            <DocumentTextIcon className="size-6 shrink-0 text-icon-secondary" />
+            <DocumentTextIcon className={fileInputFileIconVariants()} />
           ) : (
             <StatusIcon kind="success" />
           )}
-          <div className="flex min-w-0 flex-1 flex-col gap-1">
-            <p className="truncate text-label text-text-primary">{file.name}</p>
-            <p className="text-helper text-text-helper">
+          <div className={fileInputFileInfoVariants()}>
+            <p className={fileInputFileNameVariants()}>{file.name}</p>
+            <p className={fileInputFileSizeVariants()}>
               {formatFileSize(file.size)}
               {uploading && ` · ${uploadingText(progress)}`}
             </p>
             {uploading && (
               <Progress.Root value={progress} aria-label={status}>
-                <Progress.Track className="h-1 overflow-hidden rounded-full bg-border-subtle-01">
-                  <Progress.Indicator className="block h-full rounded-full bg-interactive-default motion-safe:transition-[width] motion-safe:duration-(--duration-fast) motion-safe:ease-out" />
+                <Progress.Track className={fileInputProgressTrackVariants()}>
+                  <Progress.Indicator
+                    className={fileInputProgressIndicatorVariants()}
+                  />
                 </Progress.Track>
               </Progress.Root>
             )}
@@ -181,29 +181,29 @@ function FileInput({
             type="button"
             disabled={disabled}
             onClick={onRemove}
-            className={cn(
-              "shrink-0 disabled:cursor-not-allowed disabled:text-text-disabled",
-              uploading
-                ? "-m-0.5 inline-flex size-6 items-center justify-center rounded-control text-icon-primary hover:not-disabled:bg-overlay-hover focus-visible:focus-ring"
-                : linkVariants({ size: "small", standalone: true }),
-            )}
+            className={cn(fileInputActionVariants({ uploading }))}
           >
             {uploading ? (
               <>
-                <XMarkIcon className="size-5" />
-                <span className="sr-only">{cancelLabel}</span>
+                <XMarkIcon className={fileInputCancelIconVariants()} />
+                <span className={fileInputHiddenTextVariants()}>
+                  {cancelLabel}
+                </span>
               </>
             ) : (
               <>
                 {removeLabel}
-                <span className="sr-only"> {file.name}</span>
+                <span className={fileInputHiddenTextVariants()}>
+                  {" "}
+                  {file.name}
+                </span>
               </>
             )}
           </button>
         </div>
       )}
 
-      <span role="status" className="sr-only">
+      <span role="status" className={fileInputHiddenTextVariants()}>
         {status}
       </span>
     </div>

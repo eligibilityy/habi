@@ -22,7 +22,7 @@ Use the actual package manager, package name, and import path from the repositor
 
 Avoid repeating shared setup instructions. Shared setup lives on the Installation page (`content/docs/installation.mdx`): the Allo font, Habi's stylesheets, the `cn` helper, import paths, and the shared parts (status icon and field parts). Link to it, or to `/docs/installation#shared-parts` for form components.
 
-On the component page, the `npm install` line lists only the packages the component's own file imports. Check them with the file's import statements, not by copying another page.
+On the component page, the `npm install` line lists only the packages the component's own files import: the component and its classes file. `pnpm registry` keeps it up to date from their import statements, so don't copy it from another page.
 
 ## Basic usage
 

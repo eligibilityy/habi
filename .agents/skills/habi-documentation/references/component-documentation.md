@@ -22,7 +22,7 @@ Every Habi component page uses these sections, in this order:
 1. **Frontmatter** `title` and `description` (one sentence: what it helps people do).
 2. **Preview:** `<ComponentPreview name="<name>-demo" />`, with no heading.
 3. **When to use:** "Use a … when:" with realistic cases, then "Use something else when:" with linked alternatives and the reason.
-4. **Installation:** link to [Set up Habi](/docs/installation) (and the shared parts, if the component uses them), an `npm` fence listing only the packages the component's own file imports, then `<ComponentSource>`.
+4. **Installation:** link to [Set up Habi](/docs/installation) (and the shared parts, if the component uses them), an `npm` fence listing only the packages the component's own files import, then a `<ComponentSource>` for the component and one for its classes file (`<component>.variants.ts`). `pnpm registry` adds the classes file's block if it's missing.
 5. **Usage:** a minimal `tsx` example.
 6. **Examples:** `###` per example, a sentence or two on when to use it, then `<ComponentPreview>`.
 7. **Content guidelines:** labels, hints, error messages and other wording.

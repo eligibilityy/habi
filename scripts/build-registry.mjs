@@ -7,7 +7,7 @@
 // `pnpm registry` runs this, then `shadcn build` writes public/r/*.json.
 // `dev` and `build` run `pnpm registry`; `precommit` and CI run this script.
 
-import { readFile, readdir, writeFile } from "node:fs/promises";
+import { access, readFile, readdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { format } from "prettier";
 
@@ -43,6 +43,21 @@ function packageName(specifier) {
   return specifier.startsWith("@") ? parts.slice(0, 2).join("/") : parts[0];
 }
 
+// Each component keeps its classes in a file next to it, like
+// button.variants.ts, which every framework's version shares. The CLI adds it
+// with the component.
+const variantsOf = (file) => file.replace(/\.tsx$/, ".variants.ts");
+const isVariants = (file) => file.endsWith(".variants.ts");
+
+async function exists(file) {
+  try {
+    await access(file);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
 /** Sorts a file's imports into npm packages and other Habi files. */
 async function readImports(file) {
   const source = await readFile(file, "utf8");
@@ -56,7 +71,11 @@ async function readImports(file) {
   for (const specifier of specifiers) {
     if (specifier.startsWith("@/registry/habi/")) {
       const target = specifier.replace("@/", "");
-      files.add(target.endsWith("/utils") ? UTILS : `${target}.tsx`);
+      if (target.endsWith("/utils")) files.add(UTILS);
+      // Another component's classes come with that component.
+      else if (target.endsWith(".variants"))
+        files.add(target.replace(/\.variants$/, ".tsx"));
+      else files.add(`${target}.tsx`);
     } else if (!specifier.startsWith(".") && !specifier.startsWith("@/")) {
       const name = packageName(specifier);
       if (name !== "react" && name !== "react-dom" && name !== "next") {
@@ -65,6 +84,17 @@ async function readImports(file) {
     }
   }
   return { packages: [...packages].sort(), files: [...files].sort() };
+}
+
+/** A component's imports, together with those of its classes file. */
+async function readComponentImports(file) {
+  const own = await readImports(file);
+  if (!(await exists(variantsOf(file)))) return own;
+  const classes = await readImports(variantsOf(file));
+  return {
+    packages: [...new Set([...own.packages, ...classes.packages])].sort(),
+    files: [...new Set([...own.files, ...classes.files])].sort(),
+  };
 }
 
 // --- Docs pages --------------------------------------------------------------
@@ -80,10 +110,17 @@ function frontmatter(source) {
   );
 }
 
+const allSourcesIn = (text) =>
+  [...text.matchAll(/<ComponentSource\s+src="([^"]+)"/g)].map(
+    (match) => match[1],
+  );
+
+// The components and utils shown in a section, not their classes files.
 const sourcesIn = (text) =>
-  [...text.matchAll(/<ComponentSource\s+src="([^"]+)"/g)]
-    .map((match) => match[1])
-    .filter((src) => src.startsWith(`${UI_DIR}/`) || src === UTILS);
+  allSourcesIn(text).filter(
+    (src) =>
+      (src.startsWith(`${UI_DIR}/`) && !isVariants(src)) || src === UTILS,
+  );
 
 async function listMdx(dir) {
   const entries = await readdir(dir, { recursive: true });
@@ -133,8 +170,14 @@ for (const file of [UTILS, ...uiFiles]) {
 }
 
 const importsByFile = new Map();
-for (const file of [UTILS, ...uiFiles]) {
-  importsByFile.set(file, await readImports(file));
+importsByFile.set(UTILS, await readImports(UTILS));
+for (const file of uiFiles) {
+  importsByFile.set(file, await readComponentImports(file));
+}
+
+const hasVariants = new Set();
+for (const file of uiFiles) {
+  if (await exists(variantsOf(file))) hasVariants.add(file);
 }
 
 const items = [UTILS, ...uiFiles]
@@ -162,7 +205,12 @@ const items = [UTILS, ...uiFiles]
       description,
       dependencies: packages.length ? packages : undefined,
       registryDependencies: files.map((dep) => itemUrl(internalNames.get(dep))),
-      files: [{ path: file, type: isLib ? "registry:lib" : "registry:ui" }],
+      files: [
+        { path: file, type: isLib ? "registry:lib" : "registry:ui" },
+        ...(hasVariants.has(file)
+          ? [{ path: variantsOf(file), type: "registry:ui" }]
+          : []),
+      ],
     };
   })
   .sort((a, b) => a.name.localeCompare(b.name));
@@ -215,6 +263,24 @@ for (const page of pages) {
   const updated = sections.map((section) => {
     const sources = sourcesIn(section);
     if (sources.length === 0) return section;
+
+    // Show each component's classes file right after the component.
+    for (const src of sources) {
+      if (!hasVariants.has(src)) continue;
+      const classes = variantsOf(src);
+      if (allSourcesIn(section).includes(classes)) continue;
+      const block = section.match(
+        new RegExp(`<ComponentSource\\s+src="${src}"[^>]*?/>`),
+      )[0];
+      const title = block.match(/title="([^"]+)"/)?.[1];
+      const classesTitle = title
+        ? `\n  title="${title.replace(/\.tsx$/, ".variants.ts")}"`
+        : "";
+      section = section.replace(
+        block,
+        `${block}\n\nAdd its classes, in a file next to it:\n\n<ComponentSource\n  src="${classes}"${classesTitle}\n/>`,
+      );
+    }
 
     const packages = [
       ...new Set(

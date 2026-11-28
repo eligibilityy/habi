@@ -1,26 +1,17 @@
 import type { ComponentProps, ReactNode } from "react";
 import { XMarkIcon } from "@heroicons/react/20/solid";
-import { cva, type VariantProps } from "class-variance-authority";
+import type { VariantProps } from "class-variance-authority";
 
 import { cn } from "@/registry/habi/lib/utils";
+import {
+  notificationContentVariants,
+  notificationDismissIconVariants,
+  notificationDismissVariants,
+  notificationTextVariants,
+  notificationTitleVariants,
+  notificationVariants,
+} from "@/registry/habi/ui/notification.variants";
 import { StatusIcon } from "@/registry/habi/ui/status-icon";
-
-const notificationVariants = cva(
-  "flex w-full items-start gap-3 rounded-card border p-4 text-text-primary",
-  {
-    variants: {
-      kind: {
-        info: "border-support-info bg-support-info-subtle",
-        success: "border-support-success bg-support-success-subtle",
-        warning: "border-support-warning bg-support-warning-subtle",
-        error: "border-support-error bg-support-error-subtle",
-      },
-    },
-    defaultVariants: {
-      kind: "info",
-    },
-  },
-);
 
 type NotificationProps = Omit<ComponentProps<"div">, "title"> &
   VariantProps<typeof notificationVariants> & {
@@ -48,18 +39,20 @@ function Notification({
       {...props}
     >
       <StatusIcon kind={statusKind} />
-      <div className="flex min-w-0 flex-1 flex-col gap-1">
-        <p className="text-heading-xs">{title}</p>
-        {children && <div className="text-body-sm">{children}</div>}
+      <div className={notificationContentVariants()}>
+        <p className={notificationTitleVariants()}>{title}</p>
+        {children && (
+          <div className={notificationTextVariants()}>{children}</div>
+        )}
       </div>
       {onDismiss && (
         <button
           type="button"
           aria-label={dismissLabel}
           onClick={onDismiss}
-          className="-m-0.5 inline-flex size-6 shrink-0 items-center justify-center rounded-control text-icon-primary hover:bg-overlay-hover focus-visible:focus-ring"
+          className={notificationDismissVariants()}
         >
-          <XMarkIcon className="size-5" />
+          <XMarkIcon className={notificationDismissIconVariants()} />
         </button>
       )}
     </div>

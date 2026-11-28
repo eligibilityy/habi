@@ -27,11 +27,24 @@ npx shadcn@latest add https://habi.yiliya.studio/r/phase-banner.json
 </InstallationTab>
 <InstallationTab value="manual">
 
+Install the packages this component uses:
+
+```npm
+npm install class-variance-authority
+```
+
 Add [Badge](/docs/components/badge#installation) first, then add the component:
 
 <ComponentSource
   src="registry/habi/ui/phase-banner.tsx"
   title="components/ui/phase-banner.tsx"
+/>
+
+Add its classes, in a file next to it:
+
+<ComponentSource
+  src="registry/habi/ui/phase-banner.variants.ts"
+  title="components/ui/phase-banner.variants.ts"
 />
 
 </InstallationTab>

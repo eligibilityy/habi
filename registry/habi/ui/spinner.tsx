@@ -1,25 +1,14 @@
 import type { ComponentProps } from "react";
-import { cva, type VariantProps } from "class-variance-authority";
+import type { VariantProps } from "class-variance-authority";
 
 import { cn } from "@/registry/habi/lib/utils";
-
-const spinnerVariants = cva("inline-flex shrink-0 items-center", {
-  variants: {
-    size: {
-      small: "gap-2 text-body-sm",
-      medium: "gap-2 text-body-md",
-      large: "gap-3 text-body-md",
-    },
-    tone: {
-      default: "text-text-secondary",
-      inverse: "text-text-on-color",
-    },
-  },
-  defaultVariants: {
-    size: "small",
-    tone: "default",
-  },
-});
+import {
+  spinnerIndicatorVariants,
+  spinnerLabelVariants,
+  spinnerRingVariants,
+  spinnerTrackVariants,
+  spinnerVariants,
+} from "@/registry/habi/ui/spinner.variants";
 
 // Ring size and thickness, in px.
 const rings = {
@@ -61,17 +50,13 @@ function Spinner({
         strokeWidth={ring.stroke}
         // An inline size, so a parent's svg sizing (like Button's) can't stretch it.
         style={{ width: ring.size, height: ring.size }}
-        className="shrink-0 motion-safe:animate-spin"
+        className={spinnerRingVariants()}
       >
         <circle
           cx="50%"
           cy="50%"
           r={radius}
-          className={
-            tone === "inverse"
-              ? "stroke-text-on-color opacity-30"
-              : "stroke-border-subtle-01"
-          }
+          className={spinnerTrackVariants({ tone: tone ?? undefined })}
         />
         {/* A quarter of the ring, from 12 o'clock to 3. */}
         <circle
@@ -81,17 +66,10 @@ function Spinner({
           pathLength={100}
           strokeDasharray="25 75"
           transform={`rotate(-90 ${ring.size / 2} ${ring.size / 2})`}
-          className={
-            tone === "inverse"
-              ? "stroke-text-on-color"
-              : "stroke-interactive-default"
-          }
+          className={spinnerIndicatorVariants({ tone: tone ?? undefined })}
         />
       </svg>
-      {/* With reduced motion the ring stops, so the label shows instead. */}
-      <span className={cn(!showLabel && "sr-only motion-reduce:not-sr-only")}>
-        {label}
-      </span>
+      <span className={spinnerLabelVariants({ showLabel })}>{label}</span>
     </span>
   );
 }

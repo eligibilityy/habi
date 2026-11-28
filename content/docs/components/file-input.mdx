@@ -33,7 +33,7 @@ npx shadcn@latest add https://habi.yiliya.studio/r/file-input.json
 Add [Field](/docs/components/field#installation), [Button](/docs/components/button#installation) and [Link](/docs/components/link#installation) first, then install the packages this component uses:
 
 ```npm
-npm install @base-ui/react @heroicons/react
+npm install @base-ui/react @heroicons/react class-variance-authority
 ```
 
 Add the component:
@@ -41,6 +41,13 @@ Add the component:
 <ComponentSource
   src="registry/habi/ui/file-input.tsx"
   title="components/ui/file-input.tsx"
+/>
+
+Add its classes, in a file next to it:
+
+<ComponentSource
+  src="registry/habi/ui/file-input.variants.ts"
+  title="components/ui/file-input.variants.ts"
 />
 
 </InstallationTab>
