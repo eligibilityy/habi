@@ -1,0 +1,47 @@
+---
+title: Error summary
+description: Lists every problem on a form after people submit it, with a link to each field.
+status: planned
+---
+
+## When to use
+
+Show an error summary at the top of the page when people submit a form with problems.
+
+Use something else when:
+
+- **There's one problem that isn't about a field,** like the service being down. Use a [Notification](/docs/components/notification).
+
+## How it will look and work
+
+- **A 640px box** with a 2px error border and card corners.
+- **An error icon and a title:** "There is a problem".
+- **An optional line of help,** like "Fix these to continue."
+- **A link for each problem,** in the same order as the fields. Each link moves to its field.
+
+## Content guidelines
+
+- **List every problem,** in the same order as the fields, with the same words as each field's message.
+- **Say what to fix:** "Enter your given name", not "Invalid input".
+- **Keep each field's own message too.** The summary doesn't replace them.
+
+## Accessibility
+
+- **Focus moves to the summary** when the page loads with errors, so it's read out. The page title starts with "Error:".
+- **Each link jumps to its field,** so people can fix it straight away.
+- **The icon is decorative.** The title carries the meaning.
+- **Both, always:** people see each problem again where they fix it.
+
+## Related components
+
+- [Field](/docs/components/field): shows each field's own error.
+- [Notification](/docs/components/notification): for problems that aren't about a field.
+
+## Figma
+
+<FigmaExport
+  name="error-summary"
+  alt="Error summary's Figma page: anatomy, states, usage and accessibility notes."
+/>
+
+[Open Error summary in the Habi Figma file](https://www.figma.com/design/D3nJzUeqpGlyMpimlesib6/Habi--Beta?node-id=190-211).

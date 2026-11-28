@@ -1,0 +1,48 @@
+---
+title: Name fields
+description: "Asks for each part of a Filipino name: given name, middle name, surname and suffix."
+status: planned
+---
+
+## When to use
+
+Use name fields when a service needs each part of someone's name, like for a civil registry record, a clearance or an ID.
+
+Use something else when:
+
+- **You only need to know what to call someone.** Use one [Text input](/docs/components/text-input).
+
+## How it will look and work
+
+- **Given name:** a Text input. It can be more than one word.
+- **Middle name:** the mother's maiden surname. Optional, with a hint that says so.
+- **Surname:** accepts particles like dela and de los.
+- **Suffix:** a Select with None, Jr., Sr., II, III and IV.
+
+## Content guidelines
+
+- **Ask for each part separately, in this order.** Don't ask for one "Full name" when you need the parts.
+- **Make the middle name optional.** Not everyone has one.
+- **Say which document to match,** like "Write it as it appears on your birth certificate."
+- **Don't force capital letters on screen.** Convert the name later if a record needs it.
+
+## Accessibility
+
+- **Each part has its own label:** Given name, Middle name, Surname.
+- **The suffix is a Select,** with None as the first choice.
+- **Every character people use is accepted:** ñ, hyphens, spaces and particles like dela and de los.
+- **Autofill:** each field can fill in from details people have saved.
+
+## Related components
+
+- [Text input](/docs/components/text-input): the given name, middle name and surname.
+- [Select](/docs/components/select): the suffix.
+
+## Figma
+
+<FigmaExport
+  name="name-fields"
+  alt="Name fields' Figma page: anatomy, usage and accessibility notes."
+/>
+
+[Open Name fields in the Habi Figma file](https://www.figma.com/design/D3nJzUeqpGlyMpimlesib6/Habi--Beta?node-id=33-71).
