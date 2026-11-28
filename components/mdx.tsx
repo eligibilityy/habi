@@ -26,6 +26,7 @@ import {
   ComponentSource,
 } from "@/components/docs/component-preview";
 import { DocsCard } from "@/components/docs/docs-card";
+import { FigmaExport } from "@/components/docs/figma-export";
 import {
   InstallationTab,
   InstallationTabs,
@@ -57,6 +58,7 @@ export function getMDXComponents(components?: MDXComponents) {
     TypeScale,
     ComponentPreview,
     ComponentSource,
+    FigmaExport,
     InstallationTab,
     InstallationTabs,
     PropsTable,
