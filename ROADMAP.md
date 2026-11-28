@@ -30,7 +30,7 @@ Which Habi components are built and which are planned. Built components have a d
 | [Official banner]      | Built   |
 | [OTP input]            | Built   |
 | Pagination             | Planned |
-| Password input         | Planned |
+| [Password input]       | Built   |
 | Payment method picker  | Planned |
 | [Phase banner]         | Built   |
 | Privacy consent        | Planned |
@@ -74,6 +74,7 @@ Which Habi components are built and which are planned. Built components have a d
 [Notification]: https://habi.yiliya.studio/docs/components/notification
 [Official banner]: https://habi.yiliya.studio/docs/components/official-banner
 [OTP input]: https://habi.yiliya.studio/docs/components/otp-input
+[Password input]: https://habi.yiliya.studio/docs/components/password-input
 [Phase banner]: https://habi.yiliya.studio/docs/components/phase-banner
 [Radio group]: https://habi.yiliya.studio/docs/components/radio-group
 [Search]: https://habi.yiliya.studio/docs/components/search
